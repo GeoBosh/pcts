@@ -39,7 +39,7 @@ test_that("the new periodic classes are ok",
     new("PeriodicTS_ts", 1:12, frequency = 4)
     new("PeriodicTS_ts", matrix(1:12, ncol = 1), frequency = 4)
     expect_error(new("PeriodicTS_ts", matrix(1:24, ncol = 2), frequency = 4),
-                 "not a scalar time series"
+                 "not a scalar time series")
 
     new("PeriodicMTS_ts", 1:12, frequency = 4)
     new("PeriodicMTS_ts", matrix(1:12, ncol = 1), frequency = 4)

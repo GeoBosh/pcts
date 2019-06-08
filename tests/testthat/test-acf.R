@@ -42,6 +42,16 @@ test_that("pc.acrf is ok", {
 
     ## TODO: higher orders PAR
 
+    autocovariances(1:60, maxlag = 10)
+    autocovariances(1:60, nseasons = 4, maxlag = 10)
+
+    autocorrelations(1:60, maxlag = 10)
+    autocorrelations(1:60, nseasons = 4, maxlag = 10)
+
+    expect_error(autocovariances(matrix(1:60, nrow =3), nseasons = 4, maxlag = 10))
+    autocovariances(matrix(1:60, ncol = 2), maxlag = 10)
+    autocovariances(matrix(1:64, ncol = 2), nseasons = 4, maxlag = 10)
+
 })
 
 
