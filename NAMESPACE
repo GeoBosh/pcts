@@ -1,0 +1,243 @@
+import(methods, stats4, Matrix, BB, PolynomF, zoo, lagged, sarima)
+
+importFrom(gbutils,shiftright,shiftleft)
+importFrom(gbutils,myouter)
+importFrom(gbutils,nposargs,isargunnamed)
+importFrom(ltsa, tacvfARMA)
+
+importFrom(graphics, boxplot, layout, par, points, lines, axis, mtext)
+importFrom(utils, capture.output)
+importFrom(stats, ARMAacf, Box.test, C, as.formula,
+           frequency, start, end, cycle, deltat, time, window,
+           lm, na.exclude, nls, optim,
+           pchisq, pnorm, qnorm, rnorm, runif,
+           residuals, fitted, predict, printCoefmat,
+           ts, as.ts, monthplot)
+
+importFrom(lubridate, minutes, hm, ymd)
+
+import(sarima)
+
+importFrom(mcompanion, chain_ind, mf_VSform, null_complement, sim_pcfilter)
+importFrom(Rdpack, reprompt)
+
+S3method(as.matrix, PeriodicMTS)
+
+# S3method(as.matrix, slMatrix)
+# S3method(as.matrix, PeriodicAutocovariance)
+# S3method(as.matrix, PeriodicAutocorrelation)
+
+#S3method(head, PeriodicTimeSeries)
+#S3method(tail, PeriodicTimeSeries)
+
+# S3method("[", "sVector")
+
+S3method(monthplot, PeriodicTimeSeries)
+S3method(boxplot, PeriodicTimeSeries)
+
+S3method(as.ts, PeriodicTimeSeries)
+
+S3method(start, Cyclic)
+S3method(end,       PeriodicTimeSeries)
+S3method(frequency, PeriodicTimeSeries)
+S3method(deltat,    PeriodicTimeSeries)
+S3method(cycle,     PeriodicTimeSeries)
+S3method(time,      PeriodicTimeSeries)
+S3method(window, PeriodicTS)
+S3method(window, PeriodicMTS)
+
+S3method(availStart, default)
+S3method(availStart, matrix)
+S3method(availEnd, default)
+S3method(availEnd, matrix)
+
+S3method(residuals, FittedPeriodicArModel)
+
+exportMethods(
+    head,
+    tail,
+    "[",        # are these necessary for primitive functions?
+    "[<-",      # the methods (at least for "[<-") seem to work without this
+    filterCoef,
+    filterOrder,
+    ## nSeasons,
+    autocorrelations,
+    autocovariances,
+    sigmaSq
+)
+exportClassPattern("^[^\\.]")
+
+
+# exportPattern("^[[:alpha:]]+")
+export(
+    # [.sVector
+      alg1
+    , alg1util
+    # , as.matrix.pcAcvf       # S3 methods, declared above; no need to export
+    # , as.matrix.slMatrix    #     todo: document somehow?
+    # , fill.slMatrix
+    , fitPM # fitPerModel
+    , mC.ss
+  , sim_parCoef
+
+
+    , num2pcpar
+    , parcovmatlist
+    # , parModel
+    # , pc.acf
+    , pc.acf.parModel
+    , pcarma_acvf2model
+    # , pc.acrf
+    # , pc.acrftoacf
+    # , pc.acsum
+    # , pc.argmin
+    ####, pc.arith.ceiling
+    ####, pc.arith.floor
+
+    , pcarma_acvf_system
+    # , pc.arma.algBosh0
+    # , pc.arma.algBoshTh2
+    # , pc.arma.getpq
+    , pcarma_param_system
+    # , pc.arma.setpq
+    ####, pc.arma.sim
+    # 09/02/2014 , pc.armafilter
+    # , pc.armaPQ
+    # , pc.armapq.aic
+    # , pc.armapq.bic
+    # , pc.armaPQ.index
+    # , pc.armaPQ.index.replace
+
+    # , pc.bcoeffs
+    # , pc.bU
+    # , pc.bvars
+    # , pc.ccf
+    # , pc.cconesidedsum
+    # , pc.ccsum
+    # , pc.center
+
+    # , pc.est.arma
+    # , pc.est.arma.0
+
+    # , pc.f.index.replace
+    # , pc.fcoeffs
+    , pc.filter
+    # 09/02/2014 , pc.filter.arma
+    , pc.filter.xarma
+    # , pc.fit.arma.Bosh0
+    # , pc.fit.arma.BoshTh2
+    # , pc.fL
+    # , pc.fvars
+    , pc.hat.h
+    # , pc.internal.checksigma2
+    # , pc.internal.checkv2
+    , pcarma_acvf_lazy
+    , pcarma_h_lazy
+    , maxLag # pc.maxlag
+    # , pc.mean
+    , pcarma_prepare
+    , pcarma_tovec
+    , pcarma_unvec
+    , pcarma_h
+    ## , pc.omitneg
+    # , pc.pacf
+    # , pc.pacrf
+    # , pc.par.argmin
+    # , pc.phis2
+    # , pc.pqapply
+    # , pc.printarmapqelem
+    , sim_pwn # 2016-03-29 was: pc.rand
+    # 09/02/2014 , pc.read.franses96
+    , pc.sdfactor
+    , sim_pc # 2016-03-29 was: pc.sim
+    , pwn_McLeodLjungBox_test # pc.test.LjungBox
+    , periodic_acf1_test #pc.test.periodicity
+    # , pc.var
+    # , pc.vf.index   # 2014-06-22
+    , pcacf_pwn_var  # pc.wn.var.acrf
+    #, pcAcvf
+    , pcacfMat
+    , pcAr.ss
+    , pcAR2acf
+
+    , pcts
+    # , perFilterModel
+  , permean2intercept
+  , intercept2permean
+
+    # , perModel
+    , permodelmf
+  , ptildeorders # deprecated
+  , pdSafeParOrder
+    , sim_parAcvf
+    ####, rsum
+    # , siParModel
+    , slMatrix # now in 'lagged' but export it anyway !!
+    ####, sumafr
+    , PeriodicVector # sVector
+    , toSeason
+    , toSeasonPair
+    , ttmatToslPairs
+    , ttTosl
+    # , which.minaic
+    , xx.ss
+
+    , pcTest
+
+    # , pcDst
+    # , pcDummy
+    # , pcX
+    , pclsdf
+    , pclspiar
+    , pi1ar2par
+    # , piParModel
+
+  , test_piar
+
+  , nVariables
+  , nTicks
+  #, nSeasons
+  , nCycles
+
+  , pcCycle
+  , BuiltinCycle
+  , unitSeason
+  , "unitSeason<-"
+  , unitCycle
+  , "unitCycle<-"
+  , allSeasons
+  , "allSeasons<-"
+  , seqSeasons
+
+      , Vec
+      , tsMatrix
+      , tsVector
+      , tsVec
+      , pcArray
+      , pctsArray
+      , pcMatrix
+
+  ## , pcBoxplot
+  ## , pcPlot
+
+  # , autocovariances   # don't reexport while 'sarima' is in 'Depends'
+  # , autocorrelations
+
+  #, PeriodicFilterModel
+
+  #, acfbase2sl  # now in lagged; for export see \docType{import} and
+  #, sl2vecacf   #    https://github.com/klutometis/roxygen/issues/408
+  #, sl2acfbase  # for a way to avoid documenting if re-exported.
+                 # (and maybe use lagged::sl2acfbase for re-export)
+                 # However, expoting these seems an overkill (but TODO: think about it).
+
+  #, innovationVariances
+
+  , PeriodicArModel
+
+  , availStart
+  , availEnd
+
+  , modelCycle
+  , "modelCycle<-"
+)

@@ -1,0 +1,10 @@
+^Org/
+^Org$
+[.]emacs[.]desktop.*
+^TAGS$
+^auto$
+[^/]*[.]Rout$
+^TechnicalDoc.*
+^sav[0-9]*[.]Rhistory
+^Experimental
+^tests/testthat/[.]RData$

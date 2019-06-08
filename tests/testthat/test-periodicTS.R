@@ -1,0 +1,35 @@
+#    expect_that( , is_identical_to(  ))
+#    make_expectation( , "is_identical_to")
+
+test_that("the new periodic classes are ok",
+{
+    ##
+    b1 <- new("BareCycle", nseasons = 1)
+    b12 <- new("BareCycle", nseasons = 12)
+
+    ts1 <- new("PeriodicTS", cycle = b1, 1:10)
+    ts2 <- new("PeriodicTS", cycle = b12, AirPassengers)
+    ap.ts <- new("PeriodicTS_ts", AirPassengers)
+    expect_identical(S3Part(ap.ts, strictS3 = TRUE), AirPassengers)
+
+    ap.mts <- new("PeriodicTS_ts", AirPassengers) # multivar ts with one variable is ok
+
+    ## `z' is from help page of ts()
+    z <- ts(matrix(rnorm(300), 100, 3), start = c(1961, 1), frequency = 12)
+    z.ts  <- new("PeriodicTS", z)
+
+    expect_error(new("PeriodicTS_ts", z),
+                 'not a scalar time series; consider "PeriodicMTS_ts"')
+
+    z.mts <- new("PeriodicMTS", z)
+    z.mts <- new("PeriodicMTS_ts", z) # ok
+    expect_identical(S3Part(z.mts, strictS3 = TRUE), z)
+
+    as(AirPassengers, "PeriodicTS")
+    as(AirPassengers, "PeriodicTS_ts")
+    pcts(AirPassengers)
+
+    as(AirPassengers, "PeriodicTS")
+    as(AirPassengers, "PeriodicTS_ts")
+
+})

@@ -1,0 +1,38 @@
+Package: pcts
+Type: Package
+Title: Functions and Classes for Periodically Correlated Time Series
+Version: 0.14-0
+Date: 2019-06-08
+Author: Georgi N. Boshnakov
+Maintainer: Georgi N. Boshnakov <georgi.boshnakov@manchester.ac.uk>
+Depends: R (>= 3.5.0), sarima
+Imports: methods, Matrix, BB, PolynomF, gbutils, zoo, ltsa, stats4,
+         lagged (>= 0.2.2), mcompanion, Rdpack (>= 0.9), lubridate
+Suggests: testthat, pear, fUnitRoots, partsm
+RdMacros: Rdpack
+LazyData: yes
+Description: Provides classes and methods for periodically correlated time
+    series.
+License: GPL (>= 2)
+Collate:
+    utils.R
+    test1.r
+    PeriodicCalc.R
+    pcstat.R
+    pc00smallutil.r pc02filters.r pc03simu.r
+    acfsums.R
+    pcls.R
+    pcarma_model.R pcarma_acf.R
+    generics.R
+    autocovariances.R
+    classCycle.R
+    pcFilterClasses.R
+    PeriodicClasses.R
+    cyclic.R
+    FittedPeriodicModels.R
+    fitPM.R
+    pcTest.R
+    PeriodicVector.R
+    sim.R
+    optimcore.R
+RoxygenNote: 6.1.1
