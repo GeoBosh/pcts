@@ -30,5 +30,35 @@ test_that("the cycle classes are ok",
     new("DayWeekCycle")
     new("FiveDayWeekCycle")
     new("OpenCloseCycle")
+
+
+    unitCycle(a4)
+    unitSeason(a4)
+    seqSeasons(a4)
+    allSeasons(a4)
+
+    a4a <- a4
+    unitCycle(a4a) <- "Godina"
+    unitSeason(a4a) <- "Trimesechie"
+    allSeasons(a4a) <- c("Parvo", "Vtoro", "Treto", "Chetvart")
+    show(a4a)
+
+
+    new("QuarterYearCycle", first = 2)
+
+
+
+    BuiltinCycle(2)
+    BuiltinCycle(4)
+    BuiltinCycle(5)
+    BuiltinCycle(7)
+    yc <- BuiltinCycle(12)
+    BuiltinCycle(48)
+    expect_error(BuiltinCycle(999))
+
+    as(yc, "SimpleCycle")
+
+    pcCycle(4)
+
 })
 
