@@ -16,7 +16,7 @@ test_that("test fitPM()",
     expect_equal_to_reference(proba1, "proba1.RDS")
 
     expect_error(fitPM(2, mx),
-          "unable to find an inherited method for function 'nSeasons' for signature '\"matrix\"'")
+          "unable to find an inherited method for function [.]nSeasons[.] for signature [.]\"matrix\"[.]")
     expect_identical(fitPM(2, x_pcts), fitPM(c(2, 2, 2, 2), as.numeric(mx)))
 
 
