@@ -4,6 +4,8 @@ language: r
 
 r_github_packages:
   - r-lib/covr
+  - GeoBosh/lagged
+
 
 after_success:
   - Rscript -e 'covr::coveralls()'

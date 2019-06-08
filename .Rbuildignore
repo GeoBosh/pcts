@@ -8,3 +8,4 @@
 ^sav[0-9]*[.]Rhistory
 ^Experimental
 ^tests/testthat/[.]RData$
+[.]travis[.]yml
