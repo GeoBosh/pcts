@@ -54,7 +54,7 @@ test_that("the new periodic classes are ok",
     expect_output(show(ap.ts) )
     expect_output(show(ap.mts))
     expect_output(show(z.mts))
-    expect_output(pcts(AirPassengers))
+    pcts(AirPassengers)
 
     monthplot(ap.ts)
     monthplot(ap.mts)
