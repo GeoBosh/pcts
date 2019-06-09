@@ -28,6 +28,19 @@ test_that("constructors of periodic AR filters are ok",
     expect_identical(filterPolyCoef(ar_filt3, lag_0 = TRUE), cbind(1, - ar_filt3@coef))
     expect_identical(filterPolyCoef(ar_filt3, lag_0 = FALSE), - ar_filt3@coef)
 
+    expect_output(show(ar_filt3))
+
+    arma_filt3 <- new("PeriodicArmaFilter", ar = ar_filt3)
+    expect_output(show(arma_filt3))
+    maxLag(arma_filt3)
+    ## for now, just run to ensure they do not throw error:
+    filterPoly(ar_filt3)
+    filterPoly(as(ar_filt3, "PeriodicSPFilter"))
+
+    dummy <- new("PeriodicArFilter")
+    dummy <- new("PeriodicMaFilter")
+
+
 })
 
 test_that("constructors of periodic MA filters are ok",
