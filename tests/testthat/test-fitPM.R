@@ -26,7 +26,8 @@ test_that("test fitPM()",
 
     data(Fraser, package = "pear")
     logFraser <- log(Fraser)
-    ## TODO: for now I need whole years
+    ## TODO: for now I need whole years;
+    ##    !!! However note the typo 'logfraser', the following use 'logFraser'!
     logfraser <- ts(logFraser[1:936], frequency = 12)
 
     co1_pear <- pear::pear(logFraser, 1)[["phi"]]
@@ -35,4 +36,24 @@ test_that("test fitPM()",
     az2 <- fitPM(model = rep(1, 12), as.numeric(logFraser))
     expect_true(all.equal(as.vector(az1@ar@coef[ , 1]), as.vector(co1_pear[ , 1])))
     expect_true(all.equal(as.vector(az2@ar@coef[ , 1]), as.vector(co1_pear[ , 1])[c(3:12, 1:2)]))
+
+    ## pcfr2  <- pcts(dataFranses1996[ , 2  ])
+    pcfr23 <- pcts(dataFranses1996[ , 2:3])
+    expect_error(fitPM(model = rep(1, 4), pcfr23), "Multivariate case not implemented yet")
+
+    ## fitPM(model = rep(1, 4), pcfr23[1]) # tests the method for PeriodicMTS ([] keep MTS class)
+    ## fitPM(model = rep(1, 4), pcfr23[[1]]) # tests the method for PeriodicTS ('[[' drops the 'M')
+    expect_identical(fitPM(model = rep(1, 4), pcfr23[1]),
+                     fitPM(model = rep(1, 4), pcfr23[[1]]))
+
+
+    x <- arima.sim(list(ar = 0.9), n = 960)
+    pcx <- pcts(x, nseasons = 4)
+    mx <- matrix(x, nrow = 4)
+
+    pfm1 <- PeriodicArModel(matrix(1:12, nrow = 4), order = rep(3,4), sigma2 = 1)
+    sipfm1 <- new("SiPeriodicArModel", iorder = 1, siorder = 1, pcmodel = pfm1)
+    fitPM(sipfm1, mx)
+
+
 })
