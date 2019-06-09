@@ -41,7 +41,7 @@ test_that("the cycle classes are ok",
     unitCycle(a4a) <- "Godina"
     unitSeason(a4a) <- "Trimesechie"
     allSeasons(a4a) <- c("Parvo", "Vtoro", "Treto", "Chetvart")
-    show(a4a)
+    expect_output(show(a4a))
 
 
     new("QuarterYearCycle", first = 2)

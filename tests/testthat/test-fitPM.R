@@ -14,6 +14,8 @@ test_that("test fitPM()",
 
     proba1 <- fitPM(c(3, 2, 2, 2), as.numeric(mx))
     expect_equal_to_reference(proba1, "proba1.RDS")
+    expect_output(show(proba1))
+    expect_output(summary(proba1))
 
     expect_error(fitPM(2, mx),
                  ## "unable to find an inherited method for function [.]nSeasons[.] for signature [.]\"matrix\"[.]"

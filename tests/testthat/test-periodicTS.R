@@ -1,6 +1,3 @@
-#    expect_that( , is_identical_to(  ))
-#    make_expectation( , "is_identical_to")
-
 test_that("the new periodic classes are ok",
 {
     ##
@@ -47,8 +44,8 @@ test_that("the new periodic classes are ok",
     cycle(z.mts)
     time(z.mts)
 
-    show(ap.ts)
-    show(ap.mts)
+    expect_output(show(ap.ts) )
+    expect_output(show(ap.mts))
 
     monthplot(ap.ts)
     monthplot(ap.mts)

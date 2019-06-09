@@ -26,6 +26,8 @@ test_that("PeriodicVector class is ok", {
 
     ## empty index returns the underlying vector
     identical(x[], x@.Data)
+    expect_equal(x[2,1], matrix(x[2 - 1], nrow = 1)) # roughly, x[i - j]
+    expect_identical(x[1:4, 2], x[ , 2])
 
     ## the recycling rule applies on assignment
     y[] <- 9
