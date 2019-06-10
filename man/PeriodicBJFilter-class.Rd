@@ -52,12 +52,16 @@ bj1c <- new("PeriodicBJFilter", coef = co, order = c(3, 3, 3, 3))
 identical(bj1b, bj1c) # TRUE
 identical(bj1, bj1b) # FALSE but only because classbj1@order is "integer"
 
+\dontshow{
+    ## redundant wrap with show() below since pkgdown::build_site()
+    ## throws errors without that.
+}    
 ## a more refined spec. for the order:
-new("PeriodicBJFilter", coef = co, order = c(2, 3, 1, 3))
+show( new("PeriodicBJFilter", coef = co, order = c(2, 3, 1, 3)) )
 
 ## as()
-as(co, "PeriodicBJFilter")
-as(co, "PeriodicSPFilter")
+show( as(co, "PeriodicBJFilter") )
+show( as(co, "PeriodicSPFilter") )
 
 ## change the sign convention:
 sp1 <- as(bj1, "PeriodicSPFilter")

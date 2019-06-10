@@ -58,6 +58,10 @@ exportMethods(
     tail,
     "[",        # are these necessary for primitive functions?
     "[<-",      # the methods (at least for "[<-") seem to work without this
+        # show,   # 2019-06-10 for pkgdown, error in PeriodicBJFilter and PeriodicSPFilter
+                  #     didn't resolve the problem, so commenting out.
+                  #     Explicit show() is ok.
+                  #     TODO: could this be related to unexported show() methods from 'sarima'?
     filterCoef,
     filterOrder,
     ## nSeasons,

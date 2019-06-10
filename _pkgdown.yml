@@ -1,0 +1,35 @@
+
+reference:
+  - title: "pcts overview"
+    desc: >
+      pcts overview
+    contents:
+      - "pcts-package"
+  - title: "Main functions"
+    contents:
+      - pcts
+      - fitPM
+      - allSeasons
+      - "autocorrelations-methods"
+      - "autocovariances-methods"
+      - availStart
+      - "maxLag-methods"
+      - nCycles
+      - "nSeasons-methods"
+      - pclsdf
+      - pclspiar
+      - pcTest
+      - test_piar      
+      - pi1ar2par
+      - sim_pwn
+      - sim_pc
+      - sim_parCoef
+      - simparAcvf
+      - Vec
+  - title: Datasets
+    contents:
+      - dataFranses1996
+  - title: "Other"
+    contents:
+      - -"pcts-package"
+      - -"PeriodicBJFilter-class"

@@ -16,7 +16,7 @@ You can install the [development version](https://github.com/GeoBosh/pcts) of
     library(devtools)
     install_github("GeoBosh/pcts")
 
-If `R` complains about insufficient version of pakage 'lagged', install it from
+If `R` complains about insufficient version of package 'lagged', install it from
 github with `install_github("GeoBosh/lagged")`.
 
 
@@ -30,9 +30,9 @@ place to start is the help topic `pcts-package`.
 
 This is a beta version with the view of release on CRAN in the next few months.
 Suggestions and bug reports are welcome.  This is a major update of (unreleased)
-previous versions of 'pcts' have been used by me and collaborators in the last
-fifteen years or so.  I have temporarily removed some functions which will be
-put back after suitable revision.
+previous versions of 'pcts' which have been used by me and collaborators in the
+last fifteen years or so.  I have temporarily removed some functions which will
+be put back after suitable revision.
 
 The documentation is still in a 'development' state. In particular, pages for S4
 classes nd methods will eventually be declared internal and not clutter the

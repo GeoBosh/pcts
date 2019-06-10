@@ -196,15 +196,16 @@
   %\Sexpr[stage=build,results=hide]{pat <- gsub("[[]", "\\\\[", pat)  }
   
   \Sexpr[stage=build,results=hide]{rest <- alltopics[!grepl( paste0("(", paste0(unlist(pat),collapse=")|("), ")"),alltopics)]}
-  \subsection{rest}{
-    % This doesn't work properly, It seems that this is because lbpaste() treats its argument
-    % as a pattern, while here it is a list of names.
-    % TODO: look into this
-    %    \Sexpr[stage=build,results=rd]{lbpaste(rest)}
-    %
-    % For now print a list of the remaining objects
-    \Sexpr[stage=build,results=verbatim]{rest}
-  }
+  % commenting out since pkgdown gives error: Error: \Sexpr{result=verbatim} not yet supported
+  %\subsection{rest}{
+  %  % This doesn't work properly, It seems that this is because lbpaste() treats its argument
+  %  % as a pattern, while here it is a list of names.
+  %  % TODO: look into this
+  %  %    \Sexpr[stage=build,results=rd]{lbpaste(rest)}
+  %  %
+  %  % For now print a list of the remaining objects
+  %  \Sexpr[stage=build,results=verbatim]{rest}
+  %}
 
 
 
