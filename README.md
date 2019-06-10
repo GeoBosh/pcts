@@ -24,11 +24,8 @@ github with `install_github("GeoBosh/lagged")`.
 
 Periodic time series can be created with `pcts()`. Models are fitted with
 `fitPM()`, see the examples in the documentation.  The data from Franses (1996)
-are available for examples and experiments, see `?dataFranses1996`.
-
-
-A good place to start is the help topic 
-`pcts-package`. 
+are available for examples and experiments, see `?dataFranses1996`.  A good
+place to start is the help topic `pcts-package`.
 
 
 This is a beta version with the view of release on CRAN in the next few months.
