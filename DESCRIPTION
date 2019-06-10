@@ -1,6 +1,9 @@
 Package: pcts
 Type: Package
-Title: Functions and Classes for Periodically Correlated Time Series
+Title: Modelling Periodically Correlated and Periodically Integrated
+    Time Series
+Description: Provides functions for modelling periodically correlated
+    and periodically integrated time series.
 Version: 0.14-0
 Date: 2019-06-08
 Author: Georgi N. Boshnakov
@@ -11,8 +14,8 @@ Imports: methods, Matrix, BB, PolynomF, gbutils, zoo, ltsa, stats4,
 Suggests: testthat, pear, fUnitRoots, partsm
 RdMacros: Rdpack
 LazyData: yes
-Description: Provides classes and methods for periodically correlated time
-    series.
+URL: https://github.com/GeoBosh/pcts
+BugReports: https://github.com/GeoBosh/pcts/issues
 License: GPL (>= 2)
 Collate:
     utils.R
