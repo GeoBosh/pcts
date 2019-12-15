@@ -4,8 +4,8 @@
 \alias{PiPeriodicArModel-class}
 %\alias{fitPM,ANY,PiPeriodicArModel-method}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class PiPeriodicArModel}
+\description{Class PiPeriodicArModel.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("PiPeriodicArModel", ...)}.
 %%  ~~ describe objects here ~~

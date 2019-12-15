@@ -3,8 +3,8 @@
 \docType{class}
 \alias{mcOptimCore-class}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class mcOptimCore}
+\description{Class mcOptimCore.}
 \section{Extends}{
 
 All reference classes extend and inherit methods from \code{"\linkS4class{envRefClass}"}.
@@ -96,3 +96,4 @@ showClass("mcOptimCore")
     \item{\code{minim(x, ..., CONDLIK)}:}{ ~~ }
   }
 }
+\keyword{internal}

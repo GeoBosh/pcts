@@ -5,8 +5,8 @@
 %\alias{autocorrelations,PeriodicAutocovariances,ANY,missing-method}
 %\alias{partialAutocorrelations,PeriodicAutocovariances,ANY,missing-method}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class PeriodicAutocovariances}
+\description{Class PeriodicAutocovariances.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("PeriodicAutocovariances", ..., data)}.
 %%  ~~ describe objects here ~~ 

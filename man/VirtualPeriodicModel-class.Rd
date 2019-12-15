@@ -40,3 +40,4 @@
 %showClass("VirtualPeriodicModel")
 %}
 \keyword{classes}
+\keyword{internal}

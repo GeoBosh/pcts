@@ -8,11 +8,13 @@
 
 <title>Function reference • pcts</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -22,8 +24,9 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -31,7 +34,9 @@
 
 
 
+
 <meta property="og:title" content="Function reference" />
+
 
 
 
@@ -43,6 +48,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -76,8 +82,10 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/GeoBosh/pcts">
@@ -92,6 +100,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -120,7 +129,8 @@
         <td>
           <p><code><a href="pcts-package.html">pcts-package</a></code> </p>
         </td>
-        <td><p>Functions and Classes for Periodically Correlated Time Series</p></td>
+        <td><p>Modelling Periodically Correlated and Periodically Integrated
+Time Series</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -234,6 +244,12 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="sim_parAcvf.html">sim_parAcvf()</a></code> </p>
+        </td>
+        <td><p>Create a random periodic autocovariance function</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="Vec.html">Vec()</a></code> <code><a href="Vec.html">tsMatrix()</a></code> <code><a href="Vec.html">tsVector()</a></code> <code><a href="Vec.html">tsVec()</a></code> <code><a href="Vec.html">pcMatrix()</a></code> <code><a href="Vec.html">pcArray()</a></code> <code><a href="Vec.html">pctsArray()</a></code> </p>
         </td>
         <td><p>Core data of periodic time series</p></td>
@@ -255,35 +271,11 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-other" class="hasAnchor"><a href="#section-other" class="anchor"></a>Other</h2>
+          <h2 id="section-classes" class="hasAnchor"><a href="#section-classes" class="anchor"></a>Classes</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
-        
-        <td>
-          <p><code><a href="allSeasons.html">unitSeason()</a></code> <code><a href="allSeasons.html">unitCycle()</a></code> <code><a href="allSeasons.html">seqSeasons()</a></code> <code><a href="allSeasons.html">allSeasons()</a></code> <code><a href="allSeasons.html">`unitSeason<-`()</a></code> <code><a href="allSeasons.html">`unitCycle<-`()</a></code> <code><a href="allSeasons.html">`allSeasons<-`()</a></code> </p>
-        </td>
-        <td><p>Get names of seasons</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="autocorrelations-methods.html">autocorrelations-methods</a></code> </p>
-        </td>
-        <td><p>Compute autocorrelations and periodic autocorrelations</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="autocovariances-methods.html">autocovariances-methods</a></code> </p>
-        </td>
-        <td><p>Compute autocovariances and periodic autocovariances</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="availStart.html">availStart()</a></code> <code><a href="availStart.html">availEnd()</a></code> </p>
-        </td>
-        <td><p>Time of first or last non-NA value</p></td>
-      </tr><tr>
         
         <td>
           <p><code><a href="BareCycle-class.html">BareCycle-class</a></code> </p>
@@ -316,10 +308,234 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="dataFranses1996.html">dataFranses1996</a></code> </p>
+          <p><code><a href="FittedPeriodicArModel-class.html">FittedPeriodicArModel-class</a></code> </p>
         </td>
-        <td><p>Example data from Franses (1996)</p></td>
+        <td><p>Class FittedPeriodicArModel</p></td>
       </tr><tr>
+        
+        <td>
+          <p><code><a href="ModelCycleSpec-class.html">ModelCycleSpec-class</a></code> </p>
+        </td>
+        <td><p>Class ModelCycleSpec</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PartialPeriodicAutocorrelations-class.html">PartialPeriodicAutocorrelations-class</a></code> </p>
+        </td>
+        <td><p>Class PartialPeriodicAutocorrelations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicArModel-class.html">PeriodicArModel-class</a></code> </p>
+        </td>
+        <td><p>Class PeriodicArModel</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicArModel-methods.html">PeriodicArModel()</a></code> </p>
+        </td>
+        <td><p>Create objects from class PeriodicArModel</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicArmaFilter-class.html">PeriodicArmaFilter-class</a></code> </p>
+        </td>
+        <td><p>Class <code>"PeriodicArmaFilter"</code></p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicArmaModel-class.html">PeriodicArmaModel-class</a></code> </p>
+        </td>
+        <td><p>Class PeriodicArmaModel</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicArmaSpec-class.html">PeriodicArmaSpec-class</a></code> </p>
+        </td>
+        <td><p>Class PeriodicArmaSpec</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicAutocorrelations-class.html">PeriodicAutocorrelations-class</a></code> </p>
+        </td>
+        <td><p>Class PeriodicAutocorrelations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicAutocovarianceModel-class.html">PeriodicAutocovarianceModel-class</a></code> </p>
+        </td>
+        <td><p>Class PeriodicAutocovarianceModel</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicAutocovarianceSpec-class.html">PeriodicAutocovarianceSpec-class</a></code> </p>
+        </td>
+        <td><p>Class PeriodicAutocovarianceSpec</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicAutocovariances-class.html">PeriodicAutocovariances-class</a></code> </p>
+        </td>
+        <td><p>Class PeriodicAutocovariances</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicBJFilter-class.html">PeriodicBJFilter-class</a></code> </p>
+        </td>
+        <td><p>Class PeriodicBJFilter</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicFilterModel-class.html">PeriodicFilterModel-class</a></code> </p>
+        </td>
+        <td><p>Class PeriodicFilterModel</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicIntegratedArmaSpec-class.html">PeriodicIntegratedArmaSpec-class</a></code> </p>
+        </td>
+        <td><p>Class PeriodicIntegratedArmaSpec</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicInterceptSpec-class.html">PeriodicInterceptSpec-class</a></code> </p>
+        </td>
+        <td><p>Class PeriodicInterceptSpec</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicMTS-class.html">PeriodicMTS-class</a></code> </p>
+        </td>
+        <td><p>Class <code>"PeriodicMTS"</code></p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicMTS_ts-class.html">PeriodicMTS_ts-class</a></code> </p>
+        </td>
+        <td><p>Class <code>"PeriodicMTS_ts"</code></p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicMTS_zooreg-class.html">PeriodicMTS_zooreg-class</a></code> </p>
+        </td>
+        <td><p>Class <code>"PeriodicMTS_zooreg"</code></p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicMaModel-class.html">PeriodicMaModel-class</a></code> </p>
+        </td>
+        <td><p>Class PeriodicMaModel</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicSPFilter-class.html">PeriodicSPFilter-class</a></code> </p>
+        </td>
+        <td><p>Class PeriodicSPFilter</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicTS-class.html">PeriodicTS-class</a></code> </p>
+        </td>
+        <td><p>Class <code>"PeriodicTS"</code></p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicTS_ts-class.html">PeriodicTS_ts-class</a></code> </p>
+        </td>
+        <td><p>Class <code>"PeriodicTS_ts"</code></p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicTS_zooreg-class.html">PeriodicTS_zooreg-class</a></code> </p>
+        </td>
+        <td><p>Class <code>"PeriodicTS_zooreg"</code></p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicTimeSeries-class.html">PeriodicTimeSeries-class</a></code> </p>
+        </td>
+        <td><p>Class PeriodicTimeSeries</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PeriodicVector-class.html">PeriodicVector()</a></code> </p>
+        </td>
+        <td><p>Class PeriodicVector</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PiPeriodicArModel-class.html">PiPeriodicArModel-class</a></code> </p>
+        </td>
+        <td><p>Class PiPeriodicArModel</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PiPeriodicArmaModel-class.html">PiPeriodicArmaModel-class</a></code> </p>
+        </td>
+        <td><p>Class PiPeriodicArmaModel</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PiPeriodicMaModel-class.html">PiPeriodicMaModel-class</a></code> </p>
+        </td>
+        <td><p>Class PiPeriodicMaModel</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="SamplePeriodicAutocorrelations-class.html">SamplePeriodicAutocorrelations-class</a></code> </p>
+        </td>
+        <td><p>Class SamplePeriodicAutocorrelations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="SamplePeriodicAutocovariances-class.html">SamplePeriodicAutocovariances-class</a></code> </p>
+        </td>
+        <td><p>Class SamplePeriodicAutocovariances</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="SiPeriodicArModel-class.html">SiPeriodicArModel-class</a></code> </p>
+        </td>
+        <td><p>Class SiPeriodicArModel</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="SiPeriodicArmaModel-class.html">SiPeriodicArmaModel-class</a></code> </p>
+        </td>
+        <td><p>Class SiPeriodicArmaModel</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="SiPeriodicMaModel-class.html">SiPeriodicMaModel-class</a></code> </p>
+        </td>
+        <td><p>Class SiPeriodicMaModel</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="SimpleCycle-class.html">SimpleCycle-class</a></code> </p>
+        </td>
+        <td><p>Class SimpleCycle</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="zoo-class.html">zoo-class</a></code> </p>
+        </td>
+        <td><p>Class zoo made S4</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="zooreg-class.html">zooreg-class</a></code> </p>
+        </td>
+        <td><p>Virtual S4 class zooreg</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-other" class="hasAnchor"><a href="#section-other" class="anchor"></a>Other</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
           <p><code><a href="ex1f.html">ex1f</a></code> </p>
@@ -334,63 +550,21 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="fitPM.html">fitPM()</a></code> </p>
-        </td>
-        <td><p>Fit periodic time series models</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="FittedPeriodicArModel-class.html">FittedPeriodicArModel-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="LegacyPeriodicFilterModel-class.html">LegacyPeriodicFilterModel-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="maxLag-methods.html">maxLag-methods</a></code> </p>
-        </td>
-        <td><p>Methods for function maxLag() in package 'pcts'</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="mC.ss.html">mC.ss()</a></code> <code><a href="mC.ss.html">xx.ss()</a></code> </p>
         </td>
         <td><p>Create environment for mc-fitting</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="mcOptimCore-class.html">mcOptimCore-class</a></code> </p>
+          <p><code><a href="meanvarcheck.html">meanvarcheck()</a></code> <code><a href="meanvarcheck.html">meancovmat()</a></code> </p>
         </td>
-        <td><p>~~ Dummy title ~~</p></td>
+        <td><p>Asymptotic covariance matrix of periodic mean</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="modelCycle.html">modelCycle()</a></code> <code><a href="modelCycle.html">`modelCycle<-`()</a></code> </p>
         </td>
         <td><p>Get the cycle of a periodic object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ModelCycleSpec-class.html">ModelCycleSpec-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="nCycles.html">nCycles()</a></code> <code><a href="nCycles.html">nTicks()</a></code> <code><a href="nCycles.html">nVariables()</a></code> </p>
-        </td>
-        <td><p>Basic time information about periodic time series</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="nSeasons-methods.html">nSeasons-methods</a></code> </p>
-        </td>
-        <td><p>Number of seasons for a periodic object</p></td>
       </tr><tr>
         
         <td>
@@ -403,12 +577,6 @@
           <p><code><a href="parcovmatlist.html">parcovmatlist()</a></code> </p>
         </td>
         <td><p>Compute asymptotic covariance matrix for PAR model</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PartialPeriodicAutocorrelations-class.html">PartialPeriodicAutocorrelations-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
       </tr><tr>
         
         <td>
@@ -466,6 +634,30 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="pcAR2acf.html">pcAR2acf()</a></code> </p>
+        </td>
+        <td><p>Compute periodic autocorrelations from PAR coefficients</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pcAr.ss.html">pcAr.ss()</a></code> </p>
+        </td>
+        <td><p>Compute the sum of squares for a given PAR model</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pcCycle-methods.html">pcCycle()</a></code> </p>
+        </td>
+        <td><p>Create or extract Cycle objects</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pcPlot.html">boxplot(<i>&lt;PeriodicTimeSeries&gt;</i>)</a></code> <code><a href="pcPlot.html">monthplot(<i>&lt;PeriodicTimeSeries&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Plot periodic time series</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="pcacfMat.html">pc.acf.parModel()</a></code> <code><a href="pcacfMat.html">pcacfMat()</a></code> </p>
         </td>
         <td><p>Compute PAR autocovariance matrix</p></td>
@@ -485,51 +677,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="pcAr.ss.html">pcAr.ss()</a></code> </p>
-        </td>
-        <td><p>Compute the sum of squares for a given PAR model</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pcAR2acf.html">pcAR2acf()</a></code> </p>
-        </td>
-        <td><p>Compute periodic autocorrelations from PAR coefficients</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="pcarma_solve.html">pcarma_acvf_lazy()</a></code> <code><a href="pcarma_solve.html">pcarma_h_lazy()</a></code> <code><a href="pcarma_solve.html">pcarma_acvf_system()</a></code> <code><a href="pcarma_solve.html">pcarma_param_system()</a></code> <code><a href="pcarma_solve.html">pcarma_h()</a></code> </p>
         </td>
         <td><p>Functions to compute various characteristics of a PCARMA model</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pcCycle-methods.html">pcCycle()</a></code> </p>
-        </td>
-        <td><p>Create or extract Cycle objects</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pclsdf.html">pclsdf()</a></code> </p>
-        </td>
-        <td><p>Fit PAR models using least squares</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pclspiar.html">pclspiar()</a></code> </p>
-        </td>
-        <td><p>Fit a periodically integrated autoregressive model</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pcPlot.html">boxplot(<i>&lt;PeriodicTimeSeries&gt;</i>)</a></code> <code><a href="pcPlot.html">monthplot(<i>&lt;PeriodicTimeSeries&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Plot periodic time series</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pcTest-methods.html">pcTest()</a></code> </p>
-        </td>
-        <td><p>Test for periodicity</p></td>
       </tr><tr>
         
         <td>
@@ -545,159 +695,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="pcts-methods.html">pcts()</a></code> </p>
-        </td>
-        <td><p>Create objects from periodic time series classes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pcts-package.html">pcts-package</a></code> </p>
-        </td>
-        <td><p>Functions and Classes for Periodically Correlated Time Series</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="pdSafeParOrder.html">pdSafeParOrder()</a></code> </p>
         </td>
         <td><p>Functions for some basic operations with seasons</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicArmaFilter-class.html">PeriodicArmaFilter-class</a></code> </p>
-        </td>
-        <td><p>Class <code>"PeriodicArmaFilter"</code></p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicArmaModel-class.html">PeriodicArmaModel-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicArmaSpec-class.html">PeriodicArmaSpec-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicArModel-class.html">PeriodicArModel-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicArModel-methods.html">PeriodicArModel()</a></code> </p>
-        </td>
-        <td><p>Create objects from class PeriodicArModel</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicAutocorrelations-class.html">PeriodicAutocorrelations-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicAutocovarianceModel-class.html">PeriodicAutocovarianceModel-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicAutocovariances-class.html">PeriodicAutocovariances-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicAutocovarianceSpec-class.html">PeriodicAutocovarianceSpec-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicBJFilter-class.html">PeriodicBJFilter-class</a></code> </p>
-        </td>
-        <td><p>Class PeriodicBJFilter</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicFilterModel-class.html">PeriodicFilterModel-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicIntegratedArmaSpec-class.html">PeriodicIntegratedArmaSpec-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicInterceptSpec-class.html">PeriodicInterceptSpec-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicMaModel-class.html">PeriodicMaModel-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicMTS-class.html">PeriodicMTS-class</a></code> </p>
-        </td>
-        <td><p>Class <code>"PeriodicMTS"</code></p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicMTS_ts-class.html">PeriodicMTS_ts-class</a></code> </p>
-        </td>
-        <td><p>Class <code>"PeriodicMTS_ts"</code></p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicMTS_zooreg-class.html">PeriodicMTS_zooreg-class</a></code> </p>
-        </td>
-        <td><p>Class <code>"PeriodicMTS_zooreg"</code></p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicSPFilter-class.html">PeriodicSPFilter-class</a></code> </p>
-        </td>
-        <td><p>Class PeriodicSPFilter</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicTimeSeries-class.html">PeriodicTimeSeries-class</a></code> </p>
-        </td>
-        <td><p>Class PeriodicTimeSeries</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicTS-class.html">PeriodicTS-class</a></code> </p>
-        </td>
-        <td><p>Class <code>"PeriodicTS"</code></p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicTS_ts-class.html">PeriodicTS_ts-class</a></code> </p>
-        </td>
-        <td><p>Class <code>"PeriodicTS_ts"</code></p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicTS_zooreg-class.html">PeriodicTS_zooreg-class</a></code> </p>
-        </td>
-        <td><p>Class <code>"PeriodicTS_zooreg"</code></p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PeriodicVector-class.html">PeriodicVector()</a></code> </p>
-        </td>
-        <td><p>Class PeriodicVector</p></td>
       </tr><tr>
         
         <td>
@@ -713,42 +713,6 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="pi1ar2par.html">pi1ar2par()</a></code> <code><a href="pi1ar2par.html">piar2par()</a></code> </p>
-        </td>
-        <td><p>Convert PIAR coefficients to PAR coefficients</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PiPeriodicArmaModel-class.html">PiPeriodicArmaModel-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PiPeriodicArModel-class.html">PiPeriodicArModel-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PiPeriodicMaModel-class.html">PiPeriodicMaModel-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="SamplePeriodicAutocorrelations-class.html">SamplePeriodicAutocorrelations-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="SamplePeriodicAutocovariances-class.html">SamplePeriodicAutocovariances-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="seqSeasons-methods.html">seqSeasons-methods</a></code> </p>
         </td>
         <td><p>Methods for seqSeasons() in package pcts</p></td>
@@ -758,60 +722,6 @@
           <p><code><a href="sigmaSq-methods.html">sigmaSq-methods</a></code> </p>
         </td>
         <td><p>Methods for <code>sigmaSq</code> in package pcts</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="SimpleCycle-class.html">SimpleCycle-class</a></code> </p>
-        </td>
-        <td><p>Class SimpleCycle</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sim_parAcvf.html">sim_parAcvf()</a></code> </p>
-        </td>
-        <td><p>Create a random periodic autocovariance function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sim_parCoef.html">sim_parCoef()</a></code> </p>
-        </td>
-        <td><p>Generate a periodic autoregression model</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sim_pc.html">sim_pc()</a></code> </p>
-        </td>
-        <td><p>Simulate Periodically Correlated ARMA Series</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sim_pwn.html">sim_pwn()</a></code> </p>
-        </td>
-        <td><p>Simulate periodic white noise</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="SiPeriodicArmaModel-class.html">SiPeriodicArmaModel-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="SiPeriodicArModel-class.html">SiPeriodicArModel-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="SiPeriodicMaModel-class.html">SiPeriodicMaModel-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="test_piar.html">test_piar()</a></code> </p>
-        </td>
-        <td><p>Test for periodic integration</p></td>
       </tr><tr>
         
         <td>
@@ -836,42 +746,6 @@
           <p><code><a href="unitSeason_ass-methods.html">unitSeason<--methods</a></code> </p>
         </td>
         <td><p>Methods for <code>"unitSeason&lt;-"()</code> in package pcts</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Vec.html">Vec()</a></code> <code><a href="Vec.html">tsMatrix()</a></code> <code><a href="Vec.html">tsVector()</a></code> <code><a href="Vec.html">tsVec()</a></code> <code><a href="Vec.html">pcMatrix()</a></code> <code><a href="Vec.html">pcArray()</a></code> <code><a href="Vec.html">pctsArray()</a></code> </p>
-        </td>
-        <td><p>Core data of periodic time series</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="VirtualPeriodicAutocorrelations-class.html">VirtualPeriodicAutocorrelations-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="VirtualPeriodicAutocovariances-class.html">VirtualPeriodicAutocovariances-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="VirtualPeriodicModel-class.html">VirtualPeriodicModel-class</a></code> </p>
-        </td>
-        <td><p>~~ Dummy title ~~</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="zoo-class.html">zoo-class</a></code> </p>
-        </td>
-        <td><p>Class zoo made S4</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="zooreg-class.html">zooreg-class</a></code> </p>
-        </td>
-        <td><p>Virtual S4 class zooreg</p></td>
       </tr><tr>
         
         <td>
@@ -907,10 +781,12 @@
       <li><a href="#section-pcts-overview">pcts overview</a></li>
       <li><a href="#section-main-functions">Main functions</a></li>
       <li><a href="#section-datasets">Datasets</a></li>
+      <li><a href="#section-classes">Classes</a></li>
       <li><a href="#section-other">Other</a></li>
     </ul>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -918,13 +794,16 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

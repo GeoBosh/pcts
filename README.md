@@ -9,6 +9,11 @@ integrated time series.
 
 # Installing pcts
 
+The [latest stable version](https://cran.r-project.org/package=pcts) is on
+CRAN.
+
+    install.packages("pcts")
+
 
 You can install the [development version](https://github.com/GeoBosh/pcts) of
 `pcts` from Github:

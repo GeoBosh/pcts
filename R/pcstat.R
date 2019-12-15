@@ -86,7 +86,12 @@ meancovmat <- function(parmodel, n, cor = FALSE, result = "var"){
     ifac <- solve(fac)
     covmat <- ifac %*% varnoise %*% t(ifac)  # Luetkepohl p. 84-5
 
-    if(identical(result, "var"))
+    ## TODO: it doesn't make sense to have cor = TRUE  and result = "var"
+
+    if(cor){ # 2019-12-15 new; TODO: check!
+        d <- diag( (1 / sqrt(diag(covmat))) )
+        d %*% covmat %*% d
+    }else if(identical(result, "var"))
         diag(covmat) / n
     else
         covmat / n

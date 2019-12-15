@@ -6,7 +6,7 @@
 \alias{PeriodicMaFilter-class}
 
 \title{Class \code{"PeriodicArmaFilter"}}
-\description{~~ Dummy description ~~}
+\description{Class PeriodicArmaFilter.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("PeriodicArmaFilter", ..., ar, ma, nseasons)}.
 %%  ~~ describe objects here ~~

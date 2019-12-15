@@ -56,5 +56,7 @@ proba1 <- fitPM(c(3,2,2,2), x)
 parcovmatlist(proba1, 100)
 parcovmatlist(proba1, 100, cor = TRUE)
 sqrt(diag(parcovmatlist(proba1, 100, cor = TRUE)[[1]]))
+
+meanvarcheck(proba1, 100)
 }
 \keyword{pcstat}

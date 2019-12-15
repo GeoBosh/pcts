@@ -3,8 +3,8 @@
 \docType{class}
 \alias{PeriodicAutocovarianceSpec-class}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class PeriodicAutocovarianceSpec}
+\description{Class PeriodicAutocovarianceSpec.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("PeriodicAutocovarianceSpec", ...)}.
 %%  ~~ describe objects here ~~

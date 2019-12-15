@@ -5,8 +5,8 @@
 %\alias{autocovariances,PeriodicArmaModel-method}
 %\alias{PeriodicArModel,PeriodicArmaModel-method}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class PeriodicArmaModel}
+\description{Class PeriodicArmaModel.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("PeriodicArmaModel", ar, ma, sigma2, ...)}.
 %%  ~~ describe objects here ~~

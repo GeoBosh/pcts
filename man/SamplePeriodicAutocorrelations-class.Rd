@@ -3,8 +3,8 @@
 \docType{class}
 \alias{SamplePeriodicAutocorrelations-class}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class SamplePeriodicAutocorrelations}
+\description{Class SamplePeriodicAutocorrelations.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("SamplePeriodicAutocorrelations", ..., data)}.
 %%  ~~ describe objects here ~~ 

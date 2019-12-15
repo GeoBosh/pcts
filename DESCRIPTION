@@ -5,16 +5,16 @@ Title: Modelling Periodically Correlated and Periodically Integrated
 Description: Provides functions for modelling periodically correlated
     and periodically integrated time series.
 Version: 0.14-0
-Date: 2019-06-08
+Date: 2019-12-15
 Author: Georgi N. Boshnakov
 Maintainer: Georgi N. Boshnakov <georgi.boshnakov@manchester.ac.uk>
 Depends: R (>= 3.5.0), sarima
-Imports: methods, Matrix, BB, PolynomF, gbutils, zoo, ltsa, stats4,
+Imports: methods, Matrix, BB, PolynomF (>= 2.0-2), gbutils, zoo, ltsa, stats4,
          lagged (>= 0.2.2), mcompanion, Rdpack (>= 0.9), lubridate
 Suggests: testthat, pear, fUnitRoots, partsm
 RdMacros: Rdpack
 LazyData: yes
-URL: https://github.com/GeoBosh/pcts
+URL: https://geobosh.github.io/pcts  https://github.com/GeoBosh/pcts
 BugReports: https://github.com/GeoBosh/pcts/issues
 License: GPL (>= 2)
 Collate:

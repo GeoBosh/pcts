@@ -3,8 +3,8 @@
 \docType{class}
 \alias{PeriodicInterceptSpec-class}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class PeriodicInterceptSpec}
+\description{Class PeriodicInterceptSpec.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("PeriodicInterceptSpec", ...)}.
 %%  ~~ describe objects here ~~

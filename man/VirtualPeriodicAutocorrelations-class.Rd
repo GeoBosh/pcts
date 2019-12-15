@@ -32,3 +32,4 @@ No methods defined with class "VirtualPeriodicAutocorrelations" in the signature
 %showClass("VirtualPeriodicAutocorrelations")
 %}
 \keyword{classes}
+\keyword{internal}

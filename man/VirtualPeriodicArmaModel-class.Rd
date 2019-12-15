@@ -4,8 +4,8 @@
 \alias{VirtualPeriodicArmaModel-class}
 \alias{pcMean,VirtualPeriodicArmaModel-method}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class VirtualPeriodicArmaModel}
+\description{Class VirtualPeriodicArmaModel.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("VirtualPeriodicArmaModel", ...)}.
 %%  ~~ describe objects here ~~

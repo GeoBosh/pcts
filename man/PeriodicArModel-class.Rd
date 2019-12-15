@@ -6,8 +6,8 @@
 %\alias{fitPM,ANY,PeriodicArModel-method}
 %\alias{predictionCoefficients,PeriodicArModel-method}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class PeriodicArModel}
+\description{Class PeriodicArModel.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("PeriodicArModel", ar, ma, sigma2, ...)}.
 %%  ~~ describe objects here ~~

@@ -4,8 +4,8 @@
 \alias{PeriodicFilterModel-class}
 %\alias{nSeasons,PeriodicFilterModel-method}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class PeriodicFilterModel}
+\description{Class PeriodicFilterModel.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("PeriodicFilterModel", pcmean, pcintercept, ...)}.
 %%  ~~ describe objects here ~~

@@ -4,8 +4,8 @@
 \alias{PeriodicArmaSpec-class}
 \alias{innovationVariances,PeriodicArmaSpec-method}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class PeriodicArmaSpec}
+\description{Class PeriodicArmaSpec.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("PeriodicArmaSpec", pcmean, pcintercept, ...)}.
 %%  ~~ describe objects here ~~

@@ -3,8 +3,8 @@
 \docType{class}
 \alias{LegacyPeriodicFilterModel-class}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class LegacyPeriodicFilterModel}
+\description{Class LegacyPeriodicFilterModel.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("LegacyPeriodicFilterModel", ...)}.
 %%  ~~ describe objects here ~~
@@ -44,3 +44,4 @@ No methods defined with class "LegacyPeriodicFilterModel" in the signature.
 %showClass("LegacyPeriodicFilterModel")
 %}
 \keyword{classes}
+\keyword{internal}

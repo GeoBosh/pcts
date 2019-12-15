@@ -3,8 +3,8 @@
 \docType{class}
 \alias{PeriodicMaModel-class}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class PeriodicMaModel}
+\description{Class PeriodicMaModel.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("PeriodicMaModel", ar, ma, sigma2, ...)}.
 %%  ~~ describe objects here ~~

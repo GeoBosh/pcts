@@ -60,13 +60,13 @@ setMethod("filterCoef", c("PeriodicSPFilter", "character"),
                   )
           })
 
-setMethod("filterPoly", "PeriodicBJFilter", #as.polylist(apply(filterCoef(bj1), 1, polynom))
+setMethod("filterPoly", "PeriodicBJFilter", #as_polylist(apply(filterCoef(bj1), 1, polynom))
           function(object, lag_0 = TRUE){
-                  as.polylist(apply(cbind(1, - object@coef), 1, polynom))
+                  as_polylist(apply(cbind(1, - object@coef), 1, polynom))
           })
 setMethod("filterPoly", "PeriodicSPFilter",
           function(object, lag_0 = TRUE){
-                  as.polylist(apply(cbind(1,   object@coef), 1, polynom))
+                  as_polylist(apply(cbind(1,   object@coef), 1, polynom))
           })
 
 setMethod("filterPolyCoef", "PeriodicBJFilter",

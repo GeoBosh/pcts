@@ -5,8 +5,8 @@
 %\alias{modelCycle,ModelCycleSpec-method}
 %\alias{modelCycle<-,ModelCycleSpec-method}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class ModelCycleSpec}
+\description{Class ModelCycleSpec.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("ModelCycleSpec", ...)}.
 %%  ~~ describe objects here ~~ 

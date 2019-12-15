@@ -4,8 +4,8 @@
 \alias{PeriodicAutocorrelations-class}
 %\alias{plot,PeriodicAutocorrelations,missing-method}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class PeriodicAutocorrelations}
+\description{Class PeriodicAutocorrelations.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("PeriodicAutocorrelations", ..., data)}.
 %%  ~~ describe objects here ~~ 

@@ -4,8 +4,8 @@
 \alias{PeriodicIntegratedArmaSpec-class}
 %\alias{nSeasons,PeriodicIntegratedArmaSpec-method}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class PeriodicIntegratedArmaSpec}
+\description{Class PeriodicIntegratedArmaSpec.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("PeriodicIntegratedArmaSpec", ...)}.
 %%  ~~ describe objects here ~~

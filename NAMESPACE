@@ -244,4 +244,6 @@ export(
 
   , modelCycle
   , "modelCycle<-"
+  , meancovmat
+  , meanvarcheck
 )

@@ -3,8 +3,8 @@
 \docType{class}
 \alias{SiPeriodicArModel-class}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class SiPeriodicArModel}
+\description{Class SiPeriodicArModel.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("SiPeriodicArModel", ...)}.
 %%  ~~ describe objects here ~~

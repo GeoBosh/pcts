@@ -4,8 +4,8 @@
 \alias{SamplePeriodicAutocovariances-class}
 %\alias{autocorrelations,SamplePeriodicAutocovariances,ANY,missing-method}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class SamplePeriodicAutocovariances}
+\description{Class SamplePeriodicAutocovariances.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("SamplePeriodicAutocovariances", ..., data)}.
 %%  ~~ describe objects here ~~ 

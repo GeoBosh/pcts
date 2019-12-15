@@ -9,11 +9,13 @@
 <title>Modelling Periodically Correlated and Periodically Integrated
 Time Series — pcts-package • pcts</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -23,8 +25,9 @@ Time Series — pcts-package • pcts</title>
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -32,12 +35,13 @@ Time Series — pcts-package • pcts</title>
 
 
 
+
 <meta property="og:title" content="Modelling Periodically Correlated and Periodically Integrated
 Time Series — pcts-package" />
-
 <meta property="og:description" content="Provides functions for modelling periodically correlated
-and periodically integrated time series." />
+    and periodically integrated time series." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -49,6 +53,7 @@ and periodically integrated time series." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -82,8 +87,10 @@ and periodically integrated time series." />
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/GeoBosh/pcts">
@@ -98,6 +105,7 @@ and periodically integrated time series." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -110,13 +118,12 @@ Time Series</h1>
     </div>
 
     <div class="ref-description">
-    
     <p>Provides functions for modelling periodically correlated
-and periodically integrated time series.</p>
-    
+    and periodically integrated time series.</p>
     </div>
 
-        
+
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><!-- % \tabular{ll}{ -->
@@ -141,29 +148,95 @@ and periodically integrated time series.</p>
   <!-- %    pat       - accumulates regular expressions for topics considered up to the -->
   <!-- %                    corresponding place below.  --></p>
 <p></p>
-    <p></p><h3>Model fitting functions</h3>
-    <pre>No entries</pre>
-    <p><!-- % \Sexpr[stage=build,results=hide]{pat &lt;- c(pat, list(acf = -->
+
+<p></p><h3>Model fitting functions</h3>
+<p><pre>fitPM                   Fit periodic time series models
+mC.ss                   Create environment for mc-fitting
+num2pcpar               Fit PAR model using sample autocorrelations
+pcAr.ss                 Compute the sum of squares for a given PAR
+                        model
+pcarma_acvf2model       Fit a PC-ARMA model to a periodic
+                        autocovariance function
+pclsdf                  Fit PAR models using least squares
+pclspiar                Fit a periodically integrated autoregressive
+                        model</pre></p>
+
+
+<p><!-- % \Sexpr[stage=build,results=hide]{pat &lt;- c(pat, list(acf = -->
   <!-- %   c("^autocorrelations[^-]", "^autocovariances[^-]" -->
   <!-- %   )))} -->
   <!-- % \subsection{Autocorrelations (periodic and non-periodic)}{ -->
   <!-- %   \Sexpr[stage=build,results=rd]{lbpaste(pat[["acf"]])} -->
-  <!-- % } --></p>
-    <p></p><h3>Tests and statistics</h3>
-    <pre>No entries</pre>
-    <p></p><h3>Generator functions for classes:</h3>
-    <pre>No entries</pre>
-    <p></p><h3>Simulation</h3>
-    <pre>No entries</pre>
-    <p></p><h3>Periodic autoregression</h3>
-    <pre>No entries</pre>
-    <p></p><h3>Integrated PAR</h3>
-    <pre>No entries</pre>
-    <p></p><h3>Other</h3>
-    <pre>No entries</pre>
-    <p></p><h3>pc.arma</h3>
-    <pre>No entries</pre>
-    <p><!-- % \Sexpr[stage=build,results=hide]{pat &lt;- c(pat, list(obsolete = -->
+  <!-- % } --></p>  
+
+      
+<p></p><h3>Tests and statistics</h3>
+<p><pre>parcovmatlist           Compute asymptotic covariance matrix for PAR
+                        model
+pcTest-methods          Test for periodicity
+periodic_acf1_test      McLeod's test for periodic autocorrelation
+pwn_McLeodLjungBox_test
+                        McLeod-Ljung-Box test for periodic white noise
+test_piar               Test for periodic integration</pre></p>
+
+<p></p><h3>Generator functions for classes:</h3>
+<p><pre>pcts                    Create objects from periodic time series
+                        classes</pre></p>    
+<p></p>
+
+<p></p><h3>Simulation</h3>
+<p><pre>sim_parAcvf             Create a random periodic autocovariance
+                        function
+sim_parCoef             Generate a periodic autoregression model
+sim_pc                  Simulate Periodically Correlated ARMA Series
+sim_pwn                 Simulate periodic white noise</pre></p>
+
+<p></p><h3>Periodic autoregression</h3>
+<p><pre>alg1                    Periodic Levinson-Durbin algorithm
+alg1util                Give partial periodic autocorrelations or other
+                        partial prediction quantities for a pcAcvf
+                        object.
+pc.sdfactor             Compute normalising factors
+pcAR2acf                Compute periodic autocorrelations from PAR
+                        coefficients
+pcacfMat                Compute PAR autocovariance matrix
+pdSafeParOrder          Functions for some basic operations with
+                        seasons
+permean2intercept       Convert between periodic centering and
+                        intercepts
+permodelmf              Compute the multi-companion form of a per model</pre></p>
+
+
+<p></p><h3>Integrated PAR</h3>
+<p><pre>pi1ar2par               Convert PIAR coefficients to PAR coefficients</pre></p>
+
+
+<p></p><h3>Other</h3>
+<p><pre>dataFranses1996         Example data from Franses (1996)
+ex1f                    An example PAR autocorrelation function
+nCycles                 Basic time information about periodic time
+                        series
+pc.filter               Applies a periodic ARMA filter to a time series
+pc.filter.xarma         Filter time series with periodic arma filters
+pcacf_pwn_var           Variances of sample periodic autocorrelations
+pcarma_acvf_lazy        Functions to compute various characteristics of
+                        a PCARMA model
+pcarma_unvec            Functions for work with a simple list
+                        specification of pcarma models
+pcts                    Create objects from periodic time series
+                        classes
+pcts-deprecated         Deprecated Functions in Package 'pcts'
+pcts-package            Modelling Periodically Correlated and
+                        Periodically Integrated Time Series
+toSeason                Functions for some basic operations with
+                        seasons</pre></p>
+
+
+<p></p><h3>pc.arma</h3>
+<p><pre>pc.hat.h                function to compute estimates of the h weights</pre></p>
+
+
+<p><!-- % \Sexpr[stage=build,results=hide]{pat &lt;- c(pat, list(obsolete = -->
   <!-- %   c("^pc.stop",  "^pc.acsum", "^pc.argmin", "^pc.arit.floor", "^sumafr" -->
   <!-- % )))} -->
   <!-- % \subsection{Obsolete and internal}{ -->
@@ -171,11 +244,52 @@ and periodically integrated time series.</p>
   <!-- %   %%%       was:    c("^pc[.]?data", "^pc(Data|Ts1)", "^pcfData", "^pc.stop" ) -->
   <!-- %   \Sexpr[stage=build,results=rd]{lbpaste(pat[["obsolete"]])} -->
   <!-- % } --></p>
-    <p></p><h3>Methods</h3>
-    <pre>No entries</pre>
-    <p></p><h3>Classes</h3>
-    <pre>No entries</pre>
-    <p><!-- % \Sexpr[stage=build,results=hide]{pat &lt;- c(pat, list(internal = c("^[.]can[^ ]*")))} -->
+
+
+
+
+
+
+
+<p></p><h3>Methods</h3>
+<p><pre>$-methods               Methods for function'$' in package 'pcts'
+PeriodicArModel-methods
+                        Create objects from class PeriodicArModel
+[-methods               Indexing of objects from classes in package
+                        pcts
+[&lt;--methods             Index assignments for objects from classes in
+                        package pcts
+[[-methods              Methods for function''[['' in package 'pcts'
+autocorrelations-methods
+                        Compute autocorrelations and periodic
+                        autocorrelations
+autocovariances-methods
+                        Compute autocovariances and periodic
+                        autocovariances
+filterCoef-methods      Get the coefficients of a periodic filter
+maxLag-methods          Methods for function maxLag() in package 'pcts'
+nSeasons-methods        Number of seasons for a periodic object
+pcCycle-methods         Create or extract Cycle objects
+pcTest-methods          Test for periodicity
+seqSeasons-methods      Methods for seqSeasons() in package pcts
+sigmaSq-methods         Methods for 'sigmaSq' in package pcts
+unitCycle-methods       Methods for unitCycle() in package pcts
+unitCycle&lt;--methods     Methods for '"unitCycle&lt;-"()' in package pcts
+unitSeason-methods      Methods for unitSeason() in package pcts
+unitSeason&lt;--methods    Methods for '"unitSeason&lt;-"()' in package pcts</pre></p>
+
+
+<p><!-- % Commenting out, this is useful mainly in development. -->
+  <!-- %  -->
+  <!-- % \Sexpr[stage=build,results=hide]{pat &lt;- c(pat, list(classes = -->
+  <!-- %   c("[^[:space:]]+-class" -->
+  <!-- %   )))} -->
+  <!-- % \subsection{Classes}{ -->
+  <!-- %   \Sexpr[stage=build,results=rd]{lbpaste(pat[["classes"]])} -->
+  <!-- % } --></p>
+
+
+<p><!-- % \Sexpr[stage=build,results=hide]{pat &lt;- c(pat, list(internal = c("^[.]can[^ ]*")))} -->
   <!-- % \subsection{Internal}{ -->
   <!-- %   \Sexpr[stage=build,results=rd]{lbpaste(pat[["internal"]])} -->
   <!-- % } --></p>
@@ -191,7 +305,15 @@ and periodically integrated time series.</p>
   <!-- %  % For now print a list of the remaining objects -->
   <!-- %  \Sexpr[stage=build,results=verbatim]{rest} -->
   <!-- %} --></p>
-    <p><!-- % ~~ An overview of how to use the package, including the most important ~~ -->
+
+
+
+
+
+
+
+
+<p><!-- % ~~ An overview of how to use the package, including the most important ~~ -->
 <!-- % ~~ functions ~~ --></p>
 <p>The naming conventions are as follows. Names of classes generally
 consists of one or more words. The first letter of each word, is
@@ -203,13 +325,14 @@ model' and TS for `time series'.</p>
 functions and classes have been renamed under the above
 conventions and most of those that are not are not exported but a few
 still are and they should be considered subject to change.</p>
-    <p><code>autocovariances</code> and <code>autocorrelations</code> are one-stop generic
+
+
+<p><code>autocovariances</code> and <code>autocorrelations</code> are one-stop generic
 functions for computation of these second order properties. What to
 compute is deduced from the type of the object. For models they compute
 theoretical quantities --- periodic or non-periodic, scalar or
 multivariate. For time series they compute the corresponding sample
 counterparts.</p>
-    
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p><!-- % bibentry:all -->
@@ -288,11 +411,9 @@ processes.''
 <em>pcme: Maximum entropy estimation of periodically correlated time series</em>.
 R package version 0.55, <a href='https://personalpages.manchester.ac.uk/staff/georgi.boshnakov/Rpackages/index.html'>https://personalpages.manchester.ac.uk/staff/georgi.boshnakov/Rpackages/index.html</a>.
 <!-- % end:bibentry:all --></p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/mcompanion/man/mcompanion-package.html'>mcompanion</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>dataFranses1996</span>)
@@ -525,13 +646,9 @@ R package version 0.55, <a href='https://personalpages.manchester.ac.uk/staff/ge
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      
       <li><a href="#details">Details</a></li>
-
       <li><a href="#references">References</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
@@ -541,19 +658,23 @@ R package version 0.55, <a href='https://personalpages.manchester.ac.uk/staff/ge
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by Georgi N. Boshnakov.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

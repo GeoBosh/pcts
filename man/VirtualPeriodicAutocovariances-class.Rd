@@ -55,3 +55,4 @@ Class \code{"\linkS4class{VirtualPeriodicModel}"}, directly.
 %showClass("VirtualPeriodicAutocovariances")
 %}
 \keyword{classes}
+\keyword{internal}

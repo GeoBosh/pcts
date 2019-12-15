@@ -3,8 +3,8 @@
 \docType{class}
 \alias{FittedPeriodicArModel-class}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class FittedPeriodicArModel}
+\description{Class FittedPeriodicArModel.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("FittedPeriodicArModel", ar, ma, sigma2, ...)}.
 %%  ~~ describe objects here ~~
@@ -60,4 +60,3 @@ No methods defined with class "FittedPeriodicArModel" in the signature.
 %showClass("FittedPeriodicArModel")
 %}
 \keyword{classes}
-

@@ -8,11 +8,13 @@
 
 <title>Compute asymptotic covariance matrix for PAR model — parcovmatlist • pcts</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -22,8 +24,9 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -31,10 +34,11 @@
 
 
 
-<meta property="og:title" content="Compute asymptotic covariance matrix for PAR model — parcovmatlist" />
 
+<meta property="og:title" content="Compute asymptotic covariance matrix for PAR model — parcovmatlist" />
 <meta property="og:description" content="Compute asymptotic covariance matrix for PAR model" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -46,6 +50,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -79,8 +84,10 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/GeoBosh/pcts">
@@ -95,6 +102,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -106,13 +114,11 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Compute asymptotic covariance matrix for PAR model</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>parcovmatlist</span>(<span class='no'>parmodel</span>, <span class='no'>n</span>, <span class='kw'>cor</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>result</span> <span class='kw'>=</span> <span class='st'>"list"</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -136,7 +142,7 @@
     Details.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Uses eq. (3.3) in the reference.</p>
@@ -147,11 +153,9 @@
   "Matrix". If <code>result = "matrix"</code> it returns an ordinary matrix
   (with the current implementation this is returned for any value other
   than "list" or "Matriix").</p>
-    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>a list, matrix or block-diagonal matrix, as described in Details</p>
-    
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p><!-- % bibentry: McLeod -->
@@ -159,12 +163,10 @@ McLeod A (1994).
 ``Diagnostic checking of periodic autoregression models with application.''
 <em>Journal of time series analysis</em>, <b>15</b>(2), pp. 221-233.
 <!-- % end:bibentry:  McLeod --></p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='pcacfMat.html'>pcacfMat</a></code>,
   <code><a href='pcacfMat.html'>pc.acf.parModel</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/arima.sim.html'>arima.sim</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>ar</span><span class='kw'>=</span><span class='fl'>0.9</span>), <span class='kw'>n</span><span class='kw'>=</span><span class='fl'>1000</span>)
@@ -172,59 +174,55 @@ McLeod A (1994).
 
 <span class='fu'>parcovmatlist</span>(<span class='no'>proba1</span>, <span class='fl'>100</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt;               [,1]        [,2]          [,3]
-#&gt; [1,]  0.0399836785 -0.03607655  0.0004727892
-#&gt; [2,] -0.0360765544  0.08271419 -0.0450738500
-#&gt; [3,]  0.0004727892 -0.04507385  0.0491665246
+#&gt; [1,]  0.0399320003 -0.03408642 -0.0004527097
+#&gt; [2,] -0.0340864206  0.06997021 -0.0363389519
+#&gt; [3,] -0.0004527097 -0.03633895  0.0432953704
 #&gt; 
 #&gt; [[2]]
 #&gt;             [,1]        [,2]
-#&gt; [1,]  0.03998844 -0.03410578
-#&gt; [2,] -0.03410578  0.03832719
+#&gt; [1,]  0.03984116 -0.03382292
+#&gt; [2,] -0.03382292  0.03674098
 #&gt; 
 #&gt; [[3]]
 #&gt;             [,1]        [,2]
-#&gt; [1,]  0.03999990 -0.03557053
-#&gt; [2,] -0.03557053  0.04113039
+#&gt; [1,]  0.03997347 -0.03604842
+#&gt; [2,] -0.03604842  0.04140085
 #&gt; 
 #&gt; [[4]]
 #&gt;             [,1]        [,2]
-#&gt; [1,]  0.03997718 -0.03558147
-#&gt; [2,] -0.03558147  0.03917862
+#&gt; [1,]  0.03987707 -0.03582995
+#&gt; [2,] -0.03582995  0.04223474
 #&gt; </div><div class='input'><span class='fu'>parcovmatlist</span>(<span class='no'>proba1</span>, <span class='fl'>100</span>, <span class='kw'>cor</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt;             [,1]       [,2]        [,3]
-#&gt; [1,]  1.00000000 -0.6273266  0.01066329
-#&gt; [2,] -0.62732657  1.0000000 -0.70680547
-#&gt; [3,]  0.01066329 -0.7068055  1.00000000
+#&gt; [1,]  1.00000000 -0.6448583 -0.01088776
+#&gt; [2,] -0.64485828  1.0000000 -0.66022974
+#&gt; [3,] -0.01088776 -0.6602297  1.00000000
 #&gt; 
 #&gt; [[2]]
 #&gt;            [,1]       [,2]
-#&gt; [1,]  1.0000000 -0.8711787
-#&gt; [2,] -0.8711787  1.0000000
+#&gt; [1,]  1.0000000 -0.8840355
+#&gt; [2,] -0.8840355  1.0000000
 #&gt; 
 #&gt; [[3]]
 #&gt;            [,1]       [,2]
-#&gt; [1,]  1.0000000 -0.8769593
-#&gt; [2,] -0.8769593  1.0000000
+#&gt; [1,]  1.0000000 -0.8861263
+#&gt; [2,] -0.8861263  1.0000000
 #&gt; 
 #&gt; [[4]]
 #&gt;            [,1]       [,2]
-#&gt; [1,]  1.0000000 -0.8990693
-#&gt; [2,] -0.8990693  1.0000000
-#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span>(<span class='fu'>parcovmatlist</span>(<span class='no'>proba1</span>, <span class='fl'>100</span>, <span class='kw'>cor</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)<span class='kw'>[[</span><span class='fl'>1</span>]]))</div><div class='output co'>#&gt; [1] 1 1 1</div></pre>
+#&gt; [1,]  1.0000000 -0.8730714
+#&gt; [2,] -0.8730714  1.0000000
+#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span>(<span class='fu'>parcovmatlist</span>(<span class='no'>proba1</span>, <span class='fl'>100</span>, <span class='kw'>cor</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)<span class='kw'>[[</span><span class='fl'>1</span>]]))</div><div class='output co'>#&gt; [1] 1 1 1</div><div class='input'>
+<span class='fu'><a href='meanvarcheck.html'>meanvarcheck</a></span>(<span class='no'>proba1</span>, <span class='fl'>100</span>)</div><div class='output co'>#&gt; [1] 0.6783456 0.6309466 0.6427926 0.6871145</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#details">Details</a></li>
-
       <li><a href="#value">Value</a></li>
-
       <li><a href="#references">References</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
@@ -233,19 +231,23 @@ McLeod A (1994).
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by Georgi N. Boshnakov.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

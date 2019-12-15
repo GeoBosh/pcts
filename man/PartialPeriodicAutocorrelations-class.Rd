@@ -4,8 +4,8 @@
 \alias{PartialPeriodicAutocorrelations-class}
 %\alias{show,PartialPeriodicAutocorrelations-method}
 
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Class PartialPeriodicAutocorrelations}
+\description{Class PartialPeriodicAutocorrelations.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("PartialPeriodicAutocorrelations", ..., data)}.
 %%  ~~ describe objects here ~~ 

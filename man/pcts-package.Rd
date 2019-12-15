@@ -175,12 +175,14 @@
   }
 
 
-  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(classes =
-    c("[^[:space:]]+-class"
-    )))}
-  \subsection{Classes}{
-    \Sexpr[stage=build,results=rd]{lbpaste(pat[["classes"]])}
-  }
+  % Commenting out, this is useful mainly in development.
+  % 
+  % \Sexpr[stage=build,results=hide]{pat <- c(pat, list(classes =
+  %   c("[^[:space:]]+-class"
+  %   )))}
+  % \subsection{Classes}{
+  %   \Sexpr[stage=build,results=rd]{lbpaste(pat[["classes"]])}
+  % }
 
 
 

@@ -8,11 +8,13 @@
 
 <title>Class <code>"BuiltinCycle"</code> and its subclasses in package 'pcts' — BuiltinCycle-class • pcts</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -22,8 +24,9 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -31,10 +34,11 @@
 
 
 
-<meta property="og:title" content="Class <code>"BuiltinCycle"</code> and its subclasses in package 'pcts' — BuiltinCycle-class" />
 
+<meta property="og:title" content="Class <code>"BuiltinCycle"</code> and its subclasses in package 'pcts' — BuiltinCycle-class" />
 <meta property="og:description" content="Class &quot;BuiltinCycle&quot; and its subclasses in package 'pcts'." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -46,6 +50,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -79,8 +84,10 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/GeoBosh/pcts">
@@ -95,6 +102,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -106,16 +114,16 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Class <code>"BuiltinCycle"</code> and its subclasses in package 'pcts'.</p>
-    
     </div>
 
-        
+
+
     <h2 class="hasAnchor" id="objects-from-the-class"><a class="anchor" href="#objects-from-the-class"></a>Objects from the Class</h2>
 
     
-    <p>Class <code>"BuiltinCycle"</code> is a virtual Class: no objects may be
+
+<p>Class <code>"BuiltinCycle"</code> is a virtual Class: no objects may be
   created from it. Class <code>"BuiltinCycle"</code> has several built-in
   cycle subclasses. Objects from the subclasses can be created by calls
   of the form <code>new("className", first, ...)</code>, where
@@ -130,15 +138,16 @@
   needed.</p>
 <p>The subclasses of <code>"BuiltinCycle"</code> have definitions for all
   methods promised by its superclass <code>"BasicCycle"</code>.</p>
-    
     <h2 class="hasAnchor" id="slots"><a class="anchor" href="#slots"></a>Slots</h2>
 
     <p>The class <code>"BuiltinCycle"</code> and its subclasses have a single
   common slot:</p><dl class='dl-horizontal'>
+
     <dt><code>first</code>:</dt><dd><p>Object of class <code>"integer"</code>,
       the index of the season to be treated as the first in a cycle.</p></dd>
-    </dl>
-    
+
+
+</dl>
     <h2 class="hasAnchor" id="extends"><a class="anchor" href="#extends"></a>Extends</h2>
 
     <p>Class <code>"BuiltinCycle"</code> extends class
@@ -149,7 +158,6 @@
   extend:</p>  
 <p>Class <code>"BuiltinCycle"</code>, directly.
   Class <code>"<a href='BasicCycle-class.html'>BasicCycle</a>"</code>, by class "BuiltinCycle", distance 2.</p>
-    
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     <p>Functions with methods for this class:</p><dl class='dl-horizontal'>
@@ -157,44 +165,51 @@
     <dt>coerce</dt><dd><p><code>signature(from = "BuiltinCycle", to = "SimpleCycle")</code>: ...</p></dd>
     <dt>initialize</dt><dd><p><code>signature(.Object = "BuiltinCycle")</code>: ...</p></dd>
     <dt>show</dt><dd><p><code>signature(object = "BuiltinCycle")</code>: ...</p></dd>
+
     %  Class \code{"DayWeekCycle"} 
     <dt>allSeasons</dt><dd><p><code>signature(x = "DayWeekCycle", abb = "logical")</code></p></dd>
     <dt>allSeasons</dt><dd><p><code>signature(x = "DayWeekCycle", abb = "missing")</code></p></dd>
     <dt>nSeasons</dt><dd><p><code>signature(object = "DayWeekCycle")</code></p></dd>
     <dt>unitCycle</dt><dd><p><code>signature(x = "DayWeekCycle")</code></p></dd>
     <dt>unitSeason</dt><dd><p><code>signature(x = "DayWeekCycle")</code></p></dd>
+
     % Class \code{"Every30MinutesCycle"}
     <dt>allSeasons</dt><dd><p><code>signature(x = "Every30MinutesCycle", abb = "logical")</code>: ...</p></dd>
     <dt>allSeasons</dt><dd><p><code>signature(x = "Every30MinutesCycle", abb = "missing")</code>: ...</p></dd>
     <dt>nSeasons</dt><dd><p><code>signature(object = "Every30MinutesCycle")</code>: ...</p></dd>
     <dt>unitCycle</dt><dd><p><code>signature(x = "Every30MinutesCycle")</code>: ...</p></dd>
     <dt>unitSeason</dt><dd><p><code>signature(x = "Every30MinutesCycle")</code>: ...</p></dd>
+    
     % \code{"FiveDayWeekCycle"}
     <dt>allSeasons</dt><dd><p><code>signature(x = "FiveDayWeekCycle", abb = "logical")</code>: ...</p></dd>
     <dt>allSeasons</dt><dd><p><code>signature(x = "FiveDayWeekCycle", abb = "missing")</code>: ...</p></dd>
     <dt>nSeasons</dt><dd><p><code>signature(object = "FiveDayWeekCycle")</code>: ...</p></dd>
     <dt>unitCycle</dt><dd><p><code>signature(x = "FiveDayWeekCycle")</code>: ...</p></dd>
     <dt>unitSeason</dt><dd><p><code>signature(x = "FiveDayWeekCycle")</code>: ...</p></dd>
+
     % \code{MonthYearCycle}
     <dt>allSeasons</dt><dd><p><code>signature(x = "MonthYearCycle", abb = "logical")</code>: ...</p></dd>
     <dt>allSeasons</dt><dd><p><code>signature(x = "MonthYearCycle", abb = "missing")</code>: ...</p></dd>
     <dt>nSeasons</dt><dd><p><code>signature(object = "MonthYearCycle")</code>: ...</p></dd>
     <dt>unitCycle</dt><dd><p><code>signature(x = "MonthYearCycle")</code>: ...</p></dd>
     <dt>unitSeason</dt><dd><p><code>signature(x = "MonthYearCycle")</code>: ...</p></dd>
+    
     % \code{"OpenCloseCycle"}
     <dt>allSeasons</dt><dd><p><code>signature(x = "OpenCloseCycle", abb = "logical")</code>: ...</p></dd>
     <dt>allSeasons</dt><dd><p><code>signature(x = "OpenCloseCycle", abb = "missing")</code>: ...</p></dd>
     <dt>nSeasons</dt><dd><p><code>signature(object = "OpenCloseCycle")</code>: ...</p></dd>
     <dt>unitCycle</dt><dd><p><code>signature(x = "OpenCloseCycle")</code>: ...</p></dd>
     <dt>unitSeason</dt><dd><p><code>signature(x = "OpenCloseCycle")</code>: ...</p></dd>
+
     % \code{"QuarterYearCycle"}
     <dt>allSeasons</dt><dd><p><code>signature(x = "QuarterYearCycle", abb = "logical")</code>: ...</p></dd>
     <dt>allSeasons</dt><dd><p><code>signature(x = "QuarterYearCycle", abb = "missing")</code>: ...</p></dd>
     <dt>nSeasons</dt><dd><p><code>signature(object = "QuarterYearCycle")</code>: ...</p></dd>
     <dt>unitCycle</dt><dd><p><code>signature(x = "QuarterYearCycle")</code>: ...</p></dd>
     <dt>unitSeason</dt><dd><p><code>signature(x = "QuarterYearCycle")</code>: ...</p></dd>
-  </dl>
-    
+  
+</dl>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='BuiltinCycle.html'>BuiltinCycle</a></code>,
@@ -210,7 +225,6 @@
   <code><a href='BareCycle-class.html'>BareCycle-class</a></code>,
   <code><a href='SimpleCycle-class.html'>SimpleCycle-class</a></code>,</p>
 <p><!-- %%  ~~or \code{\linkS4class{CLASSNAME}} for links to other classes ~~~ --></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>showClass</span>(<span class='st'>"BuiltinCycle"</span>)</div><div class='output co'>#&gt; Virtual Class "BuiltinCycle" [package "pcts"]
@@ -288,17 +302,11 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      
       <li><a href="#objects-from-the-class">Objects from the Class</a></li>
-
       <li><a href="#slots">Slots</a></li>
-
       <li><a href="#extends">Extends</a></li>
-
       <li><a href="#methods">Methods</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
@@ -307,19 +315,23 @@
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by Georgi N. Boshnakov.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
