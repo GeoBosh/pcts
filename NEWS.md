@@ -1,4 +1,10 @@
-# Version 0.14-0 (CRAN)
+# Version 0.14-1 (CRAN)
+
+- dropped some comparisons with "pear" since a call in "test-acf.R"
+  failed.
+
+
+# Version 0.14-0
 
 - removed deprecated functions `mCpar` and `sim_arAcf`.
 

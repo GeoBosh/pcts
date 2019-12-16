@@ -30,12 +30,12 @@ test_that("test fitPM()",
     ##    !!! However note the typo 'logfraser', the following use 'logFraser'!
     logfraser <- ts(logFraser[1:936], frequency = 12)
 
-    co1_pear <- pear::pear(logFraser, 1)[["phi"]]
+    #### co1_pear <- pear::pear(logFraser, 1)[["phi"]]
         # fitPM(as.numeric(logFraser), order = rep(1, 12), period = 12, seasonof1st = 3)
     az1 <- fitPM(model = rep(1, 12), as.numeric(logFraser), seasonof1st = 3)
     az2 <- fitPM(model = rep(1, 12), as.numeric(logFraser))
-    expect_true(all.equal(as.vector(az1@ar@coef[ , 1]), as.vector(co1_pear[ , 1])))
-    expect_true(all.equal(as.vector(az2@ar@coef[ , 1]), as.vector(co1_pear[ , 1])[c(3:12, 1:2)]))
+    #### expect_true(all.equal(as.vector(az1@ar@coef[ , 1]), as.vector(co1_pear[ , 1])))
+    #### expect_true(all.equal(as.vector(az2@ar@coef[ , 1]), as.vector(co1_pear[ , 1])[c(3:12, 1:2)]))
 
     ## pcfr2  <- pcts(dataFranses1996[ , 2  ])
     pcfr23 <- pcts(dataFranses1996[ , 2:3])

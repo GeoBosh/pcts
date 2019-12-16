@@ -4,7 +4,7 @@ Title: Modelling Periodically Correlated and Periodically Integrated
     Time Series
 Description: Provides functions for modelling periodically correlated
     and periodically integrated time series.
-Version: 0.14-0
+Version: 0.14-1
 Date: 2019-12-15
 Author: Georgi N. Boshnakov
 Maintainer: Georgi N. Boshnakov <georgi.boshnakov@manchester.ac.uk>
