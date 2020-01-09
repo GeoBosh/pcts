@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pcts</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.14.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.14.3</span>
       </span>
     </div>
 
@@ -594,7 +594,7 @@ ISSN 0143-9782, <a href='http://dx.doi.org/10.1111/j.1467-9892.2009.00617.x'>htt
 #&gt; S3   3   7  11
 #&gt; S4   4   8  12</div><div class='input'>
 
-<span class='co'>## temporary experiments and testing</span>
+<span class='co'>## experiments and testing</span>
 <span class='no'>fit1</span>    <span class='kw'>&lt;-</span> <span class='fu'>fitPM</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>3</span>), <span class='no'>simts1</span>)
 <span class='no'>fit1_mf</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MultiFilter"</span>, <span class='kw'>coef</span> <span class='kw'>=</span> <span class='no'>fit1</span>@<span class='kw'>ar</span>@<span class='kw'>coef</span>)
 <span class='no'>vs</span>      <span class='kw'>&lt;-</span> <span class='kw pkg'>mcompanion</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mcompanion/man/mf_VSform.html'>mf_VSform</a></span>(<span class='no'>fit1_mf</span>, <span class='kw'>form</span> <span class='kw'>=</span> <span class='st'>"I"</span>)
@@ -642,16 +642,13 @@ ISSN 0143-9782, <a href='http://dx.doi.org/10.1111/j.1467-9892.2009.00617.x'>htt
     ,
     <span class='no'>tmp</span>$<span class='no'>Uform</span>$<span class='no'>U0inv</span>
 ) <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-
 <span class='co'>## no, this is a different matrix</span>
 <span class='no'>var1_mat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>(<span class='no'>vs</span>$<span class='no'>Phi0</span>, <span class='co'># identity matrix</span>
                   - <span class='no'>vs</span>$<span class='no'>Phi</span>) <span class='co'># drop trailing zero columns?</span>
 <span class='no'>var1_mat</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mcompanion</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mcompanion/man/mCompanion.html'>mCompanion</a></span>(<span class='no'>var1_mat</span>)
 <span class='no'>var1_Sigma</span> <span class='kw'>&lt;-</span> <span class='no'>vs</span>$<span class='no'>Phi0inv</span>
 <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/eigen.html'>eigen</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>var1_mat</span>)) - <span class='no'>var1_mat</span>)$<span class='no'>values</span>)</div><div class='output co'>#&gt; [1] 1.002444e+00 1.002444e+00 1.000000e+00 9.999852e-01 6.624797e-03
-#&gt; [6] 6.624797e-03 1.480313e-05 0.000000e+00</div><div class='input'>
-
-</div></pre>
+#&gt; [6] 6.624797e-03 1.480313e-05 0.000000e+00</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

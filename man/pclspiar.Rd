@@ -1,24 +1,22 @@
 \name{pclspiar}
 \alias{pclspiar}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{Fit a periodically integrated autoregressive model}
 \description{Fit a periodically integrated autoregressive model.}
 \usage{
 pclspiar(x, d, p, icoef = NULL, parcoef = NULL, sintercept = FALSE,
          seasonof1st = 1, weights = TRUE, itol = 1e-07, maxniter = 1000)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{time series}
-  \item{d}{period}
+  \item{x}{time series.}
+  \item{d}{period.}
   \item{p}{order of the model, a positive integer, see Details.}
-  \item{icoef}{initial values for the periodic integration
-    coefficients.
+  \item{icoef}{
+    initial values for the periodic integration coefficients.
   }
-  \item{parcoef}{not really used (todo: clarify!).}
-  \item{sintercept}{if TRUE include seasonal intercepts.}
+  \item{parcoef}{not used currently.}
+  \item{sintercept}{if \code{TRUE} include seasonal intercepts.}
   \item{seasonof1st}{season of the first observation.}
-  \item{weights}{if TRUE, use periodic weights in the nonlinear least
+  \item{weights}{if \code{TRUE}, use periodic weights in the nonlinear least
     squares, see Details.
   }
   \item{itol}{threshold value for the stopping criterion.
@@ -78,11 +76,14 @@ ISSN 0143-9782, \url{http://dx.doi.org/10.1111/j.1467-9892.2009.00617.x}.
 %
 \seealso{
   \code{\link{pclsdf}},
-  \code{\link{test_piar}}
+  \code{\link{test_piar}},
+  \code{\link{fitPM}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
+## see also the examples for fitPM()
+ts1 <- window(dataFranses1996[ , "CanadaUnemployment"],
+              start = c(1960, 1), end = c(1987, 4))
+pclspiar(ts1, 4, p = 1, sintercept = TRUE)
+pclspiar(ts1, 4, p = 2, sintercept = TRUE)
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
 \keyword{ pcts }

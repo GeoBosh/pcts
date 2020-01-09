@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pcts</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.14.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.14.3</span>
       </span>
     </div>
 
@@ -125,11 +125,11 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>time series</p></td>
+      <td><p>time series.</p></td>
     </tr>
     <tr>
       <th>d</th>
-      <td><p>period</p></td>
+      <td><p>period.</p></td>
     </tr>
     <tr>
       <th>p</th>
@@ -137,16 +137,15 @@
     </tr>
     <tr>
       <th>icoef</th>
-      <td><p>initial values for the periodic integration
-    coefficients.</p></td>
+      <td><p>initial values for the periodic integration coefficients.</p></td>
     </tr>
     <tr>
       <th>parcoef</th>
-      <td><p>not really used (todo: clarify!).</p></td>
+      <td><p>not used currently.</p></td>
     </tr>
     <tr>
       <th>sintercept</th>
-      <td><p>if TRUE include seasonal intercepts.</p></td>
+      <td><p>if <code>TRUE</code> include seasonal intercepts.</p></td>
     </tr>
     <tr>
       <th>seasonof1st</th>
@@ -154,7 +153,7 @@
     </tr>
     <tr>
       <th>weights</th>
-      <td><p>if TRUE, use periodic weights in the nonlinear least
+      <td><p>if <code>TRUE</code>, use periodic weights in the nonlinear least
     squares, see Details.</p></td>
     </tr>
     <tr>
@@ -209,11 +208,48 @@ ISSN 0143-9782, <a href='http://dx.doi.org/10.1111/j.1467-9892.2009.00617.x'>htt
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='pclsdf.html'>pclsdf</a></code>,
-  <code><a href='test_piar.html'>test_piar</a></code></p></div>
+  <code><a href='test_piar.html'>test_piar</a></code>,
+  <code><a href='fitPM.html'>fitPM</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>##---- Should be DIRECTLY executable !! ----
-</div></pre>
+    <pre class="examples"><div class='input'><span class='co'>## see also the examples for fitPM()</span>
+<span class='no'>ts1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/window.html'>window</a></span>(<span class='no'>dataFranses1996</span>[ , <span class='st'>"CanadaUnemployment"</span>],
+              <span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1960</span>, <span class='fl'>1</span>), <span class='kw'>end</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1987</span>, <span class='fl'>4</span>))
+<span class='fu'>pclspiar</span>(<span class='no'>ts1</span>, <span class='fl'>4</span>, <span class='kw'>p</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>sintercept</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; $icoef
+#&gt;    alpha1    alpha2    alpha3    alpha4 
+#&gt; 1.0550271 0.9975805 0.9886708 0.9610295 
+#&gt; 
+#&gt; $parcoef
+#&gt;     
+#&gt; [1,]
+#&gt; [2,]
+#&gt; [3,]
+#&gt; [4,]
+#&gt; 
+#&gt; $sintercept
+#&gt;   Season1   Season2   Season3   Season4 
+#&gt; 116.64694 -83.39428 -46.15717  33.53077 
+#&gt; 
+#&gt; $sigma2hat
+#&gt; [1] 2431.805 4378.808 3043.498 1441.109
+#&gt; </div><div class='input'><span class='fu'>pclspiar</span>(<span class='no'>ts1</span>, <span class='fl'>4</span>, <span class='kw'>p</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>sintercept</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; $icoef
+#&gt;    alpha1    alpha2    alpha3    alpha4 
+#&gt; 1.0397236 1.0179266 0.9852002 0.9590497 
+#&gt; 
+#&gt; $parcoef
+#&gt;                        [,1]
+#&gt; Season1:Lagged_1  0.6319228
+#&gt; Season2:Lagged_1 -0.4231896
+#&gt; Season3:Lagged_1  0.6888947
+#&gt; Season4:Lagged_1  0.2000132
+#&gt; 
+#&gt; $sintercept
+#&gt;   Season1   Season2   Season3   Season4 
+#&gt; 102.95274 -43.53839  24.92487  43.56982 
+#&gt; 
+#&gt; $sigma2hat
+#&gt; [1] 1918.2343 4059.6479  901.6721 1318.0657
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

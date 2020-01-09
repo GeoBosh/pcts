@@ -1,4 +1,23 @@
-# Version 0.14-1 (CRAN)
+# Version 0.14-4
+
+- edited `README.md` to reflect the CRAN release of the package, since it
+  contained some text that was meant for the pre-CRAN Github version only.
+
+
+# Version 0.14-3 (CRAN)
+
+- now using `exportClass` to export classes rather than `exportClassPattern`
+  with a lazy regexp.
+
+
+# Version 0.14-2
+
+- added an example for `pclspiar`
+
+- edited DESCRIPTION to comply with CRAN policies.
+
+
+# Version 0.14-1
 
 - dropped some comparisons with "pear" since a call in "test-acf.R"
   failed.

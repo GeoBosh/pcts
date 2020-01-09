@@ -178,7 +178,7 @@ fitPM(sipfm1, mx)
 pfm1
 
 
-## temporary experiments and testing
+## experiments and testing
 fit1    <- fitPM(c(3,3,3,3), simts1)
 fit1_mf <- new("MultiFilter", coef = fit1@ar@coef)
 vs      <- mcompanion::mf_VSform(fit1_mf, form = "I")
@@ -199,15 +199,12 @@ identical(
     tmp$Uform$U0inv %*% diag(tmp$Uform$Sigma)  %*% t(tmp$Uform$U0inv)
 ) # TRUE
 
-
 ## no, this is a different matrix
 var1_mat <- cbind(vs$Phi0, # identity matrix
                   - vs$Phi) # drop trailing zero columns?
 var1_mat <- mcompanion::mCompanion(var1_mat)
 var1_Sigma <- vs$Phi0inv %*% diag(fit1@sigma2) %*% t(vs$Phi0inv)
 abs(eigen(diag(nrow(var1_mat)) - var1_mat)$values)
-
-
 }
 \keyword{pcts}
 \keyword{methods}

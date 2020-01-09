@@ -1,6 +1,5 @@
 \name{pclsdf}
 \alias{pclsdf}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{Fit PAR models using least squares}
 \description{Fit PAR models using least squares. The model may contain
   intercepts and linear trends, seasonal or non-seasonal.}
@@ -9,7 +8,6 @@ pclsdf(x, d, lags = integer(0), sintercept = TRUE, sslope = FALSE,
        intercept = FALSE, slope = FALSE, xreg, contrasts = NULL,
        seasonof1st = NULL, coefonly = FALSE)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{time series, a numeric vector}
   \item{d}{period, an integer}
@@ -73,7 +71,7 @@ pclsdf(x, d, lags = integer(0), sintercept = TRUE, sslope = FALSE,
   data.
 
   \strong{todo:} currently some of the parameters are returned only via the
-  fitted object from \code{lm}, i.e. when
+  fitted object from \code{lm}.
 }
 %
 % %% ~Make other sections like Warning with \section{Warning }{....} ~
@@ -100,8 +98,3 @@ pclsdf(x, 4, lags = 1:3, sintercept = TRUE, sslope = TRUE)
 ##                contrasts = list(Season = "contr.sum" ))
 }
 \keyword{pcts}
-
-
-
-
-

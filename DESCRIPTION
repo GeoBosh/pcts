@@ -1,11 +1,15 @@
 Package: pcts
 Type: Package
-Title: Modelling Periodically Correlated and Periodically Integrated
-    Time Series
-Description: Provides functions for modelling periodically correlated
-    and periodically integrated time series.
-Version: 0.14-1
-Date: 2019-12-15
+Title: Periodically Correlated and Periodically Integrated Time Series
+Description: Classes and methods for modelling and simulation of
+    periodically correlated (PC) and periodically integrated time
+    series.  Compute theoretical periodic autocovariances and related
+    properties of PC autoregressive moving average models. Some original
+    methods including Boshnakov & Iqelan (2009)
+    <doi:10.1111/j.1467-9892.2009.00617.x>, Boshnakov (1996)
+    <doi:10.1111/j.1467-9892.1996.tb00281.x>.
+Version: 0.14-3
+Date: 2020-01-07
 Author: Georgi N. Boshnakov
 Maintainer: Georgi N. Boshnakov <georgi.boshnakov@manchester.ac.uk>
 Depends: R (>= 3.5.0), sarima
