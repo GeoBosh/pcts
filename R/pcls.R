@@ -43,7 +43,6 @@ pclsdf <- function(x, d, lags = integer(0), sintercept = TRUE, sslope = FALSE,
 
     # fit <- lm(fomodel, data = res, contrasts = contrasts, na.action = na.exclude)
     fit <- lm(fomodel, data = res, na.action = na.exclude)
-
     fit.resid <- residuals(fit)
 
                                 # 2015-07-29 (changed to deal with lengths non-multiple of d)
@@ -77,6 +76,12 @@ pclsdf <- function(x, d, lags = integer(0), sintercept = TRUE, sslope = FALSE,
 
     if(sslope){
         snames <- grep("^Season[0-9]+:TimeIndex$", nams)  # TODO: is this reliable?
+        ## In version R-3.6.x and maybe others the names of the variables were as below. From
+        ##     R-devel and Rpatched circa start of Feb 2020 the names changed to the above. I
+        ##     think that they must have been as above, since the above code was written
+        ##     years ago and it surely didn't drop sslope back then.
+        if(length(snames) == 0)
+            snames <- grep("^TimeIndex:Season[0-9]+$", nams)  # TODO: is this reliable?
         res$sslope <- co[snames]
     }
 

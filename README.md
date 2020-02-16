@@ -9,8 +9,8 @@ integrated time series.
 
 # Installing pcts
 
-The [latest stable version](https://cran.r-project.org/package=pcts) is on
-CRAN.
+Install the [latest stable version](https://cran.r-project.org/package=pcts) of
+`pcts` from CRAN:
 
     install.packages("pcts")
 
