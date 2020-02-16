@@ -14,8 +14,6 @@
 \title{Index assignments for objects from classes in package pcts}
 \description{Index assignments for objects from classes in package pcts.}
 \section{Methods}{
-\describe{
-
 %%% \item{\code{signature(x = "pc.Model.WeaklyStat", i = "ANY", j = "ANY", value = "ANY")}}{
 %%% %%  ~~describe this method here~~
 %%% }
@@ -25,6 +23,8 @@
 %%%   See % \code{\link{[-methods}} and
 %%%   \code{\link{slMatrix-class}}.
 %%% }
+\describe{
+
 \item{\code{signature(x = "PeriodicVector", i = "ANY", j = "ANY", value = "ANY")}}{{
 %%  ~~describe this method here~~
 }

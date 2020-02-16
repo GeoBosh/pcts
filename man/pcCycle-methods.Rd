@@ -64,8 +64,6 @@ pcCycle(x, type, \dots)
   an object from one of the cycle classes
 }
 \section{Methods}{
-\describe{
-
 %%%% \item{\code{signature(x = "character")}}{
 %%%%   \code{x} should be the name of a builtin cycle class.
 %%%% }
@@ -93,6 +91,8 @@ pcCycle(x, type, \dots)
 %  \code{x} should be the name of a builtin cycle class.
 %}
 %}
+\describe{
+
 \item{\code{signature(x = "Cyclic", type = "ANY")}}{{
   Returns \code{x@cycle}. Currently ignores the remaining arguments.
 }

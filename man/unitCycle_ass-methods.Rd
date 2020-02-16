@@ -4,8 +4,10 @@
 \alias{unitCycle<-,Cyclic-method}
 \alias{unitCycle<-,SimpleCycle-method}
 
-\title{Methods for \code{"unitCycle<-"()} in package pcts}
-\description{Methods for \code{"unitCycle<-"()} in package pcts.}
+% 2020-02-16 use backticks below, since pkgdown doesn't render well
+%     double quotes in this context.
+\title{Methods for \code{`unitCycle<-`} in package pcts}
+\description{Methods for \code{`unitCycle<-`} in package pcts.}
 \section{Methods}{
 \describe{
 

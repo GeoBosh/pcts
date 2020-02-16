@@ -1,3 +1,9 @@
+# Version 0.14-5
+
+- change slightly some Rd files not rendered well by pkgdown, e.g. move commented
+  items out of 'describe' in methods' descriptions. 
+
+
 # Version 0.14-4 (CRAN)
 
 - fixed a bug revealed by changes in R-devel circa start of February 2020. It

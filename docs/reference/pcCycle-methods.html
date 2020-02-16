@@ -73,7 +73,7 @@ Generic function with methods for creating or extracting cycle
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pcts</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.14.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.14.5</span>
       </span>
     </div>
 
@@ -168,36 +168,33 @@ Generic function with methods for creating or extracting cycle
     <p>an object from one of the cycle classes</p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
-    
-<dl class='dl-horizontal'>
+    <p><!-- %%%% \item{\code{signature(x = "character")}}{ -->
+<!-- %%%%   \code{x} should be the name of a builtin cycle class. -->
+<!-- %%%% } -->
+<!-- %%%%  -->
+<!-- %%%% \item{\code{signature(x = "numeric")}}{ -->
+<!-- %%%%  -->
+<!-- %%%%   \code{x} is the period in this case. If \code{x} is the only argument -->
+<!-- %%%%   (not counting \code{type}), a \code{"BareCycle"} object is created, -->
+<!-- %%%%   otherwise the constructor of \code{"SimpleCycle"} is invoked with all -->
+<!-- %%%%   arguments except \code{type} passed on to it. -->
+<!-- %%%%  -->
+<!-- %%%% } -->
+<!-- %%%% \item{\code{signature(x = "Cyclic")}}{ -->
+<!-- %%%%   Returns \code{x@cycle}. Currently ignores the remaining arguments. -->
+<!-- %%%% } -->
+<!-- %%%% \item{\code{signature(x = "ts")}}{{ -->
+<!-- %%%% %%  ~~describe this method here~~ -->
+<!-- %%%% } -->
+<!-- %%%% }\item{\code{signature(x = "PeriodicTimeSeries")}}{{ -->
+<!-- %%%% %%  ~~describe this method here~~ -->
+<!-- %%%% } -->
+<!-- %%%% } --></p>
+<p><!-- %\item{\code{signature(x = "character", type = "ANY")}}{{ -->
+<!-- %  \code{x} should be the name of a builtin cycle class. -->
+<!-- %} -->
+<!-- %} --></p><dl class='dl-horizontal'>
 
-%%%% \item{\code{signature(x = "character")}}{
-%%%%   \code{x} should be the name of a builtin cycle class.
-%%%% }
-%%%% 
-%%%% \item{\code{signature(x = "numeric")}}{
-%%%% 
-%%%%   \code{x} is the period in this case. If \code{x} is the only argument
-%%%%   (not counting \code{type}), a \code{"BareCycle"} object is created,
-%%%%   otherwise the constructor of \code{"SimpleCycle"} is invoked with all
-%%%%   arguments except \code{type} passed on to it.
-%%%% 
-%%%% }
-%%%% \item{\code{signature(x = "Cyclic")}}{
-%%%%   Returns \code{x@cycle}. Currently ignores the remaining arguments.
-%%%% }
-%%%% \item{\code{signature(x = "ts")}}{{
-%%%% %%  ~~describe this method here~~
-%%%% }
-%%%% }\item{\code{signature(x = "PeriodicTimeSeries")}}{{
-%%%% %%  ~~describe this method here~~
-%%%% }
-%%%% }
-
-%\item{\code{signature(x = "character", type = "ANY")}}{{
-%  \code{x} should be the name of a builtin cycle class.
-%}
-%}
 <dt><code>signature(x = "Cyclic", type = "ANY")</code></dt><dd><p>Returns <code>x@cycle</code>. Currently ignores the remaining arguments.</p></dd><dt><code>signature(x = "numeric", type = "character")</code></dt><dd><p><code>x</code> is the period in this case. If <code>x</code> is the only argument
   (not counting <code>type</code>), a <code>"BareCycle"</code> object is created,
   otherwise the constructor of <code>"SimpleCycle"</code> is invoked with all

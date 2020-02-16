@@ -34,8 +34,8 @@ Class \code{"\linkS4class{VirtualPeriodicMeanModel}"}, by class "VirtualPeriodic
 \section{Methods}{
   \describe{
     \item{autocovariances}{\code{signature(x = "PeriodicArmaModel")}: ... }
-%%%     \item{PeriodicArModel}{\code{signature(object = "PeriodicArmaModel")}: ... }
-	 }
+  }
+  %%%     \item{PeriodicArModel}{\code{signature(object = "PeriodicArmaModel")}: ... }
 }
 %\references{
 %%%  ~~put references to the literature/web site here~~
