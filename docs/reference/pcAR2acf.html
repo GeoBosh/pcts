@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pcts</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.14.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.15.0</span>
       </span>
     </div>
 
@@ -179,31 +179,34 @@ Varna.
   that the coefficients for it start from lag zero</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.81</span>,<span class='fl'>0</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.4972376</span>, <span class='fl'>0.4972376</span>) )
-<span class='no'>si2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='PeriodicVector-class.html'>PeriodicVector</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.3439000</span>,<span class='fl'>0.1049724</span>))
+    <pre class="examples"><div class='input'><span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.81</span>, <span class='fl'>0</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.4972376</span>, <span class='fl'>0.4972376</span>) )
+<span class='no'>si2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='PeriodicVector-class.html'>PeriodicVector</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.3439000</span>, <span class='fl'>0.1049724</span>))
 
-<span class='fu'>pcAR2acf</span>(<span class='no'>m</span>,<span class='no'>si2</span>)</div><div class='output co'>#&gt;          [,1]      [,2]      [,3]
+<span class='fu'>pcAR2acf</span>(<span class='no'>m</span>)</div><div class='output co'>#&gt;          [,1]     [,2]     [,3]
+#&gt; [1,] 5.306937 5.317206 4.279006
+#&gt; [2,] 6.564452 5.282723 5.908007</div><div class='input'><span class='fu'>pcAR2acf</span>(<span class='no'>m</span>, <span class='no'>si2</span>)</div><div class='output co'>#&gt;          [,1]      [,2]      [,3]
 #&gt; [1,] 1.000000 0.8100006 0.7290005
 #&gt; [2,] 1.000001 0.9000006 0.9000007</div><div class='input'><span class='fu'>pcAR2acf</span>(<span class='no'>m</span>, <span class='no'>si2</span>, <span class='fl'>2</span>)</div><div class='output co'>#&gt;          [,1]      [,2]      [,3]
 #&gt; [1,] 1.000000 0.8100006 0.7290005
-#&gt; [2,] 1.000001 0.9000006 0.9000007</div><div class='input'><span class='fu'>pcAR2acf</span>(<span class='no'>m</span>, <span class='no'>si2</span>, <span class='fl'>2</span>, <span class='kw'>maxlag</span><span class='kw'>=</span><span class='fl'>10</span>)</div><div class='output co'>#&gt;          [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
+#&gt; [2,] 1.000001 0.9000006 0.9000007</div><div class='input'><span class='fu'>pcAR2acf</span>(<span class='no'>m</span>, <span class='no'>si2</span>, <span class='fl'>2</span>, <span class='kw'>maxlag</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='output co'>#&gt;          [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
 #&gt; [1,] 1.000000 0.8100006 0.7290005 0.7290006 0.6561005 0.6561006 0.5904905
 #&gt; [2,] 1.000001 0.9000006 0.9000007 0.8100006 0.8100007 0.7290006 0.7290007
 #&gt;           [,8]      [,9]     [,10]     [,11]
 #&gt; [1,] 0.5904905 0.5314414 0.5314415 0.4782973
 #&gt; [2,] 0.6561005 0.6561006 0.5904905 0.5904906</div><div class='input'>
+
 <span class='co'># same using pcarma_acvf_lazy directly</span>
 <span class='no'>m1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>0.81</span>, <span class='fl'>0</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>0.4972376</span>, <span class='fl'>0.4972376</span>) )
 
-<span class='no'>testphi</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcts_reexports.html'>slMatrix</a></span>( <span class='kw'>init</span><span class='kw'>=</span><span class='no'>m1</span> )
-<span class='no'>myf</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcarma_solve.html'>pcarma_acvf_lazy</a></span>(<span class='no'>testphi</span>, <span class='no'>testtheta</span>, <span class='no'>si2</span>, <span class='fl'>2</span>, <span class='fl'>0</span>, <span class='fl'>2</span>, <span class='kw'>maxlag</span><span class='kw'>=</span><span class='fl'>10</span>)
-<span class='fu'>myf</span>(<span class='fl'>1</span>:<span class='fl'>2</span>,<span class='fl'>0</span>:<span class='fl'>9</span>)    <span class='co'># get a matrix of values</span></div><div class='output co'>#&gt;          [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
+<span class='no'>testphi</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcts_reexports.html'>slMatrix</a></span>(<span class='kw'>init</span> <span class='kw'>=</span> <span class='no'>m1</span>)
+<span class='no'>myf</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcarma_solve.html'>pcarma_acvf_lazy</a></span>(<span class='no'>testphi</span>, <span class='no'>testtheta</span>, <span class='no'>si2</span>, <span class='fl'>2</span>, <span class='fl'>0</span>, <span class='fl'>2</span>, <span class='kw'>maxlag</span> <span class='kw'>=</span> <span class='fl'>10</span>)
+<span class='fu'>myf</span>(<span class='fl'>1</span>:<span class='fl'>2</span>, <span class='fl'>0</span>:<span class='fl'>9</span>)    <span class='co'># get a matrix of values</span></div><div class='output co'>#&gt;          [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
 #&gt; [1,] 1.000000 0.8100006 0.7290005 0.7290006 0.6561005 0.6561006 0.5904905
 #&gt; [2,] 1.000001 0.9000006 0.9000007 0.8100006 0.8100007 0.7290006 0.7290007
 #&gt;           [,8]      [,9]     [,10]
 #&gt; [1,] 0.5904905 0.5314414 0.5314415
 #&gt; [2,] 0.6561005 0.6561006 0.5904905</div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span>(<span class='fu'>myf</span>(<span class='fl'>1</span>:<span class='fl'>2</span>,<span class='fl'>0</span>:<span class='fl'>9</span>) <span class='kw'>==</span> <span class='fu'>pcAR2acf</span>(<span class='no'>m</span>, <span class='no'>si2</span>, <span class='fl'>2</span>, <span class='kw'>maxlag</span> <span class='kw'>=</span> <span class='fl'>9</span>)) <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span>(<span class='fu'>myf</span>(<span class='fl'>1</span>:<span class='fl'>2</span>, <span class='fl'>0</span>:<span class='fl'>9</span>) <span class='kw'>==</span> <span class='fu'>pcAR2acf</span>(<span class='no'>m</span>, <span class='no'>si2</span>, <span class='fl'>2</span>, <span class='kw'>maxlag</span> <span class='kw'>=</span> <span class='fl'>9</span>)) <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
