@@ -55,6 +55,8 @@ test_that("test fitPM()",
     sipfm1 <- new("SiPeriodicArModel", iorder = 1, siorder = 1, pcmodel = pfm1)
     fitPM(sipfm1, mx)
 
+    expect_output(show(sipfm1))
+    
 
     d4piar2  <- rbind(c(1,0.5,-0.06), c(1, 0.6, -0.08), c(1, 0.7, -0.1), c(1, 0.2, 0.15))
     picoef1  <- c(0.8, 1.25, 2, 0.5)
@@ -64,6 +66,8 @@ test_that("test fitPM()",
     ##pipfm    <- PiParModel(piorder = 1, picoef = picoef1, par = tmpval)
     pipfm    <-  new("PiPeriodicArModel", piorder = 1,
                      picoef = matrix(picoef1, ncol = 1), pcmodel = tmpval)
+
+    expect_output(show(pipfm))
 
     perunit  <- sim_pc(list(phi = coef1, p = 3, q = 0, period = 4),500)
     fitPM(pipfm, perunit)

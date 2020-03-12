@@ -18,6 +18,13 @@ test_that("sim_pc is ok", {
     a2 <- sim_pc(mo2, 100)
 
     expect_identical(a1, a2)
+
+    sim_pc(mo2, 10, eps = list(main = rnorm(10)))
+    sim_pc(mo2, 10, eps = rnorm(10))
+    sim_pc(mo2, 10, nintercept = 1:10)
+    sim_pc(mo2, 10, nintercept = list(main = 1:10) )
+
+
 })
 
 

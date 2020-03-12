@@ -1,7 +1,17 @@
-# Version 0.14-5
+# Version 0.15.0
 
-- change slightly some Rd files not rendered well by pkgdown, e.g. move commented
+- changed slightly some Rd files not rendered well by pkgdown, e.g. move commented
   items out of 'describe' in methods' descriptions. 
+
+- replaced wrong use of `is.na()` with `gbutils::isNA()` or other suitable code.
+
+- some old code contained instances of `class(x) == something`, now fixed.
+
+- added further tests.
+
+- extensive testing and bug fixing.
+
+- removed deprecated function `ptildeorders()`, use `pdSafeParOrder()` instead.
 
 
 # Version 0.14-4 (CRAN)

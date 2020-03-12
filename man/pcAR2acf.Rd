@@ -57,21 +57,23 @@ Varna.
   that the coefficients for it start from lag zero
 }
 \examples{
-m <- rbind( c(0.81,0), c(0.4972376, 0.4972376) )
-si2 <- PeriodicVector(c(0.3439000,0.1049724))
+m <- rbind( c(0.81, 0), c(0.4972376, 0.4972376) )
+si2 <- PeriodicVector(c(0.3439000, 0.1049724))
 
-pcAR2acf(m,si2)
+pcAR2acf(m)
+pcAR2acf(m, si2)
 pcAR2acf(m, si2, 2)
-pcAR2acf(m, si2, 2, maxlag=10)
+pcAR2acf(m, si2, 2, maxlag = 10)
+
 
 # same using pcarma_acvf_lazy directly
 m1 <- rbind( c(1, 0.81, 0), c(1, 0.4972376, 0.4972376) )
 
-testphi <- slMatrix( init=m1 )
-myf <- pcarma_acvf_lazy(testphi, testtheta, si2, 2, 0, 2, maxlag=10)
-myf(1:2,0:9)    # get a matrix of values
+testphi <- slMatrix(init = m1)
+myf <- pcarma_acvf_lazy(testphi, testtheta, si2, 2, 0, 2, maxlag = 10)
+myf(1:2, 0:9)    # get a matrix of values
 
-all(myf(1:2,0:9) == pcAR2acf(m, si2, 2, maxlag = 9)) # TRUE
+all(myf(1:2, 0:9) == pcAR2acf(m, si2, 2, maxlag = 9)) # TRUE
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

@@ -19,9 +19,11 @@ test_that("pc.acrf is ok", {
     ##              check.names = FALSE, check.attributes = FALSE)
     #### expect_equal(pcacf1[ , -1], pe1acf[ , 1:16],
     ####              check.names = FALSE, check.attributes = FALSE)
-    #### 
+    ####
     #### pe1a <- pear::peacf(logFraser, lag.max = 16)
     #### pe1aacf <- pe1a$acf
+               calc_peracf(as.numeric(logFraser), maxlag = 16, period = 12, seasonof1st = 3,
+                           mean = 7) # 7 is arbitrary here
     pcacf1a <- calc_peracf(as.numeric(logFraser), maxlag = 16, period = 12, seasonof1st = 3)
     #### expect_equal(pcacf1a[ , -1], pe1aacf[ , 1:16],
     ####              check.names = FALSE, check.attributes = FALSE)
@@ -34,6 +36,7 @@ test_that("pc.acrf is ok", {
                  check.names = FALSE, check.attributes = FALSE)
 
     num2pcpar(as.numeric(logFraser), order = 2, period = 12, seasonof1st = 3)
+    num2pcpar(as.numeric(logFraser), order = 2, period = 12, seasonof1st = 3, result = "coef")
 
     co1_az <- num2pcpar(as.numeric(logFraser), order = rep(1, 12), period = 12, seasonof1st = 3)
         # co1_az <- co1_az$coef@m[ , -1, drop = FALSE]

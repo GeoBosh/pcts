@@ -462,7 +462,20 @@ setMethod("allSeasons", "Cyclic", function(x, abb = FALSE, ...)
 setMethod("seqSeasons", "Cyclic", function(x)      seqSeasons(x@cycle))
 
 ## setReplaceMethod("nSeasons", "Cyclic", function(x) nSeasons(x@cycle))
-setReplaceMethod("unitCycle", "Cyclic", function(x, ..., value) unitCycle(x@cycle) <- value)
-setReplaceMethod("unitSeason", "Cyclic", function(x, ..., value) unitSeason(x@cycle) <- value)
+setReplaceMethod("unitCycle", "Cyclic", 
+                 function(x, ..., value){
+                     unitCycle(x@cycle) <- value
+                     x
+                 }
+                 )
+setReplaceMethod("unitSeason", "Cyclic",
+                 function(x, ..., value){
+                     unitSeason(x@cycle) <- value
+                     x
+                 }
+                 )
 setReplaceMethod("allSeasons", "Cyclic", 
-    function(x, abb, ..., value) allSeasons(x@cycle, abb , ...) <- value)
+                 function(x, abb, ..., value){
+                     allSeasons(x@cycle, abb , ...) <- value
+                 }
+                 )

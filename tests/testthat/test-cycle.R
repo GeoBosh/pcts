@@ -31,6 +31,8 @@ test_that("the cycle classes are ok",
     new("FiveDayWeekCycle")
     new("OpenCloseCycle")
 
+    unitCycle()
+    unitSeason()
 
     unitCycle(a4)
     unitSeason(a4)
@@ -40,12 +42,49 @@ test_that("the cycle classes are ok",
     a4a <- a4
     unitCycle(a4a) <- "Godina"
     unitSeason(a4a) <- "Trimesechie"
-    allSeasons(a4a) <- c("Parvo", "Vtoro", "Treto", "Chetvart")
+    allSeasons(a4a) <- c("Parvo", "Vtoro", "Treto", "Chetvarto")
+    allSeasons(a4a, abb = TRUE) <- c("I", "II", "III", "IV")
     expect_output(show(a4a))
 
+    a4a[1:2, abb = 2]
+    a4a[1:2, abb = -2]
+
+    a4a[abb = 2]
+    a4a[abb = -2]
+
+    a4a[1:2] <- letters[1:2]
+    a4a[] <- LETTERS[1:4]
+    
 
     new("QuarterYearCycle", first = 2)
 
+    qy <- new("QuarterYearCycle")
+    unitSeason(qy)
+    unitCycle(qy)
+    allSeasons(qy)
+    allSeasons(qy, abb = TRUE)
+    allSeasons(qy, abb = FALSE)
+
+    dw <- new("DayWeekCycle")
+    unitSeason(dw)
+    unitCycle(dw)
+    allSeasons(dw)
+    allSeasons(dw, abb = TRUE)
+    allSeasons(dw, abb = FALSE)
+
+    fdw <- new("FiveDayWeekCycle")
+    unitSeason(fdw)
+    unitCycle(fdw)
+    allSeasons(fdw)
+    allSeasons(fdw, abb = TRUE)
+    allSeasons(fdw, abb = FALSE)
+
+    oc <- new("OpenCloseCycle")
+    unitSeason(oc)
+    unitCycle(oc)
+    allSeasons(oc)
+    allSeasons(oc, abb = TRUE)
+    allSeasons(oc, abb = FALSE)
 
 
     BuiltinCycle(2)
@@ -59,6 +98,59 @@ test_that("the cycle classes are ok",
     as(yc, "SimpleCycle")
 
     pcCycle(4)
+    cyc <- pcCycle(4, seasons = c("Spring", "Summer", "Autumn", "Winter"))
+    pcCycle(cyc, "BareCycle")
+    pcCycle(cyc,
+            unitCycle = "Year", unitSeason = "Season",
+            allSeasons = c("Spring", "Summer", "Autumn", "Winter"),
+            abb = c("Sp", "Su", "Au", "Wi"))
+    
+    pcCycle(cyc, type = "SimpleCycle",
+            unitCycle = "Year", unitSeason = "Season",
+            allSeasons = c("Spring", "Summer", "Autumn", "Winter"),
+            abb = c("Sp", "Su", "Au", "Wi"))
+    
 
+pcCycle("QuarterYearCycle")
+pcCycle("QuarterYearCycle", type = "BareCycle")
+pcCycle("QuarterYearCycle", type = "SimpleCycle")
+
+
+    ## 'Every30MinutesCycle'
+    e30 <- BuiltinCycle(48)
+    unitSeason(e30)
+    unitCycle(e30)
+    allSeasons(e30)
+    allSeasons(e30, abb = TRUE)
+
+
+    ## Cyclic !!
+ap <- pcts(AirPassengers)
+nSeasons(ap) # 12
+    unitCycle(ap)
+    unitSeason(ap)
+
+    ## can't change built-in class 'MonthYearCycle'
+    expect_error(unitCycle(ap) <- "Godina")
+    expect_error(unitSeason(ap) <- "Sezon")
+
+    ap2 <- ap
+    ap2@cycle <- as(ap2@cycle, "SimpleCycle")
+    unitCycle(ap2) <- "Godina"
+    unitSeason(ap2) <- "Sezon"
+    allSeasons(ap2) <- paste0("S_", 1:12)
+    
+## pcfr <- pcts(dataFranses1996)
+## nSeasons(pcfr) # 4
+
+
+tipi <- dataFranses1996[ , "USTotalIPI"]
+## plot(tipi)
+## convert to PeriodicTS and remove NA's at the start and end
+pctipi <- pcts(tipi)
+pctipi <- window(pctipi, start = availStart(pctipi), end = availEnd(pctipi))
+## plot(pctipi)
+    plot(autocorrelations(pctipi, maxlag = 10))
+    
 })
 

@@ -71,6 +71,8 @@ test_that("constructors of periodic filter models are ok",
 
     ## autocorrelations(ar.spec)
 
+    ## this is for Legacy models:
+    ## permodelmf(pfar)
 })
 
 

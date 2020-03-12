@@ -32,16 +32,16 @@ intercept2permean <- function(intercept, coef, order, nseasons = nrow(coef)){
     rev(mu)
 }
 
-permodelmf <- function(permodel, update=TRUE){
+permodelmf <- function(permodel, update = TRUE){
     co <- permodel@coef
     co[is.na(co)] <- 0
 
     ## patch for the case pmax (i.e. max(order)) < nseasons
     ## TODO: this is a job  for the MultiFilter constructor.
     if(ncol(co) < nrow(co))
-        co <- cbind(co, matrix(rep(0, (nrow(co)-ncol(co))*nrow(co)), nrow=nrow(co)))
+        co <- cbind(co, matrix(rep(0, (nrow(co) - ncol(co)) * nrow(co)), nrow = nrow(co)))
 
-    mf <- new("MultiFilter", coef=co, order = permodel@order)
+    mf <- new("MultiFilter", coef = co, order = permodel@order)
 
     if(update){
         permodel@jordan$mf <- mf
@@ -67,10 +67,10 @@ function(af,r,k,n,per,res0){
    res
 }
 
-ptildeorders <- function(...){
-    .Deprecated(msg = "Please use 'pdSafeParOrder' (the new name of 'ptildeorders')")
-    sim_parCoef(...)
-}
+## ptildeorders <- function(...){
+##     .Deprecated(msg = "Please use 'pdSafeParOrder' (the new name of 'ptildeorders')")
+##     pdSafeParOrder(...)
+## }
 
 pdSafeParOrder <- function(p) {
     kmax <- which.max(p);

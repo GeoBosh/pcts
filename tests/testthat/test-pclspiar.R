@@ -23,4 +23,17 @@ test_that("pclspiar() is ok", {
     expect_identical(coefper2I2, piar2par(picoef2, parcoef2))
     expect_identical(coefper2I2, piar2par(matrix(picoef2, ncol = 1), parcoef2))
 
+    ## from examples for "pcTest-methods"
+    cu <- pcts(dataFranses1996[ , "CanadaUnemployment"])
+    cu <- window(cu, start = availStart(cu), end = availEnd(cu))
+
+    test_piar(cu, 4, 1, sintercept = TRUE)
+    pcTest(cu, "piar", 4, 1, sintercept = TRUE)
+    pcTest(as.numeric(cu), "piar", 4, 1, sintercept = TRUE)
+
+    ## if(require(partsm)){
+    ##     ## same with LRurpar.test from partsm
+    ##     LRurpar.test(cu, list(regular = c(0,0,0), seasonal = c(1,0), regvar = 0), p = 1)
+    ## }
+
 })

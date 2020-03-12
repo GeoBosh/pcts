@@ -3,12 +3,12 @@ sim_pwn <- function(n = 100, period = NA, seasonof1st = 1, scale = NULL, shift =
     nsim <- n + seasonof1st - 1
 
     if(is.na(period))  # TODO: this is dubious; make this an error
-      period <- if(class(f) == "list")
+      period <- if(inherits(f, "list"))
                     length(f)
                 else
                     max(length(shift), length(scale))
 
-    if(class(f) != "list"){  ## dangerous way to check!
+    if(!inherits(f, "list")){  ## dangerous way to check!
         eps <- f(nsim, ...)
     }else{
         eps <- numeric(nsim)
@@ -37,6 +37,9 @@ sim_pwn <- function(n = 100, period = NA, seasonof1st = 1, scale = NULL, shift =
 ## 2019-05-10 return PeriodicTS object (now that the class has been settled.
 ##     TODO: add argument to control this?
 ##
+## 2020-03-11 
+##     use isNA() rather than the wrong is.na() in sweveral places below
+##
 ## TODO: This is a very old function patched several times, maybe needs rewrite.
 sim_pc <- function(model, n = NA, randgen = rnorm, seasonof1st = 1, nepochs = NA,
                    n.start = NA, x, eps, nmean = NULL, nintercept = NULL, ...  ){
@@ -46,7 +49,7 @@ sim_pc <- function(model, n = NA, randgen = rnorm, seasonof1st = 1, nepochs = NA
         innov       <- NA
         innovinit   <- NA
         innovbefore <- NA
-    }else if( class(eps)=="list" ){
+    }else if(inherits(eps, "list")){
         innovbefore <- eps$before
         innovinit   <- eps$init
         innov       <- eps$main
@@ -56,10 +59,10 @@ sim_pc <- function(model, n = NA, randgen = rnorm, seasonof1st = 1, nepochs = NA
         innovbefore <- NA
     }
 
-    if( missing(x) || is.na(x) ){
+    if( missing(x) || isNA(x) ){
         xbefore <- NA
         xinit   <- NA
-    }else if( class(x)=="list" ){
+    }else if(inherits(x, "list")){
         xbefore <- x$before
         xinit   <- x$init
     }else{
@@ -71,7 +74,7 @@ sim_pc <- function(model, n = NA, randgen = rnorm, seasonof1st = 1, nepochs = NA
         ct.before <- NULL
         ct.init   <- NULL
         ct        <- NULL
-    }else if( class(nintercept)=="list" ){
+    }else if(inherits(nintercept, "list")){
         ct.before <- nintercept$before
         ct.init   <- nintercept$init
         ct        <- nintercept$main
@@ -91,29 +94,29 @@ sim_pc <- function(model, n = NA, randgen = rnorm, seasonof1st = 1, nepochs = NA
         else
             n <- period*defaultnyears
 
-    if(       is.na(innovbefore)  &&  !is.na(xbefore) )
+    if(       isNA(innovbefore)  &&  !isNA(xbefore) )
         innovbefore <- numeric(length(xbefore))
-    else if( !is.na(innovbefore)  &&   is.na(xbefore) )
+    else if( !isNA(innovbefore)  &&   isNA(xbefore) )
         xbefore <- numeric(length(innovbefore))
-    else if(  is.na(innovbefore)  &&   is.na(xbefore) )
+    else if(  isNA(innovbefore)  &&   isNA(xbefore) )
         innovbefore <- xbefore <- numeric(0)
-    else if( !is.na(innovbefore)  &&  !is.na(xbefore) )
+    else if( !isNA(innovbefore)  &&  !isNA(xbefore) )
         if(length(innovbefore) != length(xbefore) )
             stop("Lengths of xbefore and innovbefore must be equal if both are present.")
 
-    if(       is.na(innovinit)  &&  !is.na(xinit) )
+    if(       isNA(innovinit)  &&  !isNA(xinit) )
         innovinit <- numeric(length(xinit))
-    else if( !is.na(innovinit)  &&   is.na(xinit) )
+    else if( !isNA(innovinit)  &&   isNA(xinit) )
         xinit <- numeric(length(innovinit))
-    else if(  is.na(innovinit)  &&   is.na(xinit) )
+    else if(  isNA(innovinit)  &&   isNA(xinit) )
         innovinit <- xinit <- numeric(0)
-    else if( !is.na(innovinit)  &&  !is.na(xinit) )
+    else if( !isNA(innovinit)  &&  !isNA(xinit) )
         if(length(innovinit) != length(xinit) )
             stop("Lengths of xinit and innovinit must be equal if both are present.")
 
     n.before <- length(xbefore)
 
-    if(is.na(innov)){
+    if(isNA(innov)){
         ## 2016-08-13 need to modify seasonof1st if length(innovinit) > 0;
         ##   doing it lazy - generate with seasonof1st,
         ##                   then drop length(innovinit) values

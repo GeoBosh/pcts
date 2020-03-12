@@ -10,6 +10,15 @@ test_that("constructors of periodic AR filters are ok",
     expect_identical(ar_filt1@coef, matrix(NA_real_, 4, 0))
     expect_equal(ar_filt1@order, rep(0L, 4))
 
+    filterCoef(ar_filt1, "BJ")
+    filterCoef(ar_filt1, "SP")
+    expect_error(filterCoef(ar_filt1, "dummy"))
+
+    filterCoef(as(ar_filt1, "PeriodicSPFilter"), "BJ")
+    filterCoef(as(ar_filt0, "PeriodicSPFilter"), "SP")
+    expect_error(filterCoef(as(ar_filt1, "PeriodicSPFilter"), "dummy"))
+
+    
     ar_filt2 <- new("PeriodicBJFilter", order = rep(2L, 4))
     expect_identical(nSeasons(ar_filt2), 4L)
     expect_true(all(is.na(ar_filt2@coef)))
@@ -33,12 +42,26 @@ test_that("constructors of periodic AR filters are ok",
     arma_filt3 <- new("PeriodicArmaFilter", ar = ar_filt3)
     expect_output(show(arma_filt3))
     maxLag(arma_filt3)
+    as(arma_filt3, "PeriodicArFilter")
+    expect_error(as(arma_filt3, "PeriodicMaFilter"))
+
+    arma_filt4 <- new("PeriodicArmaFilter", ma = ar_filt3)
+    as(arma_filt4, "PeriodicMaFilter")
+    expect_error(as(arma_filt4, "PeriodicArFilter"))
+
+    new("PeriodicArmaFilter", nseasons = 4)
+
+    
     ## for now, just run to ensure they do not throw error:
     filterPoly(ar_filt3)
     filterPoly(as(ar_filt3, "PeriodicSPFilter"))
 
+    
     dummy <- new("PeriodicArFilter")
+    expect_output(show(dummy))
+    
     dummy <- new("PeriodicMaFilter")
+    expect_output(show(dummy))
 
 
 })

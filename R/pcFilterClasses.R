@@ -173,15 +173,15 @@ setValidity("PeriodicMaFilter",
 setAs("PeriodicArmaFilter", "PeriodicArFilter",
       function(from){
           if(any(from@ma@order > 0))
-              stop("Non-trivial autoregressive part.")
-          callNextMethod() ## lazy
+              stop("Non-trivial moving average part.")
+          new("PeriodicArFilter", from)
       })
 
 setAs("PeriodicArmaFilter", "PeriodicMaFilter",
       function(from){
           if(any(from@ar@order > 0))
               stop("Non-trivial autoregressive part.")
-          callNextMethod() ## lazy
+          new("PeriodicMaFilter", from)
       })
 
 setMethod("show", signature(object = "PeriodicMonicFilterSpec"),
@@ -189,7 +189,7 @@ setMethod("show", signature(object = "PeriodicMonicFilterSpec"),
           {
               cat("order: ", object@order, "\n")
               cat("Coefficients:")
-              if(max(object@order) == 0)
+              if(length(object@order) == 0  ||  max(object@order) == 0)
                   cat(" <None>", "\n")
               else{
                   cat("\n")
