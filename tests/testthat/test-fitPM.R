@@ -73,3 +73,113 @@ test_that("test fitPM()",
     fitPM(pipfm, perunit)
 
 })
+
+
+test_that("test mC.ss() works",
+{
+    ## examples from mC.ss.Rd
+# test0 roots
+spec.coz2 <- mcompanion::mcSpec(dim = 5, mo = 4, root1 = c(1,1), order = rep(2,4))
+spec.coz2
+xxcoz2a <- mC.ss(spec.coz2)
+
+## test0 roots
+spec.coz4 <- mcompanion::mcSpec(dim = 5, mo = 4, root1 = c(1,1), order = rep(3,4))
+xxcoz4a <- mC.ss(spec.coz4)
+
+    ## excerpt from 
+    ## ~/Documents/Rwork/pctsExperiments/Rsessions/combined upto 2013-12-31 17h36m.Rhistory
+spec.co2 <- mcompanion::mcSpec(dim = 5, mo = 4, siorder = 1)
+tmp2 <- mC.ss(spec.co2)
+## only two iters for testthat
+expect_output(mc.res1ssenv2b <- tmp2$env$minimBB(nsaauto, control=list(maxit=2)))
+
+expect_output(tmp2$env$minimBB(nsaauto, control=list(maxit=2)))
+expect_output(tmp2$env$minimBBlu(nsaauto, control=list(maxit=2)))
+expect_output(tmp2$env$minimBB(nsaauto, control=list(maxit=2), CONDLIK = FALSE))
+tmp2$env$minim(nsaauto, control=list(maxit=2))
+tmp2$env$minim(nsaauto, control=list(maxit=2), CONDLIK = FALSE)
+expect_output(tmp2$env$minimBB(nsaauto, control=list(maxit=2), CONDLIK = FALSE))
+mC.ss(spec.co2, generators = TRUE)
+    
+    tmp2$env$mcparam2optparam()
+    tmp2$env$mcsigma2(nsaauto)
+    tmp2$env$mcsigma2(nsaauto, tmp2$env$mcparam2optparam())
+    
+mC.ss(spec.co2, init = tmp2$env$mcparam2optparam())    
+
+    ## this chunk was commented out in mC.ss.Rd, old testing with it.
+##  > xxco.1 <- mC.ss(m1.new, generators = TRUE)
+## 
+##  > datansa <- read.csv("nsadata.csv")
+##  > nsaauto <- ts(datansa$AUTOMOTIVEPRODNSA[113:328], start=c(1947, 1), frequency=4)
+## 
+##  > res.xxco.1 <- xxco.1$env$minimBB(nsaauto, control=list(maxit=1000))
+## 
+##  condlik is:  32.85753	persd is:  16.96771 10.40725 3.567698 7.426556
+##  iter:  0  f-value:  32.85753  pgrad:  14.83674
+##  iter:  10  f-value:  30.21297  pgrad:  0.0007615952
+##    Successful convergence.
+## 
+##  > res.xxco.1$value
+##  [1] 30.21297
+##  > res.xxco.1$par
+##       co.r1      co.r2      co.r3      co.r4
+##  -0.4069477 -0.5093360 -0.6026860 -0.5174826
+##  > res.xxco.1
+##  $par
+##       co.r1      co.r2      co.r3      co.r4
+##  -0.4069477 -0.5093360 -0.6026860 -0.5174826
+## 
+##  $value
+##  [1] 30.21297
+## 
+##  $gradient
+##  [1] 9.023893e-06
+## 
+##  $fn.reduction
+##  [1] 2.644559
+## 
+##  $iter
+##  [1] 14
+## 
+##  $feval
+##  [1] 16
+## 
+##  $convergence
+##  [1] 0
+## 
+##  $message
+##  [1] "Successful convergence"
+## 
+##  $cpar
+##  method      M
+##       2     50
+## 
+##  > with(xxco.1$env, model)
+##  $period
+##  [1] 4
+## 
+##  $p
+##  [1] 5
+## 
+##  $q
+##  [1] 0
+## 
+##  $phi
+##            [,1]          [,2]          [,3] [,4]       [,5]
+##  [1,] 1.1646497 -1.165471e-16 -4.254923e-17    1 -1.1646497
+##  [2,] 0.8451102 -2.220446e-16 -5.456035e-17    1 -0.8451102
+##  [3,] 0.7989768  0.000000e+00  2.220446e-16    1 -0.7989768
+##  [4,] 1.2716195 -1.110223e-16 -6.058867e-17    1 -1.2716195
+## 
+##  > with(xxco.1$env, zapsmall(model$phi))
+##            [,1] [,2] [,3] [,4]       [,5]
+##  [1,] 1.1646497    0    0    1 -1.1646497
+##  [2,] 0.8451102    0    0    1 -0.8451102
+##  [3,] 0.7989768    0    0    1 -0.7989768
+##  [4,] 1.2716195    0    0    1 -1.2716195
+
+
+    
+})

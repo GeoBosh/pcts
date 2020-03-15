@@ -13,9 +13,9 @@ pcarma_unvec(list(p = 2, q = 0, period = 2, param = coef3))
 ## actually, the model is PAR(1,2):
 s3a <- pcarma_param_system(pc3, NULL, NULL, c(1, 2), 0, 2)
 coef3a <- solve(s3a$A, s3a$b)
-pcarma_unvec(list(p = c(1,2), q = 0, period = 2, param = coef3a))
-
-
+coef3a_more <- pcarma_unvec(list(p = c(1,2), q = 0, period = 2, param = coef3a))
+coef3a_vec <- pcarma_tovec(coef3a_more)
+    
 ## prepare test parameters for a PAR(2) model with period=2.
 ##   (rounded to 6 digits from the above example.
 m1 <- rbind(c(1, 0.81, 0), c(1, 0.4972376, 0.4972376) )

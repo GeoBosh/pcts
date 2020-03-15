@@ -1,3 +1,4 @@
+.nojekyll
 ^docs/
 .rsync_exclude
 ^_pkgdown.yml
@@ -12,3 +13,4 @@
 ^Experimental
 ^tests/testthat/[.]RData$
 [.]travis[.]yml
+^data-raw$

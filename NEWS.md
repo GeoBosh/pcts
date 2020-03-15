@@ -1,5 +1,12 @@
 # Version 0.15.0
 
+- improved `pcTest()`.
+
+- included "nsadata.csv" in the package, currently as internal data for testing.
+  
+  Need description and maybe a better name before exporting.  Object `datansa`
+  is the whole dataset, object `nsaauto` is column "AUTOMOTIVEPRODNSA".
+
 - changed slightly some Rd files not rendered well by pkgdown, e.g. move commented
   items out of 'describe' in methods' descriptions. 
 

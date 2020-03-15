@@ -82,10 +82,15 @@ setMethod("pcTest", signature(x = "ANY", nullmodel = "character"),
 
 
 setMethod("pcTest", signature(x = "numeric", nullmodel = "character"),
-          function(x, nullmodel, nseasons, ...){
+          function(x, nullmodel, nseasons, ..., maxlag){
               switch(nullmodel,
                      "wn" = Box.test(x, ...),
                      "piar" = test_piar(x, nseasons, ...),
+                         "pwn" = {
+                              acr <- autocorrelations(x, nseasons = nseasons, maxlag = maxlag)
+                              acrsl <- slMatrix(as.matrix(acr))
+                              pcTest(acrsl, nullmodel, nepoch = floor(length(x)/nseasons), ...)
+                         },
                      # default
                        # do.call(nullmodel, list(x, ...), quote = TRUE)
                        # todo: think about this?
@@ -96,18 +101,30 @@ setMethod("pcTest", signature(x = "numeric", nullmodel = "character"),
 
 
 setMethod("pcTest", signature(x = "PeriodicTimeSeries", nullmodel = "character"),
-          function(x, nullmodel, ...){    # TODO: arg. for a specific column in multivar case?
+          function(x, nullmodel, ..., maxlag){ # TODO: arg. for a specific column in multivar case?
               nseas <- nSeasons(x)
               if(nVariables(x) == 1){
-                      # 2019-04-26 was:  pcTest(coreVector(x), nullmodel, nseas, ...)
-                  pcTest(as(x, "vector"), nullmodel, nseas, ...)
+                  ## 2019-04-26 was:  pcTest(coreVector(x), nullmodel, nseas, ...)
+                  switch(nullmodel,
+                         "pwn" = {
+                              acr <- autocorrelations(x, maxlag)
+                              acrsl <- slMatrix(as.matrix(acr))
+                              pcTest(acrsl, nullmodel, nepoch = nCycles(x), ...)
+                         },
+                         ## default
+                         pcTest(as(x, "vector"), nullmodel, nseas, ...)
+                         )
               }else{ # for now just do the test for each variable separately
                       # 2019-04-26 was:  m <- coreMatrix(x)
-                  m <- as(x, "matrix")
+                      # 2020-03-15 commented out: m <- as(x, "matrix")
                   res <- vector(nVariables(x), mode = "list")
+                  names(res) <- colnames(x)
                   ## TODO: names of variables
                   for(i in seq(along = res))
-                      res[[i]] <- pcTest(m[ , i], nullmodel, nseas, ...)
+                         # 2020-03-15 was: 
+                         #   res[[i]] <- pcTest(m[ , i], nullmodel, nseas, maxlag = maxlag, ...)
+                      res[[i]] <- pcTest(x[[i]], nullmodel, maxlag = maxlag, ...)
+                  res
               }
           }
           )

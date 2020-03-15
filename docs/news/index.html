@@ -115,6 +115,11 @@
 <a href="#version-0150" class="anchor"></a>Version 0.15.0<small> Unreleased </small>
 </h1>
 <ul>
+<li><p>improved <code><a href="../reference/pcTest-methods.html">pcTest()</a></code>.</p></li>
+<li>
+<p>included “nsadata.csv” in the package, currently as internal data for testing.</p>
+<p>Need description and maybe a better name before exporting. Object <code>datansa</code> is the whole dataset, object <code>nsaauto</code> is column “AUTOMOTIVEPRODNSA”.</p>
+</li>
 <li><p>changed slightly some Rd files not rendered well by pkgdown, e.g. move commented items out of ‘describe’ in methods’ descriptions.</p></li>
 <li><p>replaced wrong use of <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> with <code><a href="https://rdrr.io/pkg/gbutils/man/isNA.html">gbutils::isNA()</a></code> or other suitable code.</p></li>
 <li><p>some old code contained instances of <code>class(x) == something</code>, now fixed.</p></li>

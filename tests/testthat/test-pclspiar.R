@@ -36,4 +36,24 @@ test_that("pclspiar() is ok", {
     ##     LRurpar.test(cu, list(regular = c(0,0,0), seasonal = c(1,0), regvar = 0), p = 1)
     ## }
 
+
+    pcTest(pcts(nsaauto), "wn")
+    pcTest(pcts(nsaauto), "piar", p = 1)
+
+    ## tmpslMat <- slMatrix(rnorm(32), period = 4, maxlag = 7)
+
+    acr <- autocorrelations(pcts(nsaauto), maxlag = 7)
+    acrsl <- slMatrix(as.matrix(acr))
+    pcTest(acrsl, "pwn", nepoch = nCycles(pcts(nsaauto)))
+    pcTest(acrsl, "periodicity", nepoch = nCycles(pcts(nsaauto)))
+
+    pcTest(pcts(nsaauto), "pwn", maxlag = 4)
+    pcTest(as.numeric(nsaauto), "pwn", maxlag = 4, nseasons = 4)
+    pcTest(acrsl, "periodicity", nepoch = nCycles(pcts(nsaauto)))
+    pcTest(pcts(nsaauto), "wn")
+    pcTest(pcts(nsaauto), "wn", lag = 3)
+    ## pcTest(matrix(nsaauto, nrow = 4), "wn")
+
+    pcTest(pcts(datansa), "pwn", maxlag = 4)
+    
 })
