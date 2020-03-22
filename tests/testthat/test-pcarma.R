@@ -90,6 +90,19 @@ pc3 <- slMatrix(period=2,maxlag=5,f=ex1f,type="tt")
 res0p2 <- alg1(pc3[],c(0,2))
 res1p2 <- alg1(pc3[],c(1,2))
 res3p3 <- alg1(pc3[],c(3,3))
-    
-    
+
+## acfsys1.R in package 'pctsArma    '
+m1a <- rbind(c(1, 0, 0), c(1, 0.4972376, 0.4972376))
+m2 <- rbind(c(1, 0, 0), c(1, 0, 0))
+
+testphia <- slMatrix(init = m1a)
+testtheta <- slMatrix(init = m2)
+
+si2a <- PeriodicVector(c(1, 0.1049724)) 
+
+acfsys <- pcarma_acvf_system(testphia, testtheta, si2a, 2, 0, 2)
+solve(acfsys$A, acfsys$b)
+
+expect_identical(acfsys, readRDS("acfsys_old_RData.rds"))
+
 })
