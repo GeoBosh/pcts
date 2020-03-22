@@ -46,8 +46,6 @@
 }
 \author{Georgi N. Boshnakov}
 \section{Methods}{
-\describe{
-
 %
 %\item{\code{signature(x = "CycleDescription")}}{
 %%%  ~~describe this method here~~
@@ -62,6 +60,7 @@
 %%%  ~~describe this method here~~
 %}
 %
+\describe{
 \item{\code{signature(object = "DayWeekCycle")}}{{
 %%  ~~describe this method here~~
 }
