@@ -22,15 +22,15 @@
 <script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -42,9 +42,9 @@
 <meta property="og:title" content="Create or extract Cycle objects — pcCycle-methods" />
 <meta property="og:description" content="
 
-Generic function with methods for creating or extracting cycle
-  objects. The type of the cycle object to return is inferred from the
-  arguments." />
+pcCycle() is a generic function with methods for creating,
+  converting, modifying, and extracting cycle objects. BuiltinCycle() 
+  is a function to create cycle objects from the builtin cycle classes." />
 
 
 
@@ -91,6 +91,18 @@ Generic function with methods for creating or extracting cycle
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/pcts_data.html">Importing and manipulating periodic time seires data</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -123,12 +135,14 @@ Generic function with methods for creating or extracting cycle
     <div class="ref-description">
     
 
-<p>Generic function with methods for creating or extracting cycle
-  objects. The type of the cycle object to return is inferred from the
-  arguments.</p>
+<p><code>pcCycle()</code> is a generic function with methods for creating,
+  converting, modifying, and extracting cycle objects. <code>BuiltinCycle()</code> 
+  is a function to create cycle objects from the builtin cycle classes.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pcCycle</span>(<span class='no'>x</span>, <span class='no'>type</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>pcCycle</span>(<span class='no'>x</span>, <span class='no'>type</span>, <span class='no'>...</span>)
+
+<span class='fu'>BuiltinCycle</span>(<span class='no'>n</span>, <span class='kw'>coerce</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>first</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>stop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -136,8 +150,7 @@ Generic function with methods for creating or extracting cycle
     <tr>
       <th>x</th>
       <td><p>an object, methods include numeric, character and cyclic objects,
-    see Details.</p>
-<p></p></td>
+    see Details.</p></td>
     </tr>
     <tr>
       <th>type</th>
@@ -150,6 +163,25 @@ Generic function with methods for creating or extracting cycle
       <th>...</th>
       <td><p>further arguments for methods.</p></td>
     </tr>
+    <tr>
+      <th>n</th>
+      <td><p>number of seasons, an integer.</p></td>
+    </tr>
+    <tr>
+      <th>coerce</th>
+      <td><p>if <code>TRUE</code> coerce the objects to a modifiable cycle class,
+    currently <code>"SimpleCycle"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>first</th>
+      <td><p>which season is first for this object.</p></td>
+    </tr>
+    <tr>
+      <th>stop</th>
+      <td><p>if <code>TRUE</code>, the default, throw error if there is no builtin
+    class with <code>n</code> seasons, otherwise create a <code>"BareCycle"</code>
+    object.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -159,16 +191,37 @@ Generic function with methods for creating or extracting cycle
 <p><code>pcCycle</code> serves as both a constructor and extractor of cycle
   objects. It is meant to just do the right thing, relieving the user
   from the burden of specifying a particular cycle class.</p>
+<p>If <code>x</code> is numeric it constructs a cycle object with period
+  <code>x</code> and additional properties as specified by the other
+  arguments.  If <code>x</code> is a character string, it is taken to be the
+  name of one of the builtin cycles.</p>
+<p><code>pcCycle</code> can be used to create a modified version of a cycle
+  object and/or convert it to another cycle type. This is done by
+  providing a cycle object as argument <code>x</code>, i.e. one inheriting
+  from <code>"BasicCycle"</code>.</p>  
 <p>If <code>x</code> inherits from <code>"Cyclic"</code>, <code>pcCycle</code> returns its
-  cycle component. If <code>x</code> is numeric it constructs a cycle object
-  with period <code>x</code> and additional properties as specified by the
-  other arguments.  If <code>x</code> is a character string, it is taken to be
-  the name of one of the builtin cycles.</p>
+  cycle component.</p>
 <p>Argument <code>type</code> should be rarely needed, except maybe to
   conveniently force conversion of the builtin type to an ordinary type.</p>
+<p>The descriptions of the individual methods in section Methods give
+  some further specific details.</p>
+<p><code>BuiltinCycle</code> is a convenience function to create objects from
+  builtin cycle classes by specifying the number of seasons.  The
+  builtin cycle classes are esseintially fixed, except that which season
+  is considered first can be changed using argument <code>first</code>. If
+  other modifications are desired, convert the returned builtin cycle
+  object to class <code>"SimpleCycle"</code>. This can be done also in the
+  call to <code>BuiltinCycle()</code> by specifying <code>coerce = TRUE</code>.</p>
+<p>By default, <code>BuiltinCycle</code> throws an error if there is no builtin
+  class with the requested number of seasons. Set argument <code>stop</code>
+  to FALSE to create an object from class <code>"BareCycle"</code> instead
+  (and it will be converted to <code>"SimpleCycle"</code> if <code>coerce =
+  TRUE</code>). Argument <code>stop</code> is mainly for programming.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>an object from one of the cycle classes</p>
+    <p>for <code>pcCycle</code>, an object from one of the cycle classes;</p>
+<p>for <code>BuiltinCycle</code>, an object from one of the builtin classes,
+  coerced if requested.</p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     <p><!-- %%%% \item{\code{signature(x = "character")}}{ -->
@@ -198,27 +251,95 @@ Generic function with methods for creating or extracting cycle
 <!-- %} -->
 <!-- %} --></p><dl'>
 
-<dt><code>signature(x = "Cyclic", type = "ANY")</code></dt><dd><p>Returns <code>x@cycle</code>. Currently ignores the remaining arguments.</p></dd><dt><code>signature(x = "numeric", type = "character")</code></dt><dd><p><code>x</code> is the period in this case. If <code>x</code> is the only argument
-  (not counting <code>type</code>), a <code>"BareCycle"</code> object is created,
-  otherwise the constructor of <code>"SimpleCycle"</code> is invoked with all
-  arguments except <code>type</code> passed on to it.</p></dd><dt><code>signature(x = "numeric", type = "missing")</code></dt><dd><p><code>x</code> is the period in this case. If <code>x</code> is the only argument
-  (not counting <code>type</code>), a <code>"BareCycle"</code> object is created,
-  otherwise the constructor of <code>"SimpleCycle"</code> is invoked with all
-  arguments except <code>type</code> passed on to it.</p></dd><dt><code>signature(x = "PeriodicTimeSeries", type = "ANY")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd><dt><code>signature(x = "ts", type = "ANY")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd><dt><code>signature(x = "BasicCycle", type = "character")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd><dt><code>signature(x = "BasicCycle", type = "missing")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd><dt><code>signature(x = "character", type = "character")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd><dt><code>signature(x = "character", type = "missing")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd>
+  <dt><code>signature(x = "numeric", type = "missing")</code></dt><dd><p>creates a cycle object with period <code>x</code>. If <code>x</code> is the only
+    argument, a <code>"BareCycle"</code> object is created, otherwise the
+    constructor of <code>"SimpleCycle"</code> is invoked with all arguments
+    except <code>type</code> passed on to it.</p></dd>
+
+  <dt><code>signature(x = "character", type = "missing")</code></dt><dd><p>creates an object from the class specified by <code>x</code>.
+    Currently this is equivalent to <code>new(x, ...)</code> but somewhat
+    more portable. Future amendments may use a more suitable class
+    for some combinations of the arguments. Also, if a class is renamed,
+    a code will be inserted here to create an equivalent object.</p></dd>
+  
+  <dt><code>signature(x = "numeric", type = "character")</code></dt><dd><p></p></dd>
+  <dt><code>signature(x = "character", type = "character")</code></dt><dd><p>first call the method with <code>type = "missing"</code>, then
+    convert the result to class <code>type</code>.</p></dd>
+
+  <dt><code>signature(x = "Cyclic", type = "ANY")</code></dt><dd><p>extracts the cycle component of <code>x</code> (<code>x@cycle</code>).
+    Currently ignores the remaining arguments.</p></dd>
+
+  <dt><code>signature(x = "BasicCycle", type = "missing")</code></dt><dd><p>convert an object from any cycle class to class
+    <code>"SimpleCycle"</code>. This is like <code>as(x, "SimpleCycle")</code> but
+    can have further arguments.</p></dd>
+  <dt><code>signature(x = "BasicCycle", type = "character")</code></dt><dd><p>convert an object from any cycle class to class
+    <code>type</code>.</p></dd>
+
+  <dt><code>signature(x = "ts", type = "missing")</code></dt><dd><p></p></dd>
+  <dt><code>signature(x = "ts", type = "character")</code></dt><dd><p>when <code>x</code> is of class <code>"ts"</code>, extract the frequency and
+    convert it to a cycle class. Just as for <code>"ts"</code>, certain
+    frequencies are taken to correspond to specific classes. While base
+    <span style="R">R</span> treats periodicities 4 and 12 specially, <code>pcCycle</code> extends
+    this to all builtin classes in pcts. Argument <code>type</code> can be
+    used to overwrite this default behaviour by requesting a specific
+    class. In particular, <code>type = "BareCycle"</code> and <code>type = ""</code>
+    cause the result to be <code>"BareCycle"</code>.</p></dd>
+
+  <dt><code>signature(x = "PeriodicTimeSeries", type = "missing")</code></dt><dd><p></p></dd>
+  <dt><code>signature(x = "PeriodicTimeSeries", type = "character")</code></dt><dd><p>extract the cycle part of an object inheriting from
+    <code>"PeriodicTimeSeries"</code>, currently <code>"PeriodicTS"</code> or
+    <code>"PeriodicMTS"</code>. Argument <code>type</code> can be used to force the
+    result to be from a specific cycle class, as in the methods for
+    <code>"ts"</code>.</p></dd>
+
+
 </dl>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><!-- % \code{\link{BuiltinCycle}} for the recommended way to create objects -->
+  <!-- % from the builtin classes --></p>
+<p><code><a href='allSeasons.html'>allSeasons</a></code> for further examples,</p>  
+<p>class <code><a href='BuiltinCycle-class.html'>BuiltinCycle</a></code> for the available builtin
+  classes and more examples</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>pcCycle</span>(<span class='fl'>4</span>)</div><div class='output co'>#&gt; Object from class 'BareCycle'
+    <pre class="examples"><div class='input'><span class='co'>## pcCycle</span>
+<span class='fu'>pcCycle</span>(<span class='fl'>4</span>)</div><div class='output co'>#&gt; Object from class 'BareCycle'
 #&gt; Number of seasons: 4 </div><div class='input'><span class='fu'>pcCycle</span>(<span class='fl'>4</span>, <span class='kw'>seasons</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Spring"</span>, <span class='st'>"Summer"</span>, <span class='st'>"Autumn"</span>, <span class='st'>"Winter"</span>))</div><div class='output co'>#&gt; Object from class 'SimpleCycle'
 #&gt; Number of seasons: 4 
 #&gt; Seasons: Spring Summer Autumn Winter 
 #&gt; Abbreviated: Spring Summer Autumn Winter </div><div class='input'>
 <span class='fu'>pcCycle</span>(<span class='st'>"QuarterYearCycle"</span>)</div><div class='output co'>#&gt; Object from built-in class 'QuarterYearCycle'
-#&gt; Cycle start: Quarter_1 </div><div class='input'><span class='fu'>pcCycle</span>(<span class='st'>"QuarterYearCycle"</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"BareCycle"</span>)</div><div class='output co'>#&gt; Object from class 'BareCycle'
+#&gt; Cycle start: Quarter_1 </div><div class='input'><span class='fu'>BuiltinCycle</span>(<span class='fl'>4</span>) <span class='co'># same, recommended</span></div><div class='output co'>#&gt; Object from built-in class 'QuarterYearCycle'
+#&gt; Cycle start: Quarter_1 </div><div class='input'>
+<span class='fu'>pcCycle</span>(<span class='st'>"QuarterYearCycle"</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"BareCycle"</span>)</div><div class='output co'>#&gt; Object from class 'BareCycle'
 #&gt; Number of seasons: 4 </div><div class='input'><span class='fu'>pcCycle</span>(<span class='st'>"QuarterYearCycle"</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"SimpleCycle"</span>)</div><div class='output co'>#&gt; Object from class 'SimpleCycle'
 #&gt; Number of seasons: 4 
 #&gt; Seasons: Quarter_1 Quarter_2 Quarter_3 Quarter_4 
-#&gt; Abbreviated: Q1 Q2 Q3 Q4 </div></pre>
+#&gt; Abbreviated: Q1 Q2 Q3 Q4 </div><div class='input'>
+<span class='co'>## BuiltinCycle</span>
+<span class='fu'>BuiltinCycle</span>(<span class='fl'>2</span>)  <span class='co'># "OpenCloseCycle"</span></div><div class='output co'>#&gt; Object from built-in class 'OpenCloseCycle'
+#&gt; Cycle start: Open </div><div class='input'><span class='fu'>BuiltinCycle</span>(<span class='fl'>4</span>)  <span class='co'># "QuarterYearCycle"</span></div><div class='output co'>#&gt; Object from built-in class 'QuarterYearCycle'
+#&gt; Cycle start: Quarter_1 </div><div class='input'><span class='fu'>BuiltinCycle</span>(<span class='fl'>5</span>)  <span class='co'>#  five day week cycle</span></div><div class='output co'>#&gt; An object of class "PartialCycle"
+#&gt; Slot "orig":
+#&gt; Object from built-in class 'DayWeekCycle'
+#&gt; Cycle start: Monday 
+#&gt; 
+#&gt; Slot "subindex":
+#&gt; [1] 1 2 3 4 5
+#&gt; </div><div class='input'><span class='fu'>BuiltinCycle</span>(<span class='fl'>7</span>)  <span class='co'># "DayWeekCycle"</span></div><div class='output co'>#&gt; Object from built-in class 'DayWeekCycle'
+#&gt; Cycle start: Monday </div><div class='input'><span class='fu'>BuiltinCycle</span>(<span class='fl'>12</span>) <span class='co'># "MonthYearCycle"</span></div><div class='output co'>#&gt; Object from built-in class 'MonthYearCycle'
+#&gt; Cycle start: January </div><div class='input'><span class='fu'>BuiltinCycle</span>(<span class='fl'>48</span>) <span class='co'># "Every30MinutesCycle"</span></div><div class='output co'>#&gt; Object from built-in class 'Every30MinutesCycle'
+#&gt; Cycle start: 00:30 </div><div class='input'>
+<span class='co'>## error, since there is no builtin cycle with 19 seasons:</span>
+<span class='co'>## BuiltinCycle(19)</span>
+
+<span class='co'>## use stop = FALSE to reate a default cycle in this case</span>
+<span class='fu'>BuiltinCycle</span>(<span class='fl'>19</span>, <span class='kw'>stop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; Object from class 'BareCycle'
+#&gt; Number of seasons: 19 </div><div class='input'><span class='fu'>BuiltinCycle</span>(<span class='fl'>19</span>, <span class='kw'>coerce</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>stop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; Object from class 'SimpleCycle'
+#&gt; Number of seasons: 19 
+#&gt; Seasons: Season_1 Season_2 Season_3 Season_4 Season_5 Season_6 Season_7 Season_8 Season_9 Season_10 Season_11 Season_12 Season_13 Season_14 Season_15 Season_16 Season_17 Season_18 Season_19 
+#&gt; Abbreviated: S1 S2 S3 S4 S5 S6 S7 S8 S9 S10 S11 S12 S13 S14 S15 S16 S17 S18 S19 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -234,7 +355,7 @@ Generic function with methods for creating or extracting cycle
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

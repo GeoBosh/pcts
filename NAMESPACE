@@ -1,20 +1,22 @@
-import(methods, stats4, Matrix, BB, PolynomF, zoo, lagged, sarima)
+import(methods, stats4, Matrix, PolynomF, zoo, lagged, sarima) # BB
 
 importFrom(gbutils,shiftright,shiftleft)
 importFrom(gbutils,myouter)
 importFrom(gbutils,nposargs,isargunnamed,isNA)
-importFrom(ltsa, tacvfARMA)
 
 importFrom(graphics, boxplot, layout, par, points, lines, axis, mtext)
-importFrom(utils, capture.output)
+importFrom(utils, capture.output, str)
 importFrom(stats, ARMAacf, Box.test, C, as.formula,
-           frequency, start, end, cycle, deltat, time, window,
+           frequency, start, end, cycle, deltat, time, window, "window<-",
            lm, na.exclude, nls, optim,
            pchisq, pnorm, qnorm, rnorm, runif,
            residuals, fitted, predict, printCoefmat,
            ts, as.ts, monthplot)
 
-importFrom(lubridate, minutes, hm, ymd)
+importFrom(lubridate, minutes, hm, ymd,  is.Date, weeks, days,  period,
+           date, "date<-", as_datetime, as_date)
+
+importFrom(BB, BBoptim) # minimBBlu, minimBB
 
 import(sarima)
 
@@ -22,6 +24,26 @@ importFrom(mcompanion, chain_ind, mf_VSform, null_complement, sim_pcfilter)
 importFrom(Rdpack, reprompt)
 
 S3method(as.matrix, PeriodicMTS)
+S3method(as.Date, PeriodicTimeSeries)
+S3method(as.Date, Cyclic)
+S3method(as.POSIXct, Cyclic)
+S3method(as.POSIXct, PeriodicTimeSeries)
+
+S3method(date, Cyclic)
+S3method(date, PeriodicTimeSeries)
+
+
+
+S3method(as_Pctime, Cyclic)
+## S3method(as_Pctime, PeriodicTimeSeries)
+
+S3method(format, Pctime)
+S3method(str, Pctime)
+S3method(seq, Pctime)
+S3method(as.POSIXct, Pctime)
+S3method("[", Pctime)
+S3method("[[", Pctime)
+
 
 # S3method(as.matrix, slMatrix)
 # S3method(as.matrix, PeriodicAutocovariance)
@@ -38,13 +60,15 @@ S3method(boxplot, PeriodicTimeSeries)
 S3method(as.ts, PeriodicTimeSeries)
 
 S3method(start, Cyclic)
-S3method(end,       PeriodicTimeSeries)
+S3method(end,   Cyclic)
 S3method(frequency, PeriodicTimeSeries)
 S3method(deltat,    PeriodicTimeSeries)
 S3method(cycle,     PeriodicTimeSeries)
 S3method(time,      PeriodicTimeSeries)
 S3method(window, PeriodicTS)
 S3method(window, PeriodicMTS)
+S3method("window<-", PeriodicTS)
+S3method("window<-", PeriodicMTS)
 
 S3method(availStart, default)
 S3method(availStart, matrix)
@@ -52,6 +76,10 @@ S3method(availEnd, default)
 S3method(availEnd, matrix)
 
 S3method(residuals, FittedPeriodicArModel)
+
+S3method(residuals, FittedPM)
+S3method(fitted, FittedPM)
+S3method(predict, FittedPM)
 
 exportMethods(
     head,
@@ -67,20 +95,24 @@ exportMethods(
     ## nSeasons,
     autocorrelations,
     autocovariances,
-    sigmaSq
+    sigmaSq,
+
+    as_date,
+    as_datetime
 )
 
 # exportClassPattern("^[^\\.]")
 
 exportClasses(
-  AnyTimeSeries,
   BareCycle,
   BasicCycle,
   BuiltinCycle,
   Cyclic,
   DayWeekCycle,
+  PartialCycle,
   Every30MinutesCycle,
   FittedPeriodicArModel,
+  FittedPeriodicArmaModel,
   FiveDayWeekCycle,
   LegacyPeriodicFilterModel,
   mcOptimCore,
@@ -312,4 +344,52 @@ export(
   , "modelCycle<-"
   , meancovmat
   , meanvarcheck
+
+  , Cyclic
+      # these don't get registered without exporting                   
+      # something related to base:as.Date being masked by zoo::as.Date?    
+  # , as.Date.PeriodicTimeSeries
+  , as.Date.Cyclic            
+  , as.Date.PeriodicTimeSeries
+    
+  , as_Pctime
+  , date     # lubridate::date
+  , "date<-" # lubridate::`date<-`
+  , date.Cyclic
+  , Pctime
+  , "[.Pctime"
+  , "[[.Pctime"
+
+
+  ## reexports from sarima
+ ,  nSeasons
+ ,  
+    filterCoef,
+    filterOrder,
+    filterPoly,
+    filterPolyCoef,
+
+
+    autocovariances,
+    autocorrelations,
+    partialAutocovariances,
+    partialAutocorrelations,
+    partialVariances,
+    backwardPartialVariances,
+    partialCoefficients,
+    backwardPartialCoefficients,
+
+    sigmaSq,
+    modelCenter,
+    modelIntercept,
+    nUnitRoots,
+    isStationaryModel,
+
+    modelOrder,
+    modelPoly,
+    modelPolyCoef,
+
+    modelCoef
+
+
 )

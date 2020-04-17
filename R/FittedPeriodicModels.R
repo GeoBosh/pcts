@@ -106,3 +106,95 @@ setMethod("summary", c(object = "FittedPeriodicArModel"),
               cat("\n")
               invisible()
           })
+
+## slot "ns" is a vector of length nSeasons() with the number of obs used in
+##            estimation for each season.
+FittedPM <-
+    setClass("FittedPM",
+                 # asyCov is a matrix but maybe from package Matrix
+             slots = c(theTS = "PeriodicTS", asyCov = "ANY", ns = "numeric")
+             )
+
+.whiten <- function (object, ...){
+    model <- as_pcarma_list(object)
+
+    ts <- theTS(object)
+    x <- as.numeric(ts)
+    ## TODO: passing eps = NULL since it is not a default in pc.filter.
+    ##       check if I have done this on purpose!
+    wrk <- pc.filter(model = model, x = x, eps = NULL, whiten = TRUE)
+                # TODO: omit the first few values?
+                #       or, optionally set them to the exact residuals
+                #       or, optionally, standardise?
+                #       or, optionally, return a (periodic) time series?
+    ts@.Data <- wrk
+    theTS(object) <- ts
+    ts
+}
+
+.predict <- function (object, n.ahead = 1L, ...){
+    model <- as_pcarma_list(object)
+
+    ts <- theTS(object)
+    x <- as.numeric(ts)
+    ## TODO: passing eps = NULL since it is not a default in pc.filter.
+    ##       check if I have done this on purpose!
+    eps <- pc.filter(model = model, x = x, eps = NULL, whiten = TRUE)
+                # TODO: omit the first few values?
+                #       or, optionally set them to the exact residuals
+                #       or, optionally, standardise?
+                #       or, optionally, return a (periodic) time series?
+     
+    wrk <- pc.filter(model = model, x = c(x, rep(0, n.ahead)), 
+                                    eps = c(eps, rep(0, n.ahead)), whiten = TRUE)
+
+    ## TODO: make a time series from the predictions
+    ##       (the last h.agead elements of wrk)
+    ##    Done below but this needs documented and maybe helper functions, too. 
+    new_start <- end(ts)
+    if(new_start[2] == nSeasons(ts))
+        new_start <- c(new_start[1] + 1, 1)
+    else
+        new_start[2] <- new_start[2] + 1
+
+    ts@pcstart <- new_start
+    ts@.Data <- wrk[-(1:length(x))]
+
+    theTS(object) <- ts
+    ts
+}
+
+residuals.FittedPM <- function (object, ...){
+    .whiten(object, ...)
+}
+
+## TODO: maybe calculate directly?
+fitted.FittedPM <- function (object, ...){
+    theTS(object) - residuals(object)
+}
+
+## se.fit for now ignored
+predict.FittedPM <- function(object, n.ahead = 1, se.fit = TRUE, ...){
+    .predict(object, n.ahead, ...)
+}
+
+## FittedPeriodicArmaModel <-
+setClass("FittedPeriodicArmaModel",
+    ## asyCov is a matrix but maybe from package Matrix
+    ## slots = c(theTS = "PeriodicTS", asyCov = "ANY", ns = "numeric"), 
+    contains = c("PeriodicArmaModel", "FittedPM")
+)
+
+setMethod("show", "FittedPeriodicArmaModel",
+          function(object){
+              cat("An object of class FittedPeriodicArmaModel", "\n")
+              callNextMethod()
+              cat("\n")
+              cat("number of obs. for each season:\n",
+                  "    ", object@ns, "\n")
+
+              ## TODO: add diagnostics
+              
+              ## cat("\n")
+              ## cat("The asymptotic covariance matrix: is in slot 'asyCov'.\n")
+          })

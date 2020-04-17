@@ -50,6 +50,7 @@ allSeasons ( x, abb, ... ) <- value
 \S4method{allSeasons}{SimpleCycle}(x, abb, prefix, \dots) <- value
 
 \S4method{allSeasons}{Cyclic}(x, abb = FALSE, \dots) <- value
+
 }
 \arguments{
   \item{x}{

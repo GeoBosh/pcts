@@ -4,6 +4,7 @@
 \name{pcts_reexports}
 \alias{pcts_reexports}
 \alias{slMatrix}
+\alias{date}
 
 \title{Objects exported from other packages}
 \description{
@@ -12,6 +13,7 @@
 
   \describe{
     \item{lagged}{\code{\link[lagged]{slMatrix}}}
+    \item{date}{\code{\link[lubridate]{date}}}
   }
 }
 \keyword{internal}

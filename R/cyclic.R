@@ -1,33 +1,8 @@
 setOldClass(c("zooreg", "zoo"))
 
-## TODO: This needs to be defined early so that testthat::test()() can unload and reload the
-##       package during development. (apparently, it can't unload everything from `methods'.)
-##
-
-## initially "numeric" was also here but it is hardly a good idea.
-##        TODO: note: if `z' is "mts" then  is(z, "AnyTimeSeries") gives  TRUE
-##        TODO: change SimpleCycle to BareCycle where no info about the seasons is available!
-##
-setClassUnion("AnyTimeSeries", c("ts", "zooreg", "zoo")) ## TODO: add "timeSeries" ?
-
 ## virtual class for signatures; all periodic time series classes are its descendants
 ##
 setClass("PeriodicTimeSeries", contains = c("Cyclic", "VIRTUAL") )
-
-## setClassUnion below gives the following error (tested on Lenovo B570):
-##        > devtools::test()
-##        Loading pcts
-##        Testing pcts
-##        ...............................1
-##        1. Error: the new periodic classes are ok --------------------------------------
-##        node stack overflow
-##
-## `R CMD check ' gives the same when running the tests.  Haven't checked if this is bound to
-## devtools but the command seems dodgy, since some of the derived classes from
-## "PeriodicTimeSeries" inherit from "ts", so comment it out.
-##
-## setClassUnion("TSWithRegularTime",
-##               c("PeriodicTimeSeries", "ts", "zooreg")) ## TODO: add "timeSeries" ?
 
 ## basic "native" classes provided by this package
 setClass("PeriodicTS",
@@ -111,11 +86,6 @@ setMethod("initialize", signature(.Object = "PeriodicMTS_ts"),
           }
           )
 
-
-
-## The automatically generated method for as() since it calls new() with no arguments, so the
-## nseasons slot is not set properly:
-##
 ##      > getMethod("coerce", c("ts", "PeriodicTS_ts"))
 ##      Method Definition:
 ##
@@ -127,12 +97,6 @@ setMethod("initialize", signature(.Object = "PeriodicMTS_ts"),
 ##      }
 ##      <environment: namespace:methods>
 ##
-##      Signatures:
-##              from to
-##      target  "ts" "PeriodicTS_ts"
-##      defined "ts" "PeriodicTS_ts"
-##
-##
 ##      > showMethods("coerce", classes = "PeriodicTS_ts", includeDefs = TRUE)
 ##      Function: coerce (package methods)
 ##      from="ts", to="PeriodicTS_ts"
@@ -143,20 +107,26 @@ setMethod("initialize", signature(.Object = "PeriodicMTS_ts"),
 ##          obj
 ##      }
 
-setAs("ts", "PeriodicTS", function(from){ new("PeriodicTS", from) } )
-setAs("ts", "PeriodicMTS", function(from){ new("PeriodicMTS", from) } )
+setAs("ts", "PeriodicTS", function(from){ pcts(from) } )
+setAs("ts", "PeriodicMTS",
+      function(from){
+          wrk <- pcts(from)
+          new("PeriodicMTS", as(wrk, "Cyclic"), matrix(wrk@.Data, ncol = 1))
+      }
+      )
 setAs("ts", "PeriodicTS_ts", function(from){ new("PeriodicTS_ts", from) } )
 setAs("ts", "PeriodicMTS_ts", function(from){ new("PeriodicMTS_ts", from) } )
 
-setAs("mts", "PeriodicMTS", function(from){ new("PeriodicMTS", from) } )
-setAs("mts", "PeriodicTS", function(from){ new("PeriodicMTS", from) } )
-
-## TODO: Conversions between PeriodicXXX classes?
-
-## as.data.frame.pcTimeSeries <- function(x, ...){
-##     as.data.frame(coreMatrix(x))
-## }
-##
+setAs("mts", "PeriodicMTS", function(from){ pcts(from) } )
+setAs("mts", "PeriodicTS",
+      function(from){
+          res <- pcts(from)
+          if(nVariables(from) > 1)
+              stop("the time series is multivariate")
+          ## maybe never will come here, ts() gives "ts" class if there is only one time series
+          res[[1]]
+      }
+      )
 
 setAs("PeriodicTS", "ts", 
       function(from){
@@ -168,21 +138,200 @@ setAs("PeriodicMTS", "ts",
       })
 as.ts.PeriodicTimeSeries <- function(x, ...) as(x, "ts")
 
+## setAs("PeriodicTimeSeries", "Cyclic", 
+##       function(from){
+##           new("Cyclic", cycle = from@cycle, pcstart = from@pcstart)
+##       })
+setAs("PeriodicTS", "Cyclic", 
+      function(from){
+          new("Cyclic", cycle = from@cycle, pcstart = from@pcstart)
+      })
+
+setAs("PeriodicMTS", "Cyclic", 
+      function(from){
+          new("Cyclic", cycle = from@cycle, pcstart = from@pcstart)
+      })
+
+## as.data.frame.pcTimeSeries <- function(x, ...){
+##     as.data.frame(coreMatrix(x))
+## }
+##
+
 setMethod("pcCycle",  "Cyclic", function(x, type, ...) x@cycle)
 
-setMethod("pcCycle",  "PeriodicTimeSeries", function(x, type, ...) x@cycle)
+setMethod("pcCycle",  c(x = "PeriodicTimeSeries", type = "missing"), 
+    function(x, type, ...) x@cycle)
+setMethod("pcCycle",  c(x = "PeriodicTimeSeries", type = "character"), 
+    function(x, type, ...) x@cycle)
 
-setMethod("pcCycle",  "ts",
+setMethod("pcCycle",  c(x = "ts", type = "missing"),
           function(x, type, ...){
               nseasons <- frequency(x)
-              switch(as.character(nseasons),
-                     ## TODO: treat specially other frequencies with builtin classes?
-                     "4"  = new("QuarterYearCycle"),
-                     "12" = new("MonthYearCycle"),
-                     new("BareCycle", nseasons = nseasons)
-                     )
+              BuiltinCycle(nseasons, stop = FALSE)
           }
           )
+
+setMethod("pcCycle",  c(x = "ts", type = "character"),
+          function(x, type, ...){
+              nseasons <- frequency(x)
+              res <- BuiltinCycle(nseasons, stop = FALSE)
+              if(type == "")
+                type <- "BareCycle"
+              as(res, type)
+          }
+          )
+
+setGeneric("pcts", function(x, nseasons, start, ..., keep = FALSE){ standardGeneric("pcts") },
+           signature = c("x", "nseasons") )
+
+.pcts_finalize <- function(x, start, ...){
+    if(missing(start))
+        return(x)
+    if(is.numeric(start) && length(start) == 2){
+        x@pcstart <- start
+    }else{
+        ## TODO: !!! this may need the cycle in some cases
+        date <- as_datetime(start) # as.POSIXct(start) # 2020-04-15 was: as.POSIXlt() # 2020-04-14 was: as.Date()
+        x@pcstart <- .cycle_and_time2pair(x@cycle, date)
+    }
+    x
+}
+
+setMethod("pcts", c(x = "numeric", nseasons = "missing"),
+          function(x, nseasons, start, ...){
+              ## `x' should have  method for frequency() in this case
+              ## NOTE: frequency() has a default method! (returns 1).
+              ## TODO: maybe give warning or error if frequency is 1.
+
+              ##  as.integer() since we don't accept fractional number of seasons
+              nseasons <- as.integer(frequency(x))
+              ## frequency() has a default method which returns 1
+              if(nseasons <= 1)
+                  stop("nseasons is missing and cannot be inferred")
+              pcts(x, nseasons, start, ...)
+          }
+          )
+
+setMethod("pcts", c(x = "matrix", nseasons = "missing"),
+          function(x, nseasons, start, ...){
+              ## `x' should have  method for frequency() in this case
+              ##     see ote in the method for x = "numeric" above
+              nseasons <- as.integer(frequency(x))
+              if(nseasons <= 1)
+                  stop("nseasons is missing and cannot be inferred")
+              pcts(x, nseasons, start, ...)
+          }
+          )
+
+
+setMethod("pcts", c(x = "numeric", nseasons = "numeric"),
+          function(x, nseasons, start, ...){
+              period <- new("SimpleCycle", nseasons = nseasons)
+              wrk <- new("PeriodicTS", cycle = period, x)
+              .pcts_finalize(wrk, start, ...)
+          }
+          )
+
+setMethod("pcts", c(x = "matrix", nseasons = "numeric"),
+          function(x, nseasons, start, ...){
+              period <- new("SimpleCycle", nseasons = nseasons)
+              wrk <- new("PeriodicMTS", cycle = period, x)
+              .pcts_finalize(wrk, start, ...)
+          }
+          )
+
+## todo: check if methods for nseasons "numeric" and "missing" are needed here
+setMethod("pcts", "data.frame",
+          function(x, nseasons, start, ...){
+              pcts(as.matrix(x), nseasons, start, ...)
+          }
+          )
+
+
+.ts2periodic_ts <- function(x, cls, nseasons, ...){
+    cyc <- if(!missing(nseasons)  &&  frequency(x) != nseasons){
+               ## frequency(x) <- nseasons NOTE: no "ts" method for "frequency<-"
+               pcCycle(nseasons) # creates a bare cycle
+           }else{
+               pcCycle(x)
+           }
+    new(cls, x, cycle = cyc, pcstart = start(x))
+}
+
+setMethod("pcts", c(x = "ts", nseasons = "missing"),
+          function(x, nseasons, start, ..., keep){
+              wrk <- if(keep)
+                         new("PeriodicTS_ts", x)
+                     else
+                         .ts2periodic_ts(x, "PeriodicTS", nseasons)
+              .pcts_finalize(wrk, start, ...)
+          }
+          )
+
+setMethod("pcts", c(x = "ts", nseasons = "numeric"),
+          function(x, nseasons, start, ..., keep){
+              wrk <- if(keep){
+                         if(frequency(x) != nseasons)
+                             stop("please change the frequency of the ts object or use keep = FALSE")
+                         new("PeriodicTS_ts", x)
+                     }else
+                         .ts2periodic_ts(x, "PeriodicTS", nseasons)
+              .pcts_finalize(wrk, start, ...)
+          }
+          )
+
+setMethod("pcts", c(x = "mts", nseasons = "missing"),
+          function(x, nseasons, start, ..., keep){
+              wrk <- if(keep)
+                         new("PeriodicMTS_ts", x)
+                     else
+                         .ts2periodic_ts(x, "PeriodicMTS", nseasons)
+              .pcts_finalize(wrk, start, ...)
+          }
+          )
+
+setMethod("pcts", c(x = "mts", nseasons = "numeric"),
+          function(x, nseasons, start, ..., keep){
+              wrk <- if(keep){
+                         if(frequency(x) != nseasons)
+                             stop("please change the frequency of the ts object or use keep = FALSE")
+                         new("PeriodicMTS_ts", x)
+                     }else
+                         .ts2periodic_ts(x, "PeriodicMTS", nseasons)
+              .pcts_finalize(wrk, start, ...)
+          }
+          )
+
+setMethod("pcts", c(x = "numeric", nseasons = "BasicCycle"),
+          function(x, nseasons, start, ...){
+              wrk <- new("PeriodicTS", cycle = nseasons, x)
+              .pcts_finalize(wrk, start, ...)
+          }
+          )
+
+setMethod("pcts", c(x = "matrix", nseasons = "BasicCycle"),
+          function(x, nseasons, start, ...){
+              wrk <- new("PeriodicMTS", cycle = nseasons, x)
+              .pcts_finalize(wrk, start, ...)
+          }
+          )
+
+## base R
+##
+## cycle() gives the season (a number)
+## time() gives the time, say 2014.75 for the 3rd quarter of 2014
+## frequency() gives the number of seasons
+## deltat()
+## start() end() (but these are for compatibility with S2 only)
+## window()
+
+## zoo
+##
+## index(), time() - times of the observations; start(), end()
+## coredata() - gives a plain vector/matrix
+## merge() - union and intersection
+## plot()
+## window()
 
 frequency.PeriodicTimeSeries <- function(x, ...) nSeasons(x)
 deltat.PeriodicTimeSeries    <- function(x, ...) 1 / nSeasons(x)
@@ -207,98 +356,15 @@ time.PeriodicTimeSeries <- function(x, offset = 0, ...){
     new("PeriodicTS", as(x, "Cyclic"), res)
 }
 
-setGeneric("pcts", def = function(x, nseasons, keep = FALSE, ...){ standardGeneric("pcts") })
-
-## TODO: add further methods for pcts
-
-
-setMethod("pcts", "numeric",
-          function(x, nseasons, keep, ...){
-              if(missing(nseasons)) # `x' should have  method for frequency() in this case
-                  nseasons <- as.integer(frequency(x))
-              period <- new("SimpleCycle", nseasons = nseasons)
-              new("PeriodicTS", cycle = period, x, ...)
-          }
-          )
-
-setMethod("pcts", "matrix",
-          function(x, nseasons, keep, ...){
-              if(missing(nseasons)) # `x' should have  method for frequency() in this case
-                                    # note: frequency() has a default method!
-                  nseasons <- as.integer(frequency(x))
-              period <- new("SimpleCycle", nseasons = nseasons)
-              new("PeriodicMTS", cycle = period, x, ...)
-          }
-          )
-
-.ts2periodic_ts <- function(x, cls, nseasons){
-    if(!missing(nseasons)  &&  frequency(x) != nseasons){
-        ## frequency(x) <- nseasons NOTE: no "ts" method for "frequency<-"
-        cyc <- pcCycle(nseasons) # creates a bare cycle
-    }else{
-        cyc <- pcCycle(x)
-    }
-    new(cls, x, cycle = pcCycle(x), pcstart = start(x))
-}
-
-setMethod("pcts", "ts",
-          function(x, nseasons, keep, ...){
-              if(keep){
-                  if(!missing(nseasons)  &&  frequency(x) != nseasons)
-                      stop("please change the frequency of the ts object or use keep = FALSE")
-                  new("PeriodicTS_ts", x)
-              }else{
-                  .ts2periodic_ts(x, "PeriodicTS", nseasons)
-              }
-          }
-          )
-
-setMethod("pcts", "mts",
-          function(x, nseasons, keep, ...){
-              if(keep){
-                  if(!missing(nseasons)  &&  frequency(x) != nseasons)
-                      stop("please change the frequency of the ts object or use keep = FALSE")
-                  new("PeriodicMTS_ts", x)
-              }else{
-                  # 2019-04-19 was: new("SimpleCycle", nseasons = as.integer(frequency(x)))
-                  .ts2periodic_ts(x, "PeriodicMTS", nseasons)
-              }
-          }
-          )
-
-## TODO: add further subclasses of "pcTimeSeries" for work with other time series classes.
-
-## base R
-##
-## cycle() gives the season (a number)
-## time() gives the time, say 2014.75 for the 3rd quarter of 2014
-## frequency() gives the number of seasons
-## deltat()
-## start() end() (but these are for compatibility with S2 only)
-## window()
-
-## zoo
-##
-## index(), time() - times of the observations; start(), end()
-## coredata() - gives a plain vector/matrix
-## merge() - union and intersection
-## plot()
-## window()
-
-
-## setMethod("show","pcTs1",
-##           function(object){
-##           # y <- ts(data=pc.data.vec(object@.pcdata),frequency=pc.nseasons(object@.pcdata))
-##             pc.boxplot(object)
-##             callNextMethod()
-##           }
-##           )
-
 setMethod("show", "PeriodicTS",
           function(object){
-              ## y <- ts(data=pc.data.vec(object@.pcdata),frequency=pc.nseasons(object@.pcdata))
-              ## pc.boxplot(object)
-              ##  callNextMethod()
+              .reportClassName(object, "PeriodicTS")
+              ## show(as(object, "Cyclic"))
+              cat("Slot \"cycle\": ")
+              ## show(object@cycle)
+              show(as(object, "Cyclic"))
+              cat("\n")
+              
               start <- start(object)
               end   <- end(object)
               nseas <- nSeasons(object)
@@ -315,28 +381,40 @@ setMethod("show", "PeriodicTS",
                   data <- c(data, rep(NA_real_, nseas - end[2]))
 
               data <- object@.Data
-              if(length(data) %% nseas == 0){
+              if(length(data) %% nseas == 0  && start[2] == 1){
                   data <- matrix(data, ncol = nSeasons(object), byrow = TRUE)
                   rownames(data) <- as.character(start[1]:end[1])
                   ## TODO: sort out the method for "Cyclic" to work with abb = TRUE
                   ##     colnames(data) <- allSeasons(object, abb = TRUE)
                   colnames(data) <- allSeasons(object@cycle, abb = TRUE)
+                  print(data)
               }else{
-                  ## krapka
-                  ## TODO: it is confusing to have different output,
-                  ##       maybe do it always this way?
-                  names(data) <- paste0(cycles, "_", cyc)
+                  data <- c(rep(NA_real_, start[2] - 1), data, rep(NA_real_, nseas - end[2]))
+                  data <- matrix(data, ncol = nSeasons(object), byrow = TRUE)
+                  wrk <- format(data)
+                  wrk[1, seq_len(start[2] - 1)] <- ""
+                  if(end[2] < nseas)
+                      wrk[nrow(wrk), (end[2] + 1) : nseas] <- ""
+                  rownames(wrk) <- as.character(start[1]:end[1])
+                  colnames(wrk) <- allSeasons(object@cycle, abb = TRUE)
+                  print(wrk, quote = FALSE)
               }
-              print(data)
-              ## show(as(object, "Cyclic"))
           }
           )
 
+## An object of class "Cyclic"
+## Slot "cycle":
+## Object from built-in class 'MonthYearCycle'
+## Cycle start: January
+
 setMethod("show", "PeriodicMTS",
           function(object){
-              ## y <- ts(data=pc.data.vec(object@.pcdata),frequency=pc.nseasons(object@.pcdata))
-              ## pc.boxplot(object)
-              ##  callNextMethod()
+              .reportClassName(object, "PeriodicMTS")
+              ## show(as(object, "Cyclic"))
+              cat("Slot \"cycle\": ")
+              show(object@cycle)
+              cat("\n")
+
               wrk <- seq(start(object)[1], end(object)[1])
               wrk <- rep(wrk, each = nSeasons(object))
               cycles <- wrk[seq(start(object)[2], length = nTicks(object))]
@@ -345,7 +423,6 @@ setMethod("show", "PeriodicMTS",
               data <- object@.Data
               rownames(data) <- paste0(cycles, "_", cyc)
               print(data)
-              show(as(object, "Cyclic"))
           }
           )
 
@@ -405,9 +482,13 @@ boxplot.PeriodicTimeSeries <- function(x, ...){
     invisible(res)
 }
 
-nTicks <- function(x, ...)
-    NROW(x)
-setGeneric("nTicks")
+# nTicks <- function(x, ...)
+#     NROW(x)
+setGeneric("nTicks", function(x){ standardGeneric("nTicks") })
+setMethod("nTicks", "numeric", function(x) length(x) )
+setMethod("nTicks", "matrix", function(x) nrow(x) )
+setMethod("nTicks", "PeriodicTimeSeries", function(x) NROW(x) )
+setMethod("nTicks", "Cyclic", function(x) 1 ) ## todo: currently always one.
 
 nVariables <- function(x, ...)
     NCOL(x)
@@ -463,10 +544,6 @@ pcArray <- function(x, ndim = 3, ...){ # ndim not used in the default method
 }
 setGeneric("pcArray")
 
-## removing: doesn't make sense to have this simply for the transpose of 
-##     tsMatrix() and at the moment I don't see a natural definition analogue 
-##     of pcMatrix() for the ts case.
-##
 ## pctsMatrix <- function(x, ...){
 ##     t(pcMatrix(x, ...))
 ## }
@@ -479,12 +556,17 @@ pctsArray <- function(x, ndim = 3, ...){ # ndim not used in the default method
 }
 setGeneric("pctsArray")
 
+setMethod("[", c(x = "PeriodicTS", i = "missing", j = "missing"), 
+          function(x){
+              x@.Data
+          })
+
 setMethod("[[", c(x = "PeriodicMTS"), 
           function(x, i){
               if (length(i) != 1) 
-                  ## call. = FALSE here since otherwise the error messaage starts
+                  ## call. = FALSE here since otherwise the error message starts
                   ## with "Error in .local(x, i, ...) :" which is non-informative.
-                  stop("in '[[' length of argument 'i' must be equal to one", 
+                  stop("for [[ the length of argument i must be equal to one", 
                        call. = FALSE)
               new("PeriodicTS", as(x, "Cyclic"), x@.Data[ , i])
           })
@@ -518,32 +600,16 @@ setMethod("[", c(x = "PeriodicMTS", i = "missing", j = "missing"),
 ##               x@.Data[ , , ...]
 ##           })
 
-pctime2ind <- function(x, start, nseasons){
-    (x[1] - start[1]) * nseasons + (x[2] - start[2]) + 1
-}
-
-ind2pctime <- function(x, start, nseasons){
-    wrk <- x %% nseasons
-    if(wrk == 0)
-        wrk <- nseasons
-    res <- c(start[1] + (x - 1) %/% nseasons, start[2] + wrk - 1)
-    if(res[2] > nseasons)
-                     # or more robustly: 
-                     #    res + c(res[2] %/% nseasons, res2 %% nseasons)
-        res + c(1,  res[2] - nseasons)
-    else
-        res
-}
-
 start.Cyclic <- function(x, ...){
     x@pcstart
 }
 
-end.PeriodicTimeSeries <- function(x, ...){
+## end.PeriodicTimeSeries 
+end.Cyclic <- function(x, ...){
     ind2pctime(nTicks(x), x@pcstart, nSeasons(x))
 }
 
-window.PeriodicTS <- function(x, start = NULL, end = NULL, ...){
+window.PeriodicTS <- function(x, start = NULL, end = NULL, seasons = NULL, ...){
     nseas <- nSeasons(x)
     time1st <- x@pcstart
     begind <- if(is.null(start))
@@ -560,7 +626,41 @@ window.PeriodicTS <- function(x, start = NULL, end = NULL, ...){
     if(!is.null(start))
         cyc@pcstart <- start
 
-    new("PeriodicTS", cyc, .Data = x@.Data[begind:endind])
+    if(!is.null(seasons)){
+        ## TODO: check validity of 'seasons'
+        lind <- logical(nTicks(x))
+        lind[begind:endind] <- TRUE
+        lind <- lind & (cycle(x) %in% seasons)
+
+        wrkdata <- x@.Data[lind]
+
+        ind.1st <- which(lind)[1]
+        newstart <- ind2pctime(ind.1st, start(x), nseas)
+        newstart[2] <- which(seasons == newstart[2])
+
+        ## TODO: more is needed here
+        cy <- ## if(is(x@cycle, "DayWeekCycle"))
+              ##     new("PartialDayWeekCycle", subindex = seasons)
+              ## else
+                  new("PartialCycle", orig = x@cycle, subindex = seasons) 
+#browser()
+        ## ## TODO: doesn't work, apparently "Cyclic" needs to pass on .Data
+        ## ##     res <- new("PeriodicTS", cycle = cy, pcstart = newstart, .Data = wrkdata)
+        ## ## so do it this way:
+        ##     cyc <- new("Cyclic", cycle = cy, pcstart = newstart)
+        ##     res <- new("PeriodicTS", cyc, .Data = wrkdata)
+        ## no, argument .Data seems the culprit;
+        ## this works:
+        ##    new("PeriodicTS", cycle = BareCycle(4), pcstart = c(1, 1), 1:12)
+        ## but this doesn't:
+        ##    new("PeriodicTS", cycle = BareCycle(4), pcstart = c(1, 1), .Data = 1:12)
+        ## so, just give the data unnamed (also below):
+        res <- new("PeriodicTS", cycle = cy, pcstart = newstart, wrkdata)
+        return(res)
+    }
+
+    ## new("PeriodicTS", cyc, .Data = x@.Data[begind:endind])
+    new("PeriodicTS", cyc, x@.Data[begind:endind])
 }
 
 window.PeriodicMTS <- function(x, start = NULL, end = NULL, ...){
@@ -580,7 +680,43 @@ window.PeriodicMTS <- function(x, start = NULL, end = NULL, ...){
     if(!is.null(start))
         cyc@pcstart <- start
 
-    new("PeriodicMTS", cyc, .Data = x@.Data[begind:endind, , drop = FALSE])
+    new("PeriodicMTS", cyc, x@.Data[begind:endind, , drop = FALSE])
+}
+
+`window<-.PeriodicTS` <- function(x, start = NULL, end = NULL, ..., value){
+    nseas <- nSeasons(x)
+    time1st <- x@pcstart
+    begind <- if(is.null(start))
+                  1
+              else
+                  pctime2ind(start, time1st, nseas)
+        
+    endind <- if(is.null(end))
+                  nTicks(x)
+              else
+                  pctime2ind(end, time1st, nseas)
+
+    ## TODO: check lengths?
+    x@.Data[begind:endind] <- value
+    x
+}
+
+`window<-.PeriodicMTS` <- function(x, start = NULL, end = NULL, ..., value){
+    nseas <- nSeasons(x)
+    time1st <- x@pcstart
+    begind <- if(is.null(start))
+                  1
+              else
+                  pctime2ind(start, time1st, nseas)
+        
+    endind <- if(is.null(end))
+                  nTicks(x)
+              else
+                  pctime2ind(end, time1st, nseas)
+
+    ## TODO: check lengths?
+    x@.Data[begind:endind, ] <- value
+    x
 }
 
 setMethod("head", "PeriodicTimeSeries",
@@ -671,6 +807,40 @@ setMethod("plot", c(x = "PeriodicMTS", y = "missing"),
                   points(cycles, pcMatrix(x)[1, ], col = "blue") ## first season
               }
           })
+
+## as.Date.PeriodicTimeSeries
+setMethod("as_date", "PeriodicTimeSeries",
+          function(x, ...){
+              as_date(as_datetime(x, ...))
+          })
+
+setMethod("as_datetime", "PeriodicTimeSeries",
+          function(x, ...){
+              startdate <- as_datetime(as(x, "Cyclic")) # as.Date(as(x, "Cyclic"))
+
+              n <- nTicks(x)
+              nseas <- nSeasons(x)
+              seasind <- 1:nSeasons(x)
+
+              units <- .get_period_units(x@cycle)
+              plen <- .get_period_length(x@cycle)
+              p <- period(plen, units)
+              cls <- class(x@cycle)
+
+              shiftall <- .cycle_offsets(x@cycle, n, start(x)[2])
+              
+                  # without as.Date it's class is [1] "POSIXct" "POSIXt" 
+                  # as.Date(startdate + p * shiftall)
+              startdate + p * shiftall
+          })
+
+as.POSIXct.PeriodicTimeSeries <- function(x, ...){
+    as_datetime(x, ...)
+}
+
+as.Date.PeriodicTimeSeries <- function(x, ...){
+    as_date(as_datetime(x, ...))
+}
 
 setMethod("summary", c(object = "PeriodicTS"),
           function(object, alwaysNA = TRUE, ...){

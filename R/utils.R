@@ -1,3 +1,18 @@
+workdata <- function(x, envir = parent.frame()){
+    ## 'x' is ignored currently
+    x <- c("ap", "ap7to9", "pcfr")
+    
+    ap <- pcts(datasets::AirPassengers)
+    ap7to9 <- window(ap, seasons = 7:9)
+
+    ## without '::' there is a note from R CMD check
+    ##     no visible binding for global variable dataFranses1996
+    pcfr <- pcts(pcts::dataFranses1996)
+
+    list2env(list(ap = ap, ap7to9 = ap7to9, pcfr = pcfr), envir = envir)
+    x
+}
+
 ## taken from "pcts"
 .reportClassName <- function(object, class, trailer = "\n"){
     if(class(object) == class)

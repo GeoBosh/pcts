@@ -27,7 +27,6 @@ Class \code{"\linkS4class{ts}"}, directly.
 Class \code{"\linkS4class{Cyclic}"}, by class "PeriodicTimeSeries", distance 2.
 Class \code{"\linkS4class{structure}"}, by class "ts", distance 2.
 Class \code{"\linkS4class{oldClass}"}, by class "ts", distance 2.
-Class \code{"\linkS4class{AnyTimeSeries}"}, by class "ts", distance 2.
 Class \code{"\linkS4class{vector}"}, by class "ts", distance 3, with explicit coerce.
 }
 \section{Methods}{

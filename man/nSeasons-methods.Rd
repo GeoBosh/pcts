@@ -25,6 +25,9 @@
 \alias{nSeasons,QuarterYearCycle-method}
 \alias{nSeasons,PeriodicInterceptSpec-method}
 \alias{nSeasons,OpenCloseCycle-method}
+\alias{nSeasons,Every30MinutesCycle-method}
+\alias{nSeasons,PartialCycle-method}
+\alias{nSeasons,VirtualPeriodicModel-method}
 \title{Number of seasons for a periodic object}
 \description{Number of seasons for a periodic object.}
 %\usage{
@@ -89,6 +92,15 @@
 %%  ~~describe this method here~~
 }
 }\item{\code{signature(object = "OpenCloseCycle")}}{{
+%%  ~~describe this method here~~
+}
+}\item{\code{signature(object = "Every30MinutesCycle")}}{{
+%%  ~~describe this method here~~
+}
+}\item{\code{signature(object = "PartialCycle")}}{{
+%%  ~~describe this method here~~
+}
+}\item{\code{signature(object = "VirtualPeriodicModel")}}{{
 %%  ~~describe this method here~~
 }
 }}}

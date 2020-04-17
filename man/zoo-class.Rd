@@ -20,7 +20,6 @@
 }
 \section{Extends}{
 Class \code{"\linkS4class{oldClass}"}, directly.
-Class \code{"\linkS4class{AnyTimeSeries}"}, directly.
 }
 \section{Methods}{
 No methods defined with class "zoo" in the signature.

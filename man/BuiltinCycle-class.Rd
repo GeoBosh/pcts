@@ -14,7 +14,7 @@
 \alias{Every30MinutesCycle-class}
 %\alias{allSeasons,Every30MinutesCycle,logical-method}
 %\alias{allSeasons,Every30MinutesCycle,missing-method}
-\alias{nSeasons,Every30MinutesCycle-method}
+%\alias{nSeasons,Every30MinutesCycle-method}
 %\alias{unitCycle,Every30MinutesCycle-method}
 %\alias{unitSeason,Every30MinutesCycle-method}
 
@@ -145,11 +145,8 @@
   %%  ~~or \code{\linkS4class{CLASSNAME}} for links to other classes ~~~
 }
 \examples{
-showClass("BuiltinCycle")
-
 ## class "DayWeekCycle"
-dwcycle <- new("DayWeekCycle")
-identical(BuiltinCycle(7), dwcycle) # TRUE
+dwcycle <- BuiltinCycle(7) # new("DayWeekCycle")
 
 unitSeason(dwcycle)
 unitCycle(dwcycle)
@@ -166,18 +163,17 @@ dwcycle[2, abb = TRUE]
 seqSeasons(dwcycle)
 
 ## start the week on Sunday
-dws <- new("DayWeekCycle", first = 7)
+dws <- BuiltinCycle(7, first = 7) # new("DayWeekCycle", first = 7)
 dws[1] # "Sunday"
 allSeasons(dws)
 
-## class \code{"Every30MinutesCycle"}
-cyc48 <- new("Every30MinutesCycle")
+## class "Every30MinutesCycle"
+cyc48 <- BuiltinCycle(48) # new("Every30MinutesCycle")
 nSeasons(cyc48)
 allSeasons(cyc48)
 
-## class \code{"FiveDayWeekCycle"}
-fdcycle <- new("FiveDayWeekCycle")
-## identical(new("BareCycle", 5), pcCycle(5)) # TRUE
+## class "FiveDayWeekCycle" is deprecated, use the equivalent:
+fdcycle <- BuiltinCycle(5)
 
 unitSeason(fdcycle)
 unitCycle(fdcycle)
@@ -193,9 +189,8 @@ fdcycle[2, abb = TRUE]
 
 seqSeasons(fdcycle)
 
-## class \code{MonthYearCycle}
-mycycle <- new("MonthYearCycle")
-## identical(new("BareCycle", 5), pcCycle(5)) # TRUE
+## class "MonthYearCycle"
+mycycle <- BuiltinCycle(12) # new("MonthYearCycle")
 
 unitSeason(mycycle)
 unitCycle(mycycle)
@@ -211,9 +206,8 @@ mycycle[2, abb = TRUE]
 
 seqSeasons(mycycle)
 
-## class \code{"OpenCloseCycle"}
+## class "OpenCloseCycle"
 opcycle <- new("OpenCloseCycle")
-## identical(new("BareCycle", 5), pcCycle(5)) # TRUE
 
 unitSeason(opcycle)
 unitCycle(opcycle)
@@ -229,9 +223,8 @@ opcycle[2, abb = TRUE]
 
 seqSeasons(opcycle)
 
-## class \code{"QuarterYearCycle"}
+## class "QuarterYearCycle"
 qycycle <- new("QuarterYearCycle")
-## identical(new("BareCycle", 5), pcCycle(5)) # TRUE
 
 unitSeason(qycycle)
 unitCycle(qycycle)

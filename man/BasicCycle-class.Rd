@@ -25,10 +25,10 @@
   \code{\link{BuiltinCycle-class}}
 
   \code{\link{DayWeekCycle-class}},
-  \code{\link{FiveDayWeekCycle-class}},
   \code{\link{MonthYearCycle-class}},
   \code{\link{OpenCloseCycle-class}},
-  \code{\link{QuarterYearCycle-class}}
+  \code{\link{QuarterYearCycle-class}},
+  \code{\link{PartialCycle-class}}
   %%  ~~or \code{\linkS4class{CLASSNAME}} for links to other classes ~~~
 }
 \examples{

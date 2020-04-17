@@ -7,7 +7,7 @@
 \usage{
 nCycles(x, \dots)
 
-nTicks(x, \dots)
+nTicks(x)
 
 nVariables(x, \dots)
 }
@@ -17,9 +17,9 @@ nVariables(x, \dots)
 }
 \details{
 
-  These are generic functions. The default methods will work for any
-  objects for which \code{NROW} and \code{NCOL} are defined and have the
-  conventional case by variables interpretation.
+  % These are generic functions. The default methods will work for any
+  % objects for which \code{NROW} and \code{NCOL} are defined and have the
+  % conventional case by variables interpretation.
 
   \code{nTicks} gives the number of time points, i.e. number of rows in
   the matrix representation.

@@ -13,6 +13,8 @@
 \alias{[,VirtualPeriodicAutocovarianceModel,missing,numeric,ANY-method}
 \alias{[,VirtualPeriodicAutocovarianceModel,numeric,missing,ANY-method}
 \alias{[,VirtualPeriodicAutocovarianceModel,numeric,numeric,ANY-method}
+\alias{[,PeriodicTS,missing,missing,ANY-method}
+
 \title{Indexing of objects from classes in package pcts}
 \description{Indexing of objects from classes in package pcts.}
 \section{Methods}{
@@ -55,6 +57,9 @@
 }
 }\item{\code{signature(x = "VirtualPeriodicAutocovarianceModel", i = "numeric", 
           j = "numeric", drop = "ANY")}}{{
+%%  ~~describe this method here~~
+}
+}\item{\code{signature(x = "PeriodicTS", i = "missing", j = "missing", drop = "ANY")}}{{
 %%  ~~describe this method here~~
 }
 }}}

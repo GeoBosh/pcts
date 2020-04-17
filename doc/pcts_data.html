@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Georgi N. Boshnakov" />
+
+<meta name="date" content="2020-04-10" />
+
+<title>Importing and manipulating periodic time seires data</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Importing and manipulating periodic time seires data</h1>
+<h4 class="author">Georgi N. Boshnakov</h4>
+<h4 class="date">2020-04-10</h4>
+
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(pcts)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">#&gt; Loading required package: sarima</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">#&gt; Loading required package: FitAR</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co">#&gt; Loading required package: lattice</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co">#&gt; Loading required package: leaps</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="co">#&gt; Loading required package: ltsa</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">#&gt; Loading required package: bestglm</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">#&gt; Loading required package: stats4</span></a>
+<a class="sourceLine" id="cb1-9" title="9">pd &lt;-<span class="st"> </span><span class="kw">packageDescription</span>(<span class="st">&quot;pcts&quot;</span>)</a></code></pre></div>
+<p>This vignette is part of package pcts, version 0.15-0.</p>
+<p>The intended mode of work with time series in package <code>pcts()</code> is that users create periodic time series using function <code>pcts()</code> and then operate on the object created by it. <code>pcts()</code> accepts base R data objects, such as “ts”, “mts”, “numeric2,”matrix2, “data. frame”, as well as some time series classes with regular time from other packages, including “zooreg” (other classes can be added if required).</p>
+<p>Package <code>pcts</code> provides two native classes for periodic time series: “PeriodicTS” and “PeriodicMTS” for univariate and multivariate time series, respectively. There are also some classes serving as wrappers for the base “ts” and “mts” classes and some classes from other packages, such as “zoo”, if the original classes need to be preserved.</p>
+<p>When supplied with a time series object, <code>pcts()</code> gets the time information from it. For example, the <code>AirPassengers</code> is a monthly time series starting in <code>{r} start(AirPassengers)</code> from base R, so it is converted to a periodic time series with a monthly cycle and the same start time:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">ap &lt;-<span class="st"> </span><span class="kw">pcts</span>(AirPassengers)</a>
+<a class="sourceLine" id="cb2-2" title="2">ap</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="co">#&gt; An object of class &quot;PeriodicTS&quot;</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co">#&gt; Slot &quot;cycle&quot;: Start:  1949   January </span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="co">#&gt; Cycle:  MonthYearCycle </span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="co">#&gt; Number of seasons: 12 </span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="co">#&gt;      Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="co">#&gt; 1949 112 118 132 129 121 135 148 148 136 119 104 118</span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">#&gt; 1950 115 126 141 135 125 149 170 170 158 133 114 140</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">#&gt; 1951 145 150 178 163 172 178 199 199 184 162 146 166</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">#&gt; 1952 171 180 193 181 183 218 230 242 209 191 172 194</span></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="co">#&gt; 1953 196 196 236 235 229 243 264 272 237 211 180 201</span></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="co">#&gt; 1954 204 188 235 227 234 264 302 293 259 229 203 229</span></a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="co">#&gt; 1955 242 233 267 269 270 315 364 347 312 274 237 278</span></a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="co">#&gt; 1956 284 277 317 313 318 374 413 405 355 306 271 306</span></a>
+<a class="sourceLine" id="cb2-17" title="17"><span class="co">#&gt; 1957 315 301 356 348 355 422 465 467 404 347 305 336</span></a>
+<a class="sourceLine" id="cb2-18" title="18"><span class="co">#&gt; 1958 340 318 362 348 363 435 491 505 404 359 310 337</span></a>
+<a class="sourceLine" id="cb2-19" title="19"><span class="co">#&gt; 1959 360 342 406 396 420 472 548 559 463 407 362 405</span></a>
+<a class="sourceLine" id="cb2-20" title="20"><span class="co">#&gt; 1960 417 391 419 461 472 535 622 606 508 461 390 432</span></a></code></pre></div>
+<p>Get the data from Mar 1952 to Feb 1959:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">window</span>(ap, <span class="dt">start =</span> <span class="kw">c</span>(<span class="dv">1952</span>, <span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co">#&gt; An object of class &quot;PeriodicTS&quot;</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt; Slot &quot;cycle&quot;: Start:  1952   March </span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt; Cycle:  MonthYearCycle </span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="co">#&gt; Number of seasons: 12 </span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co">#&gt;      Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="co">#&gt; 1952         193 181 183 218 230 242 209 191 172 194</span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="co">#&gt; 1953 196 196 236 235 229 243 264 272 237 211 180 201</span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="co">#&gt; 1954 204 188 235 227 234 264 302 293 259 229 203 229</span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="co">#&gt; 1955 242 233 267 269 270 315 364 347 312 274 237 278</span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="co">#&gt; 1956 284 277 317 313 318 374 413 405 355 306 271 306</span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="co">#&gt; 1957 315 301 356 348 355 422 465 467 404 347 305 336</span></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="co">#&gt; 1958 340 318 362 348 363 435 491 505 404 359 310 337</span></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt; 1959 360 342 406 396 420 472 548 559 463 407 362 405</span></a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="co">#&gt; 1960 417 391 419 461 472 535 622 606 508 461 390 432</span></a>
+<a class="sourceLine" id="cb3-17" title="17"><span class="kw">window</span>(ap, <span class="dt">end =</span> <span class="kw">c</span>(<span class="dv">1959</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb3-18" title="18"><span class="co">#&gt; An object of class &quot;PeriodicTS&quot;</span></a>
+<a class="sourceLine" id="cb3-19" title="19"><span class="co">#&gt; Slot &quot;cycle&quot;: Start:  1949   January </span></a>
+<a class="sourceLine" id="cb3-20" title="20"><span class="co">#&gt; Cycle:  MonthYearCycle </span></a>
+<a class="sourceLine" id="cb3-21" title="21"><span class="co">#&gt; Number of seasons: 12 </span></a>
+<a class="sourceLine" id="cb3-22" title="22"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-23" title="23"><span class="co">#&gt;      Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></a>
+<a class="sourceLine" id="cb3-24" title="24"><span class="co">#&gt; 1949 112 118 132 129 121 135 148 148 136 119 104 118</span></a>
+<a class="sourceLine" id="cb3-25" title="25"><span class="co">#&gt; 1950 115 126 141 135 125 149 170 170 158 133 114 140</span></a>
+<a class="sourceLine" id="cb3-26" title="26"><span class="co">#&gt; 1951 145 150 178 163 172 178 199 199 184 162 146 166</span></a>
+<a class="sourceLine" id="cb3-27" title="27"><span class="co">#&gt; 1952 171 180 193 181 183 218 230 242 209 191 172 194</span></a>
+<a class="sourceLine" id="cb3-28" title="28"><span class="co">#&gt; 1953 196 196 236 235 229 243 264 272 237 211 180 201</span></a>
+<a class="sourceLine" id="cb3-29" title="29"><span class="co">#&gt; 1954 204 188 235 227 234 264 302 293 259 229 203 229</span></a>
+<a class="sourceLine" id="cb3-30" title="30"><span class="co">#&gt; 1955 242 233 267 269 270 315 364 347 312 274 237 278</span></a>
+<a class="sourceLine" id="cb3-31" title="31"><span class="co">#&gt; 1956 284 277 317 313 318 374 413 405 355 306 271 306</span></a>
+<a class="sourceLine" id="cb3-32" title="32"><span class="co">#&gt; 1957 315 301 356 348 355 422 465 467 404 347 305 336</span></a>
+<a class="sourceLine" id="cb3-33" title="33"><span class="co">#&gt; 1958 340 318 362 348 363 435 491 505 404 359 310 337</span></a>
+<a class="sourceLine" id="cb3-34" title="34"><span class="co">#&gt; 1959 360 342</span></a></code></pre></div>
+<p>Take the summer months only:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">window</span>(ap, <span class="dt">seasons =</span> <span class="dv">7</span><span class="op">:</span><span class="dv">9</span>)</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="co">#&gt; An object of class &quot;PeriodicTS&quot;</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">#&gt; Slot &quot;cycle&quot;: Start:  1949   July </span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">#&gt; Cycle:  PartialCycle </span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="co">#&gt; Number of seasons: 3 </span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="co">#&gt;      Jul Aug Sep</span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="co">#&gt; 1949 148 148 136</span></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="co">#&gt; 1950 170 170 158</span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="co">#&gt; 1951 199 199 184</span></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="co">#&gt; 1952 230 242 209</span></a>
+<a class="sourceLine" id="cb4-12" title="12"><span class="co">#&gt; 1953 264 272 237</span></a>
+<a class="sourceLine" id="cb4-13" title="13"><span class="co">#&gt; 1954 302 293 259</span></a>
+<a class="sourceLine" id="cb4-14" title="14"><span class="co">#&gt; 1955 364 347 312</span></a>
+<a class="sourceLine" id="cb4-15" title="15"><span class="co">#&gt; 1956 413 405 355</span></a>
+<a class="sourceLine" id="cb4-16" title="16"><span class="co">#&gt; 1957 465 467 404</span></a>
+<a class="sourceLine" id="cb4-17" title="17"><span class="co">#&gt; 1958 491 505 404</span></a>
+<a class="sourceLine" id="cb4-18" title="18"><span class="co">#&gt; 1959 548 559 463</span></a>
+<a class="sourceLine" id="cb4-19" title="19"><span class="co">#&gt; 1960 622 606 508</span></a></code></pre></div>
+<p>The dataset <code>dataFranses1996</code> contains a multivariate quarterly time series. See <code>?dataFranses1996</code> for more information. Here are some excerpts from it:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">data</span>(dataFranses1996)</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw">class</span>(dataFranses1996)</a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="co">#&gt; [1] &quot;mts&quot;    &quot;ts&quot;     &quot;matrix&quot;</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="kw">colnames</span>(dataFranses1996)</a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt;  [1] &quot;year&quot;                            &quot;USTotalIPI&quot;                     </span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt;  [3] &quot;CanadaUnemployment&quot;              &quot;GermanyGNP&quot;                     </span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt;  [5] &quot;UKTotalInvestment&quot;               &quot;SA_USTotalIPI&quot;                  </span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt;  [7] &quot;SA_CanadaUnemployment&quot;           &quot;SA_GermanyGNP&quot;                  </span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="co">#&gt;  [9] &quot;UKGDP&quot;                           &quot;UKTotalConsumption&quot;             </span></a>
+<a class="sourceLine" id="cb5-10" title="10"><span class="co">#&gt; [11] &quot;UKNondurablesConsumption&quot;        &quot;UKExport&quot;                       </span></a>
+<a class="sourceLine" id="cb5-11" title="11"><span class="co">#&gt; [13] &quot;UKImport&quot;                        &quot;UKPublicInvestment&quot;             </span></a>
+<a class="sourceLine" id="cb5-12" title="12"><span class="co">#&gt; [15] &quot;UKWorkforce&quot;                     &quot;SwedenNondurablesConsumption&quot;   </span></a>
+<a class="sourceLine" id="cb5-13" title="13"><span class="co">#&gt; [17] &quot;SwedenDisposableIncome&quot;          &quot;SA_SwedenNondurablesConsumption&quot;</span></a>
+<a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt; [19] &quot;SA_SwedenDisposableIncome&quot;</span></a>
+<a class="sourceLine" id="cb5-15" title="15"><span class="kw">dim</span>(dataFranses1996) <span class="co"># c(148, 19)</span></a>
+<a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt; [1] 148  19</span></a></code></pre></div>
+<p>It can be converrted to periodic time series with</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">pcfr &lt;-<span class="st"> </span><span class="kw">pcts</span>(dataFranses1996)</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="kw">colnames</span>(pcfr)[<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="co">#&gt; [1] &quot;USTotalIPI&quot;         &quot;CanadaUnemployment&quot;</span></a></code></pre></div>
+<p>The Franses’ time series is quite large and for convenience in presentation we work with parts of it below.</p>
+<p>Let’s take one of the time series:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">tipi &lt;-<span class="st"> </span>dataFranses1996[ , <span class="st">&quot;USTotalIPI&quot;</span>]</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="kw">plot</span>(tipi)</a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --> Convert <code>tipi</code> to PeriodicTS and remove NA’s at the start and end</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">pctipi &lt;-<span class="st"> </span><span class="kw">pcts</span>(tipi)</a>
+<a class="sourceLine" id="cb8-2" title="2">pctipi &lt;-<span class="st"> </span><span class="kw">window</span>(pctipi, <span class="dt">start =</span> <span class="kw">availStart</span>(pctipi), <span class="dt">end =</span> <span class="kw">availEnd</span>(pctipi))</a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="kw">plot</span>(pctipi)</a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>subset as “PeriodicMTS”</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">pcfr2to3 &lt;-<span class="st"> </span>pcfr[<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="kw">plot</span>(pcfr2to3)</a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>“[” gives “PeriodicMTS” even with length one arg.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">pcfr2to2  &lt;-<span class="st"> </span>pcfr[<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb10-2" title="2">pcfr2to2a &lt;-<span class="st"> </span>pcfr[<span class="st">&quot;USTotalIPI&quot;</span>] <span class="co"># same</span></a></code></pre></div>
+<p>Use “[[” or <code>$</code> to get “PeriodicTS”</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">pcfr2 &lt;-<span class="st"> </span>pcfr[[<span class="dv">2</span>]]</a>
+<a class="sourceLine" id="cb11-2" title="2">pcfr2a &lt;-<span class="st"> </span>pcfr[[<span class="st">&quot;USTotalIPI&quot;</span>]] <span class="co"># same</span></a>
+<a class="sourceLine" id="cb11-3" title="3">pcfr2b &lt;-<span class="st"> </span>pcfr<span class="op">$</span>USTotalIPI      <span class="co"># same</span></a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="kw">identical</span>(pcfr2, pcfr2a) <span class="co"># TRUE</span></a>
+<a class="sourceLine" id="cb11-5" title="5"><span class="co">#&gt; [1] TRUE</span></a>
+<a class="sourceLine" id="cb11-6" title="6"><span class="kw">identical</span>(pcfr2, pcfr2b) <span class="co"># TRUE</span></a>
+<a class="sourceLine" id="cb11-7" title="7"><span class="co">#&gt; [1] TRUE</span></a>
+<a class="sourceLine" id="cb11-8" title="8"></a>
+<a class="sourceLine" id="cb11-9" title="9">c1 &lt;-<span class="st"> </span><span class="kw">cycle</span>(pcfr)</a>
+<a class="sourceLine" id="cb11-10" title="10"><span class="kw">head</span>(c1, <span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb11-11" title="11"><span class="co">#&gt; An object of class &quot;PeriodicTS&quot;</span></a>
+<a class="sourceLine" id="cb11-12" title="12"><span class="co">#&gt; Slot &quot;cycle&quot;: Start:  1955   Quarter_1 </span></a>
+<a class="sourceLine" id="cb11-13" title="13"><span class="co">#&gt; Cycle:  QuarterYearCycle </span></a>
+<a class="sourceLine" id="cb11-14" title="14"><span class="co">#&gt; Number of seasons: 4 </span></a>
+<a class="sourceLine" id="cb11-15" title="15"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb11-16" title="16"><span class="co">#&gt;      Q1 Q2 Q3 Q4</span></a>
+<a class="sourceLine" id="cb11-17" title="17"><span class="co">#&gt; 1955  1  2  3  4</span></a>
+<a class="sourceLine" id="cb11-18" title="18"><span class="co">#&gt; 1956  1  2  3  4</span></a>
+<a class="sourceLine" id="cb11-19" title="19"><span class="kw">frequency</span>(pcfr)</a>
+<a class="sourceLine" id="cb11-20" title="20"><span class="co">#&gt; [1] 4</span></a></code></pre></div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -20,7 +20,6 @@
 }
 \section{Extends}{
 Class \code{"\linkS4class{zoo}"}, directly.
-Class \code{"\linkS4class{AnyTimeSeries}"}, directly.
 Class \code{"\linkS4class{oldClass}"}, by class "zoo", distance 2.
 }
 \section{Methods}{

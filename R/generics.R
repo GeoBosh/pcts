@@ -7,14 +7,13 @@ modelCycle <- function(object){
 }
 setGeneric("modelCycle")
 
-## TODO: this needs change
-"modelCycle<-" <- function(object, ..., value){
-    ## object@modelCycle <- value
-    ## object
-    stop("there is no applicable method for 'modelCycle<-' with signature '", 
-         class(object), "'")
-}
-setGeneric("modelCycle<-")
+## "modelCycle<-" <- function(object, ..., value){
+##     ## object@modelCycle <- value
+##     ## object
+##     stop("there is no applicable method for 'modelCycle<-' with signature '", 
+##          class(object), "'")
+## }
+setGeneric("modelCycle<-", function(object, ..., value){ standardGeneric("modelCycle<-") })
 
 pc.stop <-   # 2014-08-24 moved from smallutil.r; 2016-03-28 moved from  pc05season.r
   function(x){
@@ -22,10 +21,10 @@ pc.stop <-   # 2014-08-24 moved from smallutil.r; 2016-03-28 moved from  pc05sea
     stop(fn, " not defined for objects of class ", class(x), call.=FALSE)
   }
 
-pc.phis2 <- function(x,p) pc.stop(x)
-pc.bU <-
-pc.fL <- function(x,p,from=1,to=6) pc.stop(x)
+## pc.phis2 <- function(x,p) pc.stop(x)
+## pc.bU <-
+## pc.fL <- function(x,p,from=1,to=6) pc.stop(x)
 
-setGeneric("pc.phis2")
-setGeneric("pc.fL")
-setGeneric("pc.bU")
+setGeneric("pc.phis2", function(x, p){ standardGeneric("pc.phis2") })
+setGeneric("pc.fL", function(x, p, from = 1, to = 6){ standardGeneric("pc.fL") })
+setGeneric("pc.bU", function(x, p, from = 1, to = 6){ standardGeneric("pc.bU") })

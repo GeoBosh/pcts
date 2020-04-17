@@ -52,10 +52,10 @@ No methods defined with class "SimpleCycle" in the signature.
   \code{\link{SimpleCycle-class}},
 
   \code{\link{DayWeekCycle-class}},
-  \code{\link{FiveDayWeekCycle-class}},
   \code{\link{MonthYearCycle-class}},
   \code{\link{OpenCloseCycle-class}},
-  \code{\link{QuarterYearCycle-class}}
+  \code{\link{QuarterYearCycle-class}},
+  \code{\link{PartialCycle-class}}
 
   \code{\link{BasicCycle-class}} (virtual, for use in signatures)
 %%%  ~~or \code{\linkS4class{CLASSNAME}} for links to other classes ~~~

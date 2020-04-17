@@ -3,7 +3,7 @@
 \title{Create cycle objects from the builtin cycle classes}
 \description{Create cycle objects from the builtin cycle classes.}
 \usage{
-BuiltinCycle(n, coerce = FALSE, first = 1)
+BuiltinCycle(n, coerce = FALSE, first = 1, stop = TRUE)
 }
 \arguments{
   \item{n}{number of seasons, an integer.}
@@ -12,6 +12,11 @@ BuiltinCycle(n, coerce = FALSE, first = 1)
     currently \code{"SimpleCycle"}.
   }
   \item{first}{which season is first for this object.}
+  \item{stop}{
+    if \code{TRUE}, the default, throw error if there is no builtin
+    class with \code{n} seasons, otherwise create a \code{"BareCycle"}
+    object.
+  }
 }
 \details{
 
@@ -23,6 +28,12 @@ BuiltinCycle(n, coerce = FALSE, first = 1)
   object to class \code{"SimpleCycle"}. This can be done also in the
   call to \code{BuiltinCycle()} by specifying \code{coerce = TRUE}.
 
+  By default, an error is thrown if there is no builtin class with the
+  requested number of seasons. Set argument \code{stop} to FALSE to
+  create an object from class \code{"BareCycle"} instead (and it will be
+  converted to \code{"SimpleCycle"} if \code{coerce = TRUE}). Argument
+  \code{stop} is mainly for programming.
+  
 }
 \value{
   one of the builtin classes, coerced if requested.
@@ -46,10 +57,17 @@ BuiltinCycle(n, coerce = FALSE, first = 1)
 \examples{
 BuiltinCycle(2)  # "OpenCloseCycle"
 BuiltinCycle(4)  # "QuarterYearCycle"
-BuiltinCycle(5)  # "FiveDayWeekCycle"
+BuiltinCycle(5)  #  five day week cycle
 BuiltinCycle(7)  # "DayWeekCycle"
 BuiltinCycle(12) # "MonthYearCycle"
 BuiltinCycle(48) # "Every30MinutesCycle"
+
+## error, since there is no builtin cycle with 19 seasons:
+## BuiltinCycle(19)
+
+## use stop = FALSE to reate a default cycle in this case
+BuiltinCycle(19, stop = FALSE)
+BuiltinCycle(19, coerce = TRUE, stop = FALSE)
 }
 %\keyword{ ~kwd1 }
 % use one of  RShowDoc("KEYWORDS")

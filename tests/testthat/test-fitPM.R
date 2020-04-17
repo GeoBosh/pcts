@@ -9,7 +9,7 @@ test_that("test fitPM()",
     x_pcts <- pcts(as.numeric(x), nseasons = 4)
 
     expect_error(fitPM(c(1.5, 2, 3, 1), x), "The PAR orders must be non-negative integer numbers")
-    expect_error(fitPM("dummy", x), "doesn't have a method for 'model' of class character")
+    expect_error(fitPM("dummy", x), "unable to find an inherited method for function 'fitPM'")
     expect_error(fitPM(c(3,2,2,2), mx), "multivariate PAR fitting not implemented yet")
 
     proba1 <- fitPM(c(3, 2, 2, 2), as.numeric(mx))
@@ -72,6 +72,21 @@ test_that("test fitPM()",
     perunit  <- sim_pc(list(phi = coef1, p = 3, q = 0, period = 4),500)
     fitPM(pipfm, perunit)
 
+    ## temporary
+    expect_identical(residuals(proba1), pcts:::.whiten(proba1))
+
+    proba1x <- new("FittedPeriodicArmaModel", as(proba1, "PeriodicArmaModel"),
+                   theTS = proba1@theTS, ns = proba1@ns, asyCov = proba1@asyCov)    
+    expect_identical(residuals(proba1x), residuals(proba1))
+    
+    expect_error(as_pcarma_list(1:10),
+                 "unable to find an inherited method for function 'as_pcarma_list'")
+
+    expect_output(show(proba1x))
+    fitted(proba1x)
+    predict(proba1x, 1)
+    predict(proba1x, 8)
+    
 })
 
 
@@ -180,6 +195,4 @@ mC.ss(spec.co2, init = tmp2$env$mcparam2optparam())
 ##  [3,] 0.7989768    0    0    1 -0.7989768
 ##  [4,] 1.2716195    0    0    1 -1.2716195
 
-
-    
 })

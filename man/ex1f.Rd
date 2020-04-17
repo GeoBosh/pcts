@@ -18,6 +18,7 @@
 \seealso{ \code{\link{pdSafeParOrder}} }
 \source{See pp. 429--430 of the reference.}
 \references{
+  
   % bibentry: Sophie2005pacf
 Lambert-Lacroix S (2005).
 `` Extension of autocovariance coefficients sequence for periodically correlated

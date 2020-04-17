@@ -1,8 +1,8 @@
-fitPM <- function(model, x, ...){
-    stop("Function 'fitPM' doesn't have a method for 'model' of class ",
-         class(model), "." )
-}
-setGeneric("fitPM")
+## fitPM <- function(model, x, ...){
+##     stop("Function 'fitPM' doesn't have a method for 'model' of class ",
+##          class(model), "." )
+## }
+setGeneric("fitPM", function(model, x, ...){ standardGeneric("fitPM") })
 
 setMethod("fitPM", signature(model = "numeric", x = "ANY"), # simplified call for PAR
           function(model, x, ...){
@@ -245,3 +245,30 @@ theTS <- function(object, ...){
 "theTS<-" <- function(object, ..., value){
     object@theTS <- value
 }
+
+setGeneric("as_pcarma_list", 
+    function(object, ...){  standardGeneric("as_pcarma_list") })
+
+setMethod("as_pcarma_list", "FittedPeriodicArModel",
+          function (object, ...){ 
+              list(phi       = object@ar@coef,
+                   p         = object@ar@order,
+                   mean      = object@center,
+                   intercept = object@intercept,
+                   period    = nSeasons(object)
+                   )
+          }
+          )
+
+setMethod("as_pcarma_list", "FittedPeriodicArmaModel",
+          function (object, ...){ 
+              list(phi       = object@ar@coef,
+                   p         = object@ar@order,
+                   theta     = object@ma@coef,
+                   q         = object@ma@order,
+                   mean      = object@center,
+                   intercept = object@intercept,
+                   period    = nSeasons(object)
+                   )
+          }
+          )

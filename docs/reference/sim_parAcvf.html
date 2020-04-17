@@ -22,15 +22,15 @@
 <script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -87,6 +87,18 @@
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/pcts_data.html">Importing and manipulating periodic time seires data</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -165,30 +177,30 @@ ISSN 0143-9782, <a href='http://dx.doi.org/10.1111/j.1467-9892.2009.00617.x'>htt
 <!-- % end:bibentry:  boshnakov2009gen --></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>sim_parAcvf</span>(<span class='fl'>2</span>, <span class='fl'>5</span>)</div><div class='output co'>#&gt;          [,1]        [,2]       [,3]      [,4]       [,5]       [,6]
-#&gt; [1,] 1.233327  0.05361965 -0.4359978 0.2964621 0.07878883 -0.2493530
-#&gt; [2,] 1.302244 -0.36101797 -0.5203218 0.2728228 0.14286869 -0.1334189
+    <pre class="examples"><div class='input'><span class='fu'>sim_parAcvf</span>(<span class='fl'>2</span>, <span class='fl'>5</span>)</div><div class='output co'>#&gt;          [,1]     [,2]      [,3]     [,4]        [,5]       [,6]
+#&gt; [1,] 9.358814 2.522674 2.5124571 0.856207 -2.40770958 -0.8544942
+#&gt; [2,] 2.112913 1.884455 0.7005551 2.289959 -0.07141546 -0.2990444
 #&gt; attr(,"model")
 #&gt; attr(,"model")$ar
-#&gt;      [,1]        [,2]       [,3]       [,4]        [,5]         [,6]
-#&gt; [1,]    1  0.04868225 -0.3439087 0.25684978 0.007427198 -0.016207390
-#&gt; [2,]    1 -0.27744291 -0.3759664 0.01359745 0.023293326  0.004338215
+#&gt;      [,1]      [,2]       [,3]      [,4]       [,5]       [,6]
+#&gt; [1,]    1 2.4817868 -0.1287243 0.4691656 -1.1946248 1.00237503
+#&gt; [2,]    1 0.2076349 -0.1122449 0.3412125 -0.5485619 0.06778367
 #&gt; 
 #&gt; attr(,"model")$sigma2
 #&gt; [1] 1 1
 #&gt; 
 #&gt; attr(,"model")$order
 #&gt; [1] 5
-#&gt; </div><div class='input'><span class='fu'>sim_parAcvf</span>(<span class='fl'>3</span>, <span class='fl'>5</span>)</div><div class='output co'>#&gt;           [,1]      [,2]      [,3]      [,4]       [,5]      [,6]
-#&gt; [1,]  58.63884  6.522942 -24.77624 -25.11144  79.257914  52.21531
-#&gt; [2,]  58.23716  2.622323 -20.90846 -36.30137   6.203525 -28.55487
-#&gt; [3,] 178.14383 68.958001 -55.01500 -36.24596 -21.545472  25.62121
+#&gt; </div><div class='input'><span class='fu'>sim_parAcvf</span>(<span class='fl'>3</span>, <span class='fl'>5</span>)</div><div class='output co'>#&gt;           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]
+#&gt; [1,]  5.549885 -6.570274  4.887329 -2.372852  2.032531 -6.390012
+#&gt; [2,] 12.945914  3.088179 -5.663175 -5.053098 -4.313226  8.962977
+#&gt; [3,] 14.090953 -2.984629  5.917724 -9.868204  8.222589 -3.435384
 #&gt; attr(,"model")
 #&gt; attr(,"model")$ar
-#&gt;      [,1]       [,2]      [,3]        [,4]       [,5]       [,6]
-#&gt; [1,]    1  0.3576854 -0.538332  0.02404178  0.3346583  0.3073282
-#&gt; [2,]    1 -0.9332043  1.078525 -2.26926645  0.7996306  0.1787224
-#&gt; [3,]    1  6.5131477  1.876113 -5.19419098 10.8549429 -4.8073083
+#&gt;      [,1]       [,2]       [,3]       [,4]        [,5]        [,6]
+#&gt; [1,]    1 -0.2301267  0.3685835 -0.4352324 -0.08414653 -0.05865233
+#&gt; [2,]    1  2.4366551  0.3492087 -1.2693042  1.38636587  0.66546053
+#&gt; [3,]    1 -0.3805371 -0.3151011 -0.3951479  0.76598366 -1.05435211
 #&gt; 
 #&gt; attr(,"model")$sigma2
 #&gt; [1] 1 1 1
@@ -197,17 +209,14 @@ ISSN 0143-9782, <a href='http://dx.doi.org/10.1111/j.1467-9892.2009.00617.x'>htt
 #&gt; [1] 5
 #&gt; </div><div class='input'>
 <span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'>sim_parAcvf</span>(<span class='fl'>2</span>, <span class='fl'>6</span>)
-<span class='no'>res</span></div><div class='output co'>#&gt;          [,1]      [,2]      [,3]       [,4]     [,5]      [,6]      [,7]
-#&gt; [1,] 2853.534 -1266.901 -1464.368   420.4538 475.8680 -33.80464 -31.12043
-#&gt; [2,] 2007.090  2391.999 -1099.298 -1272.3525 380.1876 431.34292 -40.17934
+<span class='no'>res</span></div><div class='output co'>#&gt;          [,1]     [,2]      [,3]      [,4]      [,5]       [,6]       [,7]
+#&gt; [1,] 292.9796  33.0503 140.31049 -94.47060 -146.7802 -117.26143 -265.28835
+#&gt; [2,]  63.8744 131.4541  28.53415  88.76269  -35.7699  -45.78448  -58.83145
 #&gt; attr(,"model")
 #&gt; attr(,"model")$ar
-#&gt;      [,1]        [,2]        [,3]        [,4]         [,5]        [,6]
-#&gt; [1,]    1 -45.4261484 37.01846396 -0.21409595 -0.826003569 0.143702749
-#&gt; [2,]    1   0.8274686 -0.01148901 -0.01011528  0.002265938 0.000990888
-#&gt;              [,7]
-#&gt; [1,] 4.258161e-02
-#&gt; [2,] 7.983133e-05
+#&gt;      [,1]       [,2]      [,3]        [,4]       [,5]       [,6]       [,7]
+#&gt; [1,]    1 -4.5725434 2.3809656  1.22061700 -0.8770059 -2.4880512 0.73933919
+#&gt; [2,]    1  0.3318615 0.5358023 -0.07277562 -0.5674673  0.1295568 0.06706686
 #&gt; 
 #&gt; attr(,"model")$sigma2
 #&gt; [1] 1 1
@@ -215,12 +224,12 @@ ISSN 0143-9782, <a href='http://dx.doi.org/10.1111/j.1467-9892.2009.00617.x'>htt
 #&gt; attr(,"model")$order
 #&gt; [1] 6
 #&gt; </div><div class='input'><span class='fu'><a href='pcts_reexports.html'>slMatrix</a></span>(<span class='no'>res</span>)[<span class='fl'>3</span>, <span class='fl'>4</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"tt"</span>]</div><div class='output co'>#&gt;          [,1]
-#&gt; [1,] 2391.999</div><div class='input'>
+#&gt; [1,] 131.4541</div><div class='input'>
 <span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'>sim_parAcvf</span>(<span class='fl'>2</span>, <span class='fl'>4</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span>(<span class='no'>res</span>, <span class='st'>"model"</span>)</div><div class='output co'>#&gt; $ar
-#&gt;      [,1]      [,2]       [,3]      [,4]       [,5]
-#&gt; [1,]    1 -1.334274  0.4330079 0.8004901 0.03082343
-#&gt; [2,]    1 -3.703349 -4.2029209 1.7744008 2.81031149
+#&gt;      [,1]        [,2]      [,3]         [,4]        [,5]
+#&gt; [1,]    1  0.04749011 0.1370366  0.001487516 -0.01430092
+#&gt; [2,]    1 -2.69264664 0.4206360 -0.366223772 -0.06669012
 #&gt; 
 #&gt; $sigma2
 #&gt; [1] 1 1
@@ -229,14 +238,14 @@ ISSN 0143-9782, <a href='http://dx.doi.org/10.1111/j.1467-9892.2009.00617.x'>htt
 #&gt; [1] 4
 #&gt; </div><div class='input'><span class='no'>acv</span> <span class='kw'>&lt;-</span> <span class='no'>res</span>[ , ] <span class='co'># drop attributes</span>
 
-<span class='no'>acv</span>[<span class='fl'>2</span>, <span class='fl'>1</span> + <span class='fl'>0</span>]</div><div class='output co'>#&gt; [1] 22.3301</div><div class='input'><span class='no'>acv</span>[<span class='fl'>2</span>, <span class='fl'>1</span> + <span class='fl'>1</span>]</div><div class='output co'>#&gt; [1] -20.07881</div><div class='input'><span class='fu'><a href='pcts_reexports.html'>slMatrix</a></span>(<span class='no'>acv</span>)[<span class='fl'>2</span>, <span class='fl'>0</span>]</div><div class='output co'>#&gt; [1] 22.3301</div><div class='input'><span class='fu'><a href='pcts_reexports.html'>slMatrix</a></span>(<span class='no'>acv</span>)[<span class='fl'>2</span>, <span class='fl'>1</span>]</div><div class='output co'>#&gt; [1] -20.07881</div><div class='input'><span class='fu'><a href='pcts_reexports.html'>slMatrix</a></span>(<span class='no'>acv</span>)[<span class='fl'>3</span>, <span class='fl'>4</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"tt"</span>]</div><div class='output co'>#&gt;           [,1]
-#&gt; [1,] -20.07881</div><div class='input'><span class='fu'><a href='pcts_reexports.html'>slMatrix</a></span>(<span class='no'>acv</span>)[<span class='fl'>1</span>:<span class='fl'>2</span>, <span class='fl'>1</span>:<span class='fl'>2</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"tt"</span>]</div><div class='output co'>#&gt;           [,1]      [,2]
-#&gt; [1,]  40.31019 -20.07881
-#&gt; [2,] -20.07881  22.33010</div><div class='input'><span class='fu'><a href='pcts_reexports.html'>slMatrix</a></span>(<span class='no'>acv</span>)[<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>1</span>:<span class='fl'>4</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"tt"</span>]</div><div class='output co'>#&gt;            [,1]      [,2]      [,3]       [,4]
-#&gt; [1,]  40.310193 -20.07881  21.57869  -5.908852
-#&gt; [2,] -20.078806  22.33010 -29.14677  11.897848
-#&gt; [3,]  21.578690 -29.14677  40.31019 -20.078806
-#&gt; [4,]  -5.908852  11.89785 -20.07881  22.330096</div><div class='input'>
+<span class='no'>acv</span>[<span class='fl'>2</span>, <span class='fl'>1</span> + <span class='fl'>0</span>]</div><div class='output co'>#&gt; [1] 10.72522</div><div class='input'><span class='no'>acv</span>[<span class='fl'>2</span>, <span class='fl'>1</span> + <span class='fl'>1</span>]</div><div class='output co'>#&gt; [1] -2.67572</div><div class='input'><span class='fu'><a href='pcts_reexports.html'>slMatrix</a></span>(<span class='no'>acv</span>)[<span class='fl'>2</span>, <span class='fl'>0</span>]</div><div class='output co'>#&gt; [1] 10.72522</div><div class='input'><span class='fu'><a href='pcts_reexports.html'>slMatrix</a></span>(<span class='no'>acv</span>)[<span class='fl'>2</span>, <span class='fl'>1</span>]</div><div class='output co'>#&gt; [1] -2.67572</div><div class='input'><span class='fu'><a href='pcts_reexports.html'>slMatrix</a></span>(<span class='no'>acv</span>)[<span class='fl'>3</span>, <span class='fl'>4</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"tt"</span>]</div><div class='output co'>#&gt;          [,1]
+#&gt; [1,] -2.67572</div><div class='input'><span class='fu'><a href='pcts_reexports.html'>slMatrix</a></span>(<span class='no'>acv</span>)[<span class='fl'>1</span>:<span class='fl'>2</span>, <span class='fl'>1</span>:<span class='fl'>2</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"tt"</span>]</div><div class='output co'>#&gt;           [,1]     [,2]
+#&gt; [1,]  1.011482 -2.67572
+#&gt; [2,] -2.675720 10.72522</div><div class='input'><span class='fu'><a href='pcts_reexports.html'>slMatrix</a></span>(<span class='no'>acv</span>)[<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>1</span>:<span class='fl'>4</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"tt"</span>]</div><div class='output co'>#&gt;             [,1]       [,2]        [,3]      [,4]
+#&gt; [1,]  1.01148176 -2.6757202  0.01162881 -1.538695
+#&gt; [2,] -2.67572020 10.7252169  0.17168811  4.714611
+#&gt; [3,]  0.01162881  0.1716881  1.01148176 -2.675720
+#&gt; [4,] -1.53869505  4.7146112 -2.67572020 10.725217</div><div class='input'>
 <span class='co'>## TODO: need method for autocorrelation()</span>
 <span class='co'>## pc.acrf(acv)</span>
 
@@ -244,13 +253,13 @@ ISSN 0143-9782, <a href='http://dx.doi.org/10.1111/j.1467-9892.2009.00617.x'>htt
 <span class='co'>## pc.fcoeffs(acv, 2)</span>
 <span class='co'>## pc.fcoeffs(acv, 3)</span>
 <span class='co'>## pc.fcoeffs(acv, 4)</span>
-<span class='kw pkg'>pcts</span><span class='kw ns'>:::</span><span class='fu'>calc_predictionCoefficients</span>(<span class='no'>acv</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>2</span>))</div><div class='output co'>#&gt;      [,1]     [,2]      [,3]
-#&gt; [1,]    1 1.492313 0.2080161
-#&gt; [2,]    1 2.007618 2.0876641</div><div class='input'><span class='kw pkg'>pcts</span><span class='kw ns'>:::</span><span class='fu'>calc_predictionCoefficients</span>(<span class='no'>acv</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>, <span class='fl'>3</span>))</div><div class='output co'>#&gt;      [,1]     [,2]       [,3]       [,4]
-#&gt; [1,]    1 1.354521 -0.3293819 -0.6483023
-#&gt; [2,]    1 2.726901  3.3430668  0.3520372</div><div class='input'><span class='kw pkg'>pcts</span><span class='kw ns'>:::</span><span class='fu'>calc_predictionCoefficients</span>(<span class='no'>acv</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>4</span>, <span class='fl'>4</span>))</div><div class='output co'>#&gt;      [,1]     [,2]       [,3]       [,4]        [,5]
-#&gt; [1,]    1 1.334274 -0.4330079 -0.8004901 -0.03082343
-#&gt; [2,]    1 3.703349  4.2029209 -1.7744008 -2.81031149</div></pre>
+<span class='kw pkg'>pcts</span><span class='kw ns'>:::</span><span class='fu'>calc_predictionCoefficients</span>(<span class='no'>acv</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>2</span>))</div><div class='output co'>#&gt;      [,1]        [,2]       [,3]
+#&gt; [1,]    1 -0.05551134 -0.1583436
+#&gt; [2,]    1  2.72737196 -0.4832414</div><div class='input'><span class='kw pkg'>pcts</span><span class='kw ns'>:::</span><span class='fu'>calc_predictionCoefficients</span>(<span class='no'>acv</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>, <span class='fl'>3</span>))</div><div class='output co'>#&gt;      [,1]       [,2]       [,3]         [,4]
+#&gt; [1,]    1 -0.0501526 -0.1435260 -0.003781037
+#&gt; [2,]    1  2.6934964 -0.3261654  0.627441294</div><div class='input'><span class='kw pkg'>pcts</span><span class='kw ns'>:::</span><span class='fu'>calc_predictionCoefficients</span>(<span class='no'>acv</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>4</span>, <span class='fl'>4</span>))</div><div class='output co'>#&gt;      [,1]        [,2]       [,3]         [,4]       [,5]
+#&gt; [1,]    1 -0.04749011 -0.1370366 -0.001487516 0.01430092
+#&gt; [2,]    1  2.69264664 -0.4206360  0.366223772 0.06669012</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -266,7 +275,7 @@ ISSN 0143-9782, <a href='http://dx.doi.org/10.1111/j.1467-9892.2009.00617.x'>htt
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

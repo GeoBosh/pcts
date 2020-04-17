@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Functions for some basic operations with seasons — pctime • pcts</title>
+<title>Pctime objects — Pctime • pcts</title>
 
 
 <!-- jquery -->
@@ -22,15 +22,15 @@
 <script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -39,8 +39,13 @@
 
 
 
-<meta property="og:title" content="Functions for some basic operations with seasons — pctime" />
-<meta property="og:description" content="Functions for some basic operations with seasons." />
+<meta property="og:title" content="Pctime objects — Pctime" />
+<meta property="og:description" content="
+
+Class &quot;Pctime&quot; is an S3 class inheriting from the base R
+  datetime class &quot;POSIXct&quot;. It has methods for conversion between
+  datetimes and the pcts cycle-season pairs, as well as convenience
+  methods for a few other functions." />
 
 
 
@@ -87,6 +92,18 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/pcts_data.html">Importing and manipulating periodic time seires data</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -111,60 +128,70 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Functions for some basic operations with seasons</h1>
+    <h1>Pctime objects</h1>
     
     <div class="hidden name"><code>pctime.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Functions for some basic operations with seasons.</p>
+    
+
+<p>Class <code>"Pctime"</code> is an S3 class inheriting from the base R
+  datetime class <code>"POSIXct"</code>. It has methods for conversion between
+  datetimes and the pcts cycle-season pairs, as well as convenience
+  methods for a few other functions.</p>
     </div>
 
-    <pre class="usage"><!-- %pc.omitneg(lags, maxlag) -->
-toSeason(t, period, t1 = 1, from = 1)
-toSeasonPair(t, s, period, ...)
-ttTosl(r, period)
-ttmatToslPairs(i, j, period)</pre>
+    <pre class="usage">Pctime(x, cycle, ...)
+
+as_Pctime(x, ...)
+
+# S3 method for Pctime
+[(x, i, j, drop = TRUE)
+
+# S3 method for Pctime
+[[(x, ..., drop = TRUE)
+
+# S3 method for Cyclic
+as_Pctime(x, ...)
+
+# S3 method for PeriodicTimeSeries
+as_Pctime(x, ...)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>r</th>
-      <td><p>covariance matrix, see `Details'.</p></td>
+      <th>x</th>
+      <td>
+
+<p>for <code>Pctime</code>, numeric vector, matrix with two columns, or any
+    object that is or can be converted to datetime. For the other
+    functions see Details.</p>
+<p></p></td>
     </tr>
     <tr>
-      <th>t</th>
-      <td><p>a vector of integers, representing times.</p></td>
-    </tr>
-    <tr>
-      <th>s</th>
-      <td><p>a vector of integers, representing times.</p></td>
-    </tr>
-    <tr>
-      <th>period</th>
-      <td><p>the number of seasons.</p></td>
-    </tr>
-    <tr>
-      <th>t1</th>
-      <td><p>time corresponding to the first season, an integer number.</p></td>
-    </tr>
-    <tr>
-      <th>from</th>
-      <td><p>1 or 0, depending on whether the season numbers start from
-    1 or 0.</p></td>
+      <th>cycle</th>
+      <td>
+    
+<p>a positive integer, cycle object, or missing.</p>
+<p></p></td>
     </tr>
     <tr>
       <th>i</th>
-      <td><p>a vector of integers.</p></td>
+      <td><p>subscript</p></td>
     </tr>
     <tr>
       <th>j</th>
-      <td><p>a vector of integers.</p></td>
+      <td><p>noi used</p></td>
+    </tr>
+    <tr>
+      <th>drop</th>
+      <td><p>not used</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>todo: describe!</p></td>
+      <td><p>further argument for methods.</p></td>
     </tr>
     </table>
 
@@ -172,132 +199,33 @@ ttmatToslPairs(i, j, period)</pre>
 
     
 
-<p><code>ttmatToslPairs(i,j,period)</code> transforms time-time pairs to
- season-lag pairs. The time pairs are obtained by pairing each element
- of <code>i</code> with each element of <code>j</code>. A four column matrix is
- created with one row for each pair <code>(t,s)</code>, such that
- <code>t=i[m]</code> and <code>s=j[n]</code> for some <code>m</code> and <code>n</code>.  The
- row is <code>m, n, s, l</code>, where <code>(s,l)</code> is the season-lag pair
- corresponding to <code>(t,s)</code>.</p>
-<p><code>ttTosl(r,period)</code> converts autocovariances given in a covariance
- matrix (i.e. in ``tt'' form) to the ``sl'' form. The result is a
- <code>period x (maxlag+1)</code> matrix, where <code>maxlag</code> is the maximal
- lag available in <code>r</code>. Entries for which no values are available
- are filled with <code>NA</code>'s.  Warning is given if contradictory entries
- are found (i.e. if <code>r</code> is not from a periodically correlated
- process with the given period).</p>
-<p><code>toSeason(t,period,t1=1,from=1)</code> returns the season corresponding
- to <code>t</code>.  <code>t1</code> is a time (integer) whose season is the first
- season, <code>from</code> is 1 if the numbering of seasons is 1,2,...,period,
- or 0 if the numbering of seasons is 0,1,...,period-1.  Other values for
- <code>from</code> are not admissible (but not checked).  <strong>Note:</strong> some
- of the functions in this package implicitly assume that <code>t1=1</code> and
- <code>from=1</code>.</p>
-<p><code>toSeasonPair(t,s,period)</code> converts the ``tt'' pair <code>t,s</code> to
- ``sl'' pair and returns the result in the form of a list with elements
- <code>season</code> and <code>lag</code>. Currently <code>t</code> and <code>s</code> must be
- scalars.</p>
-<p><code>pc.omitneg</code> helps to implement dropping of negative indices in
- season-lag objects. It returns its first argument, <code>lags</code>, if all
- of its elements are non-negative. Otherwise, all elements of
- <code>lags</code> must be non-positive. In this case the function creates the
- vector <code>0:maxlag</code> and drops the elements specified by lags.  Note
- that the default indexing will not work properly since zero elements in
- an index are omitted (and there are such indices in season-lag
- objects).</p>
+<p><code>Pctime</code> represents periodic times with cycle specification
+contained in attribute <code>"cycle"</code>. It is basically datetime
+(inheriting from <code>"POSIXct"</code>) with additional attribute(s).</p>
+<p>For printing Pctime objects are shown as cycle-season pairs.  To print
+in other formats, just convert them using <code>as_datetime</code> or other
+suitable function. Note though that some cycles in pcts do not have
+natural datetime representation. For them, Pctime sets it arbitrarilly
+as the number of seconds from a origin.</p>
+<p>A common source of frustration is the accidental use of <code>as.Date</code>
+or <code>as_date</code>, instead of <code>as.POSIXlt</code> or <code>as_datetime</code>.
+These four are often equivalent, most notably for monthly, quarterly and
+daily observations but, in general, conversion to dates drops the
+fractional day part of a datetime.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    
-
-<p>for <code>ttmatToslPairs</code>, a matrix with four columns;</p>
-<p>for <code>ttTosl</code>, a matrix with <code>period</code> rows;</p>
-<p>for <code>toSeason(t,period,t1=1,from=1)</code>, a vector of integers;</p>
-<p>for <code>toSeasonPair(t,s,period)</code>, a list with elements
-  <code>season</code> and <code>lag</code>;</p>
-<p>for <code>pc.omitneg</code>, a vector of lags (non-negative integers).</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p><!-- % bibentry: boshnakov2009gen -->
-Boshnakov GN and Iqelan BM (2009).
-``Generation of time series models with given spectral
-properties.''
-<em>J. Time Series Anal.</em>, <b>30</b>(3), pp. 349--368.
-ISSN 0143-9782, <a href='http://dx.doi.org/10.1111/j.1467-9892.2009.00617.x'>http://dx.doi.org/10.1111/j.1467-9892.2009.00617.x</a>.
-<!-- % end:bibentry:  boshnakov2009gen --></p>
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    
-
-<p>2013-10-24 - Corrected the description of the return value of
-  <code>ttmatToslPairs</code>. It incorrectly stated that the first two
-  columns are "tt" pair (they are actually indices in <code>i</code> and
-  <code>j</code>).</p>
+    <p>for <code>Pctime</code>, an object from S3 class Pctime</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># ttmatToslPairs</span>
-<span class='fu'>ttmatToslPairs</span>(<span class='fl'>3</span>, <span class='fl'>3</span>, <span class='fl'>4</span>)  <span class='co'># 1, 1, 3, 0</span></div><div class='output co'>#&gt;     [,1] [,2] [,3] [,4]
-#&gt; tmp    1    1    3    0</div><div class='input'><span class='fu'>ttmatToslPairs</span>(<span class='fl'>3</span>, <span class='fl'>2</span>, <span class='fl'>4</span>)  <span class='co'># 1, 1, 3, 1</span></div><div class='output co'>#&gt;     [,1] [,2] [,3] [,4]
-#&gt; tmp    1    1    3    1</div><div class='input'>
-<span class='fu'>ttmatToslPairs</span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>4</span>)</div><div class='output co'>#&gt;     [,1] [,2] [,3] [,4]
-#&gt; tmp    1    1    1    0
-#&gt; tmp    1    2    2    1
-#&gt; tmp    1    3    3    2
-#&gt; tmp    1    4    4    3
-#&gt; tmp    2    1    2    1
-#&gt; tmp    2    2    2    0
-#&gt; tmp    2    3    3    1
-#&gt; tmp    2    4    4    2
-#&gt; tmp    3    1    3    2
-#&gt; tmp    3    2    3    1
-#&gt; tmp    3    3    3    0
-#&gt; tmp    3    4    4    1
-#&gt; tmp    4    1    4    3
-#&gt; tmp    4    2    4    2
-#&gt; tmp    4    3    4    1
-#&gt; tmp    4    4    4    0</div><div class='input'>
-<span class='fu'>ttmatToslPairs</span>(<span class='fl'>3</span>:<span class='fl'>4</span>, <span class='fl'>3</span>:<span class='fl'>4</span>, <span class='fl'>4</span>)</div><div class='output co'>#&gt;     [,1] [,2] [,3] [,4]
-#&gt; tmp    1    1    3    0
-#&gt; tmp    1    2    4    1
-#&gt; tmp    2    1    4    1
-#&gt; tmp    2    2    4    0</div><div class='input'>
-<span class='co'># ttTosl -  :todo:</span>
-
-<span class='co'># toSeason</span>
-<span class='fu'>toSeason</span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='fl'>4</span>)           <span class='co'># 1 2 3 4  1 2 3 4  1 2</span></div><div class='output co'>#&gt;  [1] 1 2 3 4 1 2 3 4 1 2</div><div class='input'><span class='fu'>toSeason</span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='fl'>4</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>0</span>) <span class='co'># 0 1 2 3  0 1 2 3  0 1</span></div><div class='output co'>#&gt;  [1] 0 1 2 3 0 1 2 3 0 1</div><div class='input'>
-<span class='co'>## first data is for 3rd quarter</span>
-<span class='fu'>toSeason</span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='fl'>4</span>, <span class='kw'>t1</span> <span class='kw'>=</span> <span class='fl'>3</span>)  <span class='co'># 3 4 1 2 3 4 1 2 3 4</span></div><div class='output co'>#&gt;  [1] 3 4 1 2 3 4 1 2 3 4</div><div class='input'>
-<span class='co'># toSeasonPair</span>
-<span class='fu'>toSeasonPair</span>(<span class='fl'>3</span>, <span class='fl'>3</span>, <span class='kw'>period</span><span class='kw'>=</span><span class='fl'>4</span>) <span class='co'># season=3, lag = 0</span></div><div class='output co'>#&gt; $season
-#&gt; [1] 3
-#&gt; 
-#&gt; $lag
-#&gt; [1] 0
-#&gt; </div><div class='input'><span class='fu'>toSeasonPair</span>(<span class='fl'>8</span>, <span class='fl'>8</span>, <span class='kw'>period</span><span class='kw'>=</span><span class='fl'>4</span>) <span class='co'># season=4, lag = 0</span></div><div class='output co'>#&gt; $season
-#&gt; [1] 4
-#&gt; 
-#&gt; $lag
-#&gt; [1] 0
-#&gt; </div><div class='input'>
-<span class='fu'>toSeasonPair</span>(<span class='fl'>3</span>, <span class='fl'>2</span>, <span class='kw'>period</span><span class='kw'>=</span><span class='fl'>4</span>) <span class='co'># season=3, lag = 1</span></div><div class='output co'>#&gt; $season
-#&gt; [1] 3
-#&gt; 
-#&gt; $lag
-#&gt; [1] 1
-#&gt; </div><div class='input'><span class='fu'>toSeasonPair</span>(<span class='fl'>7</span>, <span class='fl'>6</span>, <span class='kw'>period</span><span class='kw'>=</span><span class='fl'>4</span>) <span class='co'># same</span></div><div class='output co'>#&gt; $season
-#&gt; [1] 3
-#&gt; 
-#&gt; $lag
-#&gt; [1] 1
-#&gt; </div><div class='input'>
-#### # pc.omitneg
-#### pc.omitneg(0:5,10) # 0:5, unchaged since all values >= 0
-#### 
-#### pc.omitneg(-(0:5),10) # 6:10, works like
-#### (0:10)[-(0:5 +1)]     # same
-#### 
-#### # don't mix positive and negative numbers in pc.omitneg
-#### \dontrun{pc.omitneg(c(0,2,3,-4,5), 10)}
-</div></pre>
+    <pre class="examples"><div class='input'><span class='co'>## a bare bone date for four seasons</span>
+<span class='no'>pct4</span> <span class='kw'>&lt;-</span> <span class='fu'>Pctime</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2020</span>, <span class='fl'>2</span>), <span class='fu'><a href='pcCycle-methods.html'>pcCycle</a></span>(<span class='fl'>4</span>))
+<span class='no'>pct4</span></div><div class='output co'>#&gt; [1] "C2020 S2"</div><div class='input'>
+<span class='co'>## quarterly cycle</span>
+<span class='no'>pctQ</span> <span class='kw'>&lt;-</span> <span class='fu'>Pctime</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2020</span>, <span class='fl'>2</span>), <span class='fu'><a href='pcCycle-methods.html'>BuiltinCycle</a></span>(<span class='fl'>4</span>))
+<span class='fu'>Pctime</span>(<span class='st'>"2020-04-01"</span>, <span class='fu'><a href='pcCycle-methods.html'>BuiltinCycle</a></span>(<span class='fl'>4</span>)) <span class='co'># same</span></div><div class='output co'>#&gt; [1] "Y2020 Q2"</div><div class='input'><span class='no'>pctQ</span></div><div class='output co'>#&gt; [1] "Y2020 Q2"</div><div class='input'>
+<span class='no'>apdates</span> <span class='kw'>&lt;-</span> <span class='fu'>as_datetime</span>(<span class='fu'><a href='pcts-methods.html'>pcts</a></span>(<span class='no'>AirPassengers</span>))
+<span class='no'>pct</span> <span class='kw'>&lt;-</span> <span class='fu'>Pctime</span>(<span class='no'>apdates</span>, <span class='fu'><a href='pcCycle-methods.html'>BuiltinCycle</a></span>(<span class='fl'>4</span>))
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>pct</span>)</div><div class='output co'>#&gt; [1] "Y1949 Q1" "Y1949 Q2" "Y1949 Q2" "Y1949 Q2" "Y1949 Q3" "Y1949 Q3"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='no'>pct</span>)</div><div class='output co'>#&gt; [1] "Y1960 Q3" "Y1960 Q4" "Y1960 Q4" "Y1960 Q4" "Y1961 Q1" "Y1961 Q1"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -313,7 +241,7 @@ ISSN 0143-9782, <a href='http://dx.doi.org/10.1111/j.1467-9892.2009.00617.x'>htt
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

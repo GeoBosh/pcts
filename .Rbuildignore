@@ -14,3 +14,5 @@
 ^tests/testthat/[.]RData$
 [.]travis[.]yml
 ^data-raw$
+^doc$
+^Meta$

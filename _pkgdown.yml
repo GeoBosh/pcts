@@ -29,13 +29,35 @@ reference:
   - title: Datasets
     contents:
       - dataFranses1996
-  - title: Classes
+  - title: "Time series classes"
     contents:
+      - "PeriodicTS-class"
+      - "PeriodicMTS-class"
+      - "PeriodicTS_ts-class"
+      - "PeriodicMTS_ts-class"
+      - "PeriodicTS_zooreg-class"
+      - "PeriodicMTS_zooreg-class"
+      - "PeriodicTimeSeries-class"
+      - "zoo-class"
+      - "zooreg-class"
+  - title: "Cycle classes"
+    contents:
+      - "BuiltinCycle"
       - "BareCycle-class"
       - "BasicCycle-class"
       - "BuiltinCycle-class"
-      - "BuiltinCycle"
+      - "PartialCycle-class"
+      - "SimpleCycle-class"
       - "Cyclic-class"
+  - title: "Datetimes and dates"
+    contents:
+      - "Cyclic"
+      - "Pctime"
+      - "as_date-methods"
+      - "as_datetime-methods"
+      - "date<--methods"
+  - title: Classes
+    contents:
       - "FittedPeriodicArModel-class"
       - "ModelCycleSpec-class"
       - "PartialPeriodicAutocorrelations-class"
@@ -52,15 +74,8 @@ reference:
       - "PeriodicFilterModel-class"
       - "PeriodicIntegratedArmaSpec-class"
       - "PeriodicInterceptSpec-class"
-      - "PeriodicMTS-class"
-      - "PeriodicMTS_ts-class"
-      - "PeriodicMTS_zooreg-class"
       - "PeriodicMaModel-class"
       - "PeriodicSPFilter-class"
-      - "PeriodicTS-class"
-      - "PeriodicTS_ts-class"
-      - "PeriodicTS_zooreg-class"
-      - "PeriodicTimeSeries-class"
       - "PeriodicVector-class"
       - "PiPeriodicArModel-class"
       - "PiPeriodicArmaModel-class"
@@ -70,9 +85,6 @@ reference:
       - "SiPeriodicArModel-class"
       - "SiPeriodicArmaModel-class"
       - "SiPeriodicMaModel-class"
-      - "SimpleCycle-class"
-      - "zoo-class"
-      - "zooreg-class"
   - title: Other
     contents:
       - "ex1f"
@@ -99,7 +111,7 @@ reference:
       - "pcalg1"
       - "pcalg1util"
       - "pcarma_solve"
-      - "pctime"
+      - "sl_utils"
       - "pcts-deprecated"
       - "pdSafeParOrder"
       - "permean2intercept"

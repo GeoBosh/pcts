@@ -22,15 +22,15 @@
 <script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -87,6 +87,18 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/pcts_data.html">Importing and manipulating periodic time seires data</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -133,7 +145,7 @@
   <code>"className"</code> is the name of the subclass. The optional argument
   <code>first</code> can be used to designate a season to be considered first
   in the cycle, by default the first.</p>
-<p>The function <code><a href='BuiltinCycle.html'>BuiltinCycle</a></code> provides a more convenient way
+<p>The function <code><a href='pcCycle-methods.html'>BuiltinCycle</a></code> provides a more convenient way
   to generate objects from subclasses of class
   <code>"BuiltinCycle"</code>. Its argument is the number of seasons.</p>
 <p>These classes are effectively unmodifiable, but the user can convert
@@ -215,7 +227,7 @@
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='BuiltinCycle.html'>BuiltinCycle</a></code>,
+    <div class='dont-index'><p><code><a href='pcCycle-methods.html'>BuiltinCycle</a></code>,
   <code><a href='pcCycle-methods.html'>pcCycle</a></code> for creation of cycle objects and extraction of
   cycle part of time series,
   <!-- %  -->
@@ -230,20 +242,9 @@
 <p><!-- %%  ~~or \code{\linkS4class{CLASSNAME}} for links to other classes ~~~ --></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>showClass</span>(<span class='st'>"BuiltinCycle"</span>)</div><div class='output co'>#&gt; Virtual Class "BuiltinCycle" [package "pcts"]
-#&gt; 
-#&gt; Slots:
-#&gt;               
-#&gt; Name:    first
-#&gt; Class: integer
-#&gt; 
-#&gt; Extends: "BasicCycle"
-#&gt; 
-#&gt; Known Subclasses: "QuarterYearCycle", "MonthYearCycle", "DayWeekCycle", "FiveDayWeekCycle", 
-#&gt; "OpenCloseCycle", "Every30MinutesCycle"</div><div class='input'>
-<span class='co'>## class "DayWeekCycle"</span>
-<span class='no'>dwcycle</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"DayWeekCycle"</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='fu'><a href='BuiltinCycle.html'>BuiltinCycle</a></span>(<span class='fl'>7</span>), <span class='no'>dwcycle</span>) <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='co'>## class "DayWeekCycle"</span>
+<span class='no'>dwcycle</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcCycle-methods.html'>BuiltinCycle</a></span>(<span class='fl'>7</span>) <span class='co'># new("DayWeekCycle")</span>
+
 <span class='fu'><a href='allSeasons.html'>unitSeason</a></span>(<span class='no'>dwcycle</span>)</div><div class='output co'>#&gt; [1] "Day"</div><div class='input'><span class='fu'><a href='allSeasons.html'>unitCycle</a></span>(<span class='no'>dwcycle</span>)</div><div class='output co'>#&gt; [1] "Week"</div><div class='input'>
 <span class='fu'><a href='allSeasons.html'>allSeasons</a></span>(<span class='no'>dwcycle</span>)</div><div class='output co'>#&gt; [1] "Monday"    "Tuesday"   "Wednesday" "Thursday"  "Friday"    "Saturday" 
 #&gt; [7] "Sunday"   </div><div class='input'><span class='no'>dwcycle</span>[] <span class='co'># same</span></div><div class='output co'>#&gt; [1] "Monday"    "Tuesday"   "Wednesday" "Thursday"  "Friday"    "Saturday" 
@@ -252,29 +253,27 @@
 <span class='no'>dwcycle</span>[<span class='fl'>2</span>]</div><div class='output co'>#&gt; [1] "Tuesday"</div><div class='input'><span class='no'>dwcycle</span>[<span class='fl'>2</span>, <span class='kw'>abb</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>]</div><div class='output co'>#&gt; [1] "Tue"</div><div class='input'>
 <span class='fu'><a href='allSeasons.html'>seqSeasons</a></span>(<span class='no'>dwcycle</span>)</div><div class='output co'>#&gt; [1] 1 2 3 4 5 6 7</div><div class='input'>
 <span class='co'>## start the week on Sunday</span>
-<span class='no'>dws</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"DayWeekCycle"</span>, <span class='kw'>first</span> <span class='kw'>=</span> <span class='fl'>7</span>)
+<span class='no'>dws</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcCycle-methods.html'>BuiltinCycle</a></span>(<span class='fl'>7</span>, <span class='kw'>first</span> <span class='kw'>=</span> <span class='fl'>7</span>) <span class='co'># new("DayWeekCycle", first = 7)</span>
 <span class='no'>dws</span>[<span class='fl'>1</span>] <span class='co'># "Sunday"</span></div><div class='output co'>#&gt; [1] "Sunday"</div><div class='input'><span class='fu'><a href='allSeasons.html'>allSeasons</a></span>(<span class='no'>dws</span>)</div><div class='output co'>#&gt; [1] "Sunday"    "Monday"    "Tuesday"   "Wednesday" "Thursday"  "Friday"   
 #&gt; [7] "Saturday" </div><div class='input'>
-<span class='co'>## class \code{"Every30MinutesCycle"}</span>
-<span class='no'>cyc48</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"Every30MinutesCycle"</span>)
+<span class='co'>## class "Every30MinutesCycle"</span>
+<span class='no'>cyc48</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcCycle-methods.html'>BuiltinCycle</a></span>(<span class='fl'>48</span>) <span class='co'># new("Every30MinutesCycle")</span>
 <span class='fu'>nSeasons</span>(<span class='no'>cyc48</span>)</div><div class='output co'>#&gt; [1] 48</div><div class='input'><span class='fu'><a href='allSeasons.html'>allSeasons</a></span>(<span class='no'>cyc48</span>)</div><div class='output co'>#&gt;  [1] "00:30" "01:00" "01:30" "02:00" "02:30" "03:00" "03:30" "04:00" "04:30"
 #&gt; [10] "05:00" "05:30" "06:00" "06:30" "07:00" "07:30" "08:00" "08:30" "09:00"
 #&gt; [19] "09:30" "10:00" "10:30" "11:00" "11:30" "12:00" "12:30" "13:00" "13:30"
 #&gt; [28] "14:00" "14:30" "15:00" "15:30" "16:00" "16:30" "17:00" "17:30" "18:00"
 #&gt; [37] "18:30" "19:00" "19:30" "20:00" "20:30" "21:00" "21:30" "22:00" "22:30"
 #&gt; [46] "23:00" "23:30" "00:00"</div><div class='input'>
-<span class='co'>## class \code{"FiveDayWeekCycle"}</span>
-<span class='no'>fdcycle</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"FiveDayWeekCycle"</span>)
-<span class='co'>## identical(new("BareCycle", 5), pcCycle(5)) # TRUE</span>
+<span class='co'>## class "FiveDayWeekCycle" is deprecated, use the equivalent:</span>
+<span class='no'>fdcycle</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcCycle-methods.html'>BuiltinCycle</a></span>(<span class='fl'>5</span>)
 
 <span class='fu'><a href='allSeasons.html'>unitSeason</a></span>(<span class='no'>fdcycle</span>)</div><div class='output co'>#&gt; [1] "Day"</div><div class='input'><span class='fu'><a href='allSeasons.html'>unitCycle</a></span>(<span class='no'>fdcycle</span>)</div><div class='output co'>#&gt; [1] "Week"</div><div class='input'>
 <span class='fu'><a href='allSeasons.html'>allSeasons</a></span>(<span class='no'>fdcycle</span>)</div><div class='output co'>#&gt; [1] "Monday"    "Tuesday"   "Wednesday" "Thursday"  "Friday"   </div><div class='input'><span class='no'>fdcycle</span>[] <span class='co'># same</span></div><div class='output co'>#&gt; [1] "Monday"    "Tuesday"   "Wednesday" "Thursday"  "Friday"   </div><div class='input'>
 <span class='fu'><a href='allSeasons.html'>allSeasons</a></span>(<span class='no'>fdcycle</span>, <span class='kw'>abb</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "Mon" "Tue" "Wed" "Thu" "Fri"</div><div class='input'><span class='no'>fdcycle</span>[ , <span class='kw'>abb</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>] <span class='co'># same</span></div><div class='output co'>#&gt; [1] "Mon" "Tue" "Wed" "Thu" "Fri"</div><div class='input'>
 <span class='no'>fdcycle</span>[<span class='fl'>2</span>]</div><div class='output co'>#&gt; [1] "Tuesday"</div><div class='input'><span class='no'>fdcycle</span>[<span class='fl'>2</span>, <span class='kw'>abb</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>]</div><div class='output co'>#&gt; [1] "Tue"</div><div class='input'>
 <span class='fu'><a href='allSeasons.html'>seqSeasons</a></span>(<span class='no'>fdcycle</span>)</div><div class='output co'>#&gt; [1] 1 2 3 4 5</div><div class='input'>
-<span class='co'>## class \code{MonthYearCycle}</span>
-<span class='no'>mycycle</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MonthYearCycle"</span>)
-<span class='co'>## identical(new("BareCycle", 5), pcCycle(5)) # TRUE</span>
+<span class='co'>## class "MonthYearCycle"</span>
+<span class='no'>mycycle</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcCycle-methods.html'>BuiltinCycle</a></span>(<span class='fl'>12</span>) <span class='co'># new("MonthYearCycle")</span>
 
 <span class='fu'><a href='allSeasons.html'>unitSeason</a></span>(<span class='no'>mycycle</span>)</div><div class='output co'>#&gt; [1] "Month"</div><div class='input'><span class='fu'><a href='allSeasons.html'>unitCycle</a></span>(<span class='no'>mycycle</span>)</div><div class='output co'>#&gt; [1] "Year"</div><div class='input'>
 <span class='fu'><a href='allSeasons.html'>allSeasons</a></span>(<span class='no'>mycycle</span>)</div><div class='output co'>#&gt;  [1] "January"   "February"  "March"     "April"     "May"       "June"     
@@ -283,18 +282,16 @@
 <span class='fu'><a href='allSeasons.html'>allSeasons</a></span>(<span class='no'>mycycle</span>, , <span class='kw'>abb</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;  [1] "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"</div><div class='input'><span class='no'>mycycle</span>[ , <span class='kw'>abb</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>] <span class='co'># same</span></div><div class='output co'>#&gt;  [1] "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"</div><div class='input'>
 <span class='no'>mycycle</span>[<span class='fl'>2</span>]</div><div class='output co'>#&gt; [1] "February"</div><div class='input'><span class='no'>mycycle</span>[<span class='fl'>2</span>, <span class='kw'>abb</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>]</div><div class='output co'>#&gt; [1] "Feb"</div><div class='input'>
 <span class='fu'><a href='allSeasons.html'>seqSeasons</a></span>(<span class='no'>mycycle</span>)</div><div class='output co'>#&gt;  [1]  1  2  3  4  5  6  7  8  9 10 11 12</div><div class='input'>
-<span class='co'>## class \code{"OpenCloseCycle"}</span>
+<span class='co'>## class "OpenCloseCycle"</span>
 <span class='no'>opcycle</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"OpenCloseCycle"</span>)
-<span class='co'>## identical(new("BareCycle", 5), pcCycle(5)) # TRUE</span>
 
 <span class='fu'><a href='allSeasons.html'>unitSeason</a></span>(<span class='no'>opcycle</span>)</div><div class='output co'>#&gt; [1] "OpenOrClose"</div><div class='input'><span class='fu'><a href='allSeasons.html'>unitCycle</a></span>(<span class='no'>opcycle</span>)</div><div class='output co'>#&gt; [1] "HalfDay"</div><div class='input'>
 <span class='fu'><a href='allSeasons.html'>allSeasons</a></span>(<span class='no'>opcycle</span>)</div><div class='output co'>#&gt; [1] "Open"  "Close"</div><div class='input'><span class='no'>opcycle</span>[ , <span class='kw'>abb</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>] <span class='co'># same</span></div><div class='output co'>#&gt; [1] "Open"  "Close"</div><div class='input'>
 <span class='fu'><a href='allSeasons.html'>allSeasons</a></span>(<span class='no'>opcycle</span>, <span class='kw'>abb</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] "Open"  "Close"</div><div class='input'><span class='no'>opcycle</span>[] <span class='co'># same</span></div><div class='output co'>#&gt; [1] "Open"  "Close"</div><div class='input'>
 <span class='no'>opcycle</span>[<span class='fl'>2</span>]</div><div class='output co'>#&gt; [1] "Close"</div><div class='input'><span class='no'>opcycle</span>[<span class='fl'>2</span>, <span class='kw'>abb</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>]</div><div class='output co'>#&gt; [1] "C"</div><div class='input'>
 <span class='fu'><a href='allSeasons.html'>seqSeasons</a></span>(<span class='no'>opcycle</span>)</div><div class='output co'>#&gt; [1] 1 2</div><div class='input'>
-<span class='co'>## class \code{"QuarterYearCycle"}</span>
+<span class='co'>## class "QuarterYearCycle"</span>
 <span class='no'>qycycle</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"QuarterYearCycle"</span>)
-<span class='co'>## identical(new("BareCycle", 5), pcCycle(5)) # TRUE</span>
 
 <span class='fu'><a href='allSeasons.html'>unitSeason</a></span>(<span class='no'>qycycle</span>)</div><div class='output co'>#&gt; [1] "Quarter"</div><div class='input'><span class='fu'><a href='allSeasons.html'>unitCycle</a></span>(<span class='no'>qycycle</span>)</div><div class='output co'>#&gt; [1] "Year"</div><div class='input'>
 <span class='fu'><a href='allSeasons.html'>allSeasons</a></span>(<span class='no'>qycycle</span>)</div><div class='output co'>#&gt; [1] "Quarter_1" "Quarter_2" "Quarter_3" "Quarter_4"</div><div class='input'><span class='no'>qycycle</span>[] <span class='co'># same</span></div><div class='output co'>#&gt; [1] "Quarter_1" "Quarter_2" "Quarter_3" "Quarter_4"</div><div class='input'>
@@ -316,7 +313,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

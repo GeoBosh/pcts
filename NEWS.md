@@ -1,5 +1,18 @@
 # Version 0.15.0
 
+- consolidate the dependencies.
+
+- vastly improved support for dates/times. 
+
+- use some datetime functions from `lubridate`, reexport `lubridate::date`and
+  `lubridate::date<-`.
+
+- first draft of a data vignette.
+
+- removed class union "AnyTimeSeries", it had not been in use for a long time.
+
+- added missing `predict`, `residuals`, and `fitted` methods.
+
 - improved `pcTest()`.
 
 - included "nsadata.csv" in the package, currently as internal data for testing.

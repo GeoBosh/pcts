@@ -50,6 +50,8 @@ test_that("pc.acrf is ok", {
 
     autocovariances(1:60, maxlag = 10)
     autocovariances(1:60, nseasons = 4, maxlag = 10)
+    
+    expect_output(show(autocovariances(1:60, nseasons = 4, maxlag = 10)))
 
     autocorrelations(1:60, maxlag = 10)
     autocorrelations(1:60, nseasons = 4, maxlag = 10)

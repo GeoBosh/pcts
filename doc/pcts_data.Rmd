@@ -1,0 +1,121 @@
+---
+title: "Importing and manipulating periodic time seires data"
+author: "Georgi N. Boshnakov"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{pcts_data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(pcts)
+pd <- packageDescription("pcts")
+```
+
+This vignette is part of package pcts, version `r pd[["Version"]]`.
+
+The intended mode of work with time series in package `pcts()` is that users create periodic
+time series using function `pcts()` and then operate on the object created by it. `pcts()`
+accepts base R data objects, such as "ts", "mts", "numeric2, "matrix2, "data. frame", as well
+as some time series classes with regular time from other packages, including  "zooreg"
+(other classes can be added if required).
+
+Package `pcts` provides two native classes for periodic time series: "PeriodicTS" and
+"PeriodicMTS" for univariate and multivariate time series, respectively. There are also some
+classes serving as wrappers for the base "ts" and "mts" classes and some classes from other
+packages, such as "zoo", if the original classes need to be preserved.
+
+When supplied with a time series object, `pcts()` gets the time information from it.  For
+example, the `AirPassengers` is a monthly time series starting in `{r} start(AirPassengers)`
+from base R, so it is converted to a periodic time series with a monthly cycle and the same
+start time:
+```{r}
+ap <- pcts(AirPassengers)
+ap
+```
+
+Get the data from Mar 1952 to Feb 1959:
+```{r}
+window(ap, start = c(1952, 3))
+window(ap, end = c(1959, 2))
+```
+
+Take the summer months only:
+```{r}
+window(ap, seasons = 7:9)
+```
+
+
+The dataset `dataFranses1996` contains a multivariate quarterly time series. See `?dataFranses1996` for more information. Here are some excerpts from it:
+```{r}
+data(dataFranses1996)
+class(dataFranses1996)
+colnames(dataFranses1996)
+dim(dataFranses1996) # c(148, 19)
+```
+
+It can be converrted to periodic time series with
+```{r}
+pcfr <- pcts(dataFranses1996)
+colnames(pcfr)[2:3]
+```
+
+The Franses' time series is quite large and for convenience in presentation we work with
+parts of it below.
+
+
+Let's take one of the time series: 
+```{r}
+tipi <- dataFranses1996[ , "USTotalIPI"]
+plot(tipi)
+```
+Convert `tipi` to PeriodicTS and remove NA's at the start and end
+```{r}
+pctipi <- pcts(tipi)
+pctipi <- window(pctipi, start = availStart(pctipi), end = availEnd(pctipi))
+plot(pctipi)
+```
+
+subset as "PeriodicMTS"
+```{r}
+pcfr2to3 <- pcfr[2:3]
+plot(pcfr2to3)
+```
+
+"[" gives "PeriodicMTS" even with length one arg.
+```{r}
+pcfr2to2  <- pcfr[2]
+pcfr2to2a <- pcfr["USTotalIPI"] # same
+```
+
+Use "[[" or `$` to get "PeriodicTS"
+```{r}
+pcfr2 <- pcfr[[2]]
+pcfr2a <- pcfr[["USTotalIPI"]] # same
+pcfr2b <- pcfr$USTotalIPI      # same
+identical(pcfr2, pcfr2a) # TRUE
+identical(pcfr2, pcfr2b) # TRUE
+
+c1 <- cycle(pcfr)
+head(c1, 8)
+frequency(pcfr)
+```
+
+
+
+
+
+
+
+
+
+
