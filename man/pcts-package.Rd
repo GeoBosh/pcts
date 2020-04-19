@@ -32,185 +32,187 @@
   \Sexpr[stage=build]{pd$Description}
 }
 \details{
-  % \tabular{ll}{
-  %  Package:  \tab \Sexpr[stage=build]{pd$Package}\cr
-  %  Type:     \tab \Sexpr[stage=build]{pd$Type}\cr
-  %  Version:  \tab \Sexpr[stage=build]{pd$Version} \cr
-  %  Date:     \tab \Sexpr[stage=build]{pd$Date}\cr
-  %  License:  \tab \Sexpr[stage=build]{pd$License}\cr
-  %  LazyLoad: \tab \Sexpr[stage=build]{pd$LazyLoad}\cr
-  %  Built:    \tab \Sexpr[stage=build]{pd$Built}\cr
-  %  }
-  % 
-  %  % 2014-06-22 TODO: rachno slozhich subsets (vizh i funktsiite po-gore.
-  %  %                  Napravi tova za Rdpack!
-  %  % 2014-06-22 slagam tematichen index.
-
-  This overview is out of date and needs rewrite.
+%%%% 2020-04-20 - commented out the old index below.
   
-   \strong{Index of the main exported objects, classes and methods:}
-%  \Sexpr[stage=build,results=rd]{paste("\\\\preformatted{", paste(if(!is.null(lb$info[[2]])) lb$info[[2]] else "No entries",collapse="\n"), "}", sep="")}
-
-  % 2019-04-17 copy the subtopic setup from mixAR
-  %
-  % Initial setup
-  %    alltopics - regular expression matching all topics that make sense to be included
-  %    pat       - accumulates regular expressions for topics considered up to the
-  %                    corresponding place below. 
- \Sexpr[stage=build,results=hide]{alltopics <- unique(gsub("^(([^ ]+)[^ ]*|(^[ ]))(.*)", "\\\\1", lb$info[[2]]))}
-  \Sexpr[stage=build,results=hide]{alltopics <- alltopics[!grepl("^ ", alltopics)]}
-
-  \Sexpr[stage=build,results=hide]{pat <- list()}
-
-
-  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(fitPM =
-    c("^fitPM", "^mC.ss", "^pcAr.ss",
-      "^num2pcpar", "^pclsdf", "^pclspiar", "^pcarma_acvf2model",
-      "^pc.fit.arma", "^pc[.]est[.]arma0?")))}
-  \subsection{Model fitting functions}{
-    \Sexpr[stage=build,results=rd]{lbpaste(pat[["fitPM"]])}
-  }
-
-
-  % \Sexpr[stage=build,results=hide]{pat <- c(pat, list(acf =
-  %   c("^autocorrelations[^-]", "^autocovariances[^-]"
-  %   )))}
-  % \subsection{Autocorrelations (periodic and non-periodic)}{
-  %   \Sexpr[stage=build,results=rd]{lbpaste(pat[["acf"]])}
-  % }
-  
-
-      
-  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(tests =
-    c("^pcTest", "^pc[.]test", "^pc[.]wn.var.acrf", "^test_piar", "^parcovmatlist",
-      "^pwn_McLeodLjungBox_test", "^periodic_acf1_test"
-    )))}
-  \subsection{Tests and statistics}{
-    \Sexpr[stage=build,results=rd]{lbpaste(pat[["tests"]])}
-  }
-
-  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(geneForClasses =
-    paste(c("^pcSeason", "^slMatrix", "^pcts", "^PeriodicVector"),
-          "[[:space:]]", sep = ""
-    )))}
-  \subsection{Generator functions for classes:}{
-    \Sexpr[stage=build,results=rd]{lbpaste(pat[["geneForClasses"]])}
-    
-  }
-
-  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(simulation =
-    c("sim_pwn", "sim_pc", "sim_parAcvf", "sim_parCoef"
-    )))}
-  \subsection{Simulation}{
-    \Sexpr[stage=build,results=rd]{lbpaste(pat[["simulation"]])}
-  }
-
-  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(par =
-    c("^alg1", "^pc.acf", "pc.fcoeffs", "^pc.sdfactor", "^pcAR2acf",
-      "pcacfMat", "permean2intercept", "^permodelmf", "^pdSafeParOrder"
-    )))}
-  \subsection{Periodic autoregression}{
-    \Sexpr[stage=build,results=rd]{lbpaste(pat[["par"]])}
-  }
-
-
-  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(piar =
-    c("^pi1ar2par"
-    )))}
-  \subsection{Integrated PAR}{
-    \Sexpr[stage=build,results=rd]{lbpaste(pat[["piar"]])}
-  }
-
-  %%% commented out on 2020-04-18
-  %%%% \Sexpr[stage=build,results=hide]{pat <- c(pat, list(other =
-  %%%%   c("^pc.boxplot", "^pc.plot", "^pc.filter", "^pc.nvariables",
-  %%%%   # "^pc.omitneg",
-  %%%%   "^pc.plot",
-  %%%%   "^coreMatrix",
-  %%%%   "^dataFranses1996",
-  %%%%   "^ex1f",
-  %%%%   "^nCycles",
-  %%%%   "^pcPlot",
-  %%%%   "^pcacf_pwn_var",
-  %%%%   "^pcarma_acvf_lazy",
-  %%%%   "^pcarma_unvec",
-  %%%%   "^pcts",
-  %%%%   "^toSeason"
-  %%%%   )))}
-  %%%% \subsection{Other}{
-  %%%%   \Sexpr[stage=build,results=rd]{lbpaste(pat[["other"]])}
-  %%%% }
-
-
-  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(pcArma =
-    c("^pc[.]arma", "^pcArma", "^which.minaic", "^pc[.]modelstd", "^pc[.]modelunvec",
-      "^pc[.]lazyacf", "pc[.]lazyh", "pc[.]nonlazyh", "pc[.]hat[.h]",
-      "pc[.]pqapply", "^pc.printarmapqelem", "^pcmaxp",
-      "^pc.internal.checksigma2"
-    )))}
-  \subsection{pc.arma}{
-    \Sexpr[stage=build,results=rd]{lbpaste(pat[["pcArma"]])}
-  }
-
-
-  % \Sexpr[stage=build,results=hide]{pat <- c(pat, list(obsolete =
-  %   c("^pc.stop",  "^pc.acsum", "^pc.argmin", "^pc.arit.floor", "^sumafr"
-  % )))}
-  % \subsection{Obsolete and internal}{
-  %   %%% 2014-08-22  dropping the functions which were moved to pctsData
-  %   %%%       was:    c("^pc[.]?data", "^pc(Data|Ts1)", "^pcfData", "^pc.stop" )
-  %   \Sexpr[stage=build,results=rd]{lbpaste(pat[["obsolete"]])}
-  % }
-
-
-
-
-
-
-
-  %%% commented out on 2020-04-18
-  %%%% \Sexpr[stage=build,results=hide]{pat <- c(pat, list(methods =
-  %%%%   c("[^[:space:]]+-methods"
-  %%%%   )))}
-  %%%% \subsection{Methods}{
-  %%%%   \Sexpr[stage=build,results=rd]{lbpaste(pat[["methods"]])}
-  %%%% }
-
-
-  % Commenting out, this is useful mainly in development.
-  % 
-  % \Sexpr[stage=build,results=hide]{pat <- c(pat, list(classes =
-  %   c("[^[:space:]]+-class"
-  %   )))}
-  % \subsection{Classes}{
-  %   \Sexpr[stage=build,results=rd]{lbpaste(pat[["classes"]])}
-  % }
-
-
-
-  % \Sexpr[stage=build,results=hide]{pat <- c(pat, list(internal = c("^[.]can[^ ]*")))}
-  % \subsection{Internal}{
-  %   \Sexpr[stage=build,results=rd]{lbpaste(pat[["internal"]])}
-  % }
-
-  %% these are ignored, i.e. not printed anywhere
-  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(ignore =
-  c("^pcts-", "^initialize-methods")))}
-  
-  %\Sexpr[stage=build,results=hide]{pat <- gsub("[[]", "\\\\[", pat)  }
-  
-  \Sexpr[stage=build,results=hide]{rest <- alltopics[!grepl( paste0("(", paste0(unlist(pat),collapse=")|("), ")"),alltopics)]}
-  % commenting out since pkgdown gives error: Error: \Sexpr{result=verbatim} not yet supported
-  %\subsection{rest}{
-  %  % This doesn't work properly, It seems that this is because lbpaste() treats its argument
-  %  % as a pattern, while here it is a list of names.
-  %  % TODO: look into this
-  %  %    \Sexpr[stage=build,results=rd]{lbpaste(rest)}
-  %  %
-  %  % For now print a list of the remaining objects
-  %  \Sexpr[stage=build,results=verbatim]{rest}
-  %}
-
+%%%%  % \tabular{ll}{
+%%%%  %  Package:  \tab \Sexpr[stage=build]{pd$Package}\cr
+%%%%  %  Type:     \tab \Sexpr[stage=build]{pd$Type}\cr
+%%%%  %  Version:  \tab \Sexpr[stage=build]{pd$Version} \cr
+%%%%  %  Date:     \tab \Sexpr[stage=build]{pd$Date}\cr
+%%%%  %  License:  \tab \Sexpr[stage=build]{pd$License}\cr
+%%%%  %  LazyLoad: \tab \Sexpr[stage=build]{pd$LazyLoad}\cr
+%%%%  %  Built:    \tab \Sexpr[stage=build]{pd$Built}\cr
+%%%%  %  }
+%%%%  % 
+%%%%  %  % 2014-06-22 TODO: rachno slozhich subsets (vizh i funktsiite po-gore.
+%%%%  %  %                  Napravi tova za Rdpack!
+%%%%  %  % 2014-06-22 slagam tematichen index.
+%%%%
+%%%%  This overview is out of date and needs rewrite.
+%%%%  
+%%%%   \strong{Index of the main exported objects, classes and methods:}
+%%%%%  \Sexpr[stage=build,results=rd]{paste("\\\\preformatted{", paste(if(!is.null(lb$info[[2]])) lb$info[[2]] else "No entries",collapse="\n"), "}", sep="")}
+%%%%
+%%%%  % 2019-04-17 copy the subtopic setup from mixAR
+%%%%  %
+%%%%  % Initial setup
+%%%%  %    alltopics - regular expression matching all topics that make sense to be included
+%%%%  %    pat       - accumulates regular expressions for topics considered up to the
+%%%%  %                    corresponding place below. 
+%%%% \Sexpr[stage=build,results=hide]{alltopics <- unique(gsub("^(([^ ]+)[^ ]*|(^[ ]))(.*)", "\\\\1", lb$info[[2]]))}
+%%%%  \Sexpr[stage=build,results=hide]{alltopics <- alltopics[!grepl("^ ", alltopics)]}
+%%%%
+%%%%  \Sexpr[stage=build,results=hide]{pat <- list()}
+%%%%
+%%%%
+%%%%  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(fitPM =
+%%%%    c("^fitPM", "^mC.ss", "^pcAr.ss",
+%%%%      "^num2pcpar", "^pclsdf", "^pclspiar", "^pcarma_acvf2model",
+%%%%      "^pc.fit.arma", "^pc[.]est[.]arma0?")))}
+%%%%  \subsection{Model fitting functions}{
+%%%%    \Sexpr[stage=build,results=rd]{lbpaste(pat[["fitPM"]])}
+%%%%  }
+%%%%
+%%%%
+%%%%  % \Sexpr[stage=build,results=hide]{pat <- c(pat, list(acf =
+%%%%  %   c("^autocorrelations[^-]", "^autocovariances[^-]"
+%%%%  %   )))}
+%%%%  % \subsection{Autocorrelations (periodic and non-periodic)}{
+%%%%  %   \Sexpr[stage=build,results=rd]{lbpaste(pat[["acf"]])}
+%%%%  % }
+%%%%  
+%%%%
+%%%%      
+%%%%  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(tests =
+%%%%    c("^pcTest", "^pc[.]test", "^pc[.]wn.var.acrf", "^test_piar", "^parcovmatlist",
+%%%%      "^pwn_McLeodLjungBox_test", "^periodic_acf1_test"
+%%%%    )))}
+%%%%  \subsection{Tests and statistics}{
+%%%%    \Sexpr[stage=build,results=rd]{lbpaste(pat[["tests"]])}
+%%%%  }
+%%%%
+%%%%  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(geneForClasses =
+%%%%    paste(c("^pcSeason", "^slMatrix", "^pcts", "^PeriodicVector"),
+%%%%          "[[:space:]]", sep = ""
+%%%%    )))}
+%%%%  \subsection{Generator functions for classes:}{
+%%%%    \Sexpr[stage=build,results=rd]{lbpaste(pat[["geneForClasses"]])}
+%%%%    
+%%%%  }
+%%%%
+%%%%  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(simulation =
+%%%%    c("sim_pwn", "sim_pc", "sim_parAcvf", "sim_parCoef"
+%%%%    )))}
+%%%%  \subsection{Simulation}{
+%%%%    \Sexpr[stage=build,results=rd]{lbpaste(pat[["simulation"]])}
+%%%%  }
+%%%%
+%%%%  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(par =
+%%%%    c("^alg1", "^pc.acf", "pc.fcoeffs", "^pc.sdfactor", "^pcAR2acf",
+%%%%      "pcacfMat", "permean2intercept", "^permodelmf", "^pdSafeParOrder"
+%%%%    )))}
+%%%%  \subsection{Periodic autoregression}{
+%%%%    \Sexpr[stage=build,results=rd]{lbpaste(pat[["par"]])}
+%%%%  }
+%%%%
+%%%%
+%%%%  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(piar =
+%%%%    c("^pi1ar2par"
+%%%%    )))}
+%%%%  \subsection{Integrated PAR}{
+%%%%    \Sexpr[stage=build,results=rd]{lbpaste(pat[["piar"]])}
+%%%%  }
+%%%%
+%%%%  %%% commented out on 2020-04-18
+%%%%  %%%% \Sexpr[stage=build,results=hide]{pat <- c(pat, list(other =
+%%%%  %%%%   c("^pc.boxplot", "^pc.plot", "^pc.filter", "^pc.nvariables",
+%%%%  %%%%   # "^pc.omitneg",
+%%%%  %%%%   "^pc.plot",
+%%%%  %%%%   "^coreMatrix",
+%%%%  %%%%   "^dataFranses1996",
+%%%%  %%%%   "^ex1f",
+%%%%  %%%%   "^nCycles",
+%%%%  %%%%   "^pcPlot",
+%%%%  %%%%   "^pcacf_pwn_var",
+%%%%  %%%%   "^pcarma_acvf_lazy",
+%%%%  %%%%   "^pcarma_unvec",
+%%%%  %%%%   "^pcts",
+%%%%  %%%%   "^toSeason"
+%%%%  %%%%   )))}
+%%%%  %%%% \subsection{Other}{
+%%%%  %%%%   \Sexpr[stage=build,results=rd]{lbpaste(pat[["other"]])}
+%%%%  %%%% }
+%%%%
+%%%%
+%%%%  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(pcArma =
+%%%%    c("^pc[.]arma", "^pcArma", "^which.minaic", "^pc[.]modelstd", "^pc[.]modelunvec",
+%%%%      "^pc[.]lazyacf", "pc[.]lazyh", "pc[.]nonlazyh", "pc[.]hat[.h]",
+%%%%      "pc[.]pqapply", "^pc.printarmapqelem", "^pcmaxp",
+%%%%      "^pc.internal.checksigma2"
+%%%%    )))}
+%%%%  \subsection{pc.arma}{
+%%%%    \Sexpr[stage=build,results=rd]{lbpaste(pat[["pcArma"]])}
+%%%%  }
+%%%%
+%%%%
+%%%%  % \Sexpr[stage=build,results=hide]{pat <- c(pat, list(obsolete =
+%%%%  %   c("^pc.stop",  "^pc.acsum", "^pc.argmin", "^pc.arit.floor", "^sumafr"
+%%%%  % )))}
+%%%%  % \subsection{Obsolete and internal}{
+%%%%  %   %%% 2014-08-22  dropping the functions which were moved to pctsData
+%%%%  %   %%%       was:    c("^pc[.]?data", "^pc(Data|Ts1)", "^pcfData", "^pc.stop" )
+%%%%  %   \Sexpr[stage=build,results=rd]{lbpaste(pat[["obsolete"]])}
+%%%%  % }
+%%%%
+%%%%
+%%%%
+%%%%
+%%%%
+%%%%
+%%%%
+%%%%  %%% commented out on 2020-04-18
+%%%%  %%%% \Sexpr[stage=build,results=hide]{pat <- c(pat, list(methods =
+%%%%  %%%%   c("[^[:space:]]+-methods"
+%%%%  %%%%   )))}
+%%%%  %%%% \subsection{Methods}{
+%%%%  %%%%   \Sexpr[stage=build,results=rd]{lbpaste(pat[["methods"]])}
+%%%%  %%%% }
+%%%%
+%%%%
+%%%%  % Commenting out, this is useful mainly in development.
+%%%%  % 
+%%%%  % \Sexpr[stage=build,results=hide]{pat <- c(pat, list(classes =
+%%%%  %   c("[^[:space:]]+-class"
+%%%%  %   )))}
+%%%%  % \subsection{Classes}{
+%%%%  %   \Sexpr[stage=build,results=rd]{lbpaste(pat[["classes"]])}
+%%%%  % }
+%%%%
+%%%%
+%%%%
+%%%%  % \Sexpr[stage=build,results=hide]{pat <- c(pat, list(internal = c("^[.]can[^ ]*")))}
+%%%%  % \subsection{Internal}{
+%%%%  %   \Sexpr[stage=build,results=rd]{lbpaste(pat[["internal"]])}
+%%%%  % }
+%%%%
+%%%%  %% these are ignored, i.e. not printed anywhere
+%%%%  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(ignore =
+%%%%  c("^pcts-", "^initialize-methods")))}
+%%%%  
+%%%%  %\Sexpr[stage=build,results=hide]{pat <- gsub("[[]", "\\\\[", pat)  }
+%%%%  
+%%%%  \Sexpr[stage=build,results=hide]{rest <- alltopics[!grepl( paste0("(", paste0(unlist(pat),collapse=")|("), ")"),alltopics)]}
+%%%%  % commenting out since pkgdown gives error: Error: \Sexpr{result=verbatim} not yet supported
+%%%%  %\subsection{rest}{
+%%%%  %  % This doesn't work properly, It seems that this is because lbpaste() treats its argument
+%%%%  %  % as a pattern, while here it is a list of names.
+%%%%  %  % TODO: look into this
+%%%%  %  %    \Sexpr[stage=build,results=rd]{lbpaste(rest)}
+%%%%  %  %
+%%%%  %  % For now print a list of the remaining objects
+%%%%  %  \Sexpr[stage=build,results=verbatim]{rest}
+%%%%  %}
+%%%%
 
 
 
@@ -221,6 +223,36 @@
 
 % ~~ An overview of how to use the package, including the most important ~~
 % ~~ functions ~~
+
+The underlying assumption is that the observations are made at regular
+intervals, such as quarter, month, week, day --- or represent data for
+such intervals --- and these intervals are nested into larger periods.
+In pcts we call the larger period a cycle and its parts seasons. Typical
+examples of season-cycle timing are months in a year, quarters in a
+year, days in a week (or business week). The number of seasons in a
+cycle is called frequency in class \code{"ts"} in base \R.
+
+Cycles in pcts keep not only the number of seasons (frequency) but other
+information, such as the names of the seasons and units of seasons.  In
+pcts there are a number of builtin cycle classes for typical cases, as
+well as provision for creation of custom cycles on the fly.  See
+\code{\link{pcCycle}} and \code{\link{BuiltinCycle}} for ways to create
+cycle objects, and \code{\link{allSeasons}} for further examples.
+
+Periodic time series can be created with \code{\link{pcts}}, which
+accepts as input vectors, matrices and time series objects from base R
+and some other packages, including zoo and xts.  When importing data,
+the time information is taken from the data and an attempt is made to
+guess the periodicity from the frequency (for time series objects that
+have it set) and an analysis of the datetime stamps, if present.
+\code{pcts} also has arguments for specifying the number of seasons or
+the cycle, as well as the start datetime.
+
+The main periodic time series classes in pcts are PeriodicTS and
+PeriodicMTS, for univariate and multivvariate time series, respectively.
+Standard time series functions can be used with them directly, see for
+example \code{\link{window}} and \code{\link{start}}.
+
 
 The naming conventions are as follows. Names of classes generally
 consists of one or more words. The first letter of each word, is
