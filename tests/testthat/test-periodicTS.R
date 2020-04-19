@@ -9,6 +9,9 @@ test_that("the new periodic classes are ok",
     ap.ts <- new("PeriodicTS_ts", AirPassengers)
     expect_identical(S3Part(ap.ts, strictS3 = TRUE), AirPassengers)
 
+    expect_error(pcts(AirPassengers, nseasons = 4, keep = TRUE),
+                 "please change the frequency of the ts object or use keep = FALSE" )
+    
     expect_output(show(ts1))
     plot(ts1)
     
@@ -18,11 +21,17 @@ test_that("the new periodic classes are ok",
     m <- matrix(rnorm(300), 100, 3)
     z <- ts(m, start = c(1961, 1), frequency = 12)
 
+    pcts(1:10, nseasons = 2)
+    expect_error(pcts(1:10), "nseasons is missing and cannot be inferred")
+
+    
     pcts.m <- pcts(m, nseasons = 4)
     expect_error(pcts(m), "nseasons is missing and cannot be inferred")
-    expect_error(pcts.m[1, ],
-               "use x\\[\\]\\[i, \\] or x\\[\\]\\[i,j\\] if you wish to use matrix indexing")
-    
+
+    ## 2020-04-19: not an error any more
+    ## expect_error(pcts.m[1, ],
+    ##         "use x\\[\\]\\[i, \\] or x\\[\\]\\[i,j\\] if you wish to use matrix indexing")
+    expect_identical(pcts.m[1, ], pcts.m[1, 1:ncol(m)])
     
     ## TODO: maybe need to check validity
     ##       Then these would give error (number of seasons is integer(0)
@@ -219,8 +228,14 @@ test_that("the new periodic classes are ok",
 
     ## added after setting coerce method from PeriodicTS and PeriodicMTS to "Cyclic",
     ##     see the comments in PeriodicTSClasses.org
-    pcdf <- pcts(dataFranses1996)
-    expect_identical(as(pcdf, "Cyclic"), as(pcdf[[1]], "Cyclic"))
+    pcfr <- pcts(dataFranses1996)
+    expect_identical(as(pcfr, "Cyclic"), as(pcfr[[1]], "Cyclic"))
+
+    pcfr2to4 <- pcfr[2:4]
+    window(pcfr2to4, seasons = 1:2)
+
+    pct1990_Q3 <- Pctime(c(1990, 3), pcCycle(pcfr2to4))
+    expect_identical(pcfr2to4[as_date("1990-07-01")], pcfr2to4[pct1990_Q3])
 
     ap_num <- as.numeric(AirPassengers)
     pcts(ap_num, 12)               # generic 12 seasons
@@ -232,4 +247,28 @@ test_that("the new periodic classes are ok",
     pcts(df_mat[ , 1:3], 4)               # generic 4 seasons
     pcts(df_mat[ , 1:3], BuiltinCycle(4)) # quarters
     pcts(df_mat[ , 1:3], BuiltinCycle(4), start = c(1955, 1) ) # quarters
+
+    expect_equal(AirPassengers[c(1, 143, 144)],
+                 ap[c(1, 143, 144)] )
+    expect_equal(ap[as.Date("1960-11-01")], 390)
+    expect_equal(ap[Pctime(c(1949, 1960, 1960, 1, 11,12), pcCycle(ap))],
+                 c(112, 390, 432) )
+    expect_equal(ap[Pctime(c(1949, 1960, 1960, 1, 11,12), pcCycle(ap))],
+                 ap[c(1, 143, 144)] )
+
+    ## 1990 Q4
+    expect_equal(pcfr2to4[as.Date("1990-10-01")],                  # Date
+                 pcfr2to4[Pctime(c(1990, 4), pcCycle(pcfr2to4))] ) # Pctime
+
+    expect_equal(pcfr2to4[as.Date("1990-10-01")],                  # matix indexing
+                 pcfr2to4[144, ] )
+    pcfr2to4[Pctime(c(1990, 4), pcCycle(pcfr2to4)), 1:2] # 1st two variables
+
+    tsVec(pcfr2to4)
+    
+    dell <- pcts(four_stocks_since2016_01_01$DELL)
+    dell[as.Date("2020-04-17")]
+    dim(four_stocks_since2016_01_01$DELL) # [1] 923   6
+    dim(dell) # [1] 958   6
+    expect_equal(dell[as.Date("2020-04-17")], dell[958,])
 })

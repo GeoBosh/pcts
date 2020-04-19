@@ -165,16 +165,16 @@
 #&gt; Cycle:  QuarterYearCycle 
 #&gt; Number of seasons: 4 
 #&gt; 
-#&gt;      Q1 Q2 Q3 Q4
-#&gt; 1955 NA NA NA NA
-#&gt; 1956 NA NA      </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='no'>tipi</span>)</div><div class='output co'>#&gt; An object of class "PeriodicTS"
+#&gt;       Q1 Q2 Q3 Q4
+#&gt; Y1955 NA NA NA NA
+#&gt; Y1956 NA NA      </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='no'>tipi</span>)</div><div class='output co'>#&gt; An object of class "PeriodicTS"
 #&gt; Slot "cycle": Start:  1990   Quarter_3 
 #&gt; Cycle:  QuarterYearCycle 
 #&gt; Number of seasons: 4 
 #&gt; 
-#&gt;      Q1    Q2    Q3    Q4   
-#&gt; 1990             118.3 114.5
-#&gt; 1991 111.4 112.4 116.0 113.9</div><div class='input'>
+#&gt;       Q1    Q2    Q3    Q4   
+#&gt; Y1990             118.3 114.5
+#&gt; Y1991 111.4 112.4 116.0 113.9</div><div class='input'>
 <span class='no'>tipi</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/window.html'>window</a></span>(<span class='no'>tipi</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'>availStart</span>(<span class='no'>tipi</span>), <span class='kw'>end</span> <span class='kw'>=</span> <span class='fu'>availEnd</span>(<span class='no'>tipi</span>))
 <span class='fu'><a href='https://rdrr.io/r/stats/start.html'>start</a></span>(<span class='no'>tipi</span>)</div><div class='output co'>#&gt; [1] 1960    1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/start.html'>end</a></span>(<span class='no'>tipi</span>)</div><div class='output co'>#&gt; [1] 1991    4</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>tipi</span>)</div><div class='img'><img src='availStart-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='no'>pcfr</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcts-methods.html'>pcts</a></span>(<span class='no'>dataFranses1996</span>)
@@ -184,23 +184,23 @@
 #&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
 #&gt; Cycle start: Quarter_1 
 #&gt; 
-#&gt;        USTotalIPI CanadaUnemployment GermanyGNP
-#&gt; 1955_1         NA                 NA         NA
-#&gt; 1955_2         NA                 NA         NA
-#&gt; 1955_3         NA                 NA         NA
-#&gt; 1955_4         NA                 NA         NA
-#&gt; 1956_1         NA                 NA         NA
-#&gt; 1956_2         NA                 NA         NA</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='no'>pcfr2to4</span>)</div><div class='output co'>#&gt; An object of class "PeriodicMTS"
+#&gt;         USTotalIPI CanadaUnemployment GermanyGNP
+#&gt; Y1955_1         NA                 NA         NA
+#&gt; Y1955_2         NA                 NA         NA
+#&gt; Y1955_3         NA                 NA         NA
+#&gt; Y1955_4         NA                 NA         NA
+#&gt; Y1956_1         NA                 NA         NA
+#&gt; Y1956_2         NA                 NA         NA</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='no'>pcfr2to4</span>)</div><div class='output co'>#&gt; An object of class "PeriodicMTS"
 #&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
 #&gt; Cycle start: Quarter_1 
 #&gt; 
-#&gt;        USTotalIPI CanadaUnemployment GermanyGNP
-#&gt; 1990_3      118.3                 NA      468.9
-#&gt; 1990_4      114.5                 NA      482.9
-#&gt; 1991_1      111.4                 NA         NA
-#&gt; 1991_2      112.4                 NA         NA
-#&gt; 1991_3      116.0                 NA         NA
-#&gt; 1991_4      113.9                 NA         NA</div><div class='input'><span class='co'>## time of first and last data, can be NA's</span>
+#&gt;         USTotalIPI CanadaUnemployment GermanyGNP
+#&gt; Y1990_3      118.3                 NA      468.9
+#&gt; Y1990_4      114.5                 NA      482.9
+#&gt; Y1991_1      111.4                 NA         NA
+#&gt; Y1991_2      112.4                 NA         NA
+#&gt; Y1991_3      116.0                 NA         NA
+#&gt; Y1991_4      113.9                 NA         NA</div><div class='input'><span class='co'>## time of first and last data, can be NA's</span>
 <span class='fu'><a href='https://rdrr.io/r/stats/start.html'>start</a></span>(<span class='no'>pcfr2to4</span>) <span class='co'># 1955 Q1</span></div><div class='output co'>#&gt; [1] 1955    1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/start.html'>end</a></span>(<span class='no'>pcfr2to4</span>)   <span class='co'># 1991 Q4</span></div><div class='output co'>#&gt; [1] 1991    4</div><div class='input'>
 <span class='co'>## time of first nonNA:</span>
 <span class='fu'>availStart</span>(<span class='no'>pcfr</span><span class='kw'>[[</span><span class='fl'>2</span>]]) <span class='co'># 1960 Q1</span></div><div class='output co'>#&gt; [1] 1960    1</div><div class='input'><span class='fu'>availStart</span>(<span class='no'>pcfr2to4</span>)  <span class='co'># 1960 Q1</span></div><div class='output co'>#&gt; [1] 1960    1</div><div class='input'>
@@ -213,23 +213,23 @@
 #&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
 #&gt; Cycle start: Quarter_1 
 #&gt; 
-#&gt;        USTotalIPI CanadaUnemployment GermanyGNP
-#&gt; 1960_1       40.2                583      167.0
-#&gt; 1960_2       39.8                427      176.2
-#&gt; 1960_3       38.5                334      198.0
-#&gt; 1960_4       38.0                439      190.5
-#&gt; 1961_1       37.1                703      180.1
-#&gt; 1961_2       39.2                480      184.9</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='no'>pcfr2to4a</span>)</div><div class='output co'>#&gt; An object of class "PeriodicMTS"
+#&gt;         USTotalIPI CanadaUnemployment GermanyGNP
+#&gt; Y1960_1       40.2                583      167.0
+#&gt; Y1960_2       39.8                427      176.2
+#&gt; Y1960_3       38.5                334      198.0
+#&gt; Y1960_4       38.0                439      190.5
+#&gt; Y1961_1       37.1                703      180.1
+#&gt; Y1961_2       39.2                480      184.9</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='no'>pcfr2to4a</span>)</div><div class='output co'>#&gt; An object of class "PeriodicMTS"
 #&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
 #&gt; Cycle start: Quarter_1 
 #&gt; 
-#&gt;        USTotalIPI CanadaUnemployment GermanyGNP
-#&gt; 1990_3      118.3                 NA      468.9
-#&gt; 1990_4      114.5                 NA      482.9
-#&gt; 1991_1      111.4                 NA         NA
-#&gt; 1991_2      112.4                 NA         NA
-#&gt; 1991_3      116.0                 NA         NA
-#&gt; 1991_4      113.9                 NA         NA</div></pre>
+#&gt;         USTotalIPI CanadaUnemployment GermanyGNP
+#&gt; Y1990_3      118.3                 NA      468.9
+#&gt; Y1990_4      114.5                 NA      482.9
+#&gt; Y1991_1      111.4                 NA         NA
+#&gt; Y1991_2      112.4                 NA         NA
+#&gt; Y1991_3      116.0                 NA         NA
+#&gt; Y1991_4      113.9                 NA         NA</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

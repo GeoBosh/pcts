@@ -782,6 +782,18 @@ setMethod("show", "BuiltinCycle",
           }
           )
 
+setMethod("show", "PartialCycle",
+          function(object){
+              cat("Object from class ", "'", class(object), "'", "\n", sep = "")
+              ## TODO: special case when @orig is BuiltinCycle?
+              cat("    partial cycle of ", "'", class(object@orig), "'", 
+                  ## TODO: (abbreviations of) seasons' names                 
+                  ", seasons: ", paste(object@subindex, sep = "", collapse = ", "),
+                  "\n", sep = "")
+              cat("Cycle start:", object[1], "\n")
+          }
+          )
+
 setClass("Cyclic", slots = c(cycle = "BasicCycle", pcstart = "ANY"), 
          prototype = list(pcstart = c(1, 1)) )
 
@@ -998,6 +1010,24 @@ seq.Pctime <- function (from, to, by, length.out = NULL, along.with = NULL, ...)
     structure(res, cycle = cycle, class = c("Pctime", class(res)))
 }
 
+cycle.Pctime <- function(x, ...){
+    ## TODO: needs consolidation, repeated code, see format.Pctime
+    cycle <- attr(x, "cycle")
+
+    pairs <- .cycle_and_time2pair(cycle, x)
+    ind <- .ind_of_seasons_in_pairs(pairs)
+    ## cycles <- pairs[-ind]
+    seasons <- pairs[ind]
+
+    if(is(cycle, "PartialCycle")){
+        ## patch the seasons returned by .cycle_and_time2pair are those of orig
+        ind <- rep(NA_integer_, nSeasons(cycle@orig))
+        ind[cycle@subindex] <- seq(along = cycle@subindex)
+	seasons <- ind[seasons]
+    }
+    seasons
+}
+
 as_Pctime <- function(x, ...){ UseMethod("as_Pctime") }
 
 as_Pctime.Cyclic <- function(x, ...){ 
@@ -1036,3 +1066,5 @@ setMethod("date<-", signature("Cyclic"), function(x, value) {
     x@pcstart <- value  # TODO: convert from date, etc.
     x
 })
+
+setOldClass("Pctime")

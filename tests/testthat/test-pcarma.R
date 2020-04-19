@@ -105,4 +105,8 @@ solve(acfsys$A, acfsys$b)
 
 expect_identical(acfsys, readRDS("acfsys_old_RData.rds"))
 
+    ## h from parameters
+h <- pcarma_h_lazy(testphia, testtheta, 2, 2, 2)
+h(3, 2)           # a scalar
+h1 <- h(1:2, 1:4) # a matrix
 })

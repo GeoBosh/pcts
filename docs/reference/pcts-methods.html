@@ -214,6 +214,11 @@
     <code>"PeriodicMTS"</code>. The number of seasons is taken from the
     <code>"ts"</code> object.</p></dd>
 
+  <dt><code>signature(x = "xtsORzoo", nseasons = "missing")</code></dt><dd><p><code>x</code> needs to a regular time series, possibly with missing
+    values for some times (technically, <code><a href='https://rdrr.io/pkg/zoo/man/is.regular.html'>zoo::is.regular(x)</a></code> should
+    give TRUE). For daily time series, the cycle is taken to be day of
+    week or a subcycle of it, most commonly Monday-Friday.    The implementation is incomplete but for daily data should work as
+    described.</p></dd>
 
 </dl>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -228,19 +233,19 @@
 #&gt; Cycle:  MonthYearCycle 
 #&gt; Number of seasons: 12 
 #&gt; 
-#&gt;      Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
-#&gt; 1949 112 118 132 129 121 135 148 148 136 119 104 118
-#&gt; 1950 115 126 141 135 125 149 170 170 158 133 114 140
-#&gt; 1951 145 150 178 163 172 178 199 199 184 162 146 166
-#&gt; 1952 171 180 193 181 183 218 230 242 209 191 172 194
-#&gt; 1953 196 196 236 235 229 243 264 272 237 211 180 201
-#&gt; 1954 204 188 235 227 234 264 302 293 259 229 203 229
-#&gt; 1955 242 233 267 269 270 315 364 347 312 274 237 278
-#&gt; 1956 284 277 317 313 318 374 413 405 355 306 271 306
-#&gt; 1957 315 301 356 348 355 422 465 467 404 347 305 336
-#&gt; 1958 340 318 362 348 363 435 491 505 404 359 310 337
-#&gt; 1959 360 342 406 396 420 472 548 559 463 407 362 405
-#&gt; 1960 417 391 419 461 472 535 622 606 508 461 390 432</div><div class='input'>
+#&gt;       Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+#&gt; Y1949 112 118 132 129 121 135 148 148 136 119 104 118
+#&gt; Y1950 115 126 141 135 125 149 170 170 158 133 114 140
+#&gt; Y1951 145 150 178 163 172 178 199 199 184 162 146 166
+#&gt; Y1952 171 180 193 181 183 218 230 242 209 191 172 194
+#&gt; Y1953 196 196 236 235 229 243 264 272 237 211 180 201
+#&gt; Y1954 204 188 235 227 234 264 302 293 259 229 203 229
+#&gt; Y1955 242 233 267 269 270 315 364 347 312 274 237 278
+#&gt; Y1956 284 277 317 313 318 374 413 405 355 306 271 306
+#&gt; Y1957 315 301 356 348 355 422 465 467 404 347 305 336
+#&gt; Y1958 340 318 362 348 363 435 491 505 404 359 310 337
+#&gt; Y1959 360 342 406 396 420 472 548 559 463 407 362 405
+#&gt; Y1960 417 391 419 461 472 535 622 606 508 461 390 432</div><div class='input'>
 <span class='co'>## numeric</span>
 <span class='no'>v24</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>24</span>)
 <span class='fu'>pcts</span>(<span class='no'>v24</span>, <span class='kw'>nseasons</span> <span class='kw'>=</span> <span class='fl'>4</span>)          <span class='co'># generic seasons</span></div><div class='output co'>#&gt; An object of class "PeriodicTS"
@@ -248,24 +253,24 @@
 #&gt; Cycle:  SimpleCycle 
 #&gt; Number of seasons: 4 
 #&gt; 
-#&gt;           S1         S2          S3          S4
-#&gt; 1 -1.5083427 -1.4884361  0.05775262  0.62175028
-#&gt; 2  1.7438597 -1.3140566  0.18595510 -0.06824536
-#&gt; 3 -1.6101031  0.6300192  0.50235805 -0.57740109
-#&gt; 4  0.6509080  0.9526483  0.56817663 -0.01425659
-#&gt; 5 -0.9790117  0.3182775  0.42862311  0.40308890
-#&gt; 6 -0.6631246 -1.5719161 -0.08299631 -0.19889131</div><div class='input'><span class='fu'>pcts</span>(<span class='no'>v24</span>, <span class='kw'>nseasons</span> <span class='kw'>=</span> <span class='fu'><a href='pcCycle-methods.html'>BuiltinCycle</a></span>(<span class='fl'>4</span>)) <span class='co'># Quarter/Year</span></div><div class='output co'>#&gt; An object of class "PeriodicTS"
+#&gt;            S1         S2          S3          S4
+#&gt; C1 -1.5083427 -1.4884361  0.05775262  0.62175028
+#&gt; C2  1.7438597 -1.3140566  0.18595510 -0.06824536
+#&gt; C3 -1.6101031  0.6300192  0.50235805 -0.57740109
+#&gt; C4  0.6509080  0.9526483  0.56817663 -0.01425659
+#&gt; C5 -0.9790117  0.3182775  0.42862311  0.40308890
+#&gt; C6 -0.6631246 -1.5719161 -0.08299631 -0.19889131</div><div class='input'><span class='fu'>pcts</span>(<span class='no'>v24</span>, <span class='kw'>nseasons</span> <span class='kw'>=</span> <span class='fu'><a href='pcCycle-methods.html'>BuiltinCycle</a></span>(<span class='fl'>4</span>)) <span class='co'># Quarter/Year</span></div><div class='output co'>#&gt; An object of class "PeriodicTS"
 #&gt; Slot "cycle": Start:  1   Quarter_1 
 #&gt; Cycle:  QuarterYearCycle 
 #&gt; Number of seasons: 4 
 #&gt; 
-#&gt;           Q1         Q2          Q3          Q4
-#&gt; 1 -1.5083427 -1.4884361  0.05775262  0.62175028
-#&gt; 2  1.7438597 -1.3140566  0.18595510 -0.06824536
-#&gt; 3 -1.6101031  0.6300192  0.50235805 -0.57740109
-#&gt; 4  0.6509080  0.9526483  0.56817663 -0.01425659
-#&gt; 5 -0.9790117  0.3182775  0.42862311  0.40308890
-#&gt; 6 -0.6631246 -1.5719161 -0.08299631 -0.19889131</div><div class='input'><span class='no'>ts1</span> <span class='kw'>&lt;-</span> <span class='fu'>pcts</span>(<span class='no'>v24</span>, <span class='kw'>nseasons</span> <span class='kw'>=</span> <span class='fu'><a href='pcCycle-methods.html'>BuiltinCycle</a></span>(<span class='fl'>4</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2006</span>, <span class='fl'>1</span>)) <span class='co'># Quarter/Year with dates</span>
+#&gt;            Q1         Q2          Q3          Q4
+#&gt; Y1 -1.5083427 -1.4884361  0.05775262  0.62175028
+#&gt; Y2  1.7438597 -1.3140566  0.18595510 -0.06824536
+#&gt; Y3 -1.6101031  0.6300192  0.50235805 -0.57740109
+#&gt; Y4  0.6509080  0.9526483  0.56817663 -0.01425659
+#&gt; Y5 -0.9790117  0.3182775  0.42862311  0.40308890
+#&gt; Y6 -0.6631246 -1.5719161 -0.08299631 -0.19889131</div><div class='input'><span class='no'>ts1</span> <span class='kw'>&lt;-</span> <span class='fu'>pcts</span>(<span class='no'>v24</span>, <span class='kw'>nseasons</span> <span class='kw'>=</span> <span class='fu'><a href='pcCycle-methods.html'>BuiltinCycle</a></span>(<span class='fl'>4</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2006</span>, <span class='fl'>1</span>)) <span class='co'># Quarter/Year with dates</span>
 
 <span class='co'>## select subset of the seasons</span>
 <span class='fu'><a href='https://rdrr.io/r/stats/window.html'>window</a></span>(<span class='no'>ts1</span>, <span class='kw'>seasons</span> <span class='kw'>=</span> <span class='fl'>3</span>:<span class='fl'>4</span>)</div><div class='output co'>#&gt; An object of class "PeriodicTS"
@@ -273,13 +278,13 @@
 #&gt; Cycle:  PartialCycle 
 #&gt; Number of seasons: 2 
 #&gt; 
-#&gt;               Q3          Q4
-#&gt; 2006  0.05775262  0.62175028
-#&gt; 2007  0.18595510 -0.06824536
-#&gt; 2008  0.50235805 -0.57740109
-#&gt; 2009  0.56817663 -0.01425659
-#&gt; 2010  0.42862311  0.40308890
-#&gt; 2011 -0.08299631 -0.19889131</div><div class='input'>
+#&gt;                Q3          Q4
+#&gt; Y2006  0.05775262  0.62175028
+#&gt; Y2007  0.18595510 -0.06824536
+#&gt; Y2008  0.50235805 -0.57740109
+#&gt; Y2009  0.56817663 -0.01425659
+#&gt; Y2010  0.42862311  0.40308890
+#&gt; Y2011 -0.08299631 -0.19889131</div><div class='input'>
 <span class='co'>## matrix, multivariate pcts</span>
 <span class='no'>m24</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='no'>v24</span>, <span class='kw'>ncol</span> <span class='kw'>=</span><span class='fl'>3</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>m24</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span>, <span class='st'>"B"</span>, <span class='st'>"C"</span>)
@@ -289,54 +294,51 @@
 #&gt; Seasons: Season_1 Season_2 Season_3 Season_4 
 #&gt; Abbreviated: S1 S2 S3 S4 
 #&gt; 
-#&gt;               A           B           C
-#&gt; 1_1 -1.50834271 -1.61010312 -0.97901167
-#&gt; 1_2 -1.48843610  0.63001916  0.31827753
-#&gt; 1_3  0.05775262  0.50235805  0.42862311
-#&gt; 1_4  0.62175028 -0.57740109  0.40308890
-#&gt; 2_1  1.74385972  0.65090799 -0.66312465
-#&gt; 2_2 -1.31405662  0.95264830 -1.57191607
-#&gt; 2_3  0.18595510  0.56817663 -0.08299631
-#&gt; 2_4 -0.06824536 -0.01425659 -0.19889131</div><div class='input'><span class='fu'>pcts</span>(<span class='no'>m24</span>, <span class='kw'>nseasons</span> <span class='kw'>=</span> <span class='fu'><a href='pcCycle-methods.html'>BuiltinCycle</a></span>(<span class='fl'>4</span>)) <span class='co'># Quarter/Year</span></div><div class='output co'>#&gt; An object of class "PeriodicMTS"
+#&gt;                A           B           C
+#&gt; C1_1 -1.50834271 -1.61010312 -0.97901167
+#&gt; C1_2 -1.48843610  0.63001916  0.31827753
+#&gt; C1_3  0.05775262  0.50235805  0.42862311
+#&gt; C1_4  0.62175028 -0.57740109  0.40308890
+#&gt; C2_1  1.74385972  0.65090799 -0.66312465
+#&gt; C2_2 -1.31405662  0.95264830 -1.57191607
+#&gt; C2_3  0.18595510  0.56817663 -0.08299631
+#&gt; C2_4 -0.06824536 -0.01425659 -0.19889131</div><div class='input'><span class='fu'>pcts</span>(<span class='no'>m24</span>, <span class='kw'>nseasons</span> <span class='kw'>=</span> <span class='fu'><a href='pcCycle-methods.html'>BuiltinCycle</a></span>(<span class='fl'>4</span>)) <span class='co'># Quarter/Year</span></div><div class='output co'>#&gt; An object of class "PeriodicMTS"
 #&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
 #&gt; Cycle start: Quarter_1 
 #&gt; 
-#&gt;               A           B           C
-#&gt; 1_1 -1.50834271 -1.61010312 -0.97901167
-#&gt; 1_2 -1.48843610  0.63001916  0.31827753
-#&gt; 1_3  0.05775262  0.50235805  0.42862311
-#&gt; 1_4  0.62175028 -0.57740109  0.40308890
-#&gt; 2_1  1.74385972  0.65090799 -0.66312465
-#&gt; 2_2 -1.31405662  0.95264830 -1.57191607
-#&gt; 2_3  0.18595510  0.56817663 -0.08299631
-#&gt; 2_4 -0.06824536 -0.01425659 -0.19889131</div><div class='input'><span class='no'>mts1</span> <span class='kw'>&lt;-</span> <span class='fu'>pcts</span>(<span class='no'>m24</span>, <span class='kw'>nseasons</span> <span class='kw'>=</span> <span class='fu'><a href='pcCycle-methods.html'>BuiltinCycle</a></span>(<span class='fl'>4</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2006</span>, <span class='fl'>1</span>)) <span class='co'># Quarter/Year with dates</span>
+#&gt;                A           B           C
+#&gt; Y1_1 -1.50834271 -1.61010312 -0.97901167
+#&gt; Y1_2 -1.48843610  0.63001916  0.31827753
+#&gt; Y1_3  0.05775262  0.50235805  0.42862311
+#&gt; Y1_4  0.62175028 -0.57740109  0.40308890
+#&gt; Y2_1  1.74385972  0.65090799 -0.66312465
+#&gt; Y2_2 -1.31405662  0.95264830 -1.57191607
+#&gt; Y2_3  0.18595510  0.56817663 -0.08299631
+#&gt; Y2_4 -0.06824536 -0.01425659 -0.19889131</div><div class='input'><span class='no'>mts1</span> <span class='kw'>&lt;-</span> <span class='fu'>pcts</span>(<span class='no'>m24</span>, <span class='kw'>nseasons</span> <span class='kw'>=</span> <span class='fu'><a href='pcCycle-methods.html'>BuiltinCycle</a></span>(<span class='fl'>4</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2006</span>, <span class='fl'>1</span>)) <span class='co'># Quarter/Year with dates</span>
 <span class='no'>mts1</span></div><div class='output co'>#&gt; An object of class "PeriodicMTS"
 #&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
 #&gt; Cycle start: Quarter_1 
 #&gt; 
-#&gt;                  A           B           C
-#&gt; 2006_1 -1.50834271 -1.61010312 -0.97901167
-#&gt; 2006_2 -1.48843610  0.63001916  0.31827753
-#&gt; 2006_3  0.05775262  0.50235805  0.42862311
-#&gt; 2006_4  0.62175028 -0.57740109  0.40308890
-#&gt; 2007_1  1.74385972  0.65090799 -0.66312465
-#&gt; 2007_2 -1.31405662  0.95264830 -1.57191607
-#&gt; 2007_3  0.18595510  0.56817663 -0.08299631
-#&gt; 2007_4 -0.06824536 -0.01425659 -0.19889131</div><div class='input'>
+#&gt;                   A           B           C
+#&gt; Y2006_1 -1.50834271 -1.61010312 -0.97901167
+#&gt; Y2006_2 -1.48843610  0.63001916  0.31827753
+#&gt; Y2006_3  0.05775262  0.50235805  0.42862311
+#&gt; Y2006_4  0.62175028 -0.57740109  0.40308890
+#&gt; Y2007_1  1.74385972  0.65090799 -0.66312465
+#&gt; Y2007_2 -1.31405662  0.95264830 -1.57191607
+#&gt; Y2007_3  0.18595510  0.56817663 -0.08299631
+#&gt; Y2007_4 -0.06824536 -0.01425659 -0.19889131</div><div class='input'>
 <span class='co'>## select subset of the seasons for mutivariate</span>
 <span class='fu'><a href='https://rdrr.io/r/stats/window.html'>window</a></span>(<span class='no'>mts1</span>, <span class='kw'>seasons</span> <span class='kw'>=</span> <span class='fl'>3</span>:<span class='fl'>4</span>)</div><div class='output co'>#&gt; An object of class "PeriodicMTS"
-#&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
-#&gt; Cycle start: Quarter_1 
+#&gt; Slot "cycle": Object from class 'PartialCycle'
+#&gt;     partial cycle of 'QuarterYearCycle', seasons: 3, 4
+#&gt; Cycle start: Quarter_3 
 #&gt; 
-#&gt;                  A           B           C
-#&gt; 2006_1 -1.50834271 -1.61010312 -0.97901167
-#&gt; 2006_2 -1.48843610  0.63001916  0.31827753
-#&gt; 2006_3  0.05775262  0.50235805  0.42862311
-#&gt; 2006_4  0.62175028 -0.57740109  0.40308890
-#&gt; 2007_1  1.74385972  0.65090799 -0.66312465
-#&gt; 2007_2 -1.31405662  0.95264830 -1.57191607
-#&gt; 2007_3  0.18595510  0.56817663 -0.08299631
-#&gt; 2007_4 -0.06824536 -0.01425659 -0.19889131</div></pre>
+#&gt;                   A           B           C
+#&gt; Y2006_1  0.05775262  0.50235805  0.42862311
+#&gt; Y2006_2  0.62175028 -0.57740109  0.40308890
+#&gt; Y2007_1  0.18595510  0.56817663 -0.08299631
+#&gt; Y2007_2 -0.06824536 -0.01425659 -0.19889131</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

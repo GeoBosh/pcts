@@ -15,16 +15,8 @@ setGeneric("modelCycle")
 ## }
 setGeneric("modelCycle<-", function(object, ..., value){ standardGeneric("modelCycle<-") })
 
-pc.stop <-   # 2014-08-24 moved from smallutil.r; 2016-03-28 moved from  pc05season.r
-  function(x){
-    fn <- sys.call(which=-1) # stop automatically converts fn to the function name (maybe)
-    stop(fn, " not defined for objects of class ", class(x), call.=FALSE)
-  }
-
-## pc.phis2 <- function(x,p) pc.stop(x)
-## pc.bU <-
-## pc.fL <- function(x,p,from=1,to=6) pc.stop(x)
-
+## Periodic Levinson-Durbin related generics.
+## *TODO:* should think of better names for these functions.
 setGeneric("pc.phis2", function(x, p){ standardGeneric("pc.phis2") })
 setGeneric("pc.fL", function(x, p, from = 1, to = 6){ standardGeneric("pc.fL") })
 setGeneric("pc.bU", function(x, p, from = 1, to = 6){ standardGeneric("pc.bU") })

@@ -1,6 +1,6 @@
 workdata <- function(x, envir = parent.frame()){
     ## 'x' is ignored currently
-    x <- c("ap", "ap7to9", "pcfr")
+    x <- c("ap", "ap7to9", "pcfr", "pcfr2to4")
     
     ap <- pcts(datasets::AirPassengers)
     ap7to9 <- window(ap, seasons = 7:9)
@@ -8,8 +8,10 @@ workdata <- function(x, envir = parent.frame()){
     ## without '::' there is a note from R CMD check
     ##     no visible binding for global variable dataFranses1996
     pcfr <- pcts(pcts::dataFranses1996)
+    pcfr2to4 <- pcfr[2:4]
 
-    list2env(list(ap = ap, ap7to9 = ap7to9, pcfr = pcfr), envir = envir)
+    list2env(list(ap = ap, ap7to9 = ap7to9, pcfr = pcfr, pcfr2to4 = pcfr2to4), 
+             envir = envir)
     x
 }
 

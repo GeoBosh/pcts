@@ -33,7 +33,9 @@ intercept2permean <- function(intercept, coef, order, nseasons = nrow(coef)){
 }
 
 permodelmf <- function(permodel, update = TRUE){
-    co <- permodel@coef
+    ## TODO: currently doesn't work with update = TRUE
+    order <-  permodel@ar@order
+    co <- permodel@ar@coef  # 2020-04-19 was:  co <- permodel@coef
     co[is.na(co)] <- 0
 
     ## patch for the case pmax (i.e. max(order)) < nseasons
@@ -41,7 +43,7 @@ permodelmf <- function(permodel, update = TRUE){
     if(ncol(co) < nrow(co))
         co <- cbind(co, matrix(rep(0, (nrow(co) - ncol(co)) * nrow(co)), nrow = nrow(co)))
 
-    mf <- new("MultiFilter", coef = co, order = permodel@order)
+    mf <- new("MultiFilter", coef = co, order = order)
 
     if(update){
         permodel@jordan$mf <- mf

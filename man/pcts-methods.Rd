@@ -18,6 +18,7 @@
 \alias{pcts,numeric,numeric-method}
 \alias{pcts,ts,missing-method}
 \alias{pcts,ts,numeric-method}
+\alias{pcts,xtsORzoo,missing-method}
 \title{Create objects from periodic time series classes}
 \description{Create objects from periodic time series classes.}
 \usage{
@@ -117,6 +118,16 @@ pcts(x, nseasons, start, \dots, keep = FALSE)
 
   }
 
+  \item{\code{signature(x = "xtsORzoo", nseasons = "missing")}}{
+    \code{x} needs to a regular time series, possibly with missing
+    values for some times (technically, \code{zoo::is.regular(x)} should
+    give TRUE). For daily time series, the cycle is taken to be day of
+    week or a subcycle of it, most commonly Monday-Friday.
+
+    The implementation is incomplete but for daily data should work as
+    described.
+    
+  }
 }}
 
 \seealso{

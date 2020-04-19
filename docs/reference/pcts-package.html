@@ -160,7 +160,8 @@
   <!-- %  -->
   <!-- %  % 2014-06-22 TODO: rachno slozhich subsets (vizh i funktsiite po-gore. -->
   <!-- %  %                  Napravi tova za Rdpack! -->
-  <!-- %  % 2014-06-22 slagam tematichen index. --></p> 
+  <!-- %  % 2014-06-22 slagam tematichen index. --></p>
+<p>This overview is out of date and needs rewrite.</p>  
 <p><strong>Index of the main exported objects, classes and methods:</strong>
 <!-- %  \Sexpr[stage=build,results=rd]{paste("\\\\preformatted{", paste(if(!is.null(lb$info[[2]])) lb$info[[2]] else "No entries",collapse="\n"), "}", sep="")} --></p>
 <p><!-- % 2019-04-17 copy the subtopic setup from mixAR -->
@@ -232,27 +233,25 @@ permodelmf              Compute the multi-companion form of a per model</pre></p
 <p></p><h3>Integrated PAR</h3>
 <p><pre>pi1ar2par               Convert PIAR coefficients to PAR coefficients</pre></p>
 
-
-<p></p><h3>Other</h3>
-<p><pre>dataFranses1996         Example data from Franses (1996)
-ex1f                    An example PAR autocorrelation function
-nCycles                 Basic time information about periodic time
-                        series
-pc.filter               Applies a periodic ARMA filter to a time series
-pc.filter.xarma         Filter time series with periodic arma filters
-pcacf_pwn_var           Variances of sample periodic autocorrelations
-pcarma_acvf_lazy        Functions to compute various characteristics of
-                        a PCARMA model
-pcarma_unvec            Functions for work with a simple list
-                        specification of pcarma models
-pcts                    Create objects from periodic time series
-                        classes
-pcts-deprecated         Deprecated Functions in Package 'pcts'
-pcts-package            Periodically Correlated and Periodically
-                        Integrated Time Series
-toSeason                Functions for some basic operations with
-                        seasons</pre></p>
-
+<p><!-- %%% commented out on 2020-04-18 -->
+  <!-- %%%% \Sexpr[stage=build,results=hide]{pat &lt;- c(pat, list(other = -->
+  <!-- %%%%   c("^pc.boxplot", "^pc.plot", "^pc.filter", "^pc.nvariables", -->
+  <!-- %%%%   # "^pc.omitneg", -->
+  <!-- %%%%   "^pc.plot", -->
+  <!-- %%%%   "^coreMatrix", -->
+  <!-- %%%%   "^dataFranses1996", -->
+  <!-- %%%%   "^ex1f", -->
+  <!-- %%%%   "^nCycles", -->
+  <!-- %%%%   "^pcPlot", -->
+  <!-- %%%%   "^pcacf_pwn_var", -->
+  <!-- %%%%   "^pcarma_acvf_lazy", -->
+  <!-- %%%%   "^pcarma_unvec", -->
+  <!-- %%%%   "^pcts", -->
+  <!-- %%%%   "^toSeason" -->
+  <!-- %%%%   )))} -->
+  <!-- %%%% \subsection{Other}{ -->
+  <!-- %%%%   \Sexpr[stage=build,results=rd]{lbpaste(pat[["other"]])} -->
+  <!-- %%%% } --></p>
 
 <p></p><h3>pc.arma</h3>
 <p><pre>pc.hat.h                function to compute estimates of the h weights</pre></p>
@@ -272,37 +271,13 @@ toSeason                Functions for some basic operations with
 
 
 
-
-<p></p><h3>Methods</h3>
-<p><pre>$-methods               Methods for function'$' in package 'pcts'
-PeriodicArModel-methods
-                        Create objects from class PeriodicArModel
-[-methods               Indexing of objects from classes in package
-                        pcts
-[&amp;lt;--methods             Index assignments for objects from classes in
-                        package pcts
-[[-methods              Methods for function''[['' in package 'pcts'
-as_date-methods         Replace methods for as_date in package pcts
-as_datetime-methods     Methods for as_datetime in package pcts
-autocorrelations-methods
-                        Compute autocorrelations and periodic
-                        autocorrelations
-autocovariances-methods
-                        Compute autocovariances and periodic
-                        autocovariances
-date&amp;lt;--methods          Replace methods for date in package pcts
-filterCoef-methods      Get the coefficients of a periodic filter
-maxLag-methods          Methods for function maxLag() in package 'pcts'
-nSeasons-methods        Number of seasons for a periodic object
-pcCycle-methods         Create or extract Cycle objects
-pcTest-methods          Test for periodicity
-seqSeasons-methods      Methods for seqSeasons() in package pcts
-sigmaSq-methods         Methods for 'sigmaSq' in package pcts
-unitCycle-methods       Methods for unitCycle() in package pcts
-unitCycle&amp;lt;--methods     Methods for ''unitCycle&amp;lt;-'' in package pcts
-unitSeason-methods      Methods for unitSeason() in package pcts
-unitSeason&amp;lt;--methods    Methods for ''unitSeason&amp;lt;-'' in package pcts</pre></p>
-
+<p><!-- %%% commented out on 2020-04-18 -->
+  <!-- %%%% \Sexpr[stage=build,results=hide]{pat &lt;- c(pat, list(methods = -->
+  <!-- %%%%   c("[^[:space:]]+-methods" -->
+  <!-- %%%%   )))} -->
+  <!-- %%%% \subsection{Methods}{ -->
+  <!-- %%%%   \Sexpr[stage=build,results=rd]{lbpaste(pat[["methods"]])} -->
+  <!-- %%%% } --></p>
 
 <p><!-- % Commenting out, this is useful mainly in development. -->
   <!-- %  -->
@@ -457,6 +432,11 @@ R package version 0.55, <a href='https://personalpages.manchester.ac.uk/staff/ge
 #&gt; [1] "pcts"</div><div class='input'><span class='no'>pcfr2</span>    <span class='kw'>&lt;-</span> <span class='no'>pcfr</span><span class='kw'>[[</span><span class='fl'>2</span>]]; <span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>pcfr2</span>)    <span class='co'># note '[[', "PeriodicTS"</span></div><div class='output co'>#&gt; [1] "PeriodicTS"
 #&gt; attr(,"package")
 #&gt; [1] "pcts"</div><div class='input'>
+<span class='co'>## data for 1990 quarter 3</span>
+<span class='no'>pcfr2to4</span>[<span class='fu'>as_date</span>(<span class='st'>"1990-07-01"</span>)] <span class='co'># note: not "1990-03-01"!</span></div><div class='output co'>#&gt;         USTotalIPI CanadaUnemployment         GermanyGNP 
+#&gt;              118.3                 NA              468.9 </div><div class='input'><span class='no'>pct1990_Q3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='Pctime.html'>Pctime</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1990</span>, <span class='fl'>3</span>), <span class='fu'><a href='pcCycle-methods.html'>pcCycle</a></span>(<span class='no'>pcfr2to4</span>))
+<span class='no'>pcfr2to4</span>[<span class='no'>pct1990_Q3</span>]</div><div class='output co'>#&gt;         USTotalIPI CanadaUnemployment         GermanyGNP 
+#&gt;              118.3                 NA              468.9 </div><div class='input'>
 <span class='co'>## with empty index, returns the underlying data</span>
 <span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>pcfr</span>[]) <span class='co'># [1] 148  19</span></div><div class='output co'>#&gt; [1] 148  19</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>pcfr2to2</span>[]) <span class='co'># 148 1</span></div><div class='output co'>#&gt; [1] 148   1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>pcfr2</span>[]) <span class='co'># 148 (this is numeric)</span></div><div class='output co'>#&gt; [1] 148</div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>pcfr2</span>)</div><div class='output co'>#&gt;   availStart availEnd Min. 1st Qu. Median     Mean 3rd Qu.  Max. NA's
@@ -479,23 +459,23 @@ R package version 0.55, <a href='https://personalpages.manchester.ac.uk/staff/ge
 #&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
 #&gt; Cycle start: Quarter_1 
 #&gt; 
-#&gt;        USTotalIPI CanadaUnemployment GermanyGNP
-#&gt; 1955_1         NA                 NA         NA
-#&gt; 1955_2         NA                 NA         NA
-#&gt; 1955_3         NA                 NA         NA
-#&gt; 1955_4         NA                 NA         NA
-#&gt; 1956_1         NA                 NA         NA
-#&gt; 1956_2         NA                 NA         NA</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='no'>pcfr2to4</span>)  <span class='co'># some NA's at the end too</span></div><div class='output co'>#&gt; An object of class "PeriodicMTS"
+#&gt;         USTotalIPI CanadaUnemployment GermanyGNP
+#&gt; Y1955_1         NA                 NA         NA
+#&gt; Y1955_2         NA                 NA         NA
+#&gt; Y1955_3         NA                 NA         NA
+#&gt; Y1955_4         NA                 NA         NA
+#&gt; Y1956_1         NA                 NA         NA
+#&gt; Y1956_2         NA                 NA         NA</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='no'>pcfr2to4</span>)  <span class='co'># some NA's at the end too</span></div><div class='output co'>#&gt; An object of class "PeriodicMTS"
 #&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
 #&gt; Cycle start: Quarter_1 
 #&gt; 
-#&gt;        USTotalIPI CanadaUnemployment GermanyGNP
-#&gt; 1990_3      118.3                 NA      468.9
-#&gt; 1990_4      114.5                 NA      482.9
-#&gt; 1991_1      111.4                 NA         NA
-#&gt; 1991_2      112.4                 NA         NA
-#&gt; 1991_3      116.0                 NA         NA
-#&gt; 1991_4      113.9                 NA         NA</div><div class='input'>
+#&gt;         USTotalIPI CanadaUnemployment GermanyGNP
+#&gt; Y1990_3      118.3                 NA      468.9
+#&gt; Y1990_4      114.5                 NA      482.9
+#&gt; Y1991_1      111.4                 NA         NA
+#&gt; Y1991_2      112.4                 NA         NA
+#&gt; Y1991_3      116.0                 NA         NA
+#&gt; Y1991_4      113.9                 NA         NA</div><div class='input'>
 <span class='co'>## time of first and last data, may be NA's</span>
 <span class='fu'><a href='https://rdrr.io/r/stats/start.html'>start</a></span>(<span class='no'>pcfr2to4</span>) <span class='co'># 1955 Q1</span></div><div class='output co'>#&gt; [1] 1955    1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/start.html'>end</a></span>(<span class='no'>pcfr2to4</span>)   <span class='co'># 1991 Q4</span></div><div class='output co'>#&gt; [1] 1991    4</div><div class='input'>
 <span class='co'>## time of first nonNA:</span>
@@ -508,148 +488,148 @@ R package version 0.55, <a href='https://personalpages.manchester.ac.uk/staff/ge
 #&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
 #&gt; Cycle start: Quarter_1 
 #&gt; 
-#&gt;        USTotalIPI CanadaUnemployment GermanyGNP
-#&gt; 1990_1      114.3                 NA      442.0
-#&gt; 1990_2      115.5                 NA      452.1
-#&gt; 1990_3      118.3                 NA      468.9
-#&gt; 1990_4      114.5                 NA      482.9
-#&gt; 1991_1      111.4                 NA         NA
-#&gt; 1991_2      112.4                 NA         NA
-#&gt; 1991_3      116.0                 NA         NA
-#&gt; 1991_4      113.9                 NA         NA</div><div class='input'><span class='co'>## drop NA's at the start and end:</span>
+#&gt;         USTotalIPI CanadaUnemployment GermanyGNP
+#&gt; Y1990_1      114.3                 NA      442.0
+#&gt; Y1990_2      115.5                 NA      452.1
+#&gt; Y1990_3      118.3                 NA      468.9
+#&gt; Y1990_4      114.5                 NA      482.9
+#&gt; Y1991_1      111.4                 NA         NA
+#&gt; Y1991_2      112.4                 NA         NA
+#&gt; Y1991_3      116.0                 NA         NA
+#&gt; Y1991_4      113.9                 NA         NA</div><div class='input'><span class='co'>## drop NA's at the start and end:</span>
 <span class='fu'><a href='https://rdrr.io/r/stats/window.html'>window</a></span>(<span class='no'>pcfr2to4</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'><a href='availStart.html'>availStart</a></span>(<span class='no'>pcfr2to4</span>), <span class='kw'>end</span> <span class='kw'>=</span> <span class='fu'><a href='availStart.html'>availEnd</a></span>(<span class='no'>pcfr2to4</span>))</div><div class='output co'>#&gt; An object of class "PeriodicMTS"
 #&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
 #&gt; Cycle start: Quarter_1 
 #&gt; 
-#&gt;        USTotalIPI CanadaUnemployment GermanyGNP
-#&gt; 1960_1       40.2                583      167.0
-#&gt; 1960_2       39.8                427      176.2
-#&gt; 1960_3       38.5                334      198.0
-#&gt; 1960_4       38.0                439      190.5
-#&gt; 1961_1       37.1                703      180.1
-#&gt; 1961_2       39.2                480      184.9
-#&gt; 1961_3       39.8                325      202.9
-#&gt; 1961_4       41.6                358      195.8
-#&gt; 1962_1       41.8                561      185.4
-#&gt; 1962_2       43.0                373      195.0
-#&gt; 1962_3       42.6                282      214.5
-#&gt; 1962_4       43.4                346      204.9
-#&gt; 1963_1       43.9                546      183.0
-#&gt; 1963_2       45.7                372      199.9
-#&gt; 1963_3       44.9                272      223.5
-#&gt; 1963_4       46.4                305      215.4
-#&gt; 1964_1       46.7                463      201.6
-#&gt; 1964_2       48.6                326      214.4
-#&gt; 1964_3       48.1                243      232.8
-#&gt; 1964_4       49.6                266      226.9
-#&gt; 1965_1       51.4                397      213.4
-#&gt; 1965_2       53.2                298      226.7
-#&gt; 1965_3       52.9                210      243.4
-#&gt; 1965_4       54.9                214      239.2
-#&gt; 1966_1       56.2                303      224.3
-#&gt; 1966_2       58.1                237      235.5
-#&gt; 1966_3       57.6                236      250.0
-#&gt; 1966_4       59.2                230      240.3
-#&gt; 1967_1       58.4                340      220.3
-#&gt; 1967_2       59.0                294      232.6
-#&gt; 1967_3       58.4                260      248.3
-#&gt; 1967_4       60.7                290      248.2
-#&gt; 1968_1       61.5                411      226.9
-#&gt; 1968_2       63.1                365      243.0
-#&gt; 1968_3       62.5                332      267.1
-#&gt; 1968_4       64.2                324      267.2
-#&gt; 1969_1       64.9                405      244.0
-#&gt; 1969_2       66.1                368      262.3
-#&gt; 1969_3       65.8                329      287.1
-#&gt; 1969_4       65.9                346      286.2
-#&gt; 1970_1       63.8                455      257.4
-#&gt; 1970_2       64.5                490      280.1
-#&gt; 1970_3       63.4                479      298.2
-#&gt; 1970_4       62.1                479      298.3
-#&gt; 1971_1       63.1                601      274.5
-#&gt; 1971_2       64.7                545      286.2
-#&gt; 1971_3       64.1                494      304.8
-#&gt; 1971_4       65.6                502      302.5
-#&gt; 1972_1       67.8                591      286.0
-#&gt; 1972_2       70.7                540      296.9
-#&gt; 1972_3       70.7                536      315.2
-#&gt; 1972_4       73.2                545      318.9
-#&gt; 1973_1       74.4                599      304.5
-#&gt; 1973_2       76.7                501      312.1
-#&gt; 1973_3       77.1                476      328.7
-#&gt; 1973_4       77.0                483      328.8
-#&gt; 1974_1       74.8                564      309.4
-#&gt; 1974_2       76.9                494      314.5
-#&gt; 1974_3       76.2                488      328.4
-#&gt; 1974_4       72.9                512      324.2
-#&gt; 1975_1       66.8                738      298.2
-#&gt; 1975_2       67.7                685      308.2
-#&gt; 1975_3       69.3                670      322.1
-#&gt; 1975_4       70.4                666      329.5
-#&gt; 1976_1       72.4                776      316.1
-#&gt; 1976_2       75.1                717      328.1
-#&gt; 1976_3       75.5                709      335.2
-#&gt; 1976_4       76.5                703      348.8
-#&gt; 1977_1       77.9                909      328.6
-#&gt; 1977_2       81.3                838      334.1
-#&gt; 1977_3       82.0                826      341.8
-#&gt; 1977_4       82.2                824      358.9
-#&gt; 1978_1       81.7                999      336.5
-#&gt; 1978_2       86.5                930      346.4
-#&gt; 1978_3       87.5                878      354.8
-#&gt; 1978_4       88.6                827      370.2
-#&gt; 1979_1       88.8                966      348.3
-#&gt; 1979_2       90.0                856      361.5
-#&gt; 1979_3       89.7                759      369.8
-#&gt; 1979_4       89.5                762      384.0
-#&gt; 1980_1       89.3                953      365.3
-#&gt; 1980_2       86.6                907      365.4
-#&gt; 1980_3       86.6                816      372.8
-#&gt; 1980_4       88.7                784      381.7
-#&gt; 1981_1       89.2                951      360.9
-#&gt; 1981_2       90.2                864      364.9
-#&gt; 1981_3       91.8                840      374.8
-#&gt; 1981_4       87.8                937      384.7
-#&gt; 1982_1       85.1               1152      357.5
-#&gt; 1982_2       83.9               1266      364.8
-#&gt; 1982_3       83.4               1384      369.2
-#&gt; 1982_4       81.1               1455      379.5
-#&gt; 1983_1       82.8               1630      359.4
-#&gt; 1983_2       86.4               1515      370.4
-#&gt; 1983_3       91.4               1353      376.0
-#&gt; 1983_4       92.5               1295      393.1
-#&gt; 1984_1       95.5               1497      375.8
-#&gt; 1984_2       98.1               1430      375.6
-#&gt; 1984_3      100.4               1345      391.2
-#&gt; 1984_4       98.7               1325      405.5
-#&gt; 1985_1       98.4               1495      375.8
-#&gt; 1985_2       99.8               1353      387.2
-#&gt; 1985_3      101.5               1236      402.7
-#&gt; 1985_4      100.4               1228      412.4
-#&gt; 1986_1      100.2               1356      381.0
-#&gt; 1986_2      100.7               1245      400.1
-#&gt; 1986_3      102.2               1186      411.4
-#&gt; 1986_4      101.3               1156      422.2
-#&gt; 1987_1      101.5               1358      388.3
-#&gt; 1987_2      103.8               1197      402.4
-#&gt; 1987_3      107.3               1097      417.5
-#&gt; 1987_4      107.2               1016      431.6
-#&gt; 1988_1      107.6                 NA      405.3
-#&gt; 1988_2      110.0                 NA      416.6
-#&gt; 1988_3      113.5                 NA      432.2
-#&gt; 1988_4      112.6                 NA      446.4
-#&gt; 1989_1      113.6                 NA      424.1
-#&gt; 1989_2      114.5                 NA      436.3
-#&gt; 1989_3      115.6                 NA      445.0
-#&gt; 1989_4      114.3                 NA      460.6
-#&gt; 1990_1      114.3                 NA      442.0
-#&gt; 1990_2      115.5                 NA      452.1
-#&gt; 1990_3      118.3                 NA      468.9
-#&gt; 1990_4      114.5                 NA      482.9
-#&gt; 1991_1      111.4                 NA         NA
-#&gt; 1991_2      112.4                 NA         NA
-#&gt; 1991_3      116.0                 NA         NA
-#&gt; 1991_4      113.9                 NA         NA</div><div class='input'>
+#&gt;         USTotalIPI CanadaUnemployment GermanyGNP
+#&gt; Y1960_1       40.2                583      167.0
+#&gt; Y1960_2       39.8                427      176.2
+#&gt; Y1960_3       38.5                334      198.0
+#&gt; Y1960_4       38.0                439      190.5
+#&gt; Y1961_1       37.1                703      180.1
+#&gt; Y1961_2       39.2                480      184.9
+#&gt; Y1961_3       39.8                325      202.9
+#&gt; Y1961_4       41.6                358      195.8
+#&gt; Y1962_1       41.8                561      185.4
+#&gt; Y1962_2       43.0                373      195.0
+#&gt; Y1962_3       42.6                282      214.5
+#&gt; Y1962_4       43.4                346      204.9
+#&gt; Y1963_1       43.9                546      183.0
+#&gt; Y1963_2       45.7                372      199.9
+#&gt; Y1963_3       44.9                272      223.5
+#&gt; Y1963_4       46.4                305      215.4
+#&gt; Y1964_1       46.7                463      201.6
+#&gt; Y1964_2       48.6                326      214.4
+#&gt; Y1964_3       48.1                243      232.8
+#&gt; Y1964_4       49.6                266      226.9
+#&gt; Y1965_1       51.4                397      213.4
+#&gt; Y1965_2       53.2                298      226.7
+#&gt; Y1965_3       52.9                210      243.4
+#&gt; Y1965_4       54.9                214      239.2
+#&gt; Y1966_1       56.2                303      224.3
+#&gt; Y1966_2       58.1                237      235.5
+#&gt; Y1966_3       57.6                236      250.0
+#&gt; Y1966_4       59.2                230      240.3
+#&gt; Y1967_1       58.4                340      220.3
+#&gt; Y1967_2       59.0                294      232.6
+#&gt; Y1967_3       58.4                260      248.3
+#&gt; Y1967_4       60.7                290      248.2
+#&gt; Y1968_1       61.5                411      226.9
+#&gt; Y1968_2       63.1                365      243.0
+#&gt; Y1968_3       62.5                332      267.1
+#&gt; Y1968_4       64.2                324      267.2
+#&gt; Y1969_1       64.9                405      244.0
+#&gt; Y1969_2       66.1                368      262.3
+#&gt; Y1969_3       65.8                329      287.1
+#&gt; Y1969_4       65.9                346      286.2
+#&gt; Y1970_1       63.8                455      257.4
+#&gt; Y1970_2       64.5                490      280.1
+#&gt; Y1970_3       63.4                479      298.2
+#&gt; Y1970_4       62.1                479      298.3
+#&gt; Y1971_1       63.1                601      274.5
+#&gt; Y1971_2       64.7                545      286.2
+#&gt; Y1971_3       64.1                494      304.8
+#&gt; Y1971_4       65.6                502      302.5
+#&gt; Y1972_1       67.8                591      286.0
+#&gt; Y1972_2       70.7                540      296.9
+#&gt; Y1972_3       70.7                536      315.2
+#&gt; Y1972_4       73.2                545      318.9
+#&gt; Y1973_1       74.4                599      304.5
+#&gt; Y1973_2       76.7                501      312.1
+#&gt; Y1973_3       77.1                476      328.7
+#&gt; Y1973_4       77.0                483      328.8
+#&gt; Y1974_1       74.8                564      309.4
+#&gt; Y1974_2       76.9                494      314.5
+#&gt; Y1974_3       76.2                488      328.4
+#&gt; Y1974_4       72.9                512      324.2
+#&gt; Y1975_1       66.8                738      298.2
+#&gt; Y1975_2       67.7                685      308.2
+#&gt; Y1975_3       69.3                670      322.1
+#&gt; Y1975_4       70.4                666      329.5
+#&gt; Y1976_1       72.4                776      316.1
+#&gt; Y1976_2       75.1                717      328.1
+#&gt; Y1976_3       75.5                709      335.2
+#&gt; Y1976_4       76.5                703      348.8
+#&gt; Y1977_1       77.9                909      328.6
+#&gt; Y1977_2       81.3                838      334.1
+#&gt; Y1977_3       82.0                826      341.8
+#&gt; Y1977_4       82.2                824      358.9
+#&gt; Y1978_1       81.7                999      336.5
+#&gt; Y1978_2       86.5                930      346.4
+#&gt; Y1978_3       87.5                878      354.8
+#&gt; Y1978_4       88.6                827      370.2
+#&gt; Y1979_1       88.8                966      348.3
+#&gt; Y1979_2       90.0                856      361.5
+#&gt; Y1979_3       89.7                759      369.8
+#&gt; Y1979_4       89.5                762      384.0
+#&gt; Y1980_1       89.3                953      365.3
+#&gt; Y1980_2       86.6                907      365.4
+#&gt; Y1980_3       86.6                816      372.8
+#&gt; Y1980_4       88.7                784      381.7
+#&gt; Y1981_1       89.2                951      360.9
+#&gt; Y1981_2       90.2                864      364.9
+#&gt; Y1981_3       91.8                840      374.8
+#&gt; Y1981_4       87.8                937      384.7
+#&gt; Y1982_1       85.1               1152      357.5
+#&gt; Y1982_2       83.9               1266      364.8
+#&gt; Y1982_3       83.4               1384      369.2
+#&gt; Y1982_4       81.1               1455      379.5
+#&gt; Y1983_1       82.8               1630      359.4
+#&gt; Y1983_2       86.4               1515      370.4
+#&gt; Y1983_3       91.4               1353      376.0
+#&gt; Y1983_4       92.5               1295      393.1
+#&gt; Y1984_1       95.5               1497      375.8
+#&gt; Y1984_2       98.1               1430      375.6
+#&gt; Y1984_3      100.4               1345      391.2
+#&gt; Y1984_4       98.7               1325      405.5
+#&gt; Y1985_1       98.4               1495      375.8
+#&gt; Y1985_2       99.8               1353      387.2
+#&gt; Y1985_3      101.5               1236      402.7
+#&gt; Y1985_4      100.4               1228      412.4
+#&gt; Y1986_1      100.2               1356      381.0
+#&gt; Y1986_2      100.7               1245      400.1
+#&gt; Y1986_3      102.2               1186      411.4
+#&gt; Y1986_4      101.3               1156      422.2
+#&gt; Y1987_1      101.5               1358      388.3
+#&gt; Y1987_2      103.8               1197      402.4
+#&gt; Y1987_3      107.3               1097      417.5
+#&gt; Y1987_4      107.2               1016      431.6
+#&gt; Y1988_1      107.6                 NA      405.3
+#&gt; Y1988_2      110.0                 NA      416.6
+#&gt; Y1988_3      113.5                 NA      432.2
+#&gt; Y1988_4      112.6                 NA      446.4
+#&gt; Y1989_1      113.6                 NA      424.1
+#&gt; Y1989_2      114.5                 NA      436.3
+#&gt; Y1989_3      115.6                 NA      445.0
+#&gt; Y1989_4      114.3                 NA      460.6
+#&gt; Y1990_1      114.3                 NA      442.0
+#&gt; Y1990_2      115.5                 NA      452.1
+#&gt; Y1990_3      118.3                 NA      468.9
+#&gt; Y1990_4      114.5                 NA      482.9
+#&gt; Y1991_1      111.4                 NA         NA
+#&gt; Y1991_2      112.4                 NA         NA
+#&gt; Y1991_3      116.0                 NA         NA
+#&gt; Y1991_4      113.9                 NA         NA</div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>pcfr2</span>) <span class='co'># the points mark the first season in each cycle</span></div><div class='img'><img src='pcts-package-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span>(<span class='no'>pcfr2</span>)</div><div class='img'><img src='pcts-package-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/monthplot.html'>monthplot</a></span>(<span class='no'>pcfr2</span>)</div><div class='img'><img src='pcts-package-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

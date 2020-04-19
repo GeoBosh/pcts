@@ -1,4 +1,4 @@
-import(methods, stats4, Matrix, PolynomF, zoo, lagged, sarima) # BB
+import(methods, stats4, Matrix, PolynomF, zoo, xts, lagged, sarima) # BB
 
 importFrom(gbutils,shiftright,shiftleft)
 importFrom(gbutils,myouter)
@@ -16,7 +16,7 @@ importFrom(stats, ARMAacf, Box.test, C, as.formula,
 importFrom(lubridate, minutes, hm, ymd,  is.Date, weeks, days,  period,
            date, "date<-", as_datetime, as_date)
 
-importFrom(BB, BBoptim) # minimBBlu, minimBB
+importFrom(BB, BBoptim)
 
 import(sarima)
 
@@ -43,6 +43,8 @@ S3method(seq, Pctime)
 S3method(as.POSIXct, Pctime)
 S3method("[", Pctime)
 S3method("[[", Pctime)
+
+S3method(cycle, Pctime)
 
 
 # S3method(as.matrix, slMatrix)

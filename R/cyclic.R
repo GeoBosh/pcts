@@ -1,4 +1,12 @@
+#setOldClass("zoo")
 setOldClass(c("zooreg", "zoo"))
+setOldClass("xts")
+setClassUnion("xtsORzoo", c("xts","zoo")) # see quantmod
+
+setOldClass("Date")
+setOldClass(c("POSIXct", "POSIXt"))
+setOldClass(c("POSIXlt", "POSIXt"))
+setClassUnion("AnyDateTime", c("POSIXct", "POSIXlt", "Pctime", "Date"))
 
 ## virtual class for signatures; all periodic time series classes are its descendants
 ##
@@ -247,6 +255,55 @@ setMethod("pcts", "data.frame",
           }
           )
 
+.guess_zoo_cycle <- function(x){ # x must inherit from zoo
+    ## TODO: incomplete
+
+    if(!is.regular(x))
+        ## TODO: can this check give TRUE if times are not monotone?
+        stop("currently pcts requires regular time intervals")
+    ## ## frequency.zoo tries to compute the frequency even if the attribute is not set
+    ## nseasons <- frequency(x)
+    ## if(frequency > 1) could still be inferred
+    index <- index(x)
+    if(is.Date(index)){
+        ## assume initially day of week
+        pct <- Pctime(index, BuiltinCycle(7))
+        ## !!! TODO: this needs cycle.Pctime
+        cyc <- cycle(pct)
+        cycle <- if(all(1:7 %in% unique(cyc)))
+                     BuiltinCycle(7)
+                 else
+                     new("PartialCycle", orig = BuiltinCycle(7), 
+                         subindex = as.integer(sort(unique(cyc))))
+        Cyclic(cycle, start = pct[[1]])
+    }else{
+        stop("This branch not implemented yet - please contact the maintainer of the package")
+    }
+}
+
+setMethod("pcts", c(x = "xtsORzoo", nseasons = "missing"),
+          function(x, nseasons, start, ...){
+              ## ignore argument start for now
+
+              cyclic <- .guess_zoo_cycle(x)
+              start <- stats::start(cyclic) 
+              cycle <- cyclic@cycle
+
+              nseasons <- nSeasons(cycle)
+              nseas <- if(is(cycle, "PartialCycle"))
+                           nSeasons(cycle@orig)
+                       else
+                           nseasons
+
+              x_ts <- as.ts(as.zooreg(x))
+              if(nseas == nseasons){
+                  pcts(x_ts, cycle, start = start, ...)
+              }else{
+                  res <- pcts(x_ts, cycle@orig, start = start, ...)
+                  window(res, seasons = cycle@subindex)
+              }
+         } 
+         )
 
 .ts2periodic_ts <- function(x, cls, nseasons, ...){
     cyc <- if(!missing(nseasons)  &&  frequency(x) != nseasons){
@@ -372,6 +429,8 @@ setMethod("show", "PeriodicTS",
               wrk <- seq(start(object)[1], end(object)[1])
               wrk2 <- rep(wrk, each = nSeasons(object))
               cycles <- wrk2[seq(start(object)[2], length = nTicks(object))]
+              cycles_prefix <- substring(unitCycle(object), 1, 1)
+
               cyc <- cycle(object)
 
               data <- object@.Data
@@ -383,7 +442,7 @@ setMethod("show", "PeriodicTS",
               data <- object@.Data
               if(length(data) %% nseas == 0  && start[2] == 1){
                   data <- matrix(data, ncol = nSeasons(object), byrow = TRUE)
-                  rownames(data) <- as.character(start[1]:end[1])
+                  rownames(data) <- paste0(cycles_prefix, start[1]:end[1])
                   ## TODO: sort out the method for "Cyclic" to work with abb = TRUE
                   ##     colnames(data) <- allSeasons(object, abb = TRUE)
                   colnames(data) <- allSeasons(object@cycle, abb = TRUE)
@@ -395,7 +454,7 @@ setMethod("show", "PeriodicTS",
                   wrk[1, seq_len(start[2] - 1)] <- ""
                   if(end[2] < nseas)
                       wrk[nrow(wrk), (end[2] + 1) : nseas] <- ""
-                  rownames(wrk) <- as.character(start[1]:end[1])
+                  rownames(wrk) <- paste0(cycles_prefix, start[1]:end[1])
                   colnames(wrk) <- allSeasons(object@cycle, abb = TRUE)
                   print(wrk, quote = FALSE)
               }
@@ -418,10 +477,12 @@ setMethod("show", "PeriodicMTS",
               wrk <- seq(start(object)[1], end(object)[1])
               wrk <- rep(wrk, each = nSeasons(object))
               cycles <- wrk[seq(start(object)[2], length = nTicks(object))]
+              cycles_prefix <- substring(unitCycle(object), 1, 1)
+
               cyc <- cycle(object)
 
               data <- object@.Data
-              rownames(data) <- paste0(cycles, "_", cyc)
+              rownames(data) <- paste0(cycles_prefix, cycles, "_", cyc)
               print(data)
           }
           )
@@ -561,6 +622,13 @@ setMethod("[", c(x = "PeriodicTS", i = "missing", j = "missing"),
               x@.Data
           })
 
+setMethod("[", c(x = "PeriodicTS", i = "AnyDateTime", j = "missing"), 
+          function(x, i){
+              ## TODO: is this reliable?
+              ind <- which(as_datetime(x)  %in% as_datetime(i))
+              x@.Data[ind]
+          })
+
 setMethod("[[", c(x = "PeriodicMTS"), 
           function(x, i){
               if (length(i) != 1) 
@@ -582,8 +650,10 @@ setMethod("[", c(x = "PeriodicMTS", i = "ANY", j = "missing"),
               if(nposargs(sys.call()) == 2) # x[i]
                   new("PeriodicMTS", as(x, "Cyclic"), x@.Data[ , i, drop = FALSE])
               else{ # x[i, ]
-                  ## x@.Data[i, , ...]
-                  stop("use x[][i, ] or x[][i,j] if you wish to use matrix indexing")
+                  ## 2020-04-19: allowing matrix indexing
+                  ## stop("use x[][i, ] or x[][i,j] if you wish to use matrix indexing")
+                  j <- 1:ncol(x@.Data)
+                  x@.Data[i, j, ...]
               }
           })
 
@@ -599,6 +669,25 @@ setMethod("[", c(x = "PeriodicMTS", i = "missing", j = "missing"),
 ##               ## note: for x[ , 1:4], missing(i) is TRUE
 ##               x@.Data[ , , ...]
 ##           })
+
+setMethod("[", c(x = "PeriodicMTS", i = "ANY", j = "ANY"), 
+          function(x, i, j, ...){
+              x@.Data[i, j, ...]
+          })
+
+setMethod("[", c(x = "PeriodicMTS", i = "AnyDateTime", j = "missing"), 
+          function(x, i){
+              ## TODO: is this reliable?
+              ind <- which(as_datetime(x)  %in% as_datetime(i))
+              x@.Data[ind, ]
+          })
+
+setMethod("[", c(x = "PeriodicMTS", i = "AnyDateTime", j = "ANY"), 
+          function(x, i, j){
+              ## TODO: is this reliable?
+              ind <- which(as_datetime(x)  %in% as_datetime(i))
+              x@.Data[ind, j]
+          })
 
 start.Cyclic <- function(x, ...){
     x@pcstart
@@ -663,7 +752,10 @@ window.PeriodicTS <- function(x, start = NULL, end = NULL, seasons = NULL, ...){
     new("PeriodicTS", cyc, x@.Data[begind:endind])
 }
 
-window.PeriodicMTS <- function(x, start = NULL, end = NULL, ...){
+window.PeriodicMTS <- function(x, start = NULL, end = NULL, seasons = NULL, ...){
+    ## this is almost identical to window.PeriodicTS,
+    ##      could be made common:  (1) new is called with  PeriodicTS or PeriodicMTS
+    ##                             (2) access x@.Data with the equialent of coredata functions
     nseas <- nSeasons(x)
     time1st <- x@pcstart
     begind <- if(is.null(start))
@@ -679,6 +771,29 @@ window.PeriodicMTS <- function(x, start = NULL, end = NULL, ...){
     cyc <- as(x, "Cyclic")
     if(!is.null(start))
         cyc@pcstart <- start
+
+    if(!is.null(seasons)){
+        ## TODO: check validity of 'seasons'
+        lind <- logical(nTicks(x))
+        lind[begind:endind] <- TRUE
+        lind <- lind & (cycle(x) %in% seasons)
+
+        wrkdata <- x@.Data[lind, , drop = FALSE]
+
+        ind.1st <- which(lind)[1]
+        newstart <- ind2pctime(ind.1st, start(x), nseas)
+        newstart[2] <- which(seasons == newstart[2])
+
+        ## TODO: more is needed here
+        cy <- ## if(is(x@cycle, "DayWeekCycle"))
+              ##     new("PartialDayWeekCycle", subindex = seasons)
+              ## else
+                  new("PartialCycle", orig = x@cycle, subindex = seasons) 
+        res <- new("PeriodicMTS", cycle = cy, pcstart = newstart, wrkdata)
+    
+        return(res)
+    }
+
 
     new("PeriodicMTS", cyc, x@.Data[begind:endind, , drop = FALSE])
 }

@@ -166,6 +166,7 @@ test_that("the cycle classes are ok",
     BuiltinCycle(4, coerce = TRUE)
 
     pdc5a <- new("PartialCycle", orig = new("DayWeekCycle"), subindex = 1:5)
+    expect_output(show(pdc5a))
     unitSeason(pdc5a)
     unitCycle(pdc5a)
     allSeasons(pdc5a)
@@ -430,8 +431,12 @@ pctipi <- window(pctipi, start = availStart(pctipi), end = availEnd(pctipi))
 
     ## Pctime
     Pctime(Sys.time(), BuiltinCycle(4))   # from datetime
-    Pctime("2020-01-01", BuiltinCycle(4)) # from date
+    pct2020_01_01 <- Pctime("2020-01-01", BuiltinCycle(4)) # from date
+    Pctime(pct2020_01_01) # from Pctime, no op.
 
+    expect_equal(cycle(Pctime(ap)), as.numeric(cycle(ap)))
+    expect_equal(cycle(Pctime(ap7to9)), rep(1:3, length.out = length(ap7to9)))
+    
     Pctime(c(4,1), bc4) # [1] "C4 S1"
     expect_error(Pctime(bc4), "cycle not specified and cannot be inferred")
     expect_error(Pctime(13, bc4), "the length of pairs must be even")

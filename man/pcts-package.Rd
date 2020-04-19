@@ -45,7 +45,9 @@
   %  % 2014-06-22 TODO: rachno slozhich subsets (vizh i funktsiite po-gore.
   %  %                  Napravi tova za Rdpack!
   %  % 2014-06-22 slagam tematichen index.
- 
+
+  This overview is out of date and needs rewrite.
+  
    \strong{Index of the main exported objects, classes and methods:}
 %  \Sexpr[stage=build,results=rd]{paste("\\\\preformatted{", paste(if(!is.null(lb$info[[2]])) lb$info[[2]] else "No entries",collapse="\n"), "}", sep="")}
 
@@ -119,25 +121,25 @@
     \Sexpr[stage=build,results=rd]{lbpaste(pat[["piar"]])}
   }
 
-
-  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(other =
-    c("^pc.boxplot", "^pc.plot", "^pc.filter", "^pc.nvariables",
-    # "^pc.omitneg",
-    "^pc.plot",
-    "^coreMatrix",
-    "^dataFranses1996",
-    "^ex1f",
-    "^nCycles",
-    "^pcPlot",
-    "^pcacf_pwn_var",
-    "^pcarma_acvf_lazy",
-    "^pcarma_unvec",
-    "^pcts",
-    "^toSeason"
-    )))}
-  \subsection{Other}{
-    \Sexpr[stage=build,results=rd]{lbpaste(pat[["other"]])}
-  }
+  %%% commented out on 2020-04-18
+  %%%% \Sexpr[stage=build,results=hide]{pat <- c(pat, list(other =
+  %%%%   c("^pc.boxplot", "^pc.plot", "^pc.filter", "^pc.nvariables",
+  %%%%   # "^pc.omitneg",
+  %%%%   "^pc.plot",
+  %%%%   "^coreMatrix",
+  %%%%   "^dataFranses1996",
+  %%%%   "^ex1f",
+  %%%%   "^nCycles",
+  %%%%   "^pcPlot",
+  %%%%   "^pcacf_pwn_var",
+  %%%%   "^pcarma_acvf_lazy",
+  %%%%   "^pcarma_unvec",
+  %%%%   "^pcts",
+  %%%%   "^toSeason"
+  %%%%   )))}
+  %%%% \subsection{Other}{
+  %%%%   \Sexpr[stage=build,results=rd]{lbpaste(pat[["other"]])}
+  %%%% }
 
 
   \Sexpr[stage=build,results=hide]{pat <- c(pat, list(pcArma =
@@ -166,13 +168,13 @@
 
 
 
-
-  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(methods =
-    c("[^[:space:]]+-methods"
-    )))}
-  \subsection{Methods}{
-    \Sexpr[stage=build,results=rd]{lbpaste(pat[["methods"]])}
-  }
+  %%% commented out on 2020-04-18
+  %%%% \Sexpr[stage=build,results=hide]{pat <- c(pat, list(methods =
+  %%%%   c("[^[:space:]]+-methods"
+  %%%%   )))}
+  %%%% \subsection{Methods}{
+  %%%%   \Sexpr[stage=build,results=rd]{lbpaste(pat[["methods"]])}
+  %%%% }
 
 
   % Commenting out, this is useful mainly in development.
@@ -365,6 +367,11 @@ allSeasons(pcfr, abb = TRUE)
 pcfr2to4 <- pcfr[2:4]; class(pcfr2to4) # "PeriodicMTS"
 pcfr2to2 <- pcfr[2];   class(pcfr2to2) # "PeriodicMTS"
 pcfr2    <- pcfr[[2]]; class(pcfr2)    # note '[[', "PeriodicTS"
+
+## data for 1990 quarter 3
+pcfr2to4[as_date("1990-07-01")] # note: not "1990-03-01"!
+pct1990_Q3 <- Pctime(c(1990, 3), pcCycle(pcfr2to4))
+pcfr2to4[pct1990_Q3]
 
 ## with empty index, returns the underlying data
 dim(pcfr[]) # [1] 148  19

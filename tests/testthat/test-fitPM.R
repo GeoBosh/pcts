@@ -86,12 +86,23 @@ test_that("test fitPM()",
     fitted(proba1x)
     predict(proba1x, 1)
     predict(proba1x, 8)
-    
+
+    n <- 100
+    x <- arima.sim(list(ar=0.9), n = n)
+    proba1 <- fitPM(c(3,2,2,2), x)
+
+    meancovmat(proba1, n/10)
+    meancovmat(proba1, n/10, cor = TRUE)
+    meancovmat(proba1, n/10, result = "")
+    meancovmat(proba1, n/10, cor = TRUE, result = "")
+
+    meanvarcheck(proba1, 100)
 })
 
 
 test_that("test mC.ss() works",
 {
+    workdata()
     ## examples from mC.ss.Rd
 # test0 roots
 spec.coz2 <- mcompanion::mcSpec(dim = 5, mo = 4, root1 = c(1,1), order = rep(2,4))
@@ -195,4 +206,7 @@ mC.ss(spec.co2, init = tmp2$env$mcparam2optparam())
 ##  [3,] 0.7989768    0    0    1 -0.7989768
 ##  [4,] 1.2716195    0    0    1 -1.2716195
 
+set.seed(1234)
+fitPM(spec.coz4, rnorm(100), control = list(maxit = 1))    
+    
 })

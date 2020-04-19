@@ -85,7 +85,7 @@
       <h1 data-toc-skip>Importing and manipulating periodic time seires data</h1>
                         <h4 class="author">Georgi N. Boshnakov</h4>
             
-            <h4 class="date">2020-04-17</h4>
+            <h4 class="date">2020-04-19</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/GeoBosh/pcts/blob/master/vignettes/pcts_data.Rmd"><code>vignettes/pcts_data.Rmd</code></a></small>
       <div class="hidden name"><code>pcts_data.Rmd</code></div>
@@ -112,19 +112,19 @@
 <span class="co">#&gt; Cycle:  MonthYearCycle </span>
 <span class="co">#&gt; Number of seasons: 12 </span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;      Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span>
-<span class="co">#&gt; 1949 112 118 132 129 121 135 148 148 136 119 104 118</span>
-<span class="co">#&gt; 1950 115 126 141 135 125 149 170 170 158 133 114 140</span>
-<span class="co">#&gt; 1951 145 150 178 163 172 178 199 199 184 162 146 166</span>
-<span class="co">#&gt; 1952 171 180 193 181 183 218 230 242 209 191 172 194</span>
-<span class="co">#&gt; 1953 196 196 236 235 229 243 264 272 237 211 180 201</span>
-<span class="co">#&gt; 1954 204 188 235 227 234 264 302 293 259 229 203 229</span>
-<span class="co">#&gt; 1955 242 233 267 269 270 315 364 347 312 274 237 278</span>
-<span class="co">#&gt; 1956 284 277 317 313 318 374 413 405 355 306 271 306</span>
-<span class="co">#&gt; 1957 315 301 356 348 355 422 465 467 404 347 305 336</span>
-<span class="co">#&gt; 1958 340 318 362 348 363 435 491 505 404 359 310 337</span>
-<span class="co">#&gt; 1959 360 342 406 396 420 472 548 559 463 407 362 405</span>
-<span class="co">#&gt; 1960 417 391 419 461 472 535 622 606 508 461 390 432</span></pre></body></html></div>
+<span class="co">#&gt;       Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span>
+<span class="co">#&gt; Y1949 112 118 132 129 121 135 148 148 136 119 104 118</span>
+<span class="co">#&gt; Y1950 115 126 141 135 125 149 170 170 158 133 114 140</span>
+<span class="co">#&gt; Y1951 145 150 178 163 172 178 199 199 184 162 146 166</span>
+<span class="co">#&gt; Y1952 171 180 193 181 183 218 230 242 209 191 172 194</span>
+<span class="co">#&gt; Y1953 196 196 236 235 229 243 264 272 237 211 180 201</span>
+<span class="co">#&gt; Y1954 204 188 235 227 234 264 302 293 259 229 203 229</span>
+<span class="co">#&gt; Y1955 242 233 267 269 270 315 364 347 312 274 237 278</span>
+<span class="co">#&gt; Y1956 284 277 317 313 318 374 413 405 355 306 271 306</span>
+<span class="co">#&gt; Y1957 315 301 356 348 355 422 465 467 404 347 305 336</span>
+<span class="co">#&gt; Y1958 340 318 362 348 363 435 491 505 404 359 310 337</span>
+<span class="co">#&gt; Y1959 360 342 406 396 420 472 548 559 463 407 362 405</span>
+<span class="co">#&gt; Y1960 417 391 419 461 472 535 622 606 508 461 390 432</span></pre></body></html></div>
 <p>Get the data from Mar 1952 to Feb 1959:</p>
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/stats/window.html">window</a></span>(<span class="no">ap</span>, <span class="kw">start</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1952</span>, <span class="fl">3</span>))
 <span class="co">#&gt; An object of class "PeriodicTS"</span>
@@ -132,34 +132,34 @@
 <span class="co">#&gt; Cycle:  MonthYearCycle </span>
 <span class="co">#&gt; Number of seasons: 12 </span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;      Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span>
-<span class="co">#&gt; 1952         193 181 183 218 230 242 209 191 172 194</span>
-<span class="co">#&gt; 1953 196 196 236 235 229 243 264 272 237 211 180 201</span>
-<span class="co">#&gt; 1954 204 188 235 227 234 264 302 293 259 229 203 229</span>
-<span class="co">#&gt; 1955 242 233 267 269 270 315 364 347 312 274 237 278</span>
-<span class="co">#&gt; 1956 284 277 317 313 318 374 413 405 355 306 271 306</span>
-<span class="co">#&gt; 1957 315 301 356 348 355 422 465 467 404 347 305 336</span>
-<span class="co">#&gt; 1958 340 318 362 348 363 435 491 505 404 359 310 337</span>
-<span class="co">#&gt; 1959 360 342 406 396 420 472 548 559 463 407 362 405</span>
-<span class="co">#&gt; 1960 417 391 419 461 472 535 622 606 508 461 390 432</span>
+<span class="co">#&gt;       Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span>
+<span class="co">#&gt; Y1952         193 181 183 218 230 242 209 191 172 194</span>
+<span class="co">#&gt; Y1953 196 196 236 235 229 243 264 272 237 211 180 201</span>
+<span class="co">#&gt; Y1954 204 188 235 227 234 264 302 293 259 229 203 229</span>
+<span class="co">#&gt; Y1955 242 233 267 269 270 315 364 347 312 274 237 278</span>
+<span class="co">#&gt; Y1956 284 277 317 313 318 374 413 405 355 306 271 306</span>
+<span class="co">#&gt; Y1957 315 301 356 348 355 422 465 467 404 347 305 336</span>
+<span class="co">#&gt; Y1958 340 318 362 348 363 435 491 505 404 359 310 337</span>
+<span class="co">#&gt; Y1959 360 342 406 396 420 472 548 559 463 407 362 405</span>
+<span class="co">#&gt; Y1960 417 391 419 461 472 535 622 606 508 461 390 432</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/window.html">window</a></span>(<span class="no">ap</span>, <span class="kw">end</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1959</span>, <span class="fl">2</span>))
 <span class="co">#&gt; An object of class "PeriodicTS"</span>
 <span class="co">#&gt; Slot "cycle": Start:  1949   January </span>
 <span class="co">#&gt; Cycle:  MonthYearCycle </span>
 <span class="co">#&gt; Number of seasons: 12 </span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;      Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span>
-<span class="co">#&gt; 1949 112 118 132 129 121 135 148 148 136 119 104 118</span>
-<span class="co">#&gt; 1950 115 126 141 135 125 149 170 170 158 133 114 140</span>
-<span class="co">#&gt; 1951 145 150 178 163 172 178 199 199 184 162 146 166</span>
-<span class="co">#&gt; 1952 171 180 193 181 183 218 230 242 209 191 172 194</span>
-<span class="co">#&gt; 1953 196 196 236 235 229 243 264 272 237 211 180 201</span>
-<span class="co">#&gt; 1954 204 188 235 227 234 264 302 293 259 229 203 229</span>
-<span class="co">#&gt; 1955 242 233 267 269 270 315 364 347 312 274 237 278</span>
-<span class="co">#&gt; 1956 284 277 317 313 318 374 413 405 355 306 271 306</span>
-<span class="co">#&gt; 1957 315 301 356 348 355 422 465 467 404 347 305 336</span>
-<span class="co">#&gt; 1958 340 318 362 348 363 435 491 505 404 359 310 337</span>
-<span class="co">#&gt; 1959 360 342</span></pre></body></html></div>
+<span class="co">#&gt;       Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span>
+<span class="co">#&gt; Y1949 112 118 132 129 121 135 148 148 136 119 104 118</span>
+<span class="co">#&gt; Y1950 115 126 141 135 125 149 170 170 158 133 114 140</span>
+<span class="co">#&gt; Y1951 145 150 178 163 172 178 199 199 184 162 146 166</span>
+<span class="co">#&gt; Y1952 171 180 193 181 183 218 230 242 209 191 172 194</span>
+<span class="co">#&gt; Y1953 196 196 236 235 229 243 264 272 237 211 180 201</span>
+<span class="co">#&gt; Y1954 204 188 235 227 234 264 302 293 259 229 203 229</span>
+<span class="co">#&gt; Y1955 242 233 267 269 270 315 364 347 312 274 237 278</span>
+<span class="co">#&gt; Y1956 284 277 317 313 318 374 413 405 355 306 271 306</span>
+<span class="co">#&gt; Y1957 315 301 356 348 355 422 465 467 404 347 305 336</span>
+<span class="co">#&gt; Y1958 340 318 362 348 363 435 491 505 404 359 310 337</span>
+<span class="co">#&gt; Y1959 360 342</span></pre></body></html></div>
 <p>Take the summer months only:</p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/stats/window.html">window</a></span>(<span class="no">ap</span>, <span class="kw">seasons</span> <span class="kw">=</span> <span class="fl">7</span>:<span class="fl">9</span>)
 <span class="co">#&gt; An object of class "PeriodicTS"</span>
@@ -167,19 +167,19 @@
 <span class="co">#&gt; Cycle:  PartialCycle </span>
 <span class="co">#&gt; Number of seasons: 3 </span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;      Jul Aug Sep</span>
-<span class="co">#&gt; 1949 148 148 136</span>
-<span class="co">#&gt; 1950 170 170 158</span>
-<span class="co">#&gt; 1951 199 199 184</span>
-<span class="co">#&gt; 1952 230 242 209</span>
-<span class="co">#&gt; 1953 264 272 237</span>
-<span class="co">#&gt; 1954 302 293 259</span>
-<span class="co">#&gt; 1955 364 347 312</span>
-<span class="co">#&gt; 1956 413 405 355</span>
-<span class="co">#&gt; 1957 465 467 404</span>
-<span class="co">#&gt; 1958 491 505 404</span>
-<span class="co">#&gt; 1959 548 559 463</span>
-<span class="co">#&gt; 1960 622 606 508</span></pre></body></html></div>
+<span class="co">#&gt;       Jul Aug Sep</span>
+<span class="co">#&gt; Y1949 148 148 136</span>
+<span class="co">#&gt; Y1950 170 170 158</span>
+<span class="co">#&gt; Y1951 199 199 184</span>
+<span class="co">#&gt; Y1952 230 242 209</span>
+<span class="co">#&gt; Y1953 264 272 237</span>
+<span class="co">#&gt; Y1954 302 293 259</span>
+<span class="co">#&gt; Y1955 364 347 312</span>
+<span class="co">#&gt; Y1956 413 405 355</span>
+<span class="co">#&gt; Y1957 465 467 404</span>
+<span class="co">#&gt; Y1958 491 505 404</span>
+<span class="co">#&gt; Y1959 548 559 463</span>
+<span class="co">#&gt; Y1960 622 606 508</span></pre></body></html></div>
 <p>The dataset <code>dataFranses1996</code> contains a multivariate quarterly time series. See <code><a href="../reference/dataFranses1996.html">?dataFranses1996</a></code> for more information. Here are some excerpts from it:</p>
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">dataFranses1996</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span>(<span class="no">dataFranses1996</span>)
@@ -233,9 +233,9 @@
 <span class="co">#&gt; Cycle:  QuarterYearCycle </span>
 <span class="co">#&gt; Number of seasons: 4 </span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;      Q1 Q2 Q3 Q4</span>
-<span class="co">#&gt; 1955  1  2  3  4</span>
-<span class="co">#&gt; 1956  1  2  3  4</span>
+<span class="co">#&gt;       Q1 Q2 Q3 Q4</span>
+<span class="co">#&gt; Y1955  1  2  3  4</span>
+<span class="co">#&gt; Y1956  1  2  3  4</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/time.html">frequency</a></span>(<span class="no">pcfr</span>)
 <span class="co">#&gt; [1] 4</span></pre></body></html></div>
   </div>
