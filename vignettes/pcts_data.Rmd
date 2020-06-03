@@ -16,16 +16,21 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(pcts)
+```{r setup, include = FALSE}
 pd <- packageDescription("pcts")
 ```
 
-This vignette is part of package pcts, version `r pd[["Version"]]`.
+---
+subtitle: "This vignette is part of package pcts, version `r pd[["Version"]]`."
+---
 
+
+```{r message = FALSE, results = "hide"}
+library(pcts)
+```
 The intended mode of work with time series in package `pcts()` is that users create periodic
 time series using function `pcts()` and then operate on the object created by it. `pcts()`
-accepts base R data objects, such as "ts", "mts", "numeric2, "matrix2, "data. frame", as well
+accepts base R data objects, such as "ts", "mts", "numeric", "matrix", "data. frame", as well
 as some time series classes with regular time from other packages, including  "zooreg"
 (other classes can be added if required).
 
@@ -35,7 +40,7 @@ classes serving as wrappers for the base "ts" and "mts" classes and some classes
 packages, such as "zoo", if the original classes need to be preserved.
 
 When supplied with a time series object, `pcts()` gets the time information from it.  For
-example, the `AirPassengers` is a monthly time series starting in `{r} start(AirPassengers)`
+example, `AirPassengers` is a monthly time series starting on `r start(AirPassengers)`
 from base R, so it is converted to a periodic time series with a monthly cycle and the same
 start time:
 ```{r}
@@ -78,6 +83,7 @@ Let's take one of the time series:
 tipi <- dataFranses1996[ , "USTotalIPI"]
 plot(tipi)
 ```
+
 Convert `tipi` to PeriodicTS and remove NA's at the start and end
 ```{r}
 pctipi <- pcts(tipi)
@@ -85,13 +91,13 @@ pctipi <- window(pctipi, start = availStart(pctipi), end = availEnd(pctipi))
 plot(pctipi)
 ```
 
-subset as "PeriodicMTS"
+Subset as "PeriodicMTS":
 ```{r}
 pcfr2to3 <- pcfr[2:3]
 plot(pcfr2to3)
 ```
 
-"[" gives "PeriodicMTS" even with length one arg.
+"[" gives "PeriodicMTS" even with length one argument:
 ```{r}
 pcfr2to2  <- pcfr[2]
 pcfr2to2a <- pcfr["USTotalIPI"] # same

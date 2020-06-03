@@ -83,9 +83,10 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Importing and manipulating periodic time seires data</h1>
+            <h3 class="subtitle">This vignette is part of package pcts, version 0.15-0.</h3>
                         <h4 class="author">Georgi N. Boshnakov</h4>
             
-            <h4 class="date">2020-04-19</h4>
+            <h4 class="date">2020-06-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/GeoBosh/pcts/blob/master/vignettes/pcts_data.Rmd"><code>vignettes/pcts_data.Rmd</code></a></small>
       <div class="hidden name"><code>pcts_data.Rmd</code></div>
@@ -94,17 +95,10 @@
 
     
     
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">pcts</span>)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'pcts'</span>
-<span class="co">#&gt; The following object is masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     date</span>
-<span class="no">pd</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageDescription</a></span>(<span class="st">"pcts"</span>)</pre></body></html></div>
-<p>This vignette is part of package pcts, version 0.15-0.</p>
-<p>The intended mode of work with time series in package <code><a href="../reference/pcts-methods.html">pcts()</a></code> is that users create periodic time series using function <code><a href="../reference/pcts-methods.html">pcts()</a></code> and then operate on the object created by it. <code><a href="../reference/pcts-methods.html">pcts()</a></code> accepts base R data objects, such as “ts”, “mts”, “numeric2,”matrix2, “data. frame”, as well as some time series classes with regular time from other packages, including “zooreg” (other classes can be added if required).</p>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">pcts</span>)</pre></body></html></div>
+<p>The intended mode of work with time series in package <code><a href="../reference/pcts-methods.html">pcts()</a></code> is that users create periodic time series using function <code><a href="../reference/pcts-methods.html">pcts()</a></code> and then operate on the object created by it. <code><a href="../reference/pcts-methods.html">pcts()</a></code> accepts base R data objects, such as “ts”, “mts”, “numeric”, “matrix”, “data. frame”, as well as some time series classes with regular time from other packages, including “zooreg” (other classes can be added if required).</p>
 <p>Package <code>pcts</code> provides two native classes for periodic time series: “PeriodicTS” and “PeriodicMTS” for univariate and multivariate time series, respectively. There are also some classes serving as wrappers for the base “ts” and “mts” classes and some classes from other packages, such as “zoo”, if the original classes need to be preserved.</p>
-<p>When supplied with a time series object, <code><a href="../reference/pcts-methods.html">pcts()</a></code> gets the time information from it. For example, the <code>AirPassengers</code> is a monthly time series starting in <code>{r} start(AirPassengers)</code> from base R, so it is converted to a periodic time series with a monthly cycle and the same start time:</p>
+<p>When supplied with a time series object, <code><a href="../reference/pcts-methods.html">pcts()</a></code> gets the time information from it. For example, <code>AirPassengers</code> is a monthly time series starting on 1949, 1 from base R, so it is converted to a periodic time series with a monthly cycle and the same start time:</p>
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">ap</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/pcts-methods.html">pcts</a></span>(<span class="no">AirPassengers</span>)
 <span class="no">ap</span>
 <span class="co">#&gt; An object of class "PeriodicTS"</span>
@@ -204,17 +198,18 @@
 <p>The Franses’ time series is quite large and for convenience in presentation we work with parts of it below.</p>
 <p>Let’s take one of the time series:</p>
 <div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">tipi</span> <span class="kw">&lt;-</span> <span class="no">dataFranses1996</span>[ , <span class="st">"USTotalIPI"</span>]
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">tipi</span>)</pre></body></html></div>
-<p><img src="pcts_data_files/figure-html/unnamed-chunk-7-1.png" width="700"> Convert <code>tipi</code> to PeriodicTS and remove NA’s at the start and end</p>
+<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">tipi</span>)</pre></body></html></div>
+<p><img src="pcts_data_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
+<p>Convert <code>tipi</code> to PeriodicTS and remove NA’s at the start and end</p>
 <div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">pctipi</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/pcts-methods.html">pcts</a></span>(<span class="no">tipi</span>)
 <span class="no">pctipi</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/window.html">window</a></span>(<span class="no">pctipi</span>, <span class="kw">start</span> <span class="kw">=</span> <span class="fu"><a href="../reference/availStart.html">availStart</a></span>(<span class="no">pctipi</span>), <span class="kw">end</span> <span class="kw">=</span> <span class="fu"><a href="../reference/availStart.html">availEnd</a></span>(<span class="no">pctipi</span>))
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">pctipi</span>)</pre></body></html></div>
-<p><img src="pcts_data_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
-<p>subset as “PeriodicMTS”</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">pcfr2to3</span> <span class="kw">&lt;-</span> <span class="no">pcfr</span>[<span class="fl">2</span>:<span class="fl">3</span>]
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">pcfr2to3</span>)</pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">pctipi</span>)</pre></body></html></div>
 <p><img src="pcts_data_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
-<p>“[” gives “PeriodicMTS” even with length one arg.</p>
+<p>Subset as “PeriodicMTS”:</p>
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">pcfr2to3</span> <span class="kw">&lt;-</span> <span class="no">pcfr</span>[<span class="fl">2</span>:<span class="fl">3</span>]
+<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">pcfr2to3</span>)</pre></body></html></div>
+<p><img src="pcts_data_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
+<p>“[” gives “PeriodicMTS” even with length one argument:</p>
 <div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">pcfr2to2</span>  <span class="kw">&lt;-</span> <span class="no">pcfr</span>[<span class="fl">2</span>]
 <span class="no">pcfr2to2a</span> <span class="kw">&lt;-</span> <span class="no">pcfr</span>[<span class="st">"USTotalIPI"</span>] <span class="co"># same</span></pre></body></html></div>
 <p>Use “[[” or <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> to get “PeriodicTS”</p>

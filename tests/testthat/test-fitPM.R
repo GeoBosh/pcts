@@ -102,7 +102,7 @@ test_that("test fitPM()",
 
 test_that("test mC.ss() works",
 {
-    workdata()
+    pcts_exdata()
     ## examples from mC.ss.Rd
 # test0 roots
 spec.coz2 <- mcompanion::mcSpec(dim = 5, mo = 4, root1 = c(1,1), order = rep(2,4))
@@ -206,7 +206,10 @@ mC.ss(spec.co2, init = tmp2$env$mcparam2optparam())
 ##  [3,] 0.7989768    0    0    1 -0.7989768
 ##  [4,] 1.2716195    0    0    1 -1.2716195
 
-set.seed(1234)
-fitPM(spec.coz4, rnorm(100), control = list(maxit = 1))    
+    set.seed(1234)
+    
+    ## This prints something like:
+    ##     condlik is:  18.09375	persd is:  1.651785 1.714789 3.041003 1.577415 
+    fitPM(spec.coz4, rnorm(100), control = list(maxit = 1))    
     
 })

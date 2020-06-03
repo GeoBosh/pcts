@@ -1,6 +1,10 @@
 # Version 0.15.0
 
-- consolidate the dependencies.
+- new methods for `zoo::na.trim`.
+
+- new subset PAR models with trigonometric parameterisation.
+
+- consolidated the dependencies.
 
 - vastly improved support for dates/times. 
 

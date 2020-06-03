@@ -6,11 +6,11 @@ importFrom(gbutils,nposargs,isargunnamed,isNA)
 
 importFrom(graphics, boxplot, layout, par, points, lines, axis, mtext)
 importFrom(utils, capture.output, str)
-importFrom(stats, ARMAacf, Box.test, C, as.formula,
+importFrom(stats, complete.cases, ARMAacf, Box.test, C, as.formula,
            frequency, start, end, cycle, deltat, time, window, "window<-",
            lm, na.exclude, nls, optim,
            pchisq, pnorm, qnorm, rnorm, runif,
-           residuals, fitted, predict, printCoefmat,
+           residuals, fitted, predict, printCoefmat, weighted.residuals,
            ts, as.ts, monthplot)
 
 importFrom(lubridate, minutes, hm, ymd,  is.Date, weeks, days,  period,
@@ -77,11 +77,19 @@ S3method(availStart, matrix)
 S3method(availEnd, default)
 S3method(availEnd, matrix)
 
+## zoo::na.trim
+S3method(na.trim, PeriodicTS)
+S3method(na.trim, PeriodicMTS)
+
+
 S3method(residuals, FittedPeriodicArModel)
 
 S3method(residuals, FittedPM)
 S3method(fitted, FittedPM)
 S3method(predict, FittedPM)
+
+S3method(predict, SubsetPM)
+
 
 exportMethods(
     head,
@@ -100,7 +108,12 @@ exportMethods(
     sigmaSq,
 
     as_date,
-    as_datetime
+    as_datetime,
+
+    coef,
+    residuals,
+    fitted,
+    vcov
 )
 
 # exportClassPattern("^[^\\.]")
@@ -169,7 +182,9 @@ exportClasses(
   VirtualPeriodicStationaryModel,
   VirtualPeriodicWhiteNoiseModel,
   zoo,
-  zooreg
+  zooreg,
+
+  SubsetPM
 )
 
 
@@ -348,9 +363,13 @@ export(
   , meanvarcheck
 
   , Cyclic
-      # these don't get registered without exporting                   
-      # something related to base:as.Date being masked by zoo::as.Date?    
-  # , as.Date.PeriodicTimeSeries
+    ## these don't get registered without exporting                   
+    ## something related to base:as.Date being masked by zoo::as.Date?
+    ##    I am importing zoo and zoo::as.Date, hence calls from inside the package use that.
+    ##    However, if I don't reexport zoo::as.Date, then calls outside the package will be to    ##    base::as.Date.
+    ## So, reexport zoo::as.Date().    
+    ## TODO: selectively import from zoo?
+  , as.Date
   , as.Date.Cyclic            
   , as.Date.PeriodicTimeSeries
     
@@ -393,5 +412,7 @@ export(
 
     modelCoef
 
-
+, fit_trigPAR_optim
+, pcts_exdata
+, na.trim # from zoo
 )

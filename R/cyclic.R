@@ -862,24 +862,29 @@ setMethod("tail", "PeriodicTimeSeries",
               window(x, start = start)
           })
 
-availStart <- function(x) UseMethod("availStart")
-availStart.default <- function(x){
+availStart <- function(x, any = TRUE) UseMethod("availStart")
+availStart.default <- function(x, any = TRUE){
     ind <- match(FALSE, is.na(as.vector(x)))
     if(is.na(ind))
         stop("No non-missing values in x")
     ind2pctime(ind, start(x), nSeasons(x))
 }
 
-availStart.matrix <- function(x){
+availStart.matrix <- function(x, any = TRUE){
     m <- as.matrix(x)
-    ind <- min(apply(m, 2, function(obj) match(FALSE, is.na(obj)) ))
+    ind <- if(any)
+               min(apply(m, 2, function(obj) match(FALSE, is.na(obj)) ))
+           else # all
+               match(TRUE, complete.cases(m))
+    
     if(is.na(ind))
-        stop("No non-missing values in x")
+        stop(if(any) "No non-missing values in x" else "No complete cases in x" )
+    
     ind2pctime(ind, start(x), nSeasons(x))
 }
 
-availEnd <- function(x) UseMethod("availEnd")
-availEnd.default <- function(x){
+availEnd <- function(x, any = TRUE) UseMethod("availEnd")
+availEnd.default <- function(x, any = TRUE){
     y <- rev(as.vector(x))
     ind <- match(FALSE, is.na(y))
     if(is.na(ind))
@@ -888,14 +893,41 @@ availEnd.default <- function(x){
     ind2pctime(ind, start(x), nSeasons(x))
 }
 
-availEnd.matrix <- function(x){
+availEnd.matrix <- function(x, any = TRUE){
     m <- as.matrix(x)
-    ind <- min(apply(m, 2, function(obj) match(FALSE, is.na(rev(obj))) ))
+    ## TODO: use complete.cases()
+    ind <- if(any)
+               min(apply(m, 2, function(obj) match(FALSE, is.na(rev(obj))) ))
+           else
+               match(TRUE, rev(complete.cases(m)))
+
     if(is.na(ind))
-        stop("No non-missing values in x")
+        stop(if(any) "No non-missing values in x" else "No complete cases in x" )
+
     ind <- nrow(m) - ind + 1
     ind2pctime(ind, start(x), nSeasons(x))
 }
+
+na.trim.PeriodicTS <- function (object, sides = c("both", "left", "right"), ...){
+    switch(match.arg(sides),
+           both = window(object, start = availStart(object), end = availEnd(object)),
+           left = window(object, start = availStart(object)),
+           right = window(object, end = availEnd(object))
+           )
+}
+
+na.trim.PeriodicMTS <-
+    function (object, sides = c("both", "left", "right"), is.na = c("any", "all"), ...){
+        any <- match.arg(is.na) == "all"
+        sides <- match.arg(sides)
+        if(sides != "right")  start <- availStart(object, any)
+        if(sides != "left")   end <- availEnd(object, any)
+        switch(sides,
+               both = window(object, start = start, end = end),
+               left = window(object, start = start),
+               right = window(object, end = end)
+               )
+    }
 
 setMethod("plot", c(x = "PeriodicTS", y = "missing"),
           function(x, y, main = NULL, ...){

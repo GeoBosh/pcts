@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Give partial periodic autocorrelations or other partial prediction
-  quantities for a pcAcvf object. — pcalg1util • pcts</title>
+<title>Fit a subset trigonometric PAR model — fit_trigPAR_optim • pcts</title>
 
 
 <!-- jquery -->
@@ -40,10 +39,10 @@
 
 
 
-<meta property="og:title" content="Give partial periodic autocorrelations or other partial prediction
-  quantities for a pcAcvf object. — pcalg1util" />
-<meta property="og:description" content="Give partial periodic autocorrelations or other partial prediction
-  quantities for a pcAcvf object." />
+<meta property="og:title" content="Fit a subset trigonometric PAR model — fit_trigPAR_optim" />
+<meta property="og:description" content="
+
+Fit a subset PAR model with trigonometric parameterisation." />
 
 
 
@@ -126,36 +125,68 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Give partial periodic autocorrelations or other partial prediction
-  quantities for a pcAcvf object.</h1>
+    <h1>Fit a subset trigonometric PAR model</h1>
     
-    <div class="hidden name"><code>pcalg1util.Rd</code></div>
+    <div class="hidden name"><code>fit_trigPAR_optim.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Give partial periodic autocorrelations or other partial prediction
-  quantities for a pcAcvf object.</p>
+    
+
+<p>Fit a subset PAR model with trigonometric parameterisation.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>alg1util</span>(<span class='no'>x</span>, <span class='no'>s</span>, <span class='kw'>at0</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
+    <pre class="usage"><span class='fu'>fit_trigPAR_optim</span>(<span class='no'>x</span>, <span class='no'>order</span>, <span class='no'>nseasons</span>, <span class='kw'>seasonof1st</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>maxiter</span> <span class='kw'>=</span> <span class='fl'>200</span>,
+                  <span class='kw'>harmonics</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sintercept</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>tol</span> <span class='kw'>=</span> <span class='fl'>1e-07</span>,
+                  <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"vecbyrow"</span>, <span class='st'>"bylag"</span>), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>an object of a class inheriting from
-    <code>pc.Model.WeaklyStat</code></p></td>
+      <td><p>time series.</p></td>
     </tr>
     <tr>
-      <th>s</th>
-      <td><p>the required quantity, the name of one of the elements of
-    the list returned by <code><a href='pcalg1.html'>alg1</a></code>.</p></td>
+      <th>order</th>
+      <td><p>order, an integer number.</p></td>
     </tr>
     <tr>
-      <th>at0</th>
-      <td><p>if not identical to "var", replace the elements of the
-    result at lag zero with 1, see `Details'.</p></td>
+      <th>nseasons</th>
+      <td><p>number of seasons, an integer number.</p></td>
+    </tr>
+    <tr>
+      <th>seasonof1st</th>
+      <td><p>season of the first observation.</p></td>
+    </tr>
+    <tr>
+      <th>maxiter</th>
+      <td><p>max number of iterations.</p></td>
+    </tr>
+    <tr>
+      <th>harmonics</th>
+      <td><p>the harmonics to include in the model, vector of non-negative
+    integers.</p></td>
+    </tr>
+    <tr>
+      <th>sintercept</th>
+      <td><p>if <code>TRUE</code> include seasonal intercept.</p></td>
+    </tr>
+    <tr>
+      <th>tol</th>
+      <td><p>when to stop the iterations.</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td>
+
+<p>type of parameterisation, currently one of <code>"vecbyrow"</code> or
+    <code>"bylag"</code>.</p>
+<p></p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>if <code>TRUE</code> print more details during estimation.</p></td>
     </tr>
     </table>
 
@@ -163,45 +194,33 @@
 
     
 
-<p>This function is a wrapper for <code><a href='pcalg1.html'>alg1()</a></code>. It calls <code>alg1</code>, to
-  do the computations and returns the requested element as an object
-  from class <code>slMatrix</code>.  The model order is set to the maximal lag
-  avialable in <code>x</code>,</p>
-<p>If <code>at0</code> is the character string "var", then the lag zero values
-  in the result are set to the lag zero autocovariances, otherwise they
-  are set to 1.
-  This is mainly relevant for the periodic partial autocorrelations
-  (<code>s="be"</code>), since the setting <code>at0="var"</code> ensures that they
-  are in one to one correspondence with the autocovariances.</p>
+<p>Fits a subset PAR model using trigonometric parameterisation,
+  i.e. Fourier series written in terms of sines and cosines.</p>
+<p>If argument <code>type</code> is <code>bylag</code>, the parameters for each lag
+  are parameterised independently from other lags. If <code>sintercept</code>
+  is <code>TRUE</code>, it has its own trigonometric representation.</p>
+<p>If argument <code>type</code> is <code>vecbyrow</code> (&#8220;Vec operation by
+  row&#8221;), the PAR  parameters are stacked in a vector with all parameters
+  for the first season, followed by all parameters for the second, and
+  so on. The trigonometric parameterisation for this vector is used.
+  So the fundamental frequency is <code>1/(nseasons * order)</code>.
+  If <code>sintercept</code> is <code>TRUE</code> when <code>type = vecbyrow</code>, then
+  then the intercept for eaach season is put before the PAR parameters
+  and the fundamental frequency becomes <code>1/(nseasons * (order + 1)</code>. 
+  Putting together the intercepts and the PAR parameters may not be very
+  useful for parsimonious trigonometric parameterisation, so to have a
+  separate set of coefficients for the intercepts set
+  attribute"merge" of <code>sintercept</code> to <code>FALSE</code>.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>the requested quantity as an object of type slMatrix</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+    <p>an object from class <code><a href='SubsetPM-class.html'>SubsetPM</a></code></p>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p><!-- % bibentry: Sophie2000par -->
-Lambert-Lacroix S (2000).
-``On periodic autoregressive process estimation .''
-<em> IEEE Transactions on Signal Processing</em>, <b>48</b>( 6 ), pp. 1800-1803.
-<!-- % end:bibentry:  Sophie2000par --></p>
-<p><!-- % bibentry: Sophie2005pacf -->
-Lambert-Lacroix S (2005).
-`` Extension of autocovariance coefficients sequence for periodically correlated
-processes.''
-<em>Journal of Time Series Analysis</em>, <b>26</b>(6), pp. 423-435.
-<!-- % end:bibentry:  Sophie2005pacf --></p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='pdSafeParOrder.html'>pdSafeParOrder</a></code>,
-  <code><a href='pcalg1.html'>alg1</a></code></p></div>
+    <p>This function may change.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>r1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>0.81</span>,<span class='fl'>0.729</span>),<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>0.90</span>,<span class='fl'>0.900</span>))
-
-<span class='co'># example of Lambert-Lacroix</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>ex1f</span>)
-<span class='no'>pc3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcts_reexports.html'>slMatrix</a></span>(<span class='kw'>period</span><span class='kw'>=</span><span class='fl'>2</span>,<span class='kw'>maxlag</span><span class='kw'>=</span><span class='fl'>5</span>,<span class='kw'>f</span><span class='kw'>=</span><span class='no'>ex1f</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"tt"</span>)</div><div class='output co'>#&gt; [1] "filling with a function!"</div><div class='input'><span class='no'>res0p2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcalg1.html'>alg1</a></span>(<span class='no'>pc3</span>[],<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>2</span>))
-<span class='no'>res1p2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcalg1.html'>alg1</a></span>(<span class='no'>pc3</span>[],<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>))
-<span class='no'>res3p3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcalg1.html'>alg1</a></span>(<span class='no'>pc3</span>[],<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>,<span class='fl'>3</span>))</div></pre>
+    <pre class="examples"><div class='input'>## see examples for class "SubsetPM"
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -75,7 +75,7 @@ test_that("constructors of periodic filter models are ok",
     permodelmf(pfar, update = FALSE)
     ## TODO: after the revamp of the classes, doesn't work with update = TRUE
 
-    workdata()
+    pcts_exdata()
     expect_output(.reportClassName(pfar, class(pfar)))
     expect_true(is.null(.reportClassName(pfar, "numeric")))
 })

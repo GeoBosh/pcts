@@ -18,6 +18,7 @@ reference:
       - "nSeasons-methods"
       - pclsdf
       - pclspiar
+      - fit_trigPAR_optim
       - pcTest
       - test_piar      
       - pi1ar2par
@@ -29,6 +30,8 @@ reference:
   - title: Datasets
     contents:
       - dataFranses1996
+      - four_stocks_since2016_01_01
+      - pcts_exdata
   - title: "Time series classes"
     contents:
       - "PeriodicTS-class"
@@ -59,6 +62,7 @@ reference:
   - title: Classes
     contents:
       - "FittedPeriodicArModel-class"
+      - "FittedPeriodicArmaModel-class"
       - "ModelCycleSpec-class"
       - "PartialPeriodicAutocorrelations-class"
       - "PeriodicArModel-class"
@@ -85,6 +89,7 @@ reference:
       - "SiPeriodicArModel-class"
       - "SiPeriodicArmaModel-class"
       - "SiPeriodicMaModel-class"
+      - "SubsetPM-class"
   - title: Other
     contents:
       - "ex1f"

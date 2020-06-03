@@ -73,7 +73,7 @@
 }}}
 \seealso{
   \code{\link{autocorrelations-methods}} for autocorrelations; 
-  \code{\link[sarima]{autocovariances}} in package \code{"sarima"}
+  \code{autocovariances} in package \code{"sarima"}
   for further details.
 }
 %\examples{

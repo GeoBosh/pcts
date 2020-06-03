@@ -897,6 +897,11 @@ as.POSIXct.Cyclic <- function(x, ...){
     .cycle_and_pair2time(x@cycle, x@pcstart)
 }
 
+setMethod("as_date", "Cyclic",
+          function(x, ...){
+              as_date(as_datetime(x, ...))
+          })
+
 Pctime <- function(x, cycle, ...){
     if(missing(cycle)){
         if(is(x, "Cyclic")){ # TODO: separate handling for PeriodicTimeSeries

@@ -132,8 +132,9 @@
     <p>Time of first or last non-NA value.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>availStart</span>(<span class='no'>x</span>)
-<span class='fu'>availEnd</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>availStart</span>(<span class='no'>x</span>, <span class='kw'>any</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='fu'>availEnd</span>(<span class='no'>x</span>, <span class='kw'>any</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -141,6 +142,16 @@
     <tr>
       <th>x</th>
       <td><p>a time series or similar object</p></td>
+    </tr>
+    <tr>
+      <th>any</th>
+      <td>
+
+<p>logical flag for multivariate objects. The default <code>TRUE</code>
+    requests the first/last index containing any non-NA value.
+    <code>FALSE</code> requires that all values at
+    the first/last index must be non-NA.</p>
+<p></p></td>
     </tr>
     </table>
 
@@ -176,7 +187,7 @@
 #&gt; Y1990             118.3 114.5
 #&gt; Y1991 111.4 112.4 116.0 113.9</div><div class='input'>
 <span class='no'>tipi</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/window.html'>window</a></span>(<span class='no'>tipi</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'>availStart</span>(<span class='no'>tipi</span>), <span class='kw'>end</span> <span class='kw'>=</span> <span class='fu'>availEnd</span>(<span class='no'>tipi</span>))
-<span class='fu'><a href='https://rdrr.io/r/stats/start.html'>start</a></span>(<span class='no'>tipi</span>)</div><div class='output co'>#&gt; [1] 1960    1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/start.html'>end</a></span>(<span class='no'>tipi</span>)</div><div class='output co'>#&gt; [1] 1991    4</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>tipi</span>)</div><div class='img'><img src='availStart-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/stats/start.html'>start</a></span>(<span class='no'>tipi</span>)</div><div class='output co'>#&gt; [1] 1960    1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/start.html'>end</a></span>(<span class='no'>tipi</span>)</div><div class='output co'>#&gt; [1] 1991    4</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>tipi</span>)</div><div class='img'><img src='availStart-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='no'>pcfr</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcts-methods.html'>pcts</a></span>(<span class='no'>dataFranses1996</span>)
 
 <span class='no'>pcfr2to4</span> <span class='kw'>&lt;-</span> <span class='no'>pcfr</span>[<span class='fl'>2</span>:<span class='fl'>4</span>]
@@ -206,8 +217,8 @@
 <span class='fu'>availStart</span>(<span class='no'>pcfr</span><span class='kw'>[[</span><span class='fl'>2</span>]]) <span class='co'># 1960 Q1</span></div><div class='output co'>#&gt; [1] 1960    1</div><div class='input'><span class='fu'>availStart</span>(<span class='no'>pcfr2to4</span>)  <span class='co'># 1960 Q1</span></div><div class='output co'>#&gt; [1] 1960    1</div><div class='input'>
 <span class='co'>## time of last nonNA:</span>
 <span class='fu'>availEnd</span>(<span class='no'>pcfr</span><span class='kw'>[[</span><span class='fl'>2</span>]])   <span class='co'># 1991 Q4</span></div><div class='output co'>#&gt; [1] 1991    4</div><div class='input'><span class='fu'>availEnd</span>(<span class='no'>pcfr</span><span class='kw'>[[</span><span class='fl'>3</span>]])   <span class='co'># 1987 Q4</span></div><div class='output co'>#&gt; [1] 1987    4</div><div class='input'><span class='fu'>availEnd</span>(<span class='no'>pcfr</span><span class='kw'>[[</span><span class='fl'>4</span>]])   <span class='co'># 1990 Q4</span></div><div class='output co'>#&gt; [1] 1990    4</div><div class='input'><span class='co'>## but at least one of them is  available for 1991 Q4, so:</span>
-<span class='fu'>availEnd</span>(<span class='no'>pcfr2to4</span>)   <span class='co'># 1991 Q4</span></div><div class='output co'>#&gt; [1] 1991    4</div><div class='input'>
-
+<span class='fu'>availEnd</span>(<span class='no'>pcfr2to4</span>)   <span class='co'># 1991 Q4</span></div><div class='output co'>#&gt; [1] 1991    4</div><div class='input'><span class='co'>## this requests the time of the last full record:</span>
+<span class='fu'>availEnd</span>(<span class='no'>pcfr2to4</span>, <span class='kw'>any</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)   <span class='co'># 1987 Q4</span></div><div class='output co'>#&gt; [1] 1987    4</div><div class='input'>
 <span class='no'>pcfr2to4a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/window.html'>window</a></span>(<span class='no'>pcfr2to4</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'>availStart</span>(<span class='no'>pcfr2to4</span>), <span class='kw'>end</span> <span class='kw'>=</span> <span class='fu'>availEnd</span>(<span class='no'>pcfr2to4</span>))
 <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>pcfr2to4a</span>)</div><div class='output co'>#&gt; An object of class "PeriodicMTS"
 #&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
@@ -219,7 +230,209 @@
 #&gt; Y1960_3       38.5                334      198.0
 #&gt; Y1960_4       38.0                439      190.5
 #&gt; Y1961_1       37.1                703      180.1
-#&gt; Y1961_2       39.2                480      184.9</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='no'>pcfr2to4a</span>)</div><div class='output co'>#&gt; An object of class "PeriodicMTS"
+#&gt; Y1961_2       39.2                480      184.9</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='no'>pcfr2to4a</span>, <span class='fl'>20</span>)</div><div class='output co'>#&gt; An object of class "PeriodicMTS"
+#&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
+#&gt; Cycle start: Quarter_1 
+#&gt; 
+#&gt;         USTotalIPI CanadaUnemployment GermanyGNP
+#&gt; Y1987_1      101.5               1358      388.3
+#&gt; Y1987_2      103.8               1197      402.4
+#&gt; Y1987_3      107.3               1097      417.5
+#&gt; Y1987_4      107.2               1016      431.6
+#&gt; Y1988_1      107.6                 NA      405.3
+#&gt; Y1988_2      110.0                 NA      416.6
+#&gt; Y1988_3      113.5                 NA      432.2
+#&gt; Y1988_4      112.6                 NA      446.4
+#&gt; Y1989_1      113.6                 NA      424.1
+#&gt; Y1989_2      114.5                 NA      436.3
+#&gt; Y1989_3      115.6                 NA      445.0
+#&gt; Y1989_4      114.3                 NA      460.6
+#&gt; Y1990_1      114.3                 NA      442.0
+#&gt; Y1990_2      115.5                 NA      452.1
+#&gt; Y1990_3      118.3                 NA      468.9
+#&gt; Y1990_4      114.5                 NA      482.9
+#&gt; Y1991_1      111.4                 NA         NA
+#&gt; Y1991_2      112.4                 NA         NA
+#&gt; Y1991_3      116.0                 NA         NA
+#&gt; Y1991_4      113.9                 NA         NA</div><div class='input'>
+<span class='co'>## trim NA's from both ends, up to the firsxst/last full record:</span>
+<span class='no'>pcfr2to4b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/window.html'>window</a></span>(<span class='no'>pcfr2to4</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'>availStart</span>(<span class='no'>pcfr2to4</span>, <span class='fl'>FALSE</span>),
+                              <span class='kw'>end</span> <span class='kw'>=</span> <span class='fu'>availEnd</span>(<span class='no'>pcfr2to4</span>, <span class='fl'>FALSE</span>))
+
+<span class='co'>## TODO: need a better example here since the first non-NA value for all</span>
+<span class='co'>##     ts in pcfr2to4 is at the same</span>
+
+<span class='co'>## alternatively, use na.trim(), the default for is.na is "any"</span>
+<span class='fu'><a href='pcts_reexports.html'>na.trim</a></span>(<span class='no'>pcfr2to4</span>)</div><div class='output co'>#&gt; An object of class "PeriodicMTS"
+#&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
+#&gt; Cycle start: Quarter_1 
+#&gt; 
+#&gt;         USTotalIPI CanadaUnemployment GermanyGNP
+#&gt; Y1960_1       40.2                583      167.0
+#&gt; Y1960_2       39.8                427      176.2
+#&gt; Y1960_3       38.5                334      198.0
+#&gt; Y1960_4       38.0                439      190.5
+#&gt; Y1961_1       37.1                703      180.1
+#&gt; Y1961_2       39.2                480      184.9
+#&gt; Y1961_3       39.8                325      202.9
+#&gt; Y1961_4       41.6                358      195.8
+#&gt; Y1962_1       41.8                561      185.4
+#&gt; Y1962_2       43.0                373      195.0
+#&gt; Y1962_3       42.6                282      214.5
+#&gt; Y1962_4       43.4                346      204.9
+#&gt; Y1963_1       43.9                546      183.0
+#&gt; Y1963_2       45.7                372      199.9
+#&gt; Y1963_3       44.9                272      223.5
+#&gt; Y1963_4       46.4                305      215.4
+#&gt; Y1964_1       46.7                463      201.6
+#&gt; Y1964_2       48.6                326      214.4
+#&gt; Y1964_3       48.1                243      232.8
+#&gt; Y1964_4       49.6                266      226.9
+#&gt; Y1965_1       51.4                397      213.4
+#&gt; Y1965_2       53.2                298      226.7
+#&gt; Y1965_3       52.9                210      243.4
+#&gt; Y1965_4       54.9                214      239.2
+#&gt; Y1966_1       56.2                303      224.3
+#&gt; Y1966_2       58.1                237      235.5
+#&gt; Y1966_3       57.6                236      250.0
+#&gt; Y1966_4       59.2                230      240.3
+#&gt; Y1967_1       58.4                340      220.3
+#&gt; Y1967_2       59.0                294      232.6
+#&gt; Y1967_3       58.4                260      248.3
+#&gt; Y1967_4       60.7                290      248.2
+#&gt; Y1968_1       61.5                411      226.9
+#&gt; Y1968_2       63.1                365      243.0
+#&gt; Y1968_3       62.5                332      267.1
+#&gt; Y1968_4       64.2                324      267.2
+#&gt; Y1969_1       64.9                405      244.0
+#&gt; Y1969_2       66.1                368      262.3
+#&gt; Y1969_3       65.8                329      287.1
+#&gt; Y1969_4       65.9                346      286.2
+#&gt; Y1970_1       63.8                455      257.4
+#&gt; Y1970_2       64.5                490      280.1
+#&gt; Y1970_3       63.4                479      298.2
+#&gt; Y1970_4       62.1                479      298.3
+#&gt; Y1971_1       63.1                601      274.5
+#&gt; Y1971_2       64.7                545      286.2
+#&gt; Y1971_3       64.1                494      304.8
+#&gt; Y1971_4       65.6                502      302.5
+#&gt; Y1972_1       67.8                591      286.0
+#&gt; Y1972_2       70.7                540      296.9
+#&gt; Y1972_3       70.7                536      315.2
+#&gt; Y1972_4       73.2                545      318.9
+#&gt; Y1973_1       74.4                599      304.5
+#&gt; Y1973_2       76.7                501      312.1
+#&gt; Y1973_3       77.1                476      328.7
+#&gt; Y1973_4       77.0                483      328.8
+#&gt; Y1974_1       74.8                564      309.4
+#&gt; Y1974_2       76.9                494      314.5
+#&gt; Y1974_3       76.2                488      328.4
+#&gt; Y1974_4       72.9                512      324.2
+#&gt; Y1975_1       66.8                738      298.2
+#&gt; Y1975_2       67.7                685      308.2
+#&gt; Y1975_3       69.3                670      322.1
+#&gt; Y1975_4       70.4                666      329.5
+#&gt; Y1976_1       72.4                776      316.1
+#&gt; Y1976_2       75.1                717      328.1
+#&gt; Y1976_3       75.5                709      335.2
+#&gt; Y1976_4       76.5                703      348.8
+#&gt; Y1977_1       77.9                909      328.6
+#&gt; Y1977_2       81.3                838      334.1
+#&gt; Y1977_3       82.0                826      341.8
+#&gt; Y1977_4       82.2                824      358.9
+#&gt; Y1978_1       81.7                999      336.5
+#&gt; Y1978_2       86.5                930      346.4
+#&gt; Y1978_3       87.5                878      354.8
+#&gt; Y1978_4       88.6                827      370.2
+#&gt; Y1979_1       88.8                966      348.3
+#&gt; Y1979_2       90.0                856      361.5
+#&gt; Y1979_3       89.7                759      369.8
+#&gt; Y1979_4       89.5                762      384.0
+#&gt; Y1980_1       89.3                953      365.3
+#&gt; Y1980_2       86.6                907      365.4
+#&gt; Y1980_3       86.6                816      372.8
+#&gt; Y1980_4       88.7                784      381.7
+#&gt; Y1981_1       89.2                951      360.9
+#&gt; Y1981_2       90.2                864      364.9
+#&gt; Y1981_3       91.8                840      374.8
+#&gt; Y1981_4       87.8                937      384.7
+#&gt; Y1982_1       85.1               1152      357.5
+#&gt; Y1982_2       83.9               1266      364.8
+#&gt; Y1982_3       83.4               1384      369.2
+#&gt; Y1982_4       81.1               1455      379.5
+#&gt; Y1983_1       82.8               1630      359.4
+#&gt; Y1983_2       86.4               1515      370.4
+#&gt; Y1983_3       91.4               1353      376.0
+#&gt; Y1983_4       92.5               1295      393.1
+#&gt; Y1984_1       95.5               1497      375.8
+#&gt; Y1984_2       98.1               1430      375.6
+#&gt; Y1984_3      100.4               1345      391.2
+#&gt; Y1984_4       98.7               1325      405.5
+#&gt; Y1985_1       98.4               1495      375.8
+#&gt; Y1985_2       99.8               1353      387.2
+#&gt; Y1985_3      101.5               1236      402.7
+#&gt; Y1985_4      100.4               1228      412.4
+#&gt; Y1986_1      100.2               1356      381.0
+#&gt; Y1986_2      100.7               1245      400.1
+#&gt; Y1986_3      102.2               1186      411.4
+#&gt; Y1986_4      101.3               1156      422.2
+#&gt; Y1987_1      101.5               1358      388.3
+#&gt; Y1987_2      103.8               1197      402.4
+#&gt; Y1987_3      107.3               1097      417.5
+#&gt; Y1987_4      107.2               1016      431.6</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>( <span class='fu'><a href='pcts_reexports.html'>na.trim</a></span>(<span class='no'>pcfr2to4</span>, <span class='kw'>sides</span> <span class='kw'>=</span> <span class='st'>"left"</span>) )</div><div class='output co'>#&gt; An object of class "PeriodicMTS"
+#&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
+#&gt; Cycle start: Quarter_1 
+#&gt; 
+#&gt;         USTotalIPI CanadaUnemployment GermanyGNP
+#&gt; Y1960_1       40.2                583      167.0
+#&gt; Y1960_2       39.8                427      176.2
+#&gt; Y1960_3       38.5                334      198.0
+#&gt; Y1960_4       38.0                439      190.5
+#&gt; Y1961_1       37.1                703      180.1
+#&gt; Y1961_2       39.2                480      184.9</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>( <span class='fu'><a href='pcts_reexports.html'>na.trim</a></span>(<span class='no'>pcfr2to4</span>, <span class='kw'>sides</span> <span class='kw'>=</span> <span class='st'>"right"</span>) )</div><div class='output co'>#&gt; An object of class "PeriodicMTS"
+#&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
+#&gt; Cycle start: Quarter_1 
+#&gt; 
+#&gt;         USTotalIPI CanadaUnemployment GermanyGNP
+#&gt; Y1986_3      102.2               1186      411.4
+#&gt; Y1986_4      101.3               1156      422.2
+#&gt; Y1987_1      101.5               1358      388.3
+#&gt; Y1987_2      103.8               1197      402.4
+#&gt; Y1987_3      107.3               1097      417.5
+#&gt; Y1987_4      107.2               1016      431.6</div><div class='input'>
+<span class='no'>trimmed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcts_reexports.html'>na.trim</a></span>(<span class='no'>pcfr2to4</span>, <span class='kw'>is.na</span> <span class='kw'>=</span> <span class='st'>"all"</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>trimmed</span>)</div><div class='output co'>#&gt; An object of class "PeriodicMTS"
+#&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
+#&gt; Cycle start: Quarter_1 
+#&gt; 
+#&gt;         USTotalIPI CanadaUnemployment GermanyGNP
+#&gt; Y1960_1       40.2                583      167.0
+#&gt; Y1960_2       39.8                427      176.2
+#&gt; Y1960_3       38.5                334      198.0
+#&gt; Y1960_4       38.0                439      190.5
+#&gt; Y1961_1       37.1                703      180.1
+#&gt; Y1961_2       39.2                480      184.9</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='no'>trimmed</span>)</div><div class='output co'>#&gt; An object of class "PeriodicMTS"
+#&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
+#&gt; Cycle start: Quarter_1 
+#&gt; 
+#&gt;         USTotalIPI CanadaUnemployment GermanyGNP
+#&gt; Y1990_3      118.3                 NA      468.9
+#&gt; Y1990_4      114.5                 NA      482.9
+#&gt; Y1991_1      111.4                 NA         NA
+#&gt; Y1991_2      112.4                 NA         NA
+#&gt; Y1991_3      116.0                 NA         NA
+#&gt; Y1991_4      113.9                 NA         NA</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>( <span class='fu'><a href='pcts_reexports.html'>na.trim</a></span>(<span class='no'>pcfr2to4</span>, <span class='kw'>sides</span> <span class='kw'>=</span> <span class='st'>"left"</span>, <span class='kw'>is.na</span> <span class='kw'>=</span> <span class='st'>"all"</span>) )</div><div class='output co'>#&gt; An object of class "PeriodicMTS"
+#&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
+#&gt; Cycle start: Quarter_1 
+#&gt; 
+#&gt;         USTotalIPI CanadaUnemployment GermanyGNP
+#&gt; Y1960_1       40.2                583      167.0
+#&gt; Y1960_2       39.8                427      176.2
+#&gt; Y1960_3       38.5                334      198.0
+#&gt; Y1960_4       38.0                439      190.5
+#&gt; Y1961_1       37.1                703      180.1
+#&gt; Y1961_2       39.2                480      184.9</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>( <span class='fu'><a href='pcts_reexports.html'>na.trim</a></span>(<span class='no'>pcfr2to4</span>, <span class='kw'>sides</span> <span class='kw'>=</span> <span class='st'>"right"</span>, <span class='kw'>is.na</span> <span class='kw'>=</span> <span class='st'>"all"</span>) )</div><div class='output co'>#&gt; An object of class "PeriodicMTS"
 #&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
 #&gt; Cycle start: Quarter_1 
 #&gt; 

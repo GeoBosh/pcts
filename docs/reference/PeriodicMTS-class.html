@@ -199,7 +199,7 @@ Class <code>"vector"</code>, by class "matrix", distance 4, with explicit coerce
 <span class='co'>## extracting single time series as univariate </span>
 <span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>pcfr</span><span class='kw'>[[</span><span class='fl'>4</span>]]) <span class='co'># "PeriodicTS"</span></div><div class='output co'>#&gt; [1] "PeriodicTS"
 #&gt; attr(,"package")
-#&gt; [1] "pcts"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='no'>pcfr</span><span class='kw'>[[</span><span class='fl'>4</span>]], <span class='no'>pcfr</span>$<span class='no'>GermanyGNP</span> )     <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='no'>pcfr</span><span class='kw'>[[</span><span class='fl'>4</span>]], <span class='no'>pcfr</span><span class='kw'>[[</span><span class='st'>"GermanyGNP"</span>]]) <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>pcfr</span><span class='kw'>[[</span><span class='fl'>4</span>]])</div><div class='img'><img src='PeriodicMTS-class-1.png' alt='' width='700' height='433' /></div><div class='input'>
+#&gt; [1] "pcts"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='no'>pcfr</span><span class='kw'>[[</span><span class='fl'>4</span>]], <span class='no'>pcfr</span>$<span class='no'>GermanyGNP</span> )     <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='no'>pcfr</span><span class='kw'>[[</span><span class='fl'>4</span>]], <span class='no'>pcfr</span><span class='kw'>[[</span><span class='st'>"GermanyGNP"</span>]]) <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>pcfr</span><span class='kw'>[[</span><span class='fl'>4</span>]])</div><div class='img'><img src='PeriodicMTS-class-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## ... and as multivariate</span>
 <span class='no'>pcfr</span>[<span class='fl'>4</span>] <span class='co'>#  "PeriodicMTS"</span></div><div class='output co'>#&gt; An object of class "PeriodicMTS"
 #&gt; Slot "cycle": Object from built-in class 'QuarterYearCycle'
@@ -353,9 +353,9 @@ Class <code>"vector"</code>, by class "matrix", distance 4, with explicit coerce
 #&gt; Y1991_1         NA
 #&gt; Y1991_2         NA
 #&gt; Y1991_3         NA
-#&gt; Y1991_4         NA</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>pcfr</span>[<span class='fl'>4</span>])</div><div class='img'><img src='PeriodicMTS-class-2.png' alt='' width='700' height='433' /></div><div class='input'>
+#&gt; Y1991_4         NA</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>pcfr</span>[<span class='fl'>4</span>])</div><div class='img'><img src='PeriodicMTS-class-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## extracting more than one time series</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>pcfr</span>[<span class='fl'>2</span>:<span class='fl'>4</span>])</div><div class='img'><img src='PeriodicMTS-class-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>pcfr</span>[<span class='fl'>2</span>:<span class='fl'>4</span>])</div><div class='output co'>#&gt;    USTotalIPI     CanadaUnemployment   GermanyGNP   
+<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>pcfr</span>[<span class='fl'>2</span>:<span class='fl'>4</span>])</div><div class='img'><img src='PeriodicMTS-class-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>pcfr</span>[<span class='fl'>2</span>:<span class='fl'>4</span>])</div><div class='output co'>#&gt;    USTotalIPI     CanadaUnemployment   GermanyGNP   
 #&gt;  Min.   : 37.10   Min.   : 210.0     Min.   :167.0  
 #&gt;  1st Qu.: 61.30   1st Qu.: 372.8     1st Qu.:243.8  
 #&gt;  Median : 76.60   Median : 587.0     Median :328.2  
@@ -364,7 +364,7 @@ Class <code>"vector"</code>, by class "matrix", distance 4, with explicit coerce
 #&gt;  Max.   :118.30   Max.   :1630.0     Max.   :482.9  
 #&gt;  NA's   :20       NA's   :36         NA's   :24     </div><div class='input'>
 <span class='no'>pcfr2</span> <span class='kw'>&lt;-</span> <span class='no'>pcfr</span><span class='kw'>[[</span><span class='fl'>2</span>]]
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>pcfr2</span>)</div><div class='img'><img src='PeriodicMTS-class-4.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>pcfr2</span>)</div><div class='img'><img src='PeriodicMTS-class-4.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -221,7 +221,7 @@ test_that("the new periodic classes are ok",
     plot(z.mts)
     
     ## TODO: this gives an error  in pcMatrix(z.mts[1]) since  nTicks is not a multiple of
-    ##       the numver of seasons
+    ##       the number of seasons
     ## plot(z.mts[1])
 
     as(z.mts[[1]], "ts")
@@ -271,4 +271,34 @@ test_that("the new periodic classes are ok",
     dim(four_stocks_since2016_01_01$DELL) # [1] 923   6
     dim(dell) # [1] 958   6
     expect_equal(dell[as.Date("2020-04-17")], dell[958,])
+
+    ## a subseries which starts and ends wtih NA's
+    pcpres <- window(pcts(presidents), end = c(1972, 4))
+    
+    availStart(pcpres) # 1945 2
+    availEnd(pcpres)   # 1972 2
+
+    both <- na.trim(pcpres) # same as "both"
+    expect_identical(na.trim(pcpres), both)
+    expect_identical(na.trim(pcpres, "left"), window(pcpres, start = availStart(pcpres)))
+    expect_identical(na.trim(pcpres, "right"), window(pcpres, end = availEnd(pcpres)))
+
+    
+    cguk <- pcfr[c("CanadaUnemployment", "GermanyGNP", "UKTotalInvestment")]
+    
+    availStart(cguk)
+    availStart(cguk, TRUE)
+    expect_identical(availStart(cguk), availStart(cguk, TRUE))
+    availStart(cguk, FALSE)
+
+    availEnd(cguk)
+    availEnd(cguk, TRUE)
+    expect_identical(availEnd(cguk), availEnd(cguk, TRUE))
+    availEnd(cguk, FALSE)
+
+    both <- na.trim(cguk) # same as "both"
+    expect_identical(na.trim(cguk), both)
+    expect_identical(na.trim(cguk, "left"), window(cguk, start = availStart(cguk, FALSE)))
+    expect_identical(na.trim(cguk, "right"), window(cguk, end = availEnd(cguk, FALSE)))
 })
+
