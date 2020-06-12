@@ -234,6 +234,26 @@ test_that("the new periodic classes are ok",
     pcfr2to4 <- pcfr[2:4]
     window(pcfr2to4, seasons = 1:2)
 
+    expect_equivalent(pcMean(ap), pcMean(ap@.Data, nseasons = 12))
+    expect_equivalent(pcMean(pcfr2to4, na.rm = TRUE),
+                      pcMean(pcfr2to4@.Data, nSeasons(pcfr2to4), na.rm = TRUE) )
+
+    ## drop first row to test non-full year
+    pcMean(pcfr2to4@.Data[-1, ], nSeasons(pcfr2to4), na.rm = TRUE)
+
+    expect_equal(pc_apply(ap@.Data, 12, mean), pc_mean(ap@.Data, 12))
+    expect_equivalent(pc_apply(ap@.Data, 12, median), pcApply(ap@.Data, 12, median))
+
+    ## argument nseasons is not used for PeriodicTS objects
+    expect_error(pcApply(ap, 12, median),
+                 "object 'FUN' of mode 'function' was not found")
+    pcApply(ap, median)
+    
+    pcApply(pcfr2to4, median) # NA's
+    expect_equivalent(pcApply(pcfr2to4@.Data, 4, median, na.rm = TRUE),
+                      pcApply(pcfr2to4, median, na.rm = TRUE) )
+    
+
     pct1990_Q3 <- Pctime(c(1990, 3), pcCycle(pcfr2to4))
     expect_identical(pcfr2to4[as_date("1990-07-01")], pcfr2to4[pct1990_Q3])
 

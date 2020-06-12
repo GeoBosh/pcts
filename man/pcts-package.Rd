@@ -108,7 +108,7 @@
 %%%%  }
 %%%%
 %%%%  \Sexpr[stage=build,results=hide]{pat <- c(pat, list(par =
-%%%%    c("^alg1", "^pc.acf", "pc.fcoeffs", "^pc.sdfactor", "^pcAR2acf",
+%%%%    c("^alg1", "^pc.acf", "pc.fcoeffs", "^pc_sdfactor", "^pcAR2acf",
 %%%%      "pcacfMat", "permean2intercept", "^permodelmf", "^pdSafeParOrder"
 %%%%    )))}
 %%%%  \subsection{Periodic autoregression}{

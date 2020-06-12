@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Get the cycle of a periodic object — modelCycle" />
-<meta property="og:description" content="Get the cycle of a periodic object, ageneric function." />
+<meta property="og:description" content="Get the cycle of a periodic object, a generic function." />
 
 
 
@@ -129,12 +129,12 @@
     </div>
 
     <div class="ref-description">
-    <p>Get the cycle of a periodic object, ageneric function.</p>
+    <p>Get the cycle of a periodic object, a generic function.</p>
     </div>
 
     <pre class="usage"><span class='fu'>modelCycle</span>(<span class='no'>object</span>)
 
-<span class='fu'>modelCycle</span> ( <span class='no'>object</span>, <span class='no'>...</span> ) <span class='kw'>&lt;-</span> <span class='no'>value</span></pre>
+<span class='fu'>modelCycle</span>(<span class='no'>object</span>, <span class='no'>...</span> ) <span class='kw'>&lt;-</span> <span class='no'>value</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,20 +161,23 @@
 
     
 
-<p><code>modelCycle()</code> is essentially internal, for programming. The user
+<p><code>modelCycle</code> is essentially internal, for programming. The user
   level function to get the cycle of an object is <code><a href='pcCycle-methods.html'>pcCycle</a></code>.</p>
-<p><code>modelCycle()</code> returns the Cycle object (in the sense of package
-  <span class="pkg">pcts</span>), associated with <code>object</code>. This is a generic
-  function which makes it possible to associate a cycle with objects
-  from a class, without inheriting from the cycle classes.</p>
-<p>The default method returns <code>NULL</code>, unconditionally.</p>
+<p><code>modelCycle</code> returns the Cycle object (in the sense of package
+  <span class="pkg">pcts</span>), associated with <code>object</code>.  <code>modelCycle</code> is a
+  generic function which makes it possible to associate a cycle with
+  objects from a class, without inheriting from the cycle classes.</p>
+<p>By definition, <code>NULL</code> represents the model cycle of objects from
+  classes with no (inherited) method for <code>modelCycle</code>.</p>  
+<p>The default method of <code>modelCycle</code> returns <code>NULL</code>.
+  The default method for its replacement version throws error.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     
 
-<p>for <code>modelCycle()</code>, an object inheriting from class
+<p>for <code>modelCycle</code>, an object inheriting from class
   <code>"BasicCycle"</code> or <code>NULL</code>;</p>
-<p><code>"modelCycle&lt;-"()</code> is used for the side effect of changing the
+<p><code>"modelCycle&lt;-"</code> is used for the side effect of changing the
   cycle of <code>object</code>.</p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
@@ -186,11 +189,6 @@
 <dt><code>signature(object = "ModelCycleSpec")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd>
 
 </dl>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'>
-  
-<p><code>"modelCycle&lt;-"</code> for the replacement version.</p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

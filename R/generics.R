@@ -1,6 +1,10 @@
 ## TODO: pcMean is currently not exported, is this intentional with the view of removing it?
-setGeneric("pcMean", def = function(object, ...){ standardGeneric("pcMean") } )
 setGeneric("pcTest", def = function(x, nullmodel, nseasons, ...){ standardGeneric("pcTest") } )
+
+setGeneric("pcMean", def = function(object, ...){ standardGeneric("pcMean") } )
+## 2020-06-11 new
+setGeneric("pcIntercept", def = function(object, ...){ standardGeneric("pcIntercept") } )
+setGeneric("pcApply", def = function(object, ...){ standardGeneric("pcApply") } )
 
 modelCycle <- function(object){
     NULL

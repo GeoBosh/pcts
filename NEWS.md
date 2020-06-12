@@ -1,5 +1,19 @@
 # Version 0.15.0
 
+- new generic `pcIntercept`
+
+- update methods for `pcMean`
+
+- `pc_sdfactor` now returns a matrix also in the case `maxlag = 0` (as
+  documented).
+
+- `pc.sdfactor` was renamed to `pc_sdfactor`. `pc.sdfactor`is available but
+  deprecated.
+
+- new function `pc_mean`.
+
+- `pc_sum` gets argument `na.rm` and a more efficient implementation.
+
 - new methods for `zoo::na.trim`.
 
 - new subset PAR models with trigonometric parameterisation.

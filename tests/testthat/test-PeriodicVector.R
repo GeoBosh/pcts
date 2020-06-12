@@ -58,6 +58,9 @@ test_that("permean2intercept and intercept2permean are ok", {
     c2a <- permean2intercept(mu2a, pm2a@ar@coef, c(1,1))
     expect_equal(intercept2permean(c2a, pm2a@ar@coef, c(1,1)), mu2a)
 
+    ## just to see if this works with length(intercept) = 1
+    intercept2permean(1.5, pm2a@ar@coef, c(1,1))
+    
     d <- 4
     mu4a <- 1:d
     co4a <- rep(0.5, d)

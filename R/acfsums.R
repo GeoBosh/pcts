@@ -14,10 +14,10 @@ num2pcpar <- function(x, order, result = NULL, ...){
         co
 }
 
-## 2018-10-20 see also pc.mean()
-calc_permean <- function(x, period, na.rm = TRUE, ...){
-    stop("Not ready")
-}
+## 2018-10-20 see also pc.mean(), 2020-06-10: pc_mean()
+## calc_permean <- function(x, period, na.rm = TRUE, ...){
+##     stop("Not ready")
+## }
 
 calc_peracf <- function(x, maxlag, period, mean = TRUE, seasonof1st = 1, what = "cor"){
     if(is.matrix(x)){ # TODO: more general test to allow other type of matrix?
@@ -34,7 +34,12 @@ calc_peracf <- function(x, maxlag, period, mean = TRUE, seasonof1st = 1, what = 
     }
 
     if(isTRUE(mean)){
-        wrkmean <- pc.mean(x)
+
+        ## NOTE: pc.mean() assumed 'matrix' for 'x' and had na.rm = TRUE since the above code
+        ##     potentially inserts NA's, it is not really possible to have option na.rm =
+        ##     FALSE without changing the code.
+
+        wrkmean <- pc_mean(x, period, na.rm = TRUE) # 2020-06-10 was: pc.mean(x)
         x <- x - wrkmean
         if(r > 0) # restore the padded zeros
             x[(r+1):period, ncol(x)] <- NA ## TODO: or zero?
@@ -64,31 +69,46 @@ pc_matrix <- function(x, period) {
     matrix(x, nrow = period)
 }
 
-pc_sum <- function(x, period) {
-    rowSums(pc_matrix(x, period))
+pc_sum <- function(x, period, na.rm = FALSE) {
+    ## was just this line: rowSums(pc_matrix(x, period))
+    r <- length(x) %% period
+    if(r != 0)
+        x <- c(x, numeric(period - r))
+    .rowSums(x, period, length(x) / period, na.rm)
 }
 
-pc.mean <-
-function(x, na.rm = TRUE, ...){
-  apply(x, 1, mean, na.rm = na.rm, ...)
+pc_mean <- function(x, period, na.rm = FALSE) {
+    r <- length(x) %% period
+    if(r == 0)
+        return( .rowMeans(x, period, length(x) / period, na.rm) )
+
+    ## r != 0
+    ## TODO: not sure if splitting into two cases below is worth it.
+    ##       Maybe use unconditionally the 'else' part.
+    if(na.rm || all(is.finite(x))){
+        ## the case after '||' can also be handled with na.rm = TRUE.
+        x <- c(x, rep_len(NA_real_, period - r))  # numeric(period - r)
+        .rowMeans(x, period, length(x) / period, na.rm = TRUE)
+    }else{ # here na.rm = FALSE, default for 'mean', so not passed to mean() below
+        n <- length(x)
+        sapply(1:period,
+               function(i)
+                   base::mean.default(x[seq(from = i, to = n, by = period)]) )
+    }
 }
 
-pc.center <-
-  function(x, xbar = NULL, ...){
-    if(is.null(xbar))
-      xbar <- pc.mean(x, ...)
-    x - xbar
-  }
+pc.acsum <- function(x, maxlag = ncol(x)/4){
+    nm1 <- length(x) - 1
+    nr <- nrow(x)
+    nc <- ncol(x)
+    
+    xlagged <- x
 
-pc.acsum <-
-function(x, maxlag = ncol(x)/4){
-  nm1 <- length(x)-1
-  res <- matrix(NA, nrow = nrow(x), ncol = maxlag+1)
-  xlagged <- x
-
-  res[, 1] <- apply( x*xlagged, 1, function(x) sum(x, na.rm = TRUE) )
-  for(k in seq_len(maxlag) ){    # if(maxlag>0) for(k in 1:maxlag ){
-    xlagged[] <- c(0, xlagged[1:nm1])        # prepend a 0 and drop the last element of xlagged
+    res <- matrix(NA_real_, nrow = nr, ncol = maxlag + 1)
+                   # 2002-06-10 was: apply( x * xlagged, 1, function(x) sum(x, na.rm = TRUE) )
+    res[ , 1] <- .rowSums(x * xlagged, nr, nc, na.rm = TRUE)
+    for(k in seq_len(maxlag) ){
+        xlagged[] <- c(0, xlagged[1:nm1])   # prepend a 0 and drop the last element of xlagged
                                             # xlagged[] is used on the left-hand side
                                             #           to keep xlagged a matrix.
                                             # x1 x2 x3 ... xnm1 xn
@@ -96,69 +116,72 @@ function(x, maxlag = ncol(x)/4){
                                             #  0  0 x1 ... xnm3 xnm2
 
                                                           # multiply elwise and find row sums.
-    res[, k+1] <- apply( x*xlagged, 1, function(x) sum(x, na.rm = TRUE) )
-  }
-  res
-}
-
-pc.cconesidedsum <-
-function(x, y, maxlag = ncol(x)/4){                   # assume x and y of equal dim, positive lags
-  nm1 <- length(x)-1
-  res <- matrix(NA, nrow = nrow(x), ncol = maxlag+1)
-  ylagged <- y
-
-  res[, 1] <- apply( x*ylagged, 1,  function(x) sum(x, na.rm = TRUE) )
-  for(k in seq_len(maxlag) ){
-      ylagged[] <- c(0, ylagged[1:nm1])                              # see comments in pc.acsum
-      res[, k+1] <- apply( x*ylagged,  1,  function(x) sum(x, na.rm = TRUE) )
+                    # 2002-06-10 was: apply(x * xlagged, 1, function(x) sum(x, na.rm = TRUE) )
+        res[ , k + 1] <- .rowSums(x * xlagged, nr, nc, na.rm = TRUE)
     }
-  res
+
+    res
 }
 
-pc.ccsum <-
-function(maxlag, xlist){
-  nx <- length(x)
-  period <- nrow(xlist[[1]])
-  res <- array(NA, dim = c(nx, nx, period, maxlag+1))
+pc.cconesidedsum <- function(x, y, maxlag = ncol(x)/4){
+    ## assume x and y of equal dim, positive lags
+    nm1 <- length(x) - 1
+    nr <- nrow(x)
+    nc <- ncol(x)
 
-  for(i in 1:nx){
-    x <- xlist[[i]]
-    for(j in 1:nx){
-      y <- xlist[[j]]
-      res[i, j, , ] <- pc.cconesidedsum(x, y, maxlag)    # res[i,j,,] <- laggedcrosssum(x,y,maxlag)
+    stopifnot(all(dim(x) == dim(y)))
+
+    ylagged <- y
+    
+    res <- matrix(NA, nrow = nr, ncol = maxlag + 1)
+                   # 2002-06-10 was: apply( x*ylagged, 1,  function(x) sum(x, na.rm = TRUE) )
+    res[ , 1] <- .rowSums(x * ylagged, nr, nc, na.rm = TRUE)
+    for(k in seq_len(maxlag) ){
+        ylagged[] <- c(0, ylagged[1:nm1])                           # see comments in pc.acsum
+
+                 # 2002-06-10 was: apply( x * ylagged,  1,  function(x) sum(x, na.rm = TRUE) )
+        res[ , k + 1] <- .rowSums(x * ylagged, nr, nc, na.rm = TRUE)
     }
-  }
-  res
+    res
 }
 
-pc.sdfactor <-
-  function(sd, maxlag){
+pc_sdfactor <- function(sd, maxlag){
     d <- length(sd)
     revsd <- rev(sd)
-    wrk <- matrix(NA, nrow = d, ncol = d)                        # prepare a d x d block of factors,
+    wrk <- matrix(NA, nrow = d, ncol = d)                  # prepare a d x d block of factors,
     for(k in d:1){
-      wrk[k, ] <- revsd[1]*revsd
-      revsd <- shiftleft(revsd)
+        wrk[k, ] <- revsd[1]*revsd
+        revsd <- shiftleft(revsd)
     }
              # now we create [wrk wrk ...] to create n x d  matrix
              # matrix()  may give a warning that the size of wrk is not a sub-multiple of that
              # of the result. This is OK since maxlag+1 is  not necessarilly multiple of d.
              # To avoid the message, we create a larger marix if necessary and subset it.
-    n <- pc.arith.ceiling(maxlag+1, d)    # guarantee that n is a multiple of d and >= maxlag+1
+    n <- pc.arith.ceiling(maxlag + 1, d) # guarantee that n is a multiple of d and >= maxlag+1
 
-    res <- matrix(wrk, nrow = d, ncol = n) # wrk is recycled as many times as necessary by matrix()
-    res[ , 1:(maxlag+1)]
+    res <- matrix(wrk, nrow = d, ncol = n)  # recycle wrk as many times as necessary
+        # 2020-06-11: use drop = FALSE to get a matrix also when maxlag = 0.
+        #     This has the desirable effect that m / pc_sdfactor( ..., maxlag = 0)
+        #     if m has more than one column, which almost certainly indicates programming 
+        #     error. Before this change the vector returned by pc_sdfactor would be recycled.
+    res[ , 1:(maxlag + 1), drop = FALSE]
 }
 
-pc.acrftoacf <-            # computes pcacf from autocorrelation matrix and
-  function(acrf, sd){       # standard deviations of the seasons (ie, sqrt(R_1(0),..., R_d(0)))
-    maxlag <- ncol(acrf)-1
-    res <- acrf * pc.sdfactor(sd, maxlag)
+pc.sdfactor <- function(...){
+    .Deprecated(msg = "pc.sdfactor will be removed in pcts v1.0.0, please use 'pc_sdfactor'")
+    pc_sdfactor(...)
+}
+
+
+## computes pcacf from autocorrelation matrix and standard deviations of the seasons,
+## ie sqrt(R_1(0),..., R_d(0)))
+pc.acrftoacf <- function(acrf, sd){
+    maxlag <- ncol(acrf) - 1
+    res <- acrf * pc_sdfactor(sd, maxlag)
     res
-  }
+}
 
 pc.acf <- function(x, maxlag, nyear = ncol(x), demean = TRUE){
-    ## TODO: need tests targeted for the different possibilities here.
     if(missing(nyear)){ # 2018-10-25 new; default for nyear was: nyear = ncol(x)
         if(anyNA(x)){
             xna <- is.na(x)   
@@ -173,56 +196,49 @@ pc.acf <- function(x, maxlag, nyear = ncol(x), demean = TRUE){
         }else
             nyear <- ncol(x)
     }
-    pc.acsum(if(demean) pc.center(x) else x, maxlag) / nyear
+    ## 2020-06-10 was: pc.acsum(if(demean) pc.center(x) else x, maxlag) / nyear
+    pc.acsum(if(demean) x - pc_mean(x, nrow(x), na.rm = TRUE) else x, maxlag) / nyear
 }
 
-pc.var <-           # didn't center, change all current calls of pc.var to have demean=FALSE!
-function(x, ...){
-  wrk <- pc.acf(x, maxlag = 0, ...)
-  as.vector(wrk)
+                     # didn't center, change all current calls of pc.var to have demean=FALSE!
+pc.var <- function(x, ...){
+    wrk <- pc.acf(x, maxlag = 0, ...)
+    as.vector(wrk)
 }
 
-
-pc.acrf <-
-function(x, maxlag, ...){
-  res <- pc.acf(x, maxlag, ...)
-  sd  <- sqrt(res[, 1])                           # compute standard deviations from R_k(0)
-  wrk <- pc.sdfactor(sd, maxlag)                    # prepare the normalising factors
-  res <- res / wrk
-  res
+pc.acrf <- function(x, maxlag, ...){
+    res <- pc.acf(x, maxlag, ...)
+    sd  <- sqrt(res[, 1])                           # compute standard deviations from R_k(0)
+    wrk <- pc_sdfactor(sd, maxlag)                    # prepare the normalising factors
+    res <- res / wrk
+    res
 }
 
-pc.ccf <-                                       # arguments of pc.ccf do not seem natural.
-function(maxlagx, nyear, demean = TRUE, ...){                   # allow demean to be a vector?
-  xlist <- list(...)
-  if(demean)
-    for( i in 1:length(xlist) )
-      xlist[[i]] <- pc.center(xlist[[i]])
-  res <- pc.ccsum(maxlagx,  xlist) / nyear
-  res
+pc.hat.h <- function(x, eps, maxlag, si2hat){
+    period <- nrow(x)
+    n <- ncol(x)
+    if(missing(si2hat))
+        si2hat <- pc.var(eps)
+
+    res <- pc.cconesidedsum(x, eps, maxlag)/n
+    for(k in 0:(period-1)){
+        ind <- seq(k + 1, maxlag + 1, by = period)
+        ind2 <- seq(k + 1, maxlag + 1, by = period)
+        stopifnot(all(ind == ind2))
+        res[ , ind] <- res[ , ind] / shiftright(si2hat, k)
+    }
+    res
 }
 
-pc.hat.h <-
-function(x, eps, maxlag, si2hat){
-  period <- nrow(x)
-  n <- ncol(x)
-  if(missing(si2hat))
-    si2hat <- pc.var(eps)
-
-  res <- pc.cconesidedsum(x, eps, maxlag)/n
-  for(k in 0:(period-1)){
-    res[, seq(k+1, maxlag+1, by = period)] <-
-      res[, seq(k+1, maxlag+1, by = period)] / shiftright(si2hat, k)
-  }
-  res
+pc_apply <- function(x, period, FUN, ...) {
+    r <- length(x) %% period
+    if(r == 0){
+        m <- matrix(x, nrow = period)
+        apply(m, 1, FUN, ...)
+    }else{
+        n <- length(x)
+        sapply(1:period,
+               function(i)
+                   apply(x[seq(from = i, to = n, by = period)]), 1, FUN, ... )
+    }
 }
-
-pc.argmin <-
-  function(x){
-    apply(x, 1, function(x) rank(x, ties.method = "first") )
-  }
-
-pc.par.argmin <-
-  function(aic){    # aic; may be bic, etc?
-    pc.argmin(aic) - 1    # subtract 1 because the the first el. correspond to p_k=0
-  }

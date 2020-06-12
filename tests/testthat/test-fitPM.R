@@ -23,7 +23,16 @@ test_that("test fitPM()",
                  )
     expect_identical(fitPM(2, x_pcts), fitPM(c(2, 2, 2, 2), as.numeric(mx)))
 
+    eps.proba1 <- residuals(proba1)
+    expect_identical(eps.proba1, pcts:::.whiten(proba1))
 
+    eps.proba1[1:2] <- NA
+    dim(eps.proba1) <- dim(mx)
+    pc.cconesidedsum(mx, eps.proba1, maxlag = 4)
+    ## estimate h_{t,i}, see Boshnakov (1996)
+    pc.hat.h(mx, eps.proba1, maxlag = 4)
+
+   
     data(Fraser, package = "pear")
     logFraser <- log(Fraser)
     ## TODO: for now I need whole years;
@@ -73,8 +82,6 @@ test_that("test fitPM()",
     fitPM(pipfm, perunit)
 
     ## temporary
-    expect_identical(residuals(proba1), pcts:::.whiten(proba1))
-
     proba1x <- new("FittedPeriodicArmaModel", as(proba1, "PeriodicArmaModel"),
                    theTS = proba1@theTS, ns = proba1@ns, asyCov = proba1@asyCov)    
     expect_identical(residuals(proba1x), residuals(proba1))

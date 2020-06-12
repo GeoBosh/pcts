@@ -68,7 +68,11 @@
 %%  ~~describe this method here~~
 }
 }\item{\code{signature(x = "VirtualPeriodicAutocovariances", maxlag = "ANY")}}{{
-%%  ~~describe this method here~~
+
+    If \code{maxlag} is missing or equal to \code{maxLag(x)}, \code{x}
+    is returned unchanged. Otherwise the number of available lags is
+    adjusted to \code{maxlag}.
+
 }
 }}}
 \seealso{

@@ -548,11 +548,11 @@ setMethod(".get_period_units", c(cycle = "DayWeekCycle"), function(cycle) "days"
 
 ## setMethod(".cycle_and_pair2time", c(cycle = "DayWeekCycle"),
 ##           function(cycle, pair) 
-##               pc_week2date(pair)
+##               pcweek2date(pair)
 ##           )
 ## setMethod(".cycle_and_time2pair", c(cycle = "DayWeekCycle"), 
 ##           function(cycle, date){
-##               .date2pc_week(date)
+##               .date2pcweek(date)
 ##           }
 ##           )
 
@@ -586,14 +586,14 @@ setMethod(".cycle_and_pair2time", c(cycle = "FiveDayWeekCycle"),
               ## TODO: not sure how to treat this
               ## NA seems sensible:
               pair <- .mark_invalid_seasons_in_pairs(pair, 1:5) # pair[2] > 5
-              res <- .cycle_and_pair2time(BuiltinCycle(7), pair)  # pc_week2date(pair)
+              res <- .cycle_and_pair2time(BuiltinCycle(7), pair)  # pcweek2date(pair)
 
               res
           }
           )
 setMethod(".cycle_and_time2pair", c(cycle = "FiveDayWeekCycle"), 
           function(cycle, date){
-              pair <- .cycle_and_time2pair(BuiltinCycle(7), date)  # .date2pc_week(date)
+              pair <- .cycle_and_time2pair(BuiltinCycle(7), date)  # .date2pcweek(date)
                       # if(res[2] > 5) 
                       #     res[2] <- NA # 5day week doesn't have Sat and Sun
               pair <- .mark_invalid_seasons_in_pairs(pair, 1:5)
@@ -830,7 +830,7 @@ twelvehours <- period(hours = 12)
 
 .e30minutes_origin <- .week_origin + period(days = 1) # Monday 0am
 
-.date2pc_week <- function(date){
+.date2pcweek <- function(date){
     if(!is.Date(date))
         date <- as_date(date)
 
@@ -847,7 +847,7 @@ twelvehours <- period(hours = 12)
     c(nweeks + (season != 7), season)
 }
 
-pc_week2date <- function(x){
+pcweek2date <- function(x){
     .week_origin + weeks(x[1] - 1) + days(x[2])
 }
 

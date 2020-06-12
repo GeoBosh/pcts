@@ -55,6 +55,34 @@ test_that("constructors of periodic filter models are ok",
     autocovariances(armaA)
     autocovariances(armaA, maxlag = 5)
 
+    ## various ways to specify non-zeo mean/intercept
+    mo1 <- new("PeriodicArmaModel", ar = ar_filt3, sigma2 = c(0.3439000, 0.1049724),
+               mean = c(1,2))
+    mo1a <- new("PeriodicArmaModel", ar = ar_filt3, sigma2 = c(0.3439000, 0.1049724),
+                center = c(1,2))
+    expect_identical(mo1, mo1a)
+
+    mo2 <- new("PeriodicArmaModel", ar = ar_filt3, sigma2 = c(0.3439000, 0.1049724),
+               intercept =  pcIntercept(mo1))
+
+    expect_equal(pcIntercept(mo1), pcIntercept(mo2))
+    expect_equal(pcMean(mo1), pcMean(mo2))
+
+    ## mean of length 1 
+    expect_error(new("PeriodicArmaModel", ar = ar_filt3, sigma2 = c(0.3439000, 0.1049724),
+                     mean = c(1, 2, 3)), "'mean' should have length 'nseasons' or one")
+
+    mo3 <-  new("PeriodicArmaModel", ar = ar_filt3, sigma2 = c(0.3439000, 0.1049724),
+                center = 1)
+    expect_equal(mo3@center, c(1, 1))
+    
+    mo3 <-  new("PeriodicArmaModel", ar = ar_filt3, sigma2 = c(0.3439000, 0.1049724),
+                mean = 1)
+
+    new("PeriodicArmaModel", ar = ar_filt3, mean = 1)
+    expect_error(new("PeriodicArmaModel", ar = ar_filt3, mean = 1, center = c(2, 2)),
+                 paste0("Use argument 'mean' only when 'center' and 'intercept' ",
+                        "are missing or zero") )
 
     armap0.spec <- new("PeriodicArmaModel", ar = ar_filt3, sigma2 = c(0.3439000, 0.1049724))
     armap0.spec[1,3]

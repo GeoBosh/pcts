@@ -1018,6 +1018,80 @@ setMethod("summary", c(object = "PeriodicMTS"),
               do.call("rbind", wrk)
           })
 
+setMethod("pcMean", signature("numeric"),
+          function(object, nseasons, ...){
+              structure(pc_mean(object, nseasons, ...), 
+                        names = allSeasons(BareCycle(nseasons)))
+          }
+          )
+
+setMethod("pcMean", signature("matrix"),
+          function(object, nseasons, ...){
+              nc <- ncol(object)
+              nr <- nrow(object)
+              if(nr %% nseasons == 0){
+                  dim(object) <- c(nseasons, nr / nseasons, nc)
+                  res <- apply(object, c(1, 3), mean, ...)
+              }else{
+                  res <- sapply(seq_len(nc), function(i) pc_mean(object[ , i], nseasons, ...))
+              }
+              colnames(res) <- colnames(object)
+              rownames(res) <- allSeasons(BareCycle(nseasons))
+              res
+          }
+          )
+
+setMethod("pcMean", signature("PeriodicTS"),
+          function(object, ...){
+              structure(pc_mean(object, nSeasons(object), ...), names = allSeasons(object))
+          }
+          )
+
+setMethod("pcMean", signature("PeriodicMTS"),
+          function(object, ...){
+              nc <- ncol(object)
+              ## nseas <- nSeasons(object)
+              res <- sapply(seq_len(nc), function(i) pcMean(object[[i]], ...))
+              colnames(res) <- colnames(object)
+              res
+          }
+          )
+
+setMethod("pcApply", signature("numeric"),
+          function(object, nseasons, FUN, ...){
+              structure(pc_apply(object, nseasons, FUN, ...),
+                        names = allSeasons(BareCycle(nseasons)))
+          }
+          )
+
+setMethod("pcApply", signature("matrix"),
+          function(object, nseasons, FUN, ...){
+              nc <- ncol(object)
+              ## nseas <- nSeasons(object)
+              res <- sapply(seq_len(nc), 
+                            function(i) pc_apply(object[ , i], nseasons, FUN, ...))
+              colnames(res) <- colnames(object)
+              res
+          }
+          )
+
+setMethod("pcApply", signature("PeriodicTS"),
+          function(object, FUN, ...){
+              structure(pc_apply(object, nSeasons(object), FUN, ...),
+                        names = allSeasons(object))
+          }
+          )
+
+setMethod("pcApply", signature("PeriodicMTS"),
+          function(object, FUN, ...){
+              nc <- ncol(object)
+              ## nseas <- nSeasons(object)
+              res <- sapply(seq_len(nc), function(i) pcApply(object[[i]], FUN, ...))
+              colnames(res) <- colnames(object)
+              res
+          }
+          )
+
 setMethod("autocovariances", signature(x = "PeriodicTS"),
           function(x, maxlag, ...){
               ## TODO: It may make sense to give the user the choice of computing
@@ -1056,7 +1130,7 @@ setMethod("autocorrelations", signature(x = "PeriodicTimeSeries", maxlag = "ANY"
                   stop("Method not implemented yet for multivariate time series")
               acv <- autocovariances(x, maxlag = maxlag, ...)
               sd <- sqrt(acv[[0]])
-              fac <- pc.sdfactor(sd, maxlag)[ , 1 + (0:maxlag)] # "1+" since "matrix"
+              fac <- pc_sdfactor(sd, maxlag)[ , 1 + (0:maxlag)] # "1+" since "matrix"
               res <- acv / fac # this assumes that '/' is defined for 'acv'
                                # (which it is for Lagged objects)
                   # 2019-05-14 was:  res # a "Lagged2d" object

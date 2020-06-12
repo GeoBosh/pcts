@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compute normalising factors — pc.sdfactor • pcts</title>
+<title>Compute normalising factors — pc_sdfactor • pcts</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Compute normalising factors — pc.sdfactor" />
-<meta property="og:description" content="This function computes a matrix of factors such that elementwise
-  division of the periodic autocovariance matrix by it will give the periodic
+<meta property="og:title" content="Compute normalising factors — pc_sdfactor" />
+<meta property="og:description" content="Compute a matrix of factors such that elementwise division of the
+  periodic autocovariance matrix by it will give the periodic
   autocorrelations." />
 
 
@@ -127,33 +127,30 @@
     <div class="page-header">
     <h1>Compute normalising factors</h1>
     
-    <div class="hidden name"><code>pc.sdfactor.Rd</code></div>
+    <div class="hidden name"><code>pc_sdfactor.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function computes a matrix of factors such that elementwise
-  division of the periodic autocovariance matrix by it will give the periodic
+    <p>Compute a matrix of factors such that elementwise division of the
+  periodic autocovariance matrix by it will give the periodic
   autocorrelations.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pc.sdfactor</span>(<span class='no'>sd</span>, <span class='no'>maxlag</span>)</pre>
+    <pre class="usage"><span class='fu'>pc_sdfactor</span>(<span class='no'>sd</span>, <span class='no'>maxlag</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>sd</th>
-      <td><p>standard deviations of the seasons</p></td>
+      <td><p>standard deviations of the seasons numeric.</p></td>
     </tr>
     <tr>
       <th>maxlag</th>
-      <td><p>maximal lag</p></td>
+      <td><p>maximal lag, a number.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>todo: describe!</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>a matrix of coefficients of size <code>period x (maxlag+1)</code>. The
@@ -162,6 +159,27 @@
 
     <div class='dont-index'><p><code>autocorrelations</code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>Fraser</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"pear"</span>, <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/environment.html'>environment</a></span>())
+
+<span class='no'>logfraser</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/window.html'>window</a></span>(<span class='fu'><a href='pcts-methods.html'>pcts</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='no'>Fraser</span>)), <span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1913</span>, <span class='fl'>1</span>))
+<span class='no'>acvf1</span> <span class='kw'>&lt;-</span> <span class='fu'>autocovariances</span>(<span class='no'>logfraser</span>, <span class='kw'>maxlag</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='no'>fac</span> <span class='kw'>&lt;-</span> <span class='fu'>pc_sdfactor</span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='no'>acvf1</span>[ , <span class='fl'>0</span>]), <span class='fl'>2</span>)
+<span class='no'>fac</span>[ , <span class='fl'>1</span>:<span class='fl'>3</span>]</div><div class='output co'>#&gt;             [,1]       [,2]       [,3]
+#&gt;  [1,] 0.07080708 0.08050247 0.08238189
+#&gt;  [2,] 0.06684956 0.06879987 0.07822042
+#&gt;  [3,] 0.07282971 0.06977560 0.07181128
+#&gt;  [4,] 0.13251199 0.09823854 0.09411891
+#&gt;  [5,] 0.05316391 0.08393364 0.06222469
+#&gt;  [6,] 0.03112889 0.04068088 0.06422578
+#&gt;  [7,] 0.04293554 0.03655866 0.04777678
+#&gt;  [8,] 0.04014200 0.04151528 0.03534934
+#&gt;  [9,] 0.04792497 0.04386119 0.04536171
+#&gt; [10,] 0.07893476 0.06150566 0.05629031
+#&gt; [11,] 0.09584884 0.08698164 0.06777576
+#&gt; [12,] 0.09152542 0.09366219 0.08499728</div><div class='input'>
+<span class='no'>acrf1</span> <span class='kw'>&lt;-</span> <span class='fu'>autocorrelations</span>(<span class='no'>logfraser</span>, <span class='kw'>maxlag</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/all.equal.html'>all.equal</a></span>(<span class='no'>acvf1</span>[], <span class='no'>acrf1</span>[] * <span class='no'>fac</span>) <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

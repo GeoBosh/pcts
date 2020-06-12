@@ -234,7 +234,6 @@ export(
     # , pc.ccf
     # , pc.cconesidedsum
     # , pc.ccsum
-    # , pc.center
 
     # , pc.est.arma
     # , pc.est.arma.0
@@ -254,7 +253,6 @@ export(
     , pcarma_acvf_lazy
     , pcarma_h_lazy
     , maxLag # pc.maxlag
-    # , pc.mean
     , pcarma_prepare
     , pcarma_tovec
     , pcarma_unvec
@@ -268,7 +266,8 @@ export(
     # , pc.printarmapqelem
     , sim_pwn # 2016-03-29 was: pc.rand
     # 09/02/2014 , pc.read.franses96
-    , pc.sdfactor
+    , pc.sdfactor # deprecated
+    , pc_sdfactor
     , sim_pc # 2016-03-29 was: pc.sim
     , pwn_McLeodLjungBox_test # pc.test.LjungBox
     , periodic_acf1_test #pc.test.periodicity
@@ -415,4 +414,6 @@ export(
 , fit_trigPAR_optim
 , pcts_exdata
 , na.trim # from zoo
+, pcMean
+, pcApply  
 )

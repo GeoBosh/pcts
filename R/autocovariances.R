@@ -32,7 +32,7 @@ setMethod("autocorrelations", signature(x = "numeric", maxlag = "ANY", lag_0 = "
                   ## see .acv2acr() in PeriodicClasses.org
                   acv <- autocovariances(x, maxlag = maxlag, nseasons = nseasons, ...)
                   sd <- sqrt(acv[[0]])
-                  fac <- pc.sdfactor(sd, maxlag)[ , 1 + (0:maxlag)] # "1+" since "matrix"
+                  fac <- pc_sdfactor(sd, maxlag)[ , 1 + (0:maxlag)] # "1+" since "matrix"
                   res <- acv / fac 
                              # TODO: Should return "SamplePeriodicAutocorrelations or similar?"
                       # 2019-05-14 was:  res # a "Lagged2d" object

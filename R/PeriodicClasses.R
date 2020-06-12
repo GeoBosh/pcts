@@ -45,11 +45,14 @@ setClass("VirtualPeriodicAutocorrelations", contains = c("VirtualPeriodicModel",
         maxlag <- maxLag(x) # TODO: document that this assumes suitable maxLag() method.
 
     sd <- sqrt(x[[0]])
-        # 2019-05-15 was: pc.sdfactor(sd, maxlag)[ , 1 + (0:maxlag)] # "1+" since "matrix"
-        #     but it is redundant to subset the result of  pc.sdfactor() !
+        # 2020-06-11: The note below is baffling as the line following 'was:' is still in 
+        #     the code. Removing '[...]' now.
+        # 
+        # 2019-05-15 was: pc_sdfactor(sd, maxlag)[ , 1 + (0:maxlag)] # "1+" since "matrix"
+        #     but it is redundant to subset the result of  pc_sdfactor() !
         #     (and [ , ...] will throw error if maxlag = 0)
-    
-    fac <- pc.sdfactor(sd, maxlag)[ , 1 + (0:maxlag)] # "1+" since "matrix"
+
+    fac <- pc_sdfactor(sd, maxlag)
     acv <- x[0:maxlag] # autocovariances(x, maxlag, ...)
 
     acf <- acv / fac # "matrix"
@@ -82,11 +85,11 @@ setMethod("autocovariances", "VirtualPeriodicAutocovariances",
           function(x, maxlag, ...){
               if(!missing(maxlag) && maxlag != maxLag(x))
                   maxLag(x) <- maxlag
-              x ## TODO: so, the result keeps the full structure of x. 
+              x ## to do: so, the result keeps the full structure of x. 
                 ##       Maybe should just return x[0:maxLag]
                 ## Decision: This is fine but should be documented.
                 ##           Otherwise subclasses would need to define methods just to 
-                ##           put back the class and potentially other infor
+                ##           put back the class and potentially other information.
           })
 
 setMethod("partialVariances", "VirtualPeriodicAutocovariances",
@@ -101,7 +104,7 @@ setMethod("backwardPartialVariances", "VirtualPeriodicAutocovariances",
 
 
 setMethod("partialAutocorrelations", "VirtualPeriodicAutocovariances",
-          function(x, lag_0 = "var"){           # use lag_0="var" if you wish parcor_k(0)=R_k(0)
+          function(x, lag_0 = "var"){     # use lag_0="var" if you wish parcor_k(0)=R_k(0)
               alg1utilNew_new(x, "be", lag_0)
           })
 
@@ -109,12 +112,12 @@ setMethod("partialAutocovariances", "VirtualPeriodicAutocovariances",
           function(x, ...){
               ## note: res will have some partialAutocorrelations class!
               res <- partialAutocorrelations(x)
-                  # 2019-05014 was:  res[, 0]
+                  # 2019-05-14 was:  res[, 0]
                   #   should work with both Lagged2d and slMatrix in ('lagged' v. >= 0.2.2)
               var <- res[[0]] # assumes variances are in lag 0
-              ## TODO (2019-05-17): is pc.sdfactor applicable to partial autocorrelations?
+              ## TODO (2019-05-17): is pc_sdfactor applicable to partial autocorrelations?
               ##       maybe this is somewhere in my old notes?
-              fac <- pc.sdfactor( sqrt(var), maxLag(res) )
+              fac <- pc_sdfactor( sqrt(var), maxLag(res) )
               ## 2019-05-17 was:  res <- res[] * fac
               ##    but surely the lag 0 entries should not be changed? 
               ##    It would be ok if lag 0 values were equal to 1 but the variances
@@ -594,15 +597,35 @@ setMethod("PeriodicMaModel", signature = c(object = "matrix"), # object is coef 
 #####                   stop("Need model to compute this, not defined on its own.")
 #####              )
 
-    setMethod("pcMean", signature("VirtualPeriodicArmaModel"),
-              function(object, model){
-                  ## TODO: needs adaptation for the new classes
-                  intercept2permean(as(object, "numeric"),
-                                    coef = filterCoef(model@ar), # was: arCoef(model),
-                                    order = filterOrder(model@ar) # was: arOrder(model)
-                                    )
-              }
-             )
+setMethod("pcMean", signature("VirtualPeriodicArmaModel"),
+          function(object){
+              value <- if(all(object@intercept == 0))
+                           ## this is by definition of the specification of the model
+                           ## TODO: document
+                           object@center
+                       else{
+                           ## wasteful but general
+                           intercept <- pcIntercept(object)
+                           intercept2permean(intercept,
+                                             coef = filterCoef(object@ar),
+                                             order = filterOrder(object@ar))
+                       }
+              structure(value, names = allSeasons(object))
+          }
+          )
+
+setMethod("pcIntercept", signature("VirtualPeriodicArmaModel"),
+          function(object){
+              value <- if(all(object@center == 0))
+                           object@intercept
+                       else
+                           object@intercept +
+                               permean2intercept(object@center,
+                                                 coef = filterCoef(object@ar),
+                                                 order = filterOrder(object@ar) )
+              structure(value, names = allSeasons(object))
+          }
+          )
 
 setMethod("autocovariances", "PeriodicArModel",
           function(x, maxlag, ...){

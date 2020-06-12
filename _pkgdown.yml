@@ -104,7 +104,7 @@ reference:
       - "pc.filter.xarma"
       - "pc.hat.h"
       - "pcarma_unvec"
-      - "pc.sdfactor"
+      - "pc_sdfactor"
       - "pwn_McLeodLjungBox_test"
       - "periodic_acf1_test"
       - "pcacf_pwn_var"

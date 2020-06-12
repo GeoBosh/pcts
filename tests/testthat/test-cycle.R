@@ -262,17 +262,17 @@ pctipi <- window(pctipi, start = availStart(pctipi), end = availEnd(pctipi))
     plot(autocorrelations(pctipi, maxlag = 10))
 
     ## pc-origin is as.Date("1970-01-01") - 4, Sunday
-    expect_equal(.date2pc_week(as.Date("1969-12-28")), c(0, 7))
-    expect_equal(.date2pc_week(as.Date("1969-12-29")), c(1, 1))
-    expect_equal(.date2pc_week(as.Date("1970-01-01")), c(1, 4))
+    expect_equal(.date2pcweek(as.Date("1969-12-28")), c(0, 7))
+    expect_equal(.date2pcweek(as.Date("1969-12-29")), c(1, 1))
+    expect_equal(.date2pcweek(as.Date("1970-01-01")), c(1, 4))
 
-    expect_equal(.date2pc_week("1969-12-28"), c(0, 7))
-    expect_equal(.date2pc_week("1969-12-29"), c(1, 1))
-    expect_equal(.date2pc_week("1970-01-01"), c(1, 4))
+    expect_equal(.date2pcweek("1969-12-28"), c(0, 7))
+    expect_equal(.date2pcweek("1969-12-29"), c(1, 1))
+    expect_equal(.date2pcweek("1970-01-01"), c(1, 4))
     
-    expect_equal(pc_week2date(c(0, 7)), as.POSIXct("1969-12-28", "UTC"))
-    expect_equal(pc_week2date(c(1, 1)), as.POSIXct("1969-12-29", "UTC"))
-    expect_equal(pc_week2date(c(1, 4)), as.POSIXct("1970-01-01", "UTC"))
+    expect_equal(pcweek2date(c(0, 7)), as.POSIXct("1969-12-28", "UTC"))
+    expect_equal(pcweek2date(c(1, 1)), as.POSIXct("1969-12-29", "UTC"))
+    expect_equal(pcweek2date(c(1, 4)), as.POSIXct("1970-01-01", "UTC"))
 
     expect_equal(Cyclic(BuiltinCycle(7), "2020-04-06")@pcstart, c(2624, 1))
     expect_equal(Cyclic(BuiltinCycle(5), "2020-04-06")@pcstart, c(2624, 1))
@@ -345,7 +345,7 @@ pctipi <- window(pctipi, start = availStart(pctipi), end = availEnd(pctipi))
     expect_equal(.cycle_and_time2pair(BuiltinCycle(5), as.Date("1970-01-03")), c(1, NA))
     expect_equal(.cycle_and_time2pair(BuiltinCycle(5), as.Date("1970-01-04")), c(1, NA))
 
-    .cycle_and_pair2time(BuiltinCycle(7), c(1, 6)) == pc_week2date(c(1,6))
+    .cycle_and_pair2time(BuiltinCycle(7), c(1, 6)) == pcweek2date(c(1,6))
 
     expect_equal(.cycle_and_pair2time(BuiltinCycle(7), c(1, 6)),
                  as.POSIXct("1970-01-03", "UTC"))

@@ -131,7 +131,14 @@
 <a href="#version-0150" class="anchor"></a>Version 0.15.0<small> Unreleased </small>
 </h1>
 <ul>
-<li><p>added subset PAR models with trigonometric parameterisation.</p></li>
+<li><p>new generic <code>pcIntercept</code></p></li>
+<li><p>update methods for <code>pcMean</code></p></li>
+<li><p><code>pc_sdfactor</code> now returns a matrix also in the case <code>maxlag = 0</code> (as documented).</p></li>
+<li><p><code>pc.sdfactor</code> was renamed to <code>pc_sdfactor</code>. <code>pc.sdfactor</code>is available but deprecated.</p></li>
+<li><p>new function <code>pc_mean</code>.</p></li>
+<li><p><code>pc_sum</code> gets argument <code>na.rm</code> and a more efficient implementation.</p></li>
+<li><p>new methods for <code><a href="https://rdrr.io/pkg/zoo/man/na.trim.html">zoo::na.trim</a></code>.</p></li>
+<li><p>new subset PAR models with trigonometric parameterisation.</p></li>
 <li><p>consolidated the dependencies.</p></li>
 <li><p>vastly improved support for dates/times.</p></li>
 <li><p>use some datetime functions from <code>lubridate</code>, reexport <code><a href="http://lubridate.tidyverse.org/reference/date.html">lubridate::date</a></code>and <code>lubridate::date&lt;-</code>.</p></li>
