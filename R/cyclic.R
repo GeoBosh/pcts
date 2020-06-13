@@ -277,7 +277,7 @@ setMethod("pcts", "data.frame",
                          subindex = as.integer(sort(unique(cyc))))
         Cyclic(cycle, start = pct[[1]])
     }else{
-        stop("This branch not implemented yet - please contact the maintainer of the package")
+        stop("This branch not implemented yet - please contact the maintainer of package 'pcts'")
     }
 }
 

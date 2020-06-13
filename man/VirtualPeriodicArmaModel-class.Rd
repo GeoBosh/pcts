@@ -2,7 +2,7 @@
 \Rdversion{1.1}
 \docType{class}
 \alias{VirtualPeriodicArmaModel-class}
-\alias{pcMean,VirtualPeriodicArmaModel-method}
+%\alias{pcMean,VirtualPeriodicArmaModel-method}
 
 \title{Class VirtualPeriodicArmaModel}
 \description{Class VirtualPeriodicArmaModel.}

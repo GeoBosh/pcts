@@ -27,6 +27,8 @@ reference:
       - sim_parCoef
       - sim_parAcvf
       - Vec
+      - pcMean
+      - pcApply
   - title: Datasets
     contents:
       - dataFranses1996

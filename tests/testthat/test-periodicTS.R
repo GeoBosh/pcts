@@ -69,7 +69,6 @@ test_that("the new periodic classes are ok",
 
     window(zm.ts, start = c(1,2), end = c(2,1)) <- NA
     
-    
     z.ts <- pcts(z[ , 1]) # ok
     z.mts <- pcts(z) # ok
     z.mts_ts <- new("PeriodicMTS_ts", z) # ok
@@ -84,8 +83,10 @@ test_that("the new periodic classes are ok",
     z.ts_ts_keep <- pcts(z[ , 1], keep = TRUE)
     expect_error(pcts(z[ , 1], nseasons = 5, keep = TRUE),
                  "please change the frequency of the ts object or use keep = FALSE")
-    
-    
+
+    pcts(AirPassengers, nseasons = 12, keep = TRUE)
+    pcts(z, nseasons = 12, keep = TRUE)
+        
     as(AirPassengers, "PeriodicTS")
     as(AirPassengers, "PeriodicTS_ts")
     pcts(AirPassengers)
