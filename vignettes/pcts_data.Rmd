@@ -1,5 +1,5 @@
 ---
-title: "Importing and manipulating periodic time seires data"
+title: "Importing and manipulating periodic time series data"
 author: "Georgi N. Boshnakov"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -68,7 +68,7 @@ colnames(dataFranses1996)
 dim(dataFranses1996) # c(148, 19)
 ```
 
-It can be converrted to periodic time series with
+It can be converted to periodic time series with
 ```{r}
 pcfr <- pcts(dataFranses1996)
 colnames(pcfr)[2:3]

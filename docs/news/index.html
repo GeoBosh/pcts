@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pcts</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.15-0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.15.1</span>
       </span>
     </div>
 
@@ -94,7 +94,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/pcts_data.html">Importing and manipulating periodic time seires data</a>
+      <a href="../articles/pcts_data.html">Importing and manipulating periodic time series data</a>
     </li>
   </ul>
 </li>
@@ -126,37 +126,58 @@
       <small>Source: <a href='https://github.com/GeoBosh/pcts/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="version-0150" class="section level1">
-<h1 class="page-header" data-toc-text="0.15.0">
-<a href="#version-0150" class="anchor"></a>Version 0.15.0<small> Unreleased </small>
+    <div id="version-0151" class="section level1">
+<h1 class="page-header" data-toc-text="0.15.1">
+<a href="#version-0151" class="anchor"></a>Version 0.15.1<small> Unreleased </small>
 </h1>
 <ul>
-<li><p>new generic <code>pcIntercept</code></p></li>
-<li><p>update methods for <code>pcMean</code></p></li>
+<li>corrections of typo’s and other minor tweaks in the documentation.</li>
+</ul>
+</div>
+    <div id="version-015" class="section level1">
+<h1 class="page-header" data-toc-text="0.15">
+<a href="#version-015" class="anchor"></a>Version 0.15<small> 2020-10-31 </small>
+</h1>
+<div id="user-visible-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#user-visible-changes" class="anchor"></a>User visible changes</h2>
+<ul>
+<li><p>vastly improved support for dates/times.</p></li>
+<li><p>new generic <code>pcIntercept</code>.</p></li>
+<li><p>updated methods for <code>pcMean</code>.</p></li>
 <li><p><code>pc_sdfactor</code> now returns a matrix also in the case <code>maxlag = 0</code> (as documented).</p></li>
 <li><p><code>pc.sdfactor</code> was renamed to <code>pc_sdfactor</code>. <code>pc.sdfactor</code>is available but deprecated.</p></li>
 <li><p>new function <code>pc_mean</code>.</p></li>
+<li><p>new dataset <code>Fraser2017</code>.</p></li>
 <li><p><code>pc_sum</code> gets argument <code>na.rm</code> and a more efficient implementation.</p></li>
 <li><p>new methods for <code><a href="https://rdrr.io/pkg/zoo/man/na.trim.html">zoo::na.trim</a></code>.</p></li>
 <li><p>new subset PAR models with trigonometric parameterisation.</p></li>
-<li><p>consolidated the dependencies.</p></li>
-<li><p>vastly improved support for dates/times.</p></li>
-<li><p>use some datetime functions from <code>lubridate</code>, reexport <code><a href="http://lubridate.tidyverse.org/reference/date.html">lubridate::date</a></code>and <code>lubridate::date&lt;-</code>.</p></li>
+<li><p>now using some datetime functions from <code>lubridate. Also reexporting</code>lubridate::date<code>and</code>lubridate::date&lt;-`.</p></li>
 <li><p>first draft of a data vignette.</p></li>
-<li><p>removed class union “AnyTimeSeries”, it had not been in use for a long time.</p></li>
 <li><p>added missing <code>predict</code>, <code>residuals</code>, and <code>fitted</code> methods.</p></li>
 <li><p>improved <code><a href="../reference/pcTest-methods.html">pcTest()</a></code>.</p></li>
 <li>
 <p>included “nsadata.csv” in the package, currently as internal data for testing.</p>
 <p>Need description and maybe a better name before exporting. Object <code>datansa</code> is the whole dataset, object <code>nsaauto</code> is column “AUTOMOTIVEPRODNSA”.</p>
 </li>
-<li><p>changed slightly some Rd files not rendered well by pkgdown, e.g. move commented items out of ‘describe’ in methods’ descriptions.</p></li>
+<li><p>removed deprecated function <code><a href="../reference/pcts-deprecated.html">ptildeorders()</a></code>, use <code><a href="../reference/pdSafeParOrder.html">pdSafeParOrder()</a></code> instead.</p></li>
+<li><p>removed class union “AnyTimeSeries”, it had not been in use for a long time.</p></li>
+</ul>
+</div>
+<div id="bug-fixes-and-cleanup" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes-and-cleanup" class="anchor"></a>Bug fixes and cleanup</h2>
+<ul>
+<li><p>fixed use of suggested package to comply with CRAN policies</p></li>
+<li><p>in <code><a href="../reference/test_piar.html">test_piar()</a></code>, now p-values are set to <code>NA</code> if package <code>fUnitRoots</code> is not available. Previously an error was thrown.</p></li>
+<li><p>removed package <code>pear</code> from dependencies.</p></li>
+<li><p>consolidated the dependencies.</p></li>
 <li><p>replaced wrong use of <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> with <code><a href="https://rdrr.io/pkg/gbutils/man/isNA.html">gbutils::isNA()</a></code> or other suitable code.</p></li>
 <li><p>some old code contained instances of <code>class(x) == something</code>, now fixed.</p></li>
-<li><p>added further tests.</p></li>
+<li><p>changed slightly some Rd files not rendered well by pkgdown, e.g. move commented items out of ‘describe’ in methods’ descriptions.</p></li>
 <li><p>extensive testing and bug fixing.</p></li>
-<li><p>removed deprecated function <code><a href="../reference/pcts-deprecated.html">ptildeorders()</a></code>, use <code><a href="../reference/pdSafeParOrder.html">pdSafeParOrder()</a></code> instead.</p></li>
 </ul>
+</div>
 </div>
     <div id="version-014-4-cran" class="section level1">
 <h1 class="page-header" data-toc-text="0.14-4">
@@ -167,9 +188,9 @@
 <li><p>edited <code>README.md</code> to reflect the CRAN release of the package, since it contained some text that was meant for the pre-CRAN Github version only.</p></li>
 </ul>
 </div>
-    <div id="version-014-3-cran" class="section level1">
+    <div id="version-014-3-first-cran-version" class="section level1">
 <h1 class="page-header" data-toc-text="0.14-3">
-<a href="#version-014-3-cran" class="anchor"></a>Version 0.14-3 (CRAN)<small> 2020-01-09 </small>
+<a href="#version-014-3-first-cran-version" class="anchor"></a>Version 0.14-3 (first CRAN version)<small> 2020-01-09 </small>
 </h1>
 <ul>
 <li>now using <code>exportClass</code> to export classes rather than <code>exportClassPattern</code> with a lazy regexp.</li>
@@ -206,7 +227,7 @@
 <a href="#version-013-0" class="anchor"></a>Version 0.13-0<small> Unreleased </small>
 </h1>
 <ul>
-<li><p>replaced ~setIs~ introduced in v0.12-0 for <code>"PeriodicAutocovariances"</code> and related classes with direct inheritance.</p></li>
+<li><p>replaced <code>setIs</code>, introduced in v0.12-0 for <code>"PeriodicAutocovariances"</code> and related classes, with direct inheritance.</p></li>
 <li><p>numerous other changes, consolidations and bug-fixes. In particlar, updated periodic integrated and seasonally integrated models, including <code><a href="../reference/fitPM.html">fitPM()</a></code>.</p></li>
 </ul>
 </div>

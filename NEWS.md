@@ -1,8 +1,17 @@
-# Version 0.15.0
+# Version 0.15.1
 
-- new generic `pcIntercept`
+- corrections of typo's and other minor tweaks in the documentation.
 
-- update methods for `pcMean`
+
+# Version 0.15
+
+## User visible changes
+
+- vastly improved support for dates/times. 
+
+- new generic `pcIntercept`.
+
+- updated methods for `pcMean`.
 
 - `pc_sdfactor` now returns a matrix also in the case `maxlag = 0` (as
   documented).
@@ -12,22 +21,18 @@
 
 - new function `pc_mean`.
 
+- new dataset `Fraser2017`.
+
 - `pc_sum` gets argument `na.rm` and a more efficient implementation.
 
 - new methods for `zoo::na.trim`.
 
 - new subset PAR models with trigonometric parameterisation.
 
-- consolidated the dependencies.
-
-- vastly improved support for dates/times. 
-
-- use some datetime functions from `lubridate`, reexport `lubridate::date`and
-  `lubridate::date<-`.
+- now using some datetime functions from `lubridate. Also reexporting
+  `lubridate::date`and `lubridate::date<-`.
 
 - first draft of a data vignette.
-
-- removed class union "AnyTimeSeries", it had not been in use for a long time.
 
 - added missing `predict`, `residuals`, and `fitted` methods.
 
@@ -38,18 +43,30 @@
   Need description and maybe a better name before exporting.  Object `datansa`
   is the whole dataset, object `nsaauto` is column "AUTOMOTIVEPRODNSA".
 
-- changed slightly some Rd files not rendered well by pkgdown, e.g. move commented
-  items out of 'describe' in methods' descriptions. 
+- removed deprecated function `ptildeorders()`, use `pdSafeParOrder()` instead.
+
+- removed class union "AnyTimeSeries", it had not been in use for a long time.
+
+
+## Bug fixes and cleanup
+
+- fixed use of suggested package to comply with CRAN policies
+
+- in `test_piar()`, now p-values are set to `NA` if package `fUnitRoots` is not
+  available. Previously an error was thrown.
+
+- removed package `pear` from dependencies.
+
+- consolidated the dependencies.
 
 - replaced wrong use of `is.na()` with `gbutils::isNA()` or other suitable code.
 
 - some old code contained instances of `class(x) == something`, now fixed.
 
-- added further tests.
+- changed slightly some Rd files not rendered well by pkgdown, e.g. move
+  commented items out of 'describe' in methods' descriptions.
 
 - extensive testing and bug fixing.
-
-- removed deprecated function `ptildeorders()`, use `pdSafeParOrder()` instead.
 
 
 # Version 0.14-4 (CRAN)
@@ -62,7 +79,7 @@
   contained some text that was meant for the pre-CRAN Github version only.
 
 
-# Version 0.14-3 (CRAN)
+# Version 0.14-3 (first CRAN version)
 
 - now using `exportClass` to export classes rather than `exportClassPattern`
   with a lazy regexp.
@@ -90,8 +107,8 @@
 
 # Version 0.13-0
 
-- replaced ~setIs~ introduced in v0.12-0 for `"PeriodicAutocovariances"` and
-  related classes with direct inheritance.
+- replaced `setIs`, introduced in v0.12-0 for `"PeriodicAutocovariances"` and
+  related classes, with direct inheritance.
   
 - numerous other changes, consolidations and bug-fixes. In particlar, updated
   periodic integrated and seasonally integrated models, including `fitPM()`. 

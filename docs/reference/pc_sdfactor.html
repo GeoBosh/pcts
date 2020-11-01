@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pcts</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.15-0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.15.1</span>
       </span>
     </div>
 
@@ -97,7 +97,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/pcts_data.html">Importing and manipulating periodic time seires data</a>
+      <a href="../articles/pcts_data.html">Importing and manipulating periodic time series data</a>
     </li>
   </ul>
 </li>
@@ -160,7 +160,8 @@
     <div class='dont-index'><p><code>autocorrelations</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>Fraser</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"pear"</span>, <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/environment.html'>environment</a></span>())
+    <pre class="examples"><div class='input'><span class='co'>## equivalent to  data(Fraser, package = "pear")</span>
+<span class='no'>Fraser</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/window.html'>window</a></span>(<span class='no'>Fraser2017</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1912</span>, <span class='fl'>3</span>), <span class='kw'>end</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1990</span>, <span class='fl'>12</span>))
 
 <span class='no'>logfraser</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/window.html'>window</a></span>(<span class='fu'><a href='pcts-methods.html'>pcts</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='no'>Fraser</span>)), <span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1913</span>, <span class='fl'>1</span>))
 <span class='no'>acvf1</span> <span class='kw'>&lt;-</span> <span class='fu'>autocovariances</span>(<span class='no'>logfraser</span>, <span class='kw'>maxlag</span> <span class='kw'>=</span> <span class='fl'>2</span>)

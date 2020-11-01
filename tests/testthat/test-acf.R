@@ -32,9 +32,10 @@ test_that("pc.acrf is ok", {
     expect_equal(pc_sum(pres.m1, 4)[-4], shiftleft(c(NA, 1693, NA,  NA))[-4])
     expect_equal(pc_mean(pres.m1, 4)[-4], shiftleft(rowMeans(matrix(pres, nrow = 4)))[-4])
     
+    ## replacing with equivalent code using the new Fraser2017
+    ##     data(Fraser, package = "pear")
+    Fraser <- window(Fraser2017, start = c(1912, 3), end = c(1990, 12))
     
-    ## library("pear")
-    data(Fraser, package = "pear")
     logFraser <- log(Fraser)
     ## TODO: for now I need whole years
     logfraser936 <- ts(logFraser[1:936], frequency = 12)

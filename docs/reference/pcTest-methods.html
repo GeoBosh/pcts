@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pcts</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.15-0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.15.1</span>
       </span>
     </div>
 
@@ -95,7 +95,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/pcts_data.html">Importing and manipulating periodic time seires data</a>
+      <a href="../articles/pcts_data.html">Importing and manipulating periodic time series data</a>
     </li>
   </ul>
 </li>
@@ -209,7 +209,7 @@
     <pre class="examples"><div class='input'><span class='no'>cu</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcts-methods.html'>pcts</a></span>(<span class='no'>dataFranses1996</span>[ , <span class='st'>"CanadaUnemployment"</span>])
 <span class='no'>cu</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/window.html'>window</a></span>(<span class='no'>cu</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'><a href='availStart.html'>availStart</a></span>(<span class='no'>cu</span>), <span class='kw'>end</span> <span class='kw'>=</span> <span class='fu'><a href='availStart.html'>availEnd</a></span>(<span class='no'>cu</span>))
 
-<span class='fu'><a href='test_piar.html'>test_piar</a></span>(<span class='no'>cu</span>, <span class='fl'>4</span>, <span class='fl'>1</span>, <span class='kw'>sintercept</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; $p
+<span class='fu'><a href='test_piar.html'>test_piar</a></span>(<span class='no'>cu</span>, <span class='fl'>4</span>, <span class='fl'>1</span>, <span class='kw'>sintercept</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: fUnitRoots</span></div><div class='output co'>#&gt; $p
 #&gt; [1] 1
 #&gt; 
 #&gt; $spec

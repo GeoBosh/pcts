@@ -23,13 +23,26 @@
 }
 \section{Slots}{
   \describe{
-    \item{\code{theTS}:}{Object of class \code{"ANY"} ~~ }
-    \item{\code{period}:}{Object of class \code{"integer"} ~~ }
-    \item{\code{order}:}{Object of class \code{"integer"} ~~ }
-    \item{\code{findex}:}{Object of class \code{"function"} ~~ }
-    \item{\code{harmonics}:}{Object of class \code{"integer"} ~~ }
-    \item{\code{call}:}{Object of class \code{"call"} ~~ }
-    \item{\code{other}:}{Object of class \code{"namedList"} ~~ }
+    \item{\code{theTS}:}{
+      \code{"ANY"}, the time series to which the model is fitted.
+    }
+    \item{\code{period}:}{
+      \code{"integer"}, the period.
+    }
+    \item{\code{order}:}{\code{"integer"}, the order.
+    }
+    \item{\code{findex}:}{
+      \code{"function"}.
+    }
+    \item{\code{harmonics}:}{
+      \code{"integer"}, Fourier harmonics to include in the model.
+    }
+    \item{\code{call}:}{
+      \code{"call"}, the call used to fit the model.
+    }
+    \item{\code{other}:}{
+      \code{"namedList"}.
+    }
   }
 }
 \section{Methods}{
@@ -90,8 +103,8 @@ coef(tmpfitL)
 predict(tmpfitc, n.ahead = 4)
 predict(tmpfitcn, n.ahead = 4)
 
-## vcov(tmpfitc)
-## residuals(tmpfitc)
-## fitted(tmpfitc)
+sqrt(diag((vcov(tmpfitL))))
+e <- residuals(tmpfitL)
+fi <-  fitted(tmpfitL)
 }
 \keyword{classes}

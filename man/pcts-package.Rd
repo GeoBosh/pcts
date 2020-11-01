@@ -285,7 +285,7 @@ Maintainer: \Sexpr[stage=build]{pd$Maintainer}
 Boshnakov GN and Lambert-Lacroix S (2012).
 ``A periodic Levinson-Durbin algorithm for entropy maximization.''
 \emph{Computational Statistics \& Data Analysis}, \bold{56}, pp. 15--24.
-ISSN 0167-9473, \url{http://dx.doi.org/10.1016/j.csda.2011.07.001}, \url{http://www.sciencedirect.com/science/article/pii/S0167947311002556}.
+ISSN 0167-9473, \url{http://dx.doi.org/10.1016/j.csda.2011.07.001}, \url{https://www.sciencedirect.com/science/article/pii/S0167947311002556}.
 
 Boshnakov GN and Iqelan BM (2012).
 ``Maximum entropy models for general lag patterns.''

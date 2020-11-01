@@ -202,7 +202,7 @@ Boshnakov GN (1996).
 ``Recursive computation of the parameters of periodic
 autoregressive moving-average processes.''
 \emph{J. Time Ser. Anal.}, \bold{17}(4), pp. 333--349.
-ISSN 0143-9782, \url{http://doi.org/10.1111/j.1467-9892.1996.tb00281.x}.
+ISSN 0143-9782, \url{https://doi.org/10.1111/j.1467-9892.1996.tb00281.x}.
 % end:bibentry:  boshnakov1996pcarma
 }
 \author{Georgi N. Boshnakov}

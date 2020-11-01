@@ -356,10 +356,17 @@ if(verbose){
 
     wrk <- optim(rep(0, nseasons), f, control = list(reltol = tol))
 
+    ## lm() prepends "X" to the names of the coefficients in fit$coef, see below
+    colnames(data$X) <- .trig_vec_coef_names(data$harmonics, data$period, order, 
+                                             data$sintercept, data$type) 
+
     sigma2 <- exp(wrk$par)
     sigma2 <- sigma2 / sum(sigma2)
     weights <- rep(1/sigma2, length.out = nr)
     fit <- lm(y ~ 0 + X, data = data[c("y", "X")], weights = weights)
+
+    ## see the comment above; TODO: vcov still prepends 'X' to the names
+    names(fit$coef) <- colnames(data$X)
 
     e <- residuals(fit)
     sigma2ls <- .permean(e^2, nseasons)
@@ -460,22 +467,40 @@ setMethod("coef", "SubsetPM",
                   }
                   ## rownames(co) <- paste0("S", 1:period)
               }else{
-                   if(objtype == "vecbyrow"){
-                      merge.flag <- isTRUE(attr(sintercept, "merge"))
-                      if(sintercept && !merge.flag){
-                          names(co) <- .harmonics_names4(object@harmonics, period, order, sintercept)
-                      }else{
-                          nams <- .harmonics_names3(object@harmonics, period, order, sintercept)
-                          names(co) <- nams
-                      }
-                   }else{
-                       names(co) <- .harmonics_names2(object@harmonics, period, order, 
-                                                      sintercept)
-                   }
+                     # if(objtype == "vecbyrow"){
+                     #    merge.flag <- isTRUE(attr(sintercept, "merge"))
+                     #    if(sintercept && !merge.flag){
+                     #        names(co) <- .harmonics_names4(object@harmonics, period, order, sintercept)
+                     #    }else{
+                     #        nams <- .harmonics_names3(object@harmonics, period, order, sintercept)
+                     #        names(co) <- nams
+                     #    }
+                     # }else{
+                     #     names(co) <- .harmonics_names2(object@harmonics, period, order, 
+                     #                                    sintercept)
+                     # }
+                  names(co) <- .trig_vec_coef_names(object@harmonics, period, order, 
+                                                    sintercept, objtype)
               }
               co
           }
           )
+
+.trig_vec_coef_names <- function(harmonics, period, order, sintercept, objtype){
+    if(objtype == "vecbyrow"){
+        merge.flag <- isTRUE(attr(sintercept, "merge"))
+        if(sintercept && !merge.flag){
+            nams <- .harmonics_names4(harmonics, period, order, sintercept)
+        }else{
+            nams <- .harmonics_names3(harmonics, period, order, sintercept)
+        }
+    }else{
+        nams <- .harmonics_names2(harmonics, period, order, sintercept)
+    }
+
+    nams
+}
+
 
 setMethod("residuals", "SubsetPM",
           function(object, ...){

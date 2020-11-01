@@ -31,9 +31,11 @@ test_that("test fitPM()",
     pc.cconesidedsum(mx, eps.proba1, maxlag = 4)
     ## estimate h_{t,i}, see Boshnakov (1996)
     pc.hat.h(mx, eps.proba1, maxlag = 4)
-
    
-    data(Fraser, package = "pear")
+    ## replacing with equivalent code using the new Fraser2017
+    ##     data(Fraser, package = "pear")
+    Fraser <- window(Fraser2017, start = c(1912, 3), end = c(1990, 12))
+    
     logFraser <- log(Fraser)
     ## TODO: for now I need whole years;
     ##    !!! However note the typo 'logfraser', the following use 'logFraser'!

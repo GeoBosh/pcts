@@ -412,13 +412,21 @@ test_piar <- function(x, d, p, sintercept = FALSE, sslope = FALSE, homoschedasti
           else
               "nc"
 
-    pvalues <- c(LR = NA_real_,
-                 LRtau = fUnitRoots::padf(LRtau,     trend = tr, statistic = "t"),
-                 tau   = fUnitRoots::padf(tau,       trend = tr, statistic = "t"),
-                     # 2019-06-02 was LRtau = ...
-                 perFuller = fUnitRoots::padf(perFuller, trend = tr, statistic = "n") )
-                     # 2019-06-02 commenting out, this patch not needed after the above change:
-                     #    names(pvalues) <- c("LR", "LRtau", "tau", "perFilter")
+    pvalues <- if(requireNamespace("fUnitRoots")) {
+                   c(LR = NA_real_,
+                     LRtau = fUnitRoots::padf(LRtau, trend = tr, statistic = "t"),
+                     tau   = fUnitRoots::padf(tau,   trend = tr, statistic = "t"),
+                                                                  # 2019-06-02 was LRtau = ...
+                     perFuller = fUnitRoots::padf(perFuller, trend = tr, statistic = "n") )
+                    # 2019-06-02 commenting out, this patch not needed after the above change:
+                    #    names(pvalues) <- c("LR", "LRtau", "tau", "perFilter")
+               } else {
+                   message("need package 'fUnitRoots' to calculate p-values")
+                   c(LR = NA_real_,
+                     LRtau = NA_real_,
+                     tau   = NA_real_, 
+                     perFuller = NA_real_)
+               }
 
                                  # 2014-04-08 add spec to the return value;
                                  #     also, combined the stats in one vector

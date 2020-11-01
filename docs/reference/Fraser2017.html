@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>An example PAR autocorrelation function — ex1f • pcts</title>
+<title>Fraser River at Hope, mean monthly flow — Fraser2017 • pcts</title>
 
 
 <!-- jquery -->
@@ -39,13 +39,11 @@
 
 
 
-<meta property="og:title" content="An example PAR autocorrelation function — ex1f" />
+<meta property="og:title" content="Fraser River at Hope, mean monthly flow — Fraser2017" />
 <meta property="og:description" content="
-
-ex1 is the autocorrelation function used in the reference as an
-  example when the solution of the periodic Yule-Walker system gives an
-  invalid PAR model.  This can happen only if Lambert-Lacroix's
-  condition on the PAR order is not satisfied, see pdSafeParOrder." />
+  
+Mean monthly flow (cms) of Fraser River From March 1912 to December
+  2017, recorded by Fraser River at Hope station." />
 
 
 
@@ -128,56 +126,47 @@ ex1 is the autocorrelation function used in the reference as an
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>An example PAR autocorrelation function</h1>
+    <h1>Fraser River at Hope, mean monthly flow</h1>
     
-    <div class="hidden name"><code>ex1f.Rd</code></div>
+    <div class="hidden name"><code>Fraser2017.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-
-<p><code>ex1</code> is the autocorrelation function used in the reference as an
-  example when the solution of the periodic Yule-Walker system gives an
-  invalid PAR model.  This can happen only if Lambert-Lacroix's
-  condition on the PAR order is not satisfied, see <code>pdSafeParOrder</code>.</p>
+  
+<p>Mean monthly flow (cms) of Fraser River From March 1912 to December
+  2017, recorded by Fraser River at Hope station.</p>
     </div>
 
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"Fraser2017"</span>)</pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A function of two arguments</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='pdSafeParOrder.html'>pdSafeParOrder</a></code></p></div>
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p>See pp. 429--430 of the reference.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+    <p>A time series (class <code>"ts"</code>) with frequency 12, starting from
+  January 1912 (the first two data values are <code>NA</code>) to December 2017.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     
   
-<p><!-- % bibentry: Sophie2005pacf -->
-Lambert-Lacroix S (2005).
-`` Extension of autocovariance coefficients sequence for periodically correlated
-processes.''
-<em>Journal of Time Series Analysis</em>, <b>26</b>(6), pp. 423-435.
-<!-- % end:bibentry:  Sophie2005pacf --></p>
+<p>Dataset <code>Fraser2017</code> is an extention of dataset <code>"Fraser"</code>
+  in package <code>"pear"</code>. The latter runs upto December 1990 (not the
+  documented December 1991). At the time of writing this package
+  <code>"pear"</code> is archived on CRAN, which is the main reason to include
+  the dataset (with the added benefit of almost 30 years of additional
+  data).</p> 
+
+
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p><a href='https://wateroffice.ec.gc.ca/'>https://wateroffice.ec.gc.ca/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>ex1f</span>)
-<span class='co'>## compute the first few autocorrelations</span>
-<span class='no'>pc3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcts_reexports.html'>slMatrix</a></span>(<span class='kw'>period</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>maxlag</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>f</span> <span class='kw'>=</span> <span class='no'>ex1f</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"tt"</span>)</div><div class='output co'>#&gt; [1] "filling with a function!"</div><div class='input'><span class='co'>## Fir a PAR(0,2) model</span>
-<span class='no'>res0p2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcalg1.html'>alg1</a></span>(<span class='no'>pc3</span>[],<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>2</span>))
-<span class='co'>## model is invalid since a partial autocorrelation is larger than one:</span>
-<span class='no'>res0p2</span>$<span class='no'>be</span></div><div class='output co'>#&gt;      [,1] [,2]     [,3]
-#&gt; [1,]    1  0.0 0.000000
-#&gt; [2,]    1  0.9 2.064742</div><div class='input'><span class='co'>## Find a modified order:</span>
-<span class='fu'><a href='pdSafeParOrder.html'>pdSafeParOrder</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>2</span>)) <span class='co'># PAR(1,2)</span></div><div class='output co'>#&gt; [1] 1 2</div><div class='input'><span class='co'>## now the parcor's are fine:</span>
-<span class='no'>res1p2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pcalg1.html'>alg1</a></span>(<span class='no'>pc3</span>[],<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>))
-<span class='no'>res1p2</span>$<span class='no'>be</span></div><div class='output co'>#&gt;      [,1] [,2]      [,3]
-#&gt; [1,]    1 0.81 0.0000000
-#&gt; [2,]    1 0.90 0.6689647</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>Fraser2017</span>)
+
+<span class='no'>fr</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/window.html'>window</a></span>(<span class='no'>Fraser2017</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1912</span>, <span class='fl'>3</span>), <span class='kw'>end</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1990</span>, <span class='fl'>12</span>))
+<span class='co'>## all.equal(as.numeric(fr), as.numeric(pear::Fraser)) # TRUE</span>
+<span class='co'>## all.equal(tsp(fr), tsp(pear::Fraser))               # TRUE</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

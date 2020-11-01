@@ -8,17 +8,17 @@ Description: Classes and methods for modelling and simulation of
     methods including Boshnakov & Iqelan (2009)
     <doi:10.1111/j.1467-9892.2009.00617.x>, Boshnakov (1996)
     <doi:10.1111/j.1467-9892.1996.tb00281.x>.
-Version: 0.15-0
-Date: 2020-06-12
+Version: 0.15.1
+Date: 2020-10-31
 Author: Georgi N. Boshnakov
 Maintainer: Georgi N. Boshnakov <georgi.boshnakov@manchester.ac.uk>
 Depends: R (>= 3.5.0)
 Imports: methods, sarima, Matrix, BB, PolynomF (>= 2.0-2), gbutils, zoo, xts, stats4,
          lagged (>= 0.2.2), mcompanion, Rdpack (>= 0.9), lubridate
-Suggests: testthat, pear, fUnitRoots, partsm, knitr, rmarkdown
+Suggests: testthat, fUnitRoots, partsm, knitr, rmarkdown
 RdMacros: Rdpack
 LazyData: yes
-URL: https://geobosh.github.io/pcts (website)  https://github.com/GeoBosh/pcts (devel)
+URL: https://geobosh.github.io/pcts/ (website)  https://github.com/GeoBosh/pcts/ (devel)
 BugReports: https://github.com/GeoBosh/pcts/issues
 License: GPL (>= 2)
 Collate:
@@ -27,5 +27,5 @@ Collate:
     generics.R autocovariances.R classCycle.R pcFilterClasses.R
     PeriodicClasses.R cyclic.R FittedPeriodicModels.R fitPM.R pcTest.R
     PeriodicVector.R sim.R optimcore.R trig.R
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 VignetteBuilder: knitr

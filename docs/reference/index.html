@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pcts</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.15-0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.15.1</span>
       </span>
     </div>
 
@@ -94,7 +94,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/pcts_data.html">Importing and manipulating periodic time seires data</a>
+      <a href="../articles/pcts_data.html">Importing and manipulating periodic time series data</a>
     </li>
   </ul>
 </li>
@@ -136,8 +136,8 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-pcts-overview" class="hasAnchor"><a href="#section-pcts-overview" class="anchor"></a>pcts overview</h2>
-          <p class="section-desc"><p>pcts overview</p></p>
+          <h2 id="section-overview-of-package-pcts" class="hasAnchor"><a href="#section-overview-of-package-pcts" class="anchor"></a>Overview of package pcts</h2>
+          <p class="section-desc"></p>
         </th>
       </tr>
       
@@ -155,7 +155,7 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-main-functions" class="hasAnchor"><a href="#section-main-functions" class="anchor"></a>Main functions</h2>
+          <h2 id="section-create-and-manipulate-periodic-ts" class="hasAnchor"><a href="#section-create-and-manipulate-periodic-ts" class="anchor"></a>Create and manipulate periodic ts</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -173,10 +173,84 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="availStart.html">availStart()</a></code> <code><a href="availStart.html">availEnd()</a></code> </p>
+        </td>
+        <td><p>Time of first or last non-NA value</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="nCycles.html">nCycles()</a></code> <code><a href="nCycles.html">nTicks()</a></code> <code><a href="nCycles.html">nVariables()</a></code> </p>
+        </td>
+        <td><p>Basic time information about periodic time series</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pcMean-methods.html">pcMean()</a></code> </p>
+        </td>
+        <td><p>Compute periodic mean</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pcApply-methods.html">pcApply()</a></code> </p>
+        </td>
+        <td><p>Apply a function to each season</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="Vec.html">Vec()</a></code> <code><a href="Vec.html">tsMatrix()</a></code> <code><a href="Vec.html">tsVector()</a></code> <code><a href="Vec.html">tsVec()</a></code> <code><a href="Vec.html">pcMatrix()</a></code> <code><a href="Vec.html">pcArray()</a></code> <code><a href="Vec.html">pctsArray()</a></code> </p>
+        </td>
+        <td><p>Core data of periodic time series</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-fit-periodic-ts-models" class="hasAnchor"><a href="#section-fit-periodic-ts-models" class="anchor"></a>Fit periodic ts models</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
           <p><code><a href="fitPM.html">fitPM()</a></code> </p>
         </td>
         <td><p>Fit periodic time series models</p></td>
       </tr><tr>
+        
+        <td>
+          <p><code><a href="pclsdf.html">pclsdf()</a></code> </p>
+        </td>
+        <td><p>Fit PAR models using least squares</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pclspiar.html">pclspiar()</a></code> </p>
+        </td>
+        <td><p>Fit a periodically integrated autoregressive model</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fit_trigPAR_optim.html">fit_trigPAR_optim()</a></code> </p>
+        </td>
+        <td><p>Fit a subset trigonometric PAR model</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-characteristics-of-periodic-ts-and-models" class="hasAnchor"><a href="#section-characteristics-of-periodic-ts-and-models" class="anchor"></a>Characteristics of periodic ts and models</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="allSeasons.html">unitSeason()</a></code> <code><a href="allSeasons.html">unitCycle()</a></code> <code><a href="allSeasons.html">seqSeasons()</a></code> <code><a href="allSeasons.html">allSeasons()</a></code> <code><a href="allSeasons.html">`unitSeason&lt;-`()</a></code> <code><a href="allSeasons.html">`unitCycle&lt;-`()</a></code> <code><a href="allSeasons.html">`allSeasons&lt;-`()</a></code> </p>
@@ -197,21 +271,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="availStart.html">availStart()</a></code> <code><a href="availStart.html">availEnd()</a></code> </p>
-        </td>
-        <td><p>Time of first or last non-NA value</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="maxLag-methods.html">maxLag-methods</a></code> </p>
         </td>
         <td><p>Methods for function maxLag() in package 'pcts'</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="nCycles.html">nCycles()</a></code> <code><a href="nCycles.html">nTicks()</a></code> <code><a href="nCycles.html">nVariables()</a></code> </p>
-        </td>
-        <td><p>Basic time information about periodic time series</p></td>
       </tr><tr>
         
         <td>
@@ -221,22 +283,23 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="pclsdf.html">pclsdf()</a></code> </p>
+          <p><code><a href="pi1ar2par.html">pi1ar2par()</a></code> <code><a href="pi1ar2par.html">piar2par()</a></code> </p>
         </td>
-        <td><p>Fit PAR models using least squares</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pclspiar.html">pclspiar()</a></code> </p>
-        </td>
-        <td><p>Fit a periodically integrated autoregressive model</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fit_trigPAR_optim.html">fit_trigPAR_optim()</a></code> </p>
-        </td>
-        <td><p>Fit a subset trigonometric PAR model</p></td>
-      </tr><tr>
+        <td><p>Convert PIAR coefficients to PAR coefficients</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-tests" class="hasAnchor"><a href="#section-tests" class="anchor"></a>Tests</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="pcTest-methods.html">pcTest()</a></code> </p>
@@ -248,13 +311,20 @@
           <p><code><a href="test_piar.html">test_piar()</a></code> </p>
         </td>
         <td><p>Test for periodic integration</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pi1ar2par.html">pi1ar2par()</a></code> <code><a href="pi1ar2par.html">piar2par()</a></code> </p>
-        </td>
-        <td><p>Convert PIAR coefficients to PAR coefficients</p></td>
-      </tr><tr>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-simulation" class="hasAnchor"><a href="#section-simulation" class="anchor"></a>Simulation</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="sim_pwn.html">sim_pwn()</a></code> </p>
@@ -278,24 +348,6 @@
           <p><code><a href="sim_parAcvf.html">sim_parAcvf()</a></code> </p>
         </td>
         <td><p>Create a random periodic autocovariance function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Vec.html">Vec()</a></code> <code><a href="Vec.html">tsMatrix()</a></code> <code><a href="Vec.html">tsVector()</a></code> <code><a href="Vec.html">tsVec()</a></code> <code><a href="Vec.html">pcMatrix()</a></code> <code><a href="Vec.html">pcArray()</a></code> <code><a href="Vec.html">pctsArray()</a></code> </p>
-        </td>
-        <td><p>Core data of periodic time series</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pcMean-methods.html">pcMean()</a></code> </p>
-        </td>
-        <td><p>Compute periodic mean</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pcApply-methods.html">pcApply()</a></code> </p>
-        </td>
-        <td><p>Apply a function to each season</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -315,6 +367,12 @@
           <p><code><a href="dataFranses1996.html">dataFranses1996</a></code> </p>
         </td>
         <td><p>Example data from Franses (1996)</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="Fraser2017.html">Fraser2017</a></code> </p>
+        </td>
+        <td><p>Fraser River at Hope, mean monthly flow</p></td>
       </tr><tr>
         
         <td>

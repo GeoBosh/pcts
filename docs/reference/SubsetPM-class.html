@@ -75,7 +75,7 @@ Class &quot;SubsetPM&quot; - subset PAR models with trigonometric
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pcts</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.15-0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.15.1</span>
       </span>
     </div>
 
@@ -98,7 +98,7 @@ Class &quot;SubsetPM&quot; - subset PAR models with trigonometric
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/pcts_data.html">Importing and manipulating periodic time seires data</a>
+      <a href="../articles/pcts_data.html">Importing and manipulating periodic time series data</a>
     </li>
   </ul>
 </li>
@@ -149,13 +149,13 @@ Class &quot;SubsetPM&quot; - subset PAR models with trigonometric
     <h2 class="hasAnchor" id="slots"><a class="anchor" href="#slots"></a>Slots</h2>
 
     <p></p><dl'>
-    <dt><code>theTS</code>:</dt><dd><p>Object of class <code>"ANY"</code> ~~</p></dd>
-    <dt><code>period</code>:</dt><dd><p>Object of class <code>"integer"</code> ~~</p></dd>
-    <dt><code>order</code>:</dt><dd><p>Object of class <code>"integer"</code> ~~</p></dd>
-    <dt><code>findex</code>:</dt><dd><p>Object of class <code>"function"</code> ~~</p></dd>
-    <dt><code>harmonics</code>:</dt><dd><p>Object of class <code>"integer"</code> ~~</p></dd>
-    <dt><code>call</code>:</dt><dd><p>Object of class <code>"call"</code> ~~</p></dd>
-    <dt><code>other</code>:</dt><dd><p>Object of class <code>"namedList"</code> ~~</p></dd>
+    <dt><code>theTS</code>:</dt><dd><p><code>"ANY"</code>, the time series to which the model is fitted.</p></dd>
+    <dt><code>period</code>:</dt><dd><p><code>"integer"</code>, the period.</p></dd>
+    <dt><code>order</code>:</dt><dd><p><code>"integer"</code>, the order.</p></dd>
+    <dt><code>findex</code>:</dt><dd><p><code>"function"</code>.</p></dd>
+    <dt><code>harmonics</code>:</dt><dd><p><code>"integer"</code>, Fourier harmonics to include in the model.</p></dd>
+    <dt><code>call</code>:</dt><dd><p><code>"call"</code>, the call used to fit the model.</p></dd>
+    <dt><code>other</code>:</dt><dd><p><code>"namedList"</code>.</p></dd>
   
 </dl>
 
@@ -237,10 +237,11 @@ Class &quot;SubsetPM&quot; - subset PAR models with trigonometric
 #&gt;   Lag2_h1sin      Lag2_h2 
 #&gt;  0.402213170  1.391626291 </div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span>(<span class='no'>tmpfitc</span>, <span class='kw'>n.ahead</span> <span class='kw'>=</span> <span class='fl'>4</span>)</div><div class='output co'>#&gt; [1] 491.8044 513.6137 484.4487 493.2365</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span>(<span class='no'>tmpfitcn</span>, <span class='kw'>n.ahead</span> <span class='kw'>=</span> <span class='fl'>4</span>)</div><div class='output co'>#&gt; [1] 491.8044 513.6137 484.4487 493.2365</div><div class='input'>
-## vcov(tmpfitc)
-## residuals(tmpfitc)
-## fitted(tmpfitc)
-</div></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span>((<span class='fu'><a href='https://rdrr.io/r/stats/vcov.html'>vcov</a></span>(<span class='no'>tmpfitL</span>))))</div><div class='output co'>#&gt;    XLag1_h0 XLag1_h1cos XLag1_h1sin    XLag1_h2    XLag2_h0 XLag2_h1cos 
+#&gt;   0.1418448   0.1408195   0.1428627   0.1418448   0.1417504   0.1363816 
+#&gt; XLag2_h1sin    XLag2_h2 
+#&gt;   0.1469231   0.1417504 </div><div class='input'><span class='no'>e</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>residuals</a></span>(<span class='no'>tmpfitL</span>)
+<span class='no'>fi</span> <span class='kw'>&lt;-</span>  <span class='fu'><a href='https://rdrr.io/r/stats/fitted.values.html'>fitted</a></span>(<span class='no'>tmpfitL</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -26,7 +26,8 @@ pc_sdfactor(sd, maxlag)
 %\note{ }
 \seealso{ \code{\link{autocorrelations}} }
 \examples{
-data(Fraser, package = "pear", envir = environment())
+## equivalent to  data(Fraser, package = "pear")
+Fraser <- window(Fraser2017, start = c(1912, 3), end = c(1990, 12))
 
 logfraser <- window(pcts(log(Fraser)), start = c(1913, 1))
 acvf1 <- autocovariances(logfraser, maxlag = 2)
