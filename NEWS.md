@@ -1,5 +1,8 @@
 # Version 0.15.1
 
+- now the `plot` methods for time series objects are exported, so they work again
+  (they had stopped working due to changes in R 4.0).
+
 - corrections of typo's and other minor tweaks in the documentation.
 
 

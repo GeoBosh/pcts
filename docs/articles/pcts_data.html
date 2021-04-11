@@ -86,7 +86,7 @@
             <h3 class="subtitle">This vignette is part of package pcts, version 0.15.1.</h3>
                         <h4 class="author">Georgi N. Boshnakov</h4>
             
-            <h4 class="date">2020-11-01</h4>
+            <h4 class="date">2021-04-11</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/GeoBosh/pcts/blob/master/vignettes/pcts_data.Rmd"><code>vignettes/pcts_data.Rmd</code></a></small>
       <div class="hidden name"><code>pcts_data.Rmd</code></div>
@@ -95,9 +95,7 @@
 
     
     
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">pcts</span>)
-<span class="co">#&gt; Warning: replacing previous import 'vctrs::data_frame' by 'tibble::data_frame'</span>
-<span class="co">#&gt; when loading 'dplyr'</span></pre></body></html></div>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">pcts</span>)</pre></body></html></div>
 <p>The intended mode of work with time series in package <code><a href="../reference/pcts-methods.html">pcts()</a></code> is that users create periodic time series using function <code><a href="../reference/pcts-methods.html">pcts()</a></code> and then operate on the object created by it. <code><a href="../reference/pcts-methods.html">pcts()</a></code> accepts base R data objects, such as “ts”, “mts”, “numeric”, “matrix”, “data. frame”, as well as some time series classes with regular time from other packages, including “zooreg” (other classes can be added if required).</p>
 <p>Package <code>pcts</code> provides two native classes for periodic time series: “PeriodicTS” and “PeriodicMTS” for univariate and multivariate time series, respectively. There are also some classes serving as wrappers for the base “ts” and “mts” classes and some classes from other packages, such as “zoo”, if the original classes need to be preserved.</p>
 <p>When supplied with a time series object, <code><a href="../reference/pcts-methods.html">pcts()</a></code> gets the time information from it. For example, <code>AirPassengers</code> is a monthly time series starting on 1949, 1 from base R, so it is converted to a periodic time series with a monthly cycle and the same start time:</p>

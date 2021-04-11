@@ -92,6 +92,7 @@ S3method(predict, SubsetPM)
 
 
 exportMethods(
+    plot,
     head,
     tail,
     "[",        # are these necessary for primitive functions?
