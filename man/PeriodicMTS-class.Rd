@@ -2,6 +2,7 @@
 \Rdversion{1.1}
 \docType{class}
 \alias{PeriodicMTS-class}
+\alias{plot,PeriodicMTS,missing-method}
 
 \title{Class \code{"PeriodicMTS"}}
 \description{
@@ -51,7 +52,14 @@ Class \code{"\linkS4class{vector}"}, by class "matrix", distance 4, with explici
     \item{plot}{\code{signature(x = "PeriodicMTS", y = "missing")}: ... }
     \item{show}{\code{signature(object = "PeriodicMTS")}: ... }
     \item{summary}{\code{signature(object = "PeriodicMTS")}: ... }
-  }
+  
+    \item{[}{\code{signature(x = "PeriodicMTS", i = "ANY", j = "ANY", drop = "ANY")}: ... }
+    \item{[}{\code{signature(x = "PeriodicMTS", i = "AnyDateTime", j = "ANY", drop = "ANY")}: ... }
+    \item{[}{\code{signature(x = "PeriodicMTS", i = "AnyDateTime", j = "missing", drop = "ANY")}: ... }
+    \item{[[}{\code{signature(x = "PeriodicMTS", i = "ANY", j = "ANY")}: ... }
+    \item{fitPM}{\code{signature(model = "PeriodicArModel", x = "PeriodicMTS")}: ... }
+    \item{pcApply}{\code{signature(object = "PeriodicMTS")}: ... }
+    \item{pcMean}{\code{signature(object = "PeriodicMTS")}: ... }}
 }
 %\references{
 %%%  ~~put references to the literature/web site here~~

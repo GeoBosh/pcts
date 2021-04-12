@@ -27,7 +27,7 @@ availEnd(x, any = TRUE)
   Argument \code{any} is meaningful only for multivariate objects.  Its
   name is short for
   "the first/last index for which any of the values (ie at least one) is non-\code{NA}".
-  \code{any = FALSE} is taken to mean that the inedx is the first/last
+  \code{any = FALSE} is taken to mean that the index is the first/last
   for which all values are non-\code{NA}.
 
   

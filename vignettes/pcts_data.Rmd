@@ -50,8 +50,7 @@ ap
 
 Get the data from Mar 1952 to Feb 1959:
 ```{r}
-window(ap, start = c(1952, 3))
-window(ap, end = c(1959, 2))
+window(ap, start = c(1952, 3), end = c(1959, 2))
 ```
 
 Take the summer months only:
@@ -60,12 +59,15 @@ window(ap, seasons = 7:9)
 ```
 
 
-The dataset `dataFranses1996` contains a multivariate quarterly time series. See `?dataFranses1996` for more information. Here are some excerpts from it:
+The dataset `dataFranses1996` contains a multivariate quarterly time series, see
+`?dataFranses1996` for more information. The object has the standard R class `"mts"`, so can
+be loaded using `data()` without loading `pcts`.
+Here is some information about it:
 ```{r}
 data(dataFranses1996)
 class(dataFranses1996)
-colnames(dataFranses1996)
 dim(dataFranses1996) # c(148, 19)
+colnames(dataFranses1996)
 ```
 
 It can be converted to periodic time series with
@@ -84,7 +86,7 @@ tipi <- dataFranses1996[ , "USTotalIPI"]
 plot(tipi)
 ```
 
-Convert `tipi` to PeriodicTS and remove NA's at the start and end
+Convert `tipi` to `PeriodicTS` and remove `NA`s at the start and end:
 ```{r}
 pctipi <- pcts(tipi)
 pctipi <- window(pctipi, start = availStart(pctipi), end = availEnd(pctipi))

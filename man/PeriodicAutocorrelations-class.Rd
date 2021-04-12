@@ -2,7 +2,7 @@
 \Rdversion{1.1}
 \docType{class}
 \alias{PeriodicAutocorrelations-class}
-%\alias{plot,PeriodicAutocorrelations,missing-method}
+\alias{plot,PeriodicAutocorrelations,missing-method}
 
 \title{Class PeriodicAutocorrelations}
 \description{Class PeriodicAutocorrelations.}

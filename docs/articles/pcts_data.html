@@ -86,7 +86,7 @@
             <h3 class="subtitle">This vignette is part of package pcts, version 0.15.1.</h3>
                         <h4 class="author">Georgi N. Boshnakov</h4>
             
-            <h4 class="date">2021-04-11</h4>
+            <h4 class="date">2021-04-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/GeoBosh/pcts/blob/master/vignettes/pcts_data.Rmd"><code>vignettes/pcts_data.Rmd</code></a></small>
       <div class="hidden name"><code>pcts_data.Rmd</code></div>
@@ -120,7 +120,7 @@
 <span class="co">#&gt; Y1959 360 342 406 396 420 472 548 559 463 407 362 405</span>
 <span class="co">#&gt; Y1960 417 391 419 461 472 535 622 606 508 461 390 432</span></pre></body></html></div>
 <p>Get the data from Mar 1952 to Feb 1959:</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/stats/window.html">window</a></span>(<span class="no">ap</span>, <span class="kw">start</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1952</span>, <span class="fl">3</span>))
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/stats/window.html">window</a></span>(<span class="no">ap</span>, <span class="kw">start</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1952</span>, <span class="fl">3</span>), <span class="kw">end</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1959</span>, <span class="fl">2</span>))
 <span class="co">#&gt; An object of class "PeriodicTS"</span>
 <span class="co">#&gt; Slot "cycle": Start:  1952   March </span>
 <span class="co">#&gt; Cycle:  MonthYearCycle </span>
@@ -128,25 +128,6 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt;       Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span>
 <span class="co">#&gt; Y1952         193 181 183 218 230 242 209 191 172 194</span>
-<span class="co">#&gt; Y1953 196 196 236 235 229 243 264 272 237 211 180 201</span>
-<span class="co">#&gt; Y1954 204 188 235 227 234 264 302 293 259 229 203 229</span>
-<span class="co">#&gt; Y1955 242 233 267 269 270 315 364 347 312 274 237 278</span>
-<span class="co">#&gt; Y1956 284 277 317 313 318 374 413 405 355 306 271 306</span>
-<span class="co">#&gt; Y1957 315 301 356 348 355 422 465 467 404 347 305 336</span>
-<span class="co">#&gt; Y1958 340 318 362 348 363 435 491 505 404 359 310 337</span>
-<span class="co">#&gt; Y1959 360 342 406 396 420 472 548 559 463 407 362 405</span>
-<span class="co">#&gt; Y1960 417 391 419 461 472 535 622 606 508 461 390 432</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/window.html">window</a></span>(<span class="no">ap</span>, <span class="kw">end</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1959</span>, <span class="fl">2</span>))
-<span class="co">#&gt; An object of class "PeriodicTS"</span>
-<span class="co">#&gt; Slot "cycle": Start:  1949   January </span>
-<span class="co">#&gt; Cycle:  MonthYearCycle </span>
-<span class="co">#&gt; Number of seasons: 12 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;       Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span>
-<span class="co">#&gt; Y1949 112 118 132 129 121 135 148 148 136 119 104 118</span>
-<span class="co">#&gt; Y1950 115 126 141 135 125 149 170 170 158 133 114 140</span>
-<span class="co">#&gt; Y1951 145 150 178 163 172 178 199 199 184 162 146 166</span>
-<span class="co">#&gt; Y1952 171 180 193 181 183 218 230 242 209 191 172 194</span>
 <span class="co">#&gt; Y1953 196 196 236 235 229 243 264 272 237 211 180 201</span>
 <span class="co">#&gt; Y1954 204 188 235 227 234 264 302 293 259 229 203 229</span>
 <span class="co">#&gt; Y1955 242 233 267 269 270 315 364 347 312 274 237 278</span>
@@ -174,10 +155,12 @@
 <span class="co">#&gt; Y1958 491 505 404</span>
 <span class="co">#&gt; Y1959 548 559 463</span>
 <span class="co">#&gt; Y1960 622 606 508</span></pre></body></html></div>
-<p>The dataset <code>dataFranses1996</code> contains a multivariate quarterly time series. See <code><a href="../reference/dataFranses1996.html">?dataFranses1996</a></code> for more information. Here are some excerpts from it:</p>
+<p>The dataset <code>dataFranses1996</code> contains a multivariate quarterly time series, see <code><a href="../reference/dataFranses1996.html">?dataFranses1996</a></code> for more information. The object has the standard R class <code>"mts"</code>, so can be loaded using <code><a href="https://rdrr.io/r/utils/data.html">data()</a></code> without loading <code>pcts</code>. Here is some information about it:</p>
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">dataFranses1996</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span>(<span class="no">dataFranses1996</span>)
 <span class="co">#&gt; [1] "mts"    "ts"     "matrix"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="no">dataFranses1996</span>) <span class="co"># c(148, 19)</span>
+<span class="co">#&gt; [1] 148  19</span>
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">dataFranses1996</span>)
 <span class="co">#&gt;  [1] "year"                            "USTotalIPI"                     </span>
 <span class="co">#&gt;  [3] "CanadaUnemployment"              "GermanyGNP"                     </span>
@@ -188,9 +171,7 @@
 <span class="co">#&gt; [13] "UKImport"                        "UKPublicInvestment"             </span>
 <span class="co">#&gt; [15] "UKWorkforce"                     "SwedenNondurablesConsumption"   </span>
 <span class="co">#&gt; [17] "SwedenDisposableIncome"          "SA_SwedenNondurablesConsumption"</span>
-<span class="co">#&gt; [19] "SA_SwedenDisposableIncome"</span>
-<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="no">dataFranses1996</span>) <span class="co"># c(148, 19)</span>
-<span class="co">#&gt; [1] 148  19</span></pre></body></html></div>
+<span class="co">#&gt; [19] "SA_SwedenDisposableIncome"</span></pre></body></html></div>
 <p>It can be converted to periodic time series with</p>
 <div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">pcfr</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/pcts-methods.html">pcts</a></span>(<span class="no">dataFranses1996</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">pcfr</span>)[<span class="fl">2</span>:<span class="fl">3</span>]
@@ -200,7 +181,7 @@
 <div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">tipi</span> <span class="kw">&lt;-</span> <span class="no">dataFranses1996</span>[ , <span class="st">"USTotalIPI"</span>]
 <span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">tipi</span>)</pre></body></html></div>
 <p><img src="pcts_data_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
-<p>Convert <code>tipi</code> to PeriodicTS and remove NA’s at the start and end</p>
+<p>Convert <code>tipi</code> to <code>PeriodicTS</code> and remove <code>NA</code>s at the start and end:</p>
 <div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">pctipi</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/pcts-methods.html">pcts</a></span>(<span class="no">tipi</span>)
 <span class="no">pctipi</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/window.html">window</a></span>(<span class="no">pctipi</span>, <span class="kw">start</span> <span class="kw">=</span> <span class="fu"><a href="../reference/availStart.html">availStart</a></span>(<span class="no">pctipi</span>), <span class="kw">end</span> <span class="kw">=</span> <span class="fu"><a href="../reference/availStart.html">availEnd</a></span>(<span class="no">pctipi</span>))
 <span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">pctipi</span>)</pre></body></html></div>
