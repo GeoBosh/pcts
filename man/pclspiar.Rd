@@ -44,26 +44,11 @@ pclspiar(x, d, p, icoef = NULL, parcoef = NULL, sintercept = FALSE,
   \item{sigma2hat}{innovation variances.}
 }
 \references{
-  % bibentry: FransesB1
-Franses PH (1996).
-\emph{Periodicity and Stochastic Trends In Economic Time Series}.
-Oxford University Press Inc., New York.
-% end:bibentry:  FransesB1
-
-  % bibentry: FransesB2
-Franses PH and Paap R (2004).
-\emph{Periodic Time Series Models}.
-Oxford University Press Inc., New York.
-% end:bibentry:  FransesB2
-
-  % bibentry: boshnakov2009gen
-Boshnakov GN and Iqelan BM (2009).
-``Generation of time series models with given spectral
-properties.''
-\emph{J. Time Series Anal.}, \bold{30}(3), pp. 349--368.
-ISSN 0143-9782, \url{http://dx.doi.org/10.1111/j.1467-9892.2009.00617.x}.
-% end:bibentry:  boshnakov2009gen
-
+  \insertRef{FransesB1}{pcts}
+  
+  \insertRef{FransesB2}{pcts}
+  
+  \insertRef{boshnakov2009gen}{pcts}
 }
 \author{
   Georgi N. Boshnakov

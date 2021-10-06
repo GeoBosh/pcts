@@ -1,7 +1,0 @@
-pandoc: '2.5'
-pkgdown: 1.5.1
-pkgdown_sha: ~
-articles:
-  pcts_data: pcts_data.html
-last_built: 2021-04-12T22:14Z
-

@@ -7,6 +7,7 @@ reference:
     contents:
       - pcts
       - availStart
+      - window
       - nCycles
       - pcMean
       - pcApply

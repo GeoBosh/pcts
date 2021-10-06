@@ -31,19 +31,9 @@ pcAR2acf(coef, sigma2, p, maxlag = 10)
   for lags 0, 1, ..., maxlag (in this order).
 }
 \references{
-  % bibentry: boshnakov1996pcarma
-Boshnakov GN (1996).
-``Recursive computation of the parameters of periodic
-autoregressive moving-average processes.''
-\emph{J. Time Ser. Anal.}, \bold{17}(4), pp. 333--349.
-ISSN 0143-9782, \url{http://dx.doi.org/10.1111/j.1467-9892.1996.tb00281.x}.
-% end:bibentry:  boshnakov1996pcarma
-
-  % bibentry: b:Varna92
-Boshnakov GN and Boteva A (1992).
-``An algorithm for the computation of the theoretical autocovariances of a periodic autoregression process.''
-Varna.
-% end:bibentry:  b:Varna92
+  \insertRef{boshnakov1996pcarma}{pcts}
+  
+  \insertRef{b:Varna92}{pcts}
 }
 \author{Georgi N. Boshnakov}
 % \note{

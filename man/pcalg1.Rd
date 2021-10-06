@@ -73,26 +73,11 @@ alg1(r, p)
 
 }
 \references{
-  % bibentry: boshnakov1996pcarma
-Boshnakov GN (1996).
-``Recursive computation of the parameters of periodic
-autoregressive moving-average processes.''
-\emph{J. Time Ser. Anal.}, \bold{17}(4), pp. 333--349.
-ISSN 0143-9782, \url{http://dx.doi.org/10.1111/j.1467-9892.1996.tb00281.x}.
-% end:bibentry:  boshnakov1996pcarma
+  \insertRef{boshnakov1996pcarma}{pcts}
 
-  % bibentry: Sophie2000par
-Lambert-Lacroix S (2000).
-``On periodic autoregressive process estimation .''
-\emph{ IEEE Transactions on Signal Processing}, \bold{48}( 6 ), pp. 1800-1803.
-% end:bibentry:  Sophie2000par
-
-  % bibentry: Sophie2005pacf
-Lambert-Lacroix S (2005).
-`` Extension of autocovariance coefficients sequence for periodically correlated
-processes.''
-\emph{Journal of Time Series Analysis}, \bold{26}(6), pp. 423-435.
-% end:bibentry:  Sophie2005pacf
+  \insertRef{Sophie2000par}{pcts}
+  
+  \insertRef{Sophie2005pacf}{pcts}
 }
 \author{Georgi N. Boshnakov}
 \note{

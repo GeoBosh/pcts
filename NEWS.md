@@ -5,6 +5,9 @@
 
 - corrections of typo's and other minor tweaks in the documentation.
 
+- all references use Rd macros from Rdpack. This also fixed `doi`s that were
+  inserted with full URL.
+
 
 # Version 0.15
 
@@ -76,7 +79,7 @@
 
 - fixed a bug revealed by changes in R-devel circa start of February 2020. It
   was related to a change in variable names for some interactions produced by
-  `lm()`, see [this R-devel question](https://r.789695.n4.nabble.com/changed-names-from-lm-in-R-devel-td4761450.html). 
+  `lm()`, see this R-devel question: https://r.789695.n4.nabble.com/changed-names-from-lm-in-R-devel-td4761450.html). 
 
 - edited `README.md` to reflect the CRAN release of the package, since it
   contained some text that was meant for the pre-CRAN Github version only.

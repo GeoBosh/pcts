@@ -23,13 +23,7 @@ pc.hat.h(x, eps, maxlag, si2hat)
   A matrix of the coefficient up to lag maxlag with one row for each season.
 }
 \references{
-  % bibentry: boshnakov1996pcarma
-Boshnakov GN (1996).
-``Recursive computation of the parameters of periodic
-autoregressive moving-average processes.''
-\emph{J. Time Ser. Anal.}, \bold{17}(4), pp. 333--349.
-ISSN 0143-9782, \url{http://dx.doi.org/10.1111/j.1467-9892.1996.tb00281.x}.
-% end:bibentry:  boshnakov1996pcarma
+  \insertRef{boshnakov1996pcarma}{pcts}
 }
 \author{Georgi N. Boshnakov}
 %\note{ ~~further notes~~ }
