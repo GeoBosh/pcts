@@ -1,4 +1,6 @@
 [![CRANStatusBadge](http://www.r-pkg.org/badges/version/pcts)](https://cran.r-project.org/package=pcts)
+[![R-CMD-check](https://github.com/GeoBosh/pcts/workflows/R-CMD-check/badge.svg)](https://github.com/GeoBosh/pcts/actions)
+[![codecov](https://codecov.io/gh/GeoBosh/pcts/branch/master/graph/badge.svg?token=2SW9HKG71Y)](https://codecov.io/gh/GeoBosh/pcts)
 
 
 'pcts' is an R package for modelling periodically correlated and periodically
