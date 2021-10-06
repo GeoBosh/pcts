@@ -5,8 +5,10 @@
 
 - corrections of typo's and other minor tweaks in the documentation.
 
-- all references use Rd macros from Rdpack. This also fixed `doi`s that were
+- now all references use Rd macros from Rdpack. This also fixed `doi`s that were
   inserted with full URL.
+
+- updated JSS doi's to their new server.
 
 
 # Version 0.15
