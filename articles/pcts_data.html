@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pcts</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.15.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.15.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -64,7 +60,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/GeoBosh/pcts/">
+  <a href="https://github.com/GeoBosh/pcts/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -83,12 +79,12 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Importing and manipulating periodic time series data</h1>
-            <h3 class="subtitle">This vignette is part of package pcts, version 0.15.1.</h3>
-                        <h4 class="author">Georgi N. Boshnakov</h4>
+            <h3 data-toc-skip class="subtitle">This vignette is part of package pcts, version 0.15.1.</h3>
+                        <h4 data-toc-skip class="author">Georgi N. Boshnakov</h4>
             
-            <h4 class="date">2021-10-06</h4>
+            <h4 data-toc-skip class="date">2022-01-12</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/GeoBosh/pcts/blob/master/vignettes/pcts_data.Rmd"><code>vignettes/pcts_data.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/GeoBosh/pcts/blob/HEAD/vignettes/pcts_data.Rmd" class="external-link"><code>vignettes/pcts_data.Rmd</code></a></small>
       <div class="hidden name"><code>pcts_data.Rmd</code></div>
 
     </div>
@@ -96,12 +92,12 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://geobosh.github.io/pcts/">pcts</a></span><span class="op">)</span></code></pre></div>
-<p>The intended mode of work with time series in package <code><a href="../reference/pcts.html">pcts()</a></code> is that users create periodic time series using function <code><a href="../reference/pcts.html">pcts()</a></code> and then operate on the object created by it. <code><a href="../reference/pcts.html">pcts()</a></code> accepts base R data objects, such as “ts”, “mts”, “numeric”, “matrix”, “data. frame”, as well as some time series classes with regular time from other packages, including “zooreg” (other classes can be added if required).</p>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://geobosh.github.io/pcts/" class="external-link">pcts</a></span><span class="op">)</span></code></pre></div>
+<p>The intended mode of work with time series in package <code><a href="../reference/pcts-methods.html">pcts()</a></code> is that users create periodic time series using function <code><a href="../reference/pcts-methods.html">pcts()</a></code> and then operate on the object created by it. <code><a href="../reference/pcts-methods.html">pcts()</a></code> accepts base R data objects, such as “ts”, “mts”, “numeric”, “matrix”, “data. frame”, as well as some time series classes with regular time from other packages, including “zooreg” (other classes can be added if required).</p>
 <p>Package <code>pcts</code> provides two native classes for periodic time series: “PeriodicTS” and “PeriodicMTS” for univariate and multivariate time series, respectively. There are also some classes serving as wrappers for the base “ts” and “mts” classes and some classes from other packages, such as “zoo”, if the original classes need to be preserved.</p>
-<p>When supplied with a time series object, <code><a href="../reference/pcts.html">pcts()</a></code> gets the time information from it. For example, <code>AirPassengers</code> is a monthly time series starting on 1949, 1 from base R, so it is converted to a periodic time series with a monthly cycle and the same start time:</p>
+<p>When supplied with a time series object, <code><a href="../reference/pcts-methods.html">pcts()</a></code> gets the time information from it. For example, <code>AirPassengers</code> is a monthly time series starting on 1949, 1 from base R, so it is converted to a periodic time series with a monthly cycle and the same start time:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ap</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pcts.html">pcts</a></span><span class="op">(</span><span class="va">AirPassengers</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">ap</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pcts-methods.html">pcts</a></span><span class="op">(</span><span class="va">AirPassengers</span><span class="op">)</span>
 <span class="va">ap</span>
 <span class="co">#&gt; An object of class "PeriodicTS"</span>
 <span class="co">#&gt; Slot "cycle": Start:  1949   January </span>
@@ -123,7 +119,7 @@
 <span class="co">#&gt; Y1960 417 391 419 461 472 535 622 606 508 461 390 432</span></code></pre></div>
 <p>Get the data from Mar 1952 to Feb 1959:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/window.html">window</a></span><span class="op">(</span><span class="va">ap</span>, start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1952</span>, <span class="fl">3</span><span class="op">)</span>, end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1959</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/window.html">window</a></span><span class="op">(</span><span class="va">ap</span>, start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1952</span>, <span class="fl">3</span><span class="op">)</span>, end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1959</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; An object of class "PeriodicTS"</span>
 <span class="co">#&gt; Slot "cycle": Start:  1952   March </span>
 <span class="co">#&gt; Cycle:  MonthYearCycle </span>
@@ -159,14 +155,14 @@
 <span class="co">#&gt; Y1958 491 505 404</span>
 <span class="co">#&gt; Y1959 548 559 463</span>
 <span class="co">#&gt; Y1960 622 606 508</span></code></pre></div>
-<p>The dataset <code>dataFranses1996</code> contains a multivariate quarterly time series, see <code><a href="../reference/dataFranses1996.html">?dataFranses1996</a></code> for more information. The object has the standard R class <code>"mts"</code>, so can be loaded using <code><a href="https://rdrr.io/r/utils/data.html">data()</a></code> without loading <code>pcts</code>. Here is some information about it:</p>
+<p>The dataset <code>dataFranses1996</code> contains a multivariate quarterly time series, see <code><a href="../reference/dataFranses1996.html">?dataFranses1996</a></code> for more information. The object has the standard R class <code>"mts"</code>, so can be loaded using <code><a href="https://rdrr.io/r/utils/data.html" class="external-link">data()</a></code> without loading <code>pcts</code>. Here is some information about it:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">dataFranses1996</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">dataFranses1996</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">dataFranses1996</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">dataFranses1996</span><span class="op">)</span>
 <span class="co">#&gt; [1] "mts"    "ts"     "matrix"</span>
-<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">dataFranses1996</span><span class="op">)</span> <span class="co"># c(148, 19)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">dataFranses1996</span><span class="op">)</span> <span class="co"># c(148, 19)</span>
 <span class="co">#&gt; [1] 148  19</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">dataFranses1996</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">dataFranses1996</span><span class="op">)</span>
 <span class="co">#&gt;  [1] "year"                            "USTotalIPI"                     </span>
 <span class="co">#&gt;  [3] "CanadaUnemployment"              "GermanyGNP"                     </span>
 <span class="co">#&gt;  [5] "UKTotalInvestment"               "SA_USTotalIPI"                  </span>
@@ -179,42 +175,42 @@
 <span class="co">#&gt; [19] "SA_SwedenDisposableIncome"</span></code></pre></div>
 <p>It can be converted to periodic time series with</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pcfr</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pcts.html">pcts</a></span><span class="op">(</span><span class="va">dataFranses1996</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">pcfr</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
+<code class="sourceCode R"><span class="va">pcfr</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pcts-methods.html">pcts</a></span><span class="op">(</span><span class="va">dataFranses1996</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">pcfr</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
 <span class="co">#&gt; [1] "USTotalIPI"         "CanadaUnemployment"</span></code></pre></div>
 <p>The Franses’ time series is quite large and for convenience in presentation we work with parts of it below.</p>
 <p>Let’s take one of the time series:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tipi</span> <span class="op">&lt;-</span> <span class="va">dataFranses1996</span><span class="op">[</span> , <span class="st">"USTotalIPI"</span><span class="op">]</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">tipi</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">tipi</span><span class="op">)</span></code></pre></div>
 <p><img src="pcts_data_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
 <p>Convert <code>tipi</code> to <code>PeriodicTS</code> and remove <code>NA</code>s at the start and end:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pctipi</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pcts.html">pcts</a></span><span class="op">(</span><span class="va">tipi</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">pctipi</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pcts-methods.html">pcts</a></span><span class="op">(</span><span class="va">tipi</span><span class="op">)</span>
 <span class="va">pctipi</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/window.html">window</a></span><span class="op">(</span><span class="va">pctipi</span>, start <span class="op">=</span> <span class="fu"><a href="../reference/availStart.html">availStart</a></span><span class="op">(</span><span class="va">pctipi</span><span class="op">)</span>, end <span class="op">=</span> <span class="fu"><a href="../reference/availStart.html">availEnd</a></span><span class="op">(</span><span class="va">pctipi</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">pctipi</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">pctipi</span><span class="op">)</span></code></pre></div>
 <p><img src="pcts_data_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 <p>Subset as “PeriodicMTS”:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pcfr2to3</span> <span class="op">&lt;-</span> <span class="va">pcfr</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">pcfr2to3</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">pcfr2to3</span><span class="op">)</span></code></pre></div>
 <p><img src="pcts_data_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
 <p>“[” gives “PeriodicMTS” even with length one argument:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pcfr2to2</span>  <span class="op">&lt;-</span> <span class="va">pcfr</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>
 <span class="va">pcfr2to2a</span> <span class="op">&lt;-</span> <span class="va">pcfr</span><span class="op">[</span><span class="st">"USTotalIPI"</span><span class="op">]</span> <span class="co"># same</span></code></pre></div>
-<p>Use “[[” or <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> to get “PeriodicTS”</p>
+<p>Use “[[” or <code>$</code> to get “PeriodicTS”</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pcfr2</span> <span class="op">&lt;-</span> <span class="va">pcfr</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>
 <span class="va">pcfr2a</span> <span class="op">&lt;-</span> <span class="va">pcfr</span><span class="op">[[</span><span class="st">"USTotalIPI"</span><span class="op">]</span><span class="op">]</span> <span class="co"># same</span>
 <span class="va">pcfr2b</span> <span class="op">&lt;-</span> <span class="va">pcfr</span><span class="op">$</span><span class="va">USTotalIPI</span>      <span class="co"># same</span>
-<span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">pcfr2</span>, <span class="va">pcfr2a</span><span class="op">)</span> <span class="co"># TRUE</span>
+<span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">pcfr2</span>, <span class="va">pcfr2a</span><span class="op">)</span> <span class="co"># TRUE</span>
 <span class="co">#&gt; [1] TRUE</span>
-<span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">pcfr2</span>, <span class="va">pcfr2b</span><span class="op">)</span> <span class="co"># TRUE</span>
+<span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">pcfr2</span>, <span class="va">pcfr2b</span><span class="op">)</span> <span class="co"># TRUE</span>
 <span class="co">#&gt; [1] TRUE</span>
 
-<span class="va">c1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/time.html">cycle</a></span><span class="op">(</span><span class="va">pcfr</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">c1</span>, <span class="fl">8</span><span class="op">)</span>
+<span class="va">c1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/time.html" class="external-link">cycle</a></span><span class="op">(</span><span class="va">pcfr</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">c1</span>, <span class="fl">8</span><span class="op">)</span>
 <span class="co">#&gt; An object of class "PeriodicTS"</span>
 <span class="co">#&gt; Slot "cycle": Start:  1955   Quarter_1 </span>
 <span class="co">#&gt; Cycle:  QuarterYearCycle </span>
@@ -223,7 +219,7 @@
 <span class="co">#&gt;       Q1 Q2 Q3 Q4</span>
 <span class="co">#&gt; Y1955  1  2  3  4</span>
 <span class="co">#&gt; Y1956  1  2  3  4</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/time.html">frequency</a></span><span class="op">(</span><span class="va">pcfr</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/time.html" class="external-link">frequency</a></span><span class="op">(</span><span class="va">pcfr</span><span class="op">)</span>
 <span class="co">#&gt; [1] 4</span></code></pre></div>
   </div>
 
@@ -236,11 +232,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Georgi N. Boshnakov.</p>
+  <p></p>
+<p>Developed by Georgi N. Boshnakov.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -248,6 +246,8 @@
 
   
 
+
+  
 
   </body>
 </html>

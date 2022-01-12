@@ -25,6 +25,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -37,18 +39,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pcts</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.15.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.15.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -70,7 +66,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/GeoBosh/pcts/">
+  <a href="https://github.com/GeoBosh/pcts/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -90,19 +86,19 @@
 
 
 <p>‘pcts’ is an R package for modelling periodically correlated and periodically integrated time series.</p>
-<div id="installing-pcts" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#installing-pcts" class="anchor"></a>Installing pcts</h1></div>
-<p>Install the <a href="https://cran.r-project.org/package=pcts">latest stable version</a> of <code>pcts</code> from CRAN:</p>
+<div class="section level1">
+<div class="page-header"><h1 id="installing-pcts">Installing pcts<a class="anchor" aria-label="anchor" href="#installing-pcts"></a>
+</h1></div>
+<p>Install the <a href="https://cran.r-project.org/package=pcts" class="external-link">latest stable version</a> of <code>pcts</code> from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">"pcts"</span>)</span></code></pre></div>
-<p>You can install the <a href="https://github.com/GeoBosh/pcts">development version</a> of <code>pcts</code> from Github:</p>
+<p>You can install the <a href="https://github.com/GeoBosh/pcts" class="external-link">development version</a> of <code>pcts</code> from Github:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">library</span>(devtools)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="kw">install_github</span>(<span class="st">"GeoBosh/pcts"</span>)</span></code></pre></div>
 </div>
-<div id="overview" class="section level1">
-<h1 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h1>
-<p>Periodic time series can be created with <code><a href="reference/pcts.html">pcts()</a></code>. Models are fitted with <code><a href="reference/fitPM.html">fitPM()</a></code> and several other functions. To obtain periodic properties, such as sample periodic autocorrelations of periodic time series or theoretical periodic autocorrelations of periodic models, just call the respective functions (here <code>autocorrelations()</code> and <code>partialAutocorrelations()</code>) and they will compute the relevant property depending on the class of the argument, see the examples in the documentation.</p>
+<div class="section level1">
+<h1 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h1>
+<p>Periodic time series can be created with <code><a href="reference/pcts-methods.html">pcts()</a></code>. Models are fitted with <code><a href="reference/fitPM.html">fitPM()</a></code> and several other functions. To obtain periodic properties, such as sample periodic autocorrelations of periodic time series or theoretical periodic autocorrelations of periodic models, just call the respective functions (here <code>autocorrelations()</code> and <code>partialAutocorrelations()</code>) and they will compute the relevant property depending on the class of the argument, see the examples in the documentation.</p>
 <p>A good place to start is the help topic <code>pcts-package</code>. The data from Franses (1996) are available for examples and experiments as <code>dataFranses1996</code>, see <code><a href="reference/dataFranses1996.html">?dataFranses1996</a></code>. <code>dataFranses1996</code> is of class <code>"mts"</code> (the standard R class for multivariate time series).</p>
 <p>This is a major update of (unreleased) previous versions of ‘pcts’ which have been used in the last fifteen years or so by me and collaborators. I renamed a number of functions and other objects to improve consistency and to follow the current convention not to use dot (<code>.</code>) in function names. Also, I have temporarily removed some functions which will be put back after suitable revision.</p>
 </div>
@@ -111,47 +107,57 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=pcts">https://​cloud.r-project.org/​package=pcts</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/GeoBosh/pcts/">https://​github.com/​GeoBosh/​pcts/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/GeoBosh/pcts/issues">https://​github.com/​GeoBosh/​pcts/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=pcts" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/GeoBosh/pcts/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/GeoBosh/pcts/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>GPL (&gt;= 2)</li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing pcts</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Georgi N. Boshnakov <br><small class="roles"> Maintainer </small>  </li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://cran.r-project.org/package=pcts"><img src="http://www.r-pkg.org/badges/version/pcts" alt="CRANStatusBadge"></a></li>
-<li><a href="https://github.com/GeoBosh/pcts/actions"><img src="https://github.com/GeoBosh/pcts/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://codecov.io/gh/GeoBosh/pcts"><img src="https://codecov.io/gh/GeoBosh/pcts/branch/master/graph/badge.svg?token=2SW9HKG71Y" alt="codecov"></a></li>
+<li><a href="https://cran.r-project.org/package=pcts" class="external-link"><img src="http://www.r-pkg.org/badges/version/pcts" alt="CRANStatusBadge"></a></li>
+<li><a href="https://github.com/GeoBosh/pcts/actions" class="external-link"><img src="https://github.com/GeoBosh/pcts/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://codecov.io/gh/GeoBosh/pcts" class="external-link"><img src="https://codecov.io/gh/GeoBosh/pcts/branch/master/graph/badge.svg?token=2SW9HKG71Y" alt="codecov"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Georgi N. Boshnakov.</p>
+  <p></p>
+<p>Developed by Georgi N. Boshnakov.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -159,6 +165,8 @@
 
   
 
+
+  
 
   </body>
 </html>
