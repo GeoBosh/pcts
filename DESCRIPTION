@@ -8,7 +8,7 @@ Description: Classes and methods for modelling and simulation of
     methods including Boshnakov & Iqelan (2009)
     <doi:10.1111/j.1467-9892.2009.00617.x>, Boshnakov (1996)
     <doi:10.1111/j.1467-9892.1996.tb00281.x>.
-Version: 0.15.2
+Version: 0.15.2.9000
 Date: 2022-01-12
 Author: Georgi N. Boshnakov
 Maintainer: Georgi N. Boshnakov <georgi.boshnakov@manchester.ac.uk>
