@@ -1,3 +1,4 @@
+^[.]github
 .nojekyll
 ^docs/
 .rsync_exclude

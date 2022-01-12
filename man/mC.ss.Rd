@@ -43,7 +43,7 @@ xx.ss(period, type.eigval, n.root, eigabs, eigsign, co_r, co_arg,
   This may be used for getting better understanding of the model and the
   optimisation routines.
 
-  The result of both function is a list, containing several functions
+  The result of both functions is a list, containing several functions
   and an environment. The environment (element \code{env}) is the most
   important element since it allows access to everything in the model
   environment. The function elements of the list are simply a

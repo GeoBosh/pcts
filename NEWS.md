@@ -5,11 +5,6 @@
 
 - corrections of typo's and other minor tweaks in the documentation.
 
-- now all references use Rd macros from Rdpack. This also fixed `doi`s that were
-  inserted with full URL.
-
-- updated JSS doi's to their new server.
-
 
 # Version 0.15
 
@@ -61,7 +56,7 @@
 - fixed use of suggested package to comply with CRAN policies
 
 - in `test_piar()`, now p-values are set to `NA` if package `fUnitRoots` is not
-  available. Previously an error was thrown.
+  available and a message is issued. Previously an error was thrown.
 
 - removed package `pear` from dependencies.
 

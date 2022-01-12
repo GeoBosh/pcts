@@ -63,9 +63,10 @@ fitPM( model, x, ...)
     Fits a periodic model according to the specification given by
     \code{model}.
 
-    Currently this method uses \code{mC.ss} to set up the optimisation
-    environment and then calls one of the optimisation functions in that
-    environment as specified by argument \code{optim.method}, see below.
+    Currently this method uses \code{\link{mC.ss}} to set up the
+    optimisation environment and then calls one of the optimisation
+    functions in that environment as specified by argument
+    \code{optim.method}, see below.
 
     Additional arguments may be specified to control the optimisation.
 
@@ -184,16 +185,16 @@ fit1@sigma2
 
 ## both give the matrix Sigma for the "I" form
 identical(
-    vs$Phi0inv %*% diag(fit1@sigma2) %*% t(vs$Phi0inv)
+    vs$Phi0inv \%*\% diag(fit1@sigma2) \%*\% t(vs$Phi0inv)
     ,
-    tmp$Uform$U0inv %*% diag(tmp$Uform$Sigma)  %*% t(tmp$Uform$U0inv)
+    tmp$Uform$U0inv \%*\% diag(tmp$Uform$Sigma)  \%*\% t(tmp$Uform$U0inv)
 ) # TRUE
 
 ## no, this is a different matrix
 var1_mat <- cbind(vs$Phi0, # identity matrix
                   - vs$Phi) # drop trailing zero columns?
 var1_mat <- mcompanion::mCompanion(var1_mat)
-var1_Sigma <- vs$Phi0inv %*% diag(fit1@sigma2) %*% t(vs$Phi0inv)
+var1_Sigma <- vs$Phi0inv \%*\% diag(fit1@sigma2) \%*\% t(vs$Phi0inv)
 abs(eigen(diag(nrow(var1_mat)) - var1_mat)$values)
 }
 \keyword{pcts}
