@@ -37,6 +37,9 @@ Class \code{"\linkS4class{VirtualMonicFilter}"}, by class "VirtualBJFilter", dis
 \author{Georgi N. Boshnakov}
 \seealso{
   \code{\linkS4class{PeriodicSPFilter}}
+
+  \code{\link[sarima]{filterCoef}} for more details on the generics
+  
 }
 \examples{
 ## a toy filter of order c(3, 3, 3, 3) and 4 seasons
@@ -66,17 +69,21 @@ show( as(co, "PeriodicSPFilter") )
 ## change the sign convention:
 sp1 <- as(bj1, "PeriodicSPFilter")
 
-## bj1 and sp1 represent the same filter
+## the two parameterisations have different signs:
+bj1
+sp1
+
+## nevertheless, bj1 and sp1 represent the same filter
+filterPoly(bj1)
+filterPoly(sp1)
+identical(filterPoly(bj1), filterPoly(sp1)) # TRUE
+
 filterPolyCoef(bj1)
 filterPolyCoef(sp1)
-
 identical(filterPolyCoef(bj1), filterPolyCoef(sp1)) # TRUE
 
 filterOrder(bj1)
 nSeasons(bj1)
-
-## filterPoly(bj1)
-## filterPoly(sp1)
 }
 \keyword{classes}
 

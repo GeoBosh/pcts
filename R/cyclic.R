@@ -952,7 +952,7 @@ setMethod("plot", c(x = "PeriodicMTS", y = "missing"),
               if(nVariables(x) == 1){ ## copy the code from univariate, needs consolidation
                   cycles <- start(x)[1] : end(x)[1]
                   points(cycles, pcMatrix(x)[1, ], col = "blue") ## first season
-              }
+              } # TODO: add points also in multivariate case?
           })
 
 ## as.Date.PeriodicTimeSeries

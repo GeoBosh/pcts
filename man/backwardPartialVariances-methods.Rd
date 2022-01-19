@@ -2,8 +2,12 @@
 \docType{methods}
 \alias{backwardPartialVariances-methods}
 \alias{backwardPartialVariances,VirtualPeriodicAutocovariances-method}
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{
+  Compute periodic backward partial variances
+}
+\description{
+  Compute periodic backward partial variances.
+}
 \section{Methods}{
 \describe{
 
@@ -12,4 +16,3 @@
 }
 }}
 \keyword{methods}
-\keyword{internal}

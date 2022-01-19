@@ -32,14 +32,8 @@ autocorrelations of periodic models, just call the respective functions (here
 relevant property depending on the class of the argument, see the examples in
 the documentation.
 
-A good place to start is the help topic `pcts-package`.
-The data from Franses (1996) are available for examples and
-experiments as `dataFranses1996`, see `?dataFranses1996`. `dataFranses1996`
-is of class `"mts"` (the standard R class for multivariate time series).
-
-This is a major update of (unreleased) previous versions of 'pcts' which have
-been used in the last fifteen years or so by me and collaborators.  I renamed a
-number of functions and other objects to improve consistency and to follow the
-current convention not to use dot (`.`) in function names.  Also, I have
-temporarily removed some functions which will be put back after suitable
-revision.
+A good place to start is the help topic `?pcts-package`.  Several datasets are
+available for examples and experiments.  For example, `?dataFranses1996`
+contains the data from Franses (1996). The datasets are from classes `"mts"` or
+`"ts"` (the standard R classes for time series), so can be used without loading
+pcts, if desired.

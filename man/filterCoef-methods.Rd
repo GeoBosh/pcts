@@ -28,7 +28,7 @@
   stored in the object. Otherwise, if \code{convention} is one of the
   strings \code{"BJ"}, \code{"--"} or \code{"-"}, the coefficients
   returned have the opposite sign of those in the auxilliary polynomial
-  (Box-Jenkins' convention). if \code{convention} is one of \code{"SP"},
+  (Box-Jenkins' convention). If \code{convention} is one of \code{"SP"},
   \code{"++"} or \code{"+"}, the coefficients are as in the auxilliary
   polynomial (convention used in signal processing).
 
@@ -47,9 +47,11 @@
 }
 }
 }}
-%\seealso{
-%%% ~~objects to See Also as \code{\link{help}}, ~~~
-%}
+\seealso{
+  \code{\link[sarima]{filterCoef}} for further details;
+  
+  \code{\linkS4class{PeriodicBJFilter}} for examples
+}
 %\examples{
 %}
 \keyword{methods}

@@ -1,6 +1,6 @@
 \name{nSeasons-methods}
 \docType{methods}
-%\alias{nSeasons}
+\alias{nSeasons}
 \alias{nSeasons-methods}
 \alias{nSeasons,BareCycle-method}
 %\alias{nSeasons,CycleDescription-method}
@@ -28,6 +28,7 @@
 \alias{nSeasons,Every30MinutesCycle-method}
 \alias{nSeasons,PartialCycle-method}
 \alias{nSeasons,VirtualPeriodicModel-method}
+
 \title{Number of seasons for a periodic object}
 \description{Number of seasons for a periodic object.}
 %\usage{
@@ -40,8 +41,8 @@
 }
 \details{
 
-  \code{nSeasons} is a generic function. This page gives its methods for
-  the periodic classes in package \code{"pcts"}.
+  \code{nSeasons} is a generic function. This page gives its methods
+   defined in package \code{"pcts"}.
 
 }
 \value{
@@ -49,20 +50,6 @@
 }
 \author{Georgi N. Boshnakov}
 \section{Methods}{
-%
-%\item{\code{signature(x = "CycleDescription")}}{
-%%%  ~~describe this method here~~
-%}
-%
-%
-%\item{\code{signature(x = "pc.Model.WeaklyStat")}}{
-%%%  ~~describe this method here~~
-%}
-%
-%\item{\code{signature(x = "PeriodicFilter")}}{
-%%%  ~~describe this method here~~
-%}
-%
 \describe{
 \item{\code{signature(object = "DayWeekCycle")}}{{
 %%  ~~describe this method here~~
@@ -104,6 +91,10 @@
 %%  ~~describe this method here~~
 }
 }}}
+\seealso{
+  \code{\link{allSeasons}} for other functions related to the
+  seasonality of an object
+}
 \examples{
 ap <- pcts(AirPassengers)
 nSeasons(ap) # 12

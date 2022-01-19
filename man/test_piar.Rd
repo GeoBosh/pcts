@@ -6,13 +6,13 @@
 test_piar(x, d, p, sintercept = FALSE, sslope = FALSE, homoschedastic = FALSE)
 }
 \arguments{
-  \item{x}{time series}
-  \item{d}{period}
-  \item{p}{autoregressive order, a positive integer}
-  \item{sintercept}{if TRUE, include seasonal intercept}
-  \item{sslope}{if TRUE, include seasonal slope}
+  \item{x}{time series.}
+  \item{d}{period.}
+  \item{p}{autoregressive order, a positive integer.}
+  \item{sintercept}{if TRUE, include seasonal intercept.}
+  \item{sslope}{if TRUE, include seasonal slope.}
   \item{homoschedastic}{if TRUE, assume the innovations variance is the
-    same for all seasons}
+    same for all seasons.}
 }
 \details{
   Computes test statistics for Franses (1996) test for periodic
@@ -28,7 +28,7 @@ test_piar(x, d, p, sintercept = FALSE, sslope = FALSE, homoschedastic = FALSE)
     \code{homoschedastic}, a named logical vector.
   }
   \item{statistics}{
-    a matrix containing the the test statistics (first row) and the
+    a matrix containing the test statistics (first row) and the
     corresponding p-values (second row).  \code{"LR"} is not normalised,
     so its p-value is \code{NA}.
   }

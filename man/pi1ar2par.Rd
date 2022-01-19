@@ -16,6 +16,18 @@ piar2par(picoef, parcoef)
   }
 }
 \details{
+
+  These functions expand periodic filters represented in multiplicative
+  form.  The non-periodic analogue of the operation of these functions
+  is representing a multiplicative filter like \eqn{(1-B)(1-aB)}, where
+  \eqn{B} is the backward shift operator, by the single filter \eqn{1 -
+  (1+a)B + aB^2}, which is just a product of the polynomials, \eqn{1-B}
+  and \eqn{1 - aB}.
+
+  In the non-periodic case however this operation is not, in general,
+  equivalent to multiplication of the corresponding polynomials. It is
+  also not commutative.
+
   \code{pi1ar2par} converts PIAR(1) model coefficients specified as a
   set of coefficients corresponding to a periodic unit root and PAR
   coefficients to coefficients for a single filter.
@@ -32,11 +44,6 @@ piar2par(picoef, parcoef)
   the PAR filter is applied to the time series, then the filter
   specified by the last column and so on.
 
-  Note that unlike the stationary case, in general, this is not
-  equivalent to multiplication of the corresponding polynomials.
-  This is rather different from the stationary case, where the
-  analogous operation boils down just to multiplying the corresponding
-  polynomials.
 }
 \value{
   a matrix, whose i-th row contains the coefficients for the i-th season.

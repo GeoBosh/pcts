@@ -11,7 +11,8 @@ pclspiar(x, d, p, icoef = NULL, parcoef = NULL, sintercept = FALSE,
   \item{d}{period.}
   \item{p}{order of the model, a positive integer, see Details.}
   \item{icoef}{
-    initial values for the periodic integration coefficients.
+    initial values for the periodic integration coefficients. If missing
+    or \code{NULL} suitable values are computed.
   }
   \item{parcoef}{not used currently.}
   \item{sintercept}{if \code{TRUE} include seasonal intercepts.}

@@ -6,8 +6,8 @@
 \alias{ttmatToslPairs}
 \title{ Functions for some basic operations with seasons}
 \description{Functions for some basic operations with seasons.}
-\usage{
 %pc.omitneg(lags, maxlag)
+\usage{
 toSeason(t, period, t1 = 1, from = 1)
 toSeasonPair(t, s, period, ...)
 ttTosl(r, period)

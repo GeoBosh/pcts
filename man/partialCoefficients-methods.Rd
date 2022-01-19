@@ -1,10 +1,16 @@
 \name{partialCoefficients-methods}
 \docType{methods}
+\alias{partialCoefficients}
 \alias{partialCoefficients-methods}
 \alias{partialCoefficients,PeriodicArModel-method}
 \alias{partialCoefficients,VirtualPeriodicAutocovariances-method}
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+
+\title{
+  Compute periodic partial coefficients
+}
+\description{
+  Methods for computation of periodic partial coefficients.
+}
 \section{Methods}{
 \describe{
 
@@ -17,4 +23,3 @@
 }
 }}
 \keyword{methods}
-\keyword{internal}

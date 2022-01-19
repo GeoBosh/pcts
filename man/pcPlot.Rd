@@ -1,6 +1,8 @@
 \name{pcPlot}
+\alias{pcPlot}
 \alias{monthplot.PeriodicTimeSeries}
 \alias{boxplot.PeriodicTimeSeries}
+
 \title{Plot periodic time series}
 \description{Plot periodic time series.}
 \usage{
@@ -8,7 +10,6 @@
 
 \method{monthplot}{PeriodicTimeSeries}(x, ylab = deparse(substitute(x)), base, \dots)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{a periodic time series object.}
   \item{\dots}{
@@ -20,8 +21,6 @@
 \details{
 
   Functions for periodic/seasonal plots and boxplots.
-
-  The S3 method for \code{monthplot()} just calls \code{pcPlot()}. 
 
 }
 %\value{
@@ -35,9 +34,9 @@
 %%% ~put references to the literature/web site here ~
 %}
 \author{Georgi N. Boshnakov}
-%\seealso{
-%%% ~~objects to See Also as \code{\link{help}}, ~~~
-%}
+\seealso{
+  \code{\link{monthplot}}
+}
 \examples{
 ap <- pcts(AirPassengers)
 monthplot(ap)

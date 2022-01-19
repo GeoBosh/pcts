@@ -14,7 +14,6 @@ Objects can be created by calls of the form \code{new("PeriodicArModel", ar, ma,
 }
 \section{Slots}{
   \describe{
-    %\item{\code{const}:}{Object of class \code{"numeric"} ~~ }
     \item{\code{sigma2}:}{Object of class \code{"numeric"} ~~ }
     \item{\code{ar}:}{Object of class \code{"PeriodicArFilter"} ~~ }
     \item{\code{ma}:}{Object of class \code{"PeriodicMaFilter"} ~~ }
@@ -37,7 +36,6 @@ Class \code{"\linkS4class{VirtualPeriodicMeanModel}"}, by class "PeriodicArmaMod
   \describe{
     \item{autocovariances}{\code{signature(x = "PeriodicArModel")}: ... }
     \item{fitPM}{\code{signature(x = "ANY", model = "PeriodicArModel")}: ... }
-%%%     \item{predictionCoefficients}{\code{signature(x = "PeriodicArModel")}: ... }
 	 }
 }
 %\references{

@@ -21,7 +21,7 @@ PeriodicArModel(object, \dots)
 \details{
 
   \code{PeriodicArModel} creates objects from class
-  \code{PeriodicArModel}. This is a generic function with despatch methods on
+  \code{PeriodicArModel}. This is a generic function with dispatch methods on
   the first argument.
 %%  ~~ If necessary, more details than the description above ~~
 }
@@ -30,19 +30,7 @@ PeriodicArModel(object, \dots)
 }
 
 \section{Methods}{
-\describe{
-
-  \item{\code{signature(object = "matrix")}}{
-    \code{"object"} gives the coefficients, one row per season.
-}
-
-\item{\code{signature(object = "numeric")}}{
-      \code{"object"} gives the model order. Its length is taken to be
-      the number of seasons. The coefficients are set to NA.
-%%  ~~describe this method here~~
-}
-
-%\item{\code{signature(object = "PeriodicArmaSpec")}}{
+  %\item{\code{signature(object = "PeriodicArmaSpec")}}{
 %    \code{"object"}  is taken to specify the AR part of the model. Its
 %    class should have suitable methods. This is the case for classes
 %    from this package.
@@ -57,6 +45,19 @@ PeriodicArModel(object, \dots)
 %%% \item{\code{signature(object = "PeriodicArmaModel")}}{{
 %%% %%  ~~describe this method here~~
 %%% }
+
+\describe{
+
+  \item{\code{signature(object = "matrix")}}{
+    \code{"object"} gives the coefficients, one row per season.
+}
+
+\item{\code{signature(object = "numeric")}}{
+      \code{"object"} gives the model order. Its length is taken to be
+      the number of seasons. The coefficients are set to NA.
+%%  ~~describe this method here~~
+}
+
 \item{\code{signature(object = "PeriodicMonicFilterSpec")}}{{
 %%  ~~describe this method here~~
 }

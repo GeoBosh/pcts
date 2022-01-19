@@ -6,6 +6,12 @@
 \alias{na.trim}
 \alias{na.trim.PeriodicTS}
 \alias{na.trim.PeriodicMTS}
+\alias{frequency.PeriodicTimeSeries}
+\alias{deltat.PeriodicTimeSeries}
+\alias{cycle.PeriodicTimeSeries}
+\alias{time.PeriodicTimeSeries}
+\alias{start.Cyclic}
+\alias{end.Cyclic}
 
 \title{Periodic methods for base R functions}
 \description{
@@ -22,6 +28,18 @@
 
 \method{na.trim}{PeriodicMTS}(object, sides = c("both", "left", "right"), 
         is.na = c("any", "all"), \dots)
+
+\method{frequency}{PeriodicTimeSeries}(x, \dots)
+
+\method{deltat}{PeriodicTimeSeries}(x, \dots)
+
+\method{cycle}{PeriodicTimeSeries}(x, \dots)
+
+\method{time}{PeriodicTimeSeries}(x, offset = 0, \dots)
+
+\method{start}{Cyclic}(x, \dots)
+
+\method{end}{Cyclic}(x, \dots)
 }
 \arguments{
   \item{x,object}{an object from the indicated periodic class.}
@@ -44,11 +62,13 @@
     be considered missing.
     
   }
+  \item{offset}{currently ignored (:TODO:)}
 }
 \details{
   
   Periodic methods for base R and other common functions for
-  manipulation of time series.
+  manipulation of time series. These methods work analogoulsly to their
+  base R cousins and only the differences, if any, are discussed below.
 
   
   \code{\link[stats]{window}} takes a part of \code{x}, preserving the
@@ -64,8 +84,18 @@
 }
 \value{
 
+  for \code{window} and \code{na.trim}, 
   an object from the same class as the original, representing the
   requested part of the time series.
+
+  for \code{frequency}, an integer number.
+
+  for \code{deltat}, a number (1/frequency).
+
+  for \code{cycle} and \code{time}, a \code{"PeriodicTS"} object.
+
+  for \code{start} and \code{end}, time of first/last observation,
+  encoded as a pair of numbers.
 
 }
 %\references{
@@ -82,10 +112,12 @@
 %
 \seealso{
 
-  \code{\link[stats]{window}}, \code{\link[zoo]{na.trim}}, 
+  \code{\link[stats]{window}},
+  \code{\link[stats]{frequency}}, 
+  \code{\link[zoo]{na.trim}} for details on what these functions do.
 
-  \code{\link{availStart}} and \code{\link{availEnd}} which give the
-  times of the first and last non-NA observations.
+  \code{\link{availStart}} and \code{\link{availEnd}} give the times of
+  the first and last non-NA observations.
   
 }
 \examples{

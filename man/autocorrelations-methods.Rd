@@ -1,5 +1,6 @@
 \name{autocorrelations-methods}
 \docType{methods}
+\alias{autocorrelations}
 \alias{autocorrelations-methods}
 \alias{autocorrelations,numeric,ANY,missing-method}
 \alias{autocorrelations,PeriodicTimeSeries,ANY,missing-method}
@@ -42,16 +43,16 @@
 }}
 }
 \seealso{
-  \code{\link{autocovariances-methods}} for autocovariances; 
-  \code{\link[sarima]{autocorrelations}} in package \code{"sarima"}
+  \code{\link[sarima]{autocorrelations}} in package \pkg{sarima}
   for further details.
+  
+  \code{\link{autocovariances}} for autocovariances; 
 }
 \examples{
-## periodic
+## periodic ts object => peridic acf
 autocorrelations(pcts(AirPassengers), maxlag = 10)
 
-## for "ts" or "numeric" objects the default is non-periodic
-## non-periodic acf
+## for "ts" or "numeric" objects the default is non-periodic acf
 autocorrelations(AirPassengers, maxlag = 10) 
 autocorrelations(as.numeric(AirPassengers))
 ## argument 'nseasons' forces periodic acf

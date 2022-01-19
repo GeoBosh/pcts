@@ -2,8 +2,12 @@
 \docType{methods}
 \alias{backwardPartialCoefficients-methods}
 \alias{backwardPartialCoefficients,VirtualPeriodicAutocovariances-method}
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{
+  Compute periodic backward partial coefficients
+}
+\description{
+  Methods for computation of periodic backward partial coefficients.
+}
 \section{Methods}{
 \describe{
 
@@ -12,4 +16,3 @@
 }
 }}
 \keyword{methods}
-\keyword{internal}

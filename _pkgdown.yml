@@ -1,3 +1,7 @@
+url: https://geobosh.github.io/pcts
+
+template:
+  bootstrap: 5
 
 reference:
   - title: "Overview of package pcts"
@@ -7,29 +11,46 @@ reference:
     contents:
       - pcts
       - availStart
-      - window
       - nCycles
       - pcMean
       - pcApply
       - Vec
+      - window
+      - pcPlot
   - title: "Fit periodic ts models"
     contents:
       - fitPM
       - pclsdf
       - pclspiar
       - fit_trigPAR_optim
-  - title: "Characteristics of periodic ts and models"
+      - "num2pcpar"
+      - "pcarma_acvf2model"
+  - title: "Characteristics of periodic objects"
     contents:
       - allSeasons
+      - "nSeasons-methods"
+      - "maxLag-methods"
+      - pi1ar2par
+  - title: "Periodic autocorrelations and related quantities"
+    contents:
       - "autocorrelations-methods"
       - "autocovariances-methods"
-      - "maxLag-methods"
-      - "nSeasons-methods"
-      - pi1ar2par
-  - title: "Tests"
+      - "partialAutocorrelations-methods"     
+      - "partialAutocovariances-methods"      
+      - "partialCoefficients-methods"         
+      - "partialVariances-methods"            
+      - "backwardPartialCoefficients-methods"
+      - "backwardPartialVariances-methods"    
+      - "pc_sdfactor"
+  - title: "Tests and asymptotics"
     contents:
       - pcTest
       - test_piar      
+      - "pwn_McLeodLjungBox_test"
+      - "periodic_acf1_test"
+      - "meanvarcheck"
+      - "parcovmatlist"
+      - "pcacf_pwn_var"
   - title: "Simulation"
     contents:
       - sim_pwn
@@ -62,6 +83,13 @@ reference:
       - "PartialCycle-class"
       - "SimpleCycle-class"
       - "Cyclic-class"
+      - "pcCycle-methods"
+      - "modelCycle"
+      - "unitCycle-methods"
+      - "unitCycle<--methods"
+      - "unitSeason-methods"
+      - "unitSeason<--methods"
+      - "seqSeasons-methods"
   - title: "Datetimes and dates"
     contents:
       - "Cyclic"
@@ -69,6 +97,24 @@ reference:
       - "as_date-methods"
       - "as_datetime-methods"
       - "date<--methods"
+  - title: "Periodic filtering"
+    contents:
+      - "pc.filter"
+      - "pc.filter.xarma"
+  - title: "Periodic AR computations"
+    contents:
+      - "pcAR2acf"
+      - "pdSafeParOrder"
+      - "permean2intercept"
+      - "pcacfMat"
+      - "pcalg1"
+      - "pcalg1util"
+      - "pcAr.ss"
+  - title: "Periodic ARMA computations"
+    contents:
+      - "pcarma_solve"
+      - "pc.hat.h"
+      - "pcarma_unvec"
   - title: Classes
     contents:
       - "FittedPeriodicArModel-class"
@@ -100,44 +146,22 @@ reference:
       - "SiPeriodicArmaModel-class"
       - "SiPeriodicMaModel-class"
       - "SubsetPM-class"
+  - title: "Multi-companion form"
+    contents:
+      - "permodelmf"
+      - "mC.ss"
   - title: Other
     contents:
       - "ex1f"
       - "filterCoef-methods"
-      - "mC.ss"
-      - "meanvarcheck"
-      - "modelCycle"
-      - "num2pcpar"
-      - "parcovmatlist"
-      - "pcarma_acvf2model"
-      - "pc.filter"
-      - "pc.filter.xarma"
-      - "pc.hat.h"
-      - "pcarma_unvec"
-      - "pc_sdfactor"
-      - "pwn_McLeodLjungBox_test"
-      - "periodic_acf1_test"
-      - "pcacf_pwn_var"
-      - "pcAR2acf"
-      - "pcAr.ss"
-      - "pcCycle-methods"
-      - "pcPlot"
-      - "pcacfMat"
-      - "pcalg1"
-      - "pcalg1util"
-      - "pcarma_solve"
       - "sl_utils"
       - "pcts-deprecated"
-      - "pdSafeParOrder"
-      - "permean2intercept"
-      - "permodelmf"
-      - "seqSeasons-methods"
       - "sigmaSq-methods"
-      - "unitCycle-methods"
-      - "unitCycle<--methods"
-      - "unitSeason-methods"
-      - "unitSeason<--methods"
       - "[-methods"
       - "[<--methods"
       - "[[-methods"
       - "$-methods"
+
+
+
+

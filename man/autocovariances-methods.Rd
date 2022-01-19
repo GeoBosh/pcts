@@ -1,5 +1,6 @@
 \name{autocovariances-methods}
 \docType{methods}
+\alias{autocovariances}
 \alias{autocovariances-methods}
 %%%% 2019-05-11 commenting out methods defined elsewhere (i,e, in
 %%%% package 'sarima'
@@ -76,12 +77,23 @@
 }
 }}}
 \seealso{
-  \code{\link{autocorrelations-methods}} for autocorrelations; 
-  \code{autocovariances} in package \code{"sarima"}
+  \code{\link[sarima]{autocovariances}} in package \pkg{sarima}
   for further details.
+  
+  \code{\link{autocorrelations}} for autocorrelations; 
+
 }
-%\examples{
-%}
+\examples{
+## periodic ts object => peridic acvf
+autocovariances(pcts(AirPassengers), maxlag = 10)
+
+## for "ts" or "numeric" objects the default is non-periodic acvf
+autocovariances(AirPassengers, maxlag = 10) 
+autocovariances(as.numeric(AirPassengers))
+## argument 'nseasons' forces periodic acvf
+autocovariances(AirPassengers, maxlag = 10, nseasons = 12)
+autocovariances(as.numeric(AirPassengers), maxlag = 10, nseasons = 12)
+}
 \keyword{methods}
 \keyword{ts}
 \keyword{acf}

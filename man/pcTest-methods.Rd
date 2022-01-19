@@ -21,7 +21,7 @@ pcTest(x, nullmodel, nseasons, ...)
 }
 \details{
 
-  This is a generic function which acts as a despatcher for various
+  This is a generic function which acts as a dispatcher for various
   tests for periodicity and periodic correlation.
 
   \code{x} is typically a time series but conceptually it is an object
@@ -41,10 +41,6 @@ pcTest(x, nullmodel, nseasons, ...)
 
 \section{Methods}{
 \describe{
-
-%%% \item{\code{signature(x = "ANY", nullmodel = "ANY")}}{
-%%% %%  ~~describe this method here~~
-%%% }
 
 \item{\code{signature(x = "ANY", nullmodel = "character")}}{
   Argument \code{nullmodel} specifies the test to be performed.

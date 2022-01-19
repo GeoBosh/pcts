@@ -10,8 +10,9 @@ Description: Classes and methods for modelling and simulation of
     <doi:10.1111/j.1467-9892.1996.tb00281.x>.
 Version: 0.15.2.9000
 Date: 2022-01-12
-Author: Georgi N. Boshnakov
-Maintainer: Georgi N. Boshnakov <georgi.boshnakov@manchester.ac.uk>
+Authors@R: person(given = c("Georgi", "N."), family = "Boshnakov",
+                  role = c("aut", "cre"), 
+                  email = "georgi.boshnakov@manchester.ac.uk")
 Depends: R (>= 3.5.0)
 Imports: methods, sarima, Matrix, BB, PolynomF (>= 2.0-2), gbutils, zoo, xts, stats4,
          lagged (>= 0.2.2), mcompanion, Rdpack (>= 0.9), lubridate

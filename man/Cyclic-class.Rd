@@ -18,10 +18,9 @@ Objects can be created by calls of the form \code{new("Cyclic", ...)}.
 }
 }
 \section{Methods}{
+  %%%    \item{nSeasons}{\code{signature(object = "Cyclic")}: ... }
+  %%%    \item{pcCycle}{\code{signature(x = "Cyclic")}: ... }
   \describe{
-%%%    \item{nSeasons}{\code{signature(object = "Cyclic")}: ... }
-%%%    \item{pcCycle}{\code{signature(x = "Cyclic")}: ... }
-	 
     \item{nSeasons}{\code{signature(object = "Cyclic")}: ... }
     \item{pcCycle}{\code{signature(x = "Cyclic", type = "ANY")}: ... }
     \item{allSeasons}{\code{signature(x = "Cyclic", abb = "ANY")}: ... }

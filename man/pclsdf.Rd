@@ -9,8 +9,8 @@ pclsdf(x, d, lags = integer(0), sintercept = TRUE, sslope = FALSE,
        seasonof1st = NULL, coefonly = FALSE)
 }
 \arguments{
-  \item{x}{time series, a numeric vector}
-  \item{d}{period, an integer}
+  \item{x}{time series, a numeric vector.}
+  \item{d}{period, an integer.}
   \item{lags}{an integer vector, typically \code{1:p}, where \code{p} is
     the order of the autoregression. The same lags are used for all
     seasons.

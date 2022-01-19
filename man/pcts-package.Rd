@@ -248,32 +248,51 @@ have it set) and an analysis of the datetime stamps, if present.
 \code{pcts} also has arguments for specifying the number of seasons or
 the cycle, as well as the start datetime.
 
-The main periodic time series classes in pcts are PeriodicTS and
-PeriodicMTS, for univariate and multivvariate time series, respectively.
-Standard time series functions can be used with them directly, see for
-example \code{\link{window}} and \code{\link{start}}.
+The main periodic time series classes in \pkg{pcts} are
+\code{\linkS4class{PeriodicTS}} and \code{\linkS4class{PeriodicMTS}},
+for univariate and multivariate time series, respectively.  Standard
+base-R time series functions can be used with them directly, see for
+example
+\code{\link[=window.PeriodicTS]{window}},
+\code{\link[=frequency.PeriodicTimeSeries]{frequency}},
+\code{\link[=cycle.PeriodicTimeSeries]{cycle}},
+\code{\link[=time.PeriodicTimeSeries]{time}},
+\code{\link[=deltat.PeriodicTimeSeries]{deltat}},
+\code{\link[=start.Cyclic]{start}},
+\code{\link[=end.Cyclic]{end}},  
+\code{\link[=boxplot.PeriodicTimeSeries]{boxplot}},
+\code{\link[=monthplot.PeriodicTimeSeries]{monthplot}},
+\code{\link[=na.trim.PeriodicTS]{na.trim}} (\code{na.trim} is from package \pkg{zoo}).
 
+Methods for
+\code{plot},
+\code{summary},
+\code{print},
+\code{show},
+\code{head},
+\code{tail},
+and other base-R functions are defined where suitable.  Examples can be
+found in section Examples and in help pages for the corresponding
+functions, classes and methods.
 
 The naming conventions are as follows. Names of classes generally
 consists of one or more words. The first letter of each word, is
 capitalised.  Only the first letter of abbreviations for models, such as
 ARMA, is capitalised. Similarly for generic functions but for them the
-first word is not capitalised. In a few names PM stands for `periodic
-model' and TS for `time series'.
+first word is not capitalised. In a few names PM stands for 'periodic
+model' and TS for 'time series'.
 
 Significant portion of the code was written in 2005--2007. Many of the
 functions and classes have been renamed under the above
 conventions and most of those that are not are not exported but a few
 still are and they should be considered subject to change.
 
-
-
-\code{autocovariances} and \code{autocorrelations} are one-stop generic
-functions for computation of these second order properties. What to
-compute is deduced from the type of the object. For models they compute
-theoretical quantities --- periodic or non-periodic, scalar or
-multivariate. For time series they compute the corresponding sample
-counterparts.
+\code{autocovariances}, \code{autocorrelations}, \code{partialAutocorrelations}
+and others are one-stop generic functions for computation of properties
+of time series and models. What to compute is deduced from the type of
+the object. For models they compute theoretical quantities --- periodic
+or non-periodic, scalar or multivariate. For time series they compute
+the corresponding sample counterparts.
 
 }
 \author{
@@ -291,6 +310,15 @@ Maintainer: \Sexpr[stage=build]{pd$Maintainer}
 % ~~ the R documentation directory ~~
 \keyword{ package }
 \seealso{
+  \code{\link{pcts}},
+  \code{\link{dataFranses1996}}
+
+  \code{\link{fitPM}},
+  \code{\link{pclsdf}},
+  \code{\link{pclspiar}}
+  
+  \code{\link{autocorrelations}}
+  
   \code{\link[mcompanion:mcompanion-package]{mcompanion}}
 }
 \examples{

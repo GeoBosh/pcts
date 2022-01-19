@@ -2,8 +2,14 @@
 \alias{nCycles}
 \alias{nTicks}
 \alias{nVariables}
-\title{Basic time information about periodic time series}
-\description{Basic information about periodic time series.}
+\title{
+  Basic information about periodic ts objects
+}
+\description{
+
+  Basic information about periodic periodic time series objects.
+
+}
 \usage{
 nCycles(x, \dots)
 
@@ -33,6 +39,9 @@ nVariables(x, \dots)
   cycles available but this seems somewhat dangerous if done quietly. A
   good alternative is to provide argument for control of this.
 
+  There are further functions to get or set the names of the units of
+  season and the seasons, see \code{\link{allSeasons}} and \code{\link{nSeasons}}.
+
 }
 \value{
   integer number
@@ -44,9 +53,9 @@ nVariables(x, \dots)
 %
 %%% ~Make other sections like Warning with \section{Warning }{....} ~
 %
-%\seealso{
-%%% ~~objects to See Also as \code{\link{help}}, ~~~
-%}
+\seealso{
+  \code{\link{allSeasons}}, \code{\link{nSeasons}}
+}
 \examples{
 ap <- pcts(AirPassengers)
 nVariables(ap)

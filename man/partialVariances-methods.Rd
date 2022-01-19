@@ -1,9 +1,14 @@
 \name{partialVariances-methods}
 \docType{methods}
+\alias{partialVariances}
 \alias{partialVariances-methods}
 \alias{partialVariances,VirtualPeriodicAutocovariances-method}
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{
+  Compute periodic partial variances
+}
+\description{
+  Compute periodic partial variances.
+}
 \section{Methods}{
 \describe{
 
@@ -11,5 +16,10 @@
 %%  ~~describe this method here~~
 }
 }}
+\seealso{
+  \code{\link[sarima]{partialVariances}} in package \pkg{sarima}
+  for further details.
+  
+  \code{\link{partialAutocorrelations}} for for partial autocorrelations.
+}
 \keyword{methods}
-\keyword{internal}
