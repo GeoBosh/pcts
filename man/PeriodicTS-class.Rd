@@ -17,15 +17,30 @@
 
 }
 \section{Objects from the Class}{
-  Objects can be created by calls of the form
-  \code{new("PeriodicTS", ...)}.
-%%  ~~ describe objects here ~~
+
+  Objects can be created from numeric vectors and objects from other
+  time series classes by calling \code{\link{pcts}} (recommended in most
+  cases).
+
+  It is possible also to use calls of the form \code{new("PeriodicTS",
+  ...)}. This is more useful in programming. 
+
 }
 \section{Slots}{
   \describe{
-    \item{\code{.Data}:}{Object of class \code{"numeric"} ~~ }
-    \item{\code{cycle}:}{Object of class \code{"BasicCycle"} ~~ }
-    \item{\code{pcstart}:}{Object of class \code{"ANY"} ~~ }
+    \item{\code{.Data}:}{Object of class \code{"numeric"},
+      the core data.  Several functions can be used to extract it in
+      various formats, see \code{\link{Vec}}.
+      
+    }
+    \item{\code{cycle}:}{Object of class \code{"BasicCycle"},
+      representing the seasonal information, see
+      \code{\link{pcCycle}}. 
+
+    }
+    \item{\code{pcstart}:}{Object of class \code{"ANY"},
+      the time of the first observation.
+    }
 }
 }
 \section{Extends}{
@@ -70,10 +85,13 @@ Class \code{"Mnumeric"}, by class "numeric", distance 3.
 %
 %%% ~Make other sections like Warning with \section{Warning }{....} ~
 %
-%\seealso{
-%%%  ~~objects to See Also as \code{\link{~~fun~~}}, ~~~
-%%%  ~~or \code{\linkS4class{CLASSNAME}} for links to other classes ~~~
-%}
+\seealso{
+  \code{\link{pcts}} for creating \code{"PeriodicTS" } objects from raw
+  vectors and objects from other time series classes.
+  
+  \code{\linkS4class{PeriodicMTS}} for multivariate periodic time
+  series.
+}
 %\examples{
 %showClass("PeriodicTS")
 %}

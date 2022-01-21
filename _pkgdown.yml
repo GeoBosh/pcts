@@ -10,13 +10,13 @@ reference:
   - title: "Create and manipulate periodic ts"
     contents:
       - pcts
-      - availStart
       - nCycles
-      - pcMean
-      - pcApply
+      - availStart
       - Vec
       - window
       - pcPlot
+      - pcMean
+      - pcApply
   - title: "Fit periodic ts models"
     contents:
       - fitPM
@@ -29,10 +29,10 @@ reference:
     contents:
       - allSeasons
       - "nSeasons-methods"
-      - "maxLag-methods"
       - pi1ar2par
   - title: "Periodic autocorrelations and related quantities"
     contents:
+      - "maxLag-methods"
       - "autocorrelations-methods"
       - "autocovariances-methods"
       - "partialAutocorrelations-methods"     

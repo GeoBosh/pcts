@@ -12,6 +12,7 @@
 
 }
 \section{Objects from the Class}{
+
   Objects can be created by calls of the form
   \code{new("PeriodicMTS", ...)} but it is recommended to use 
   the function \code{\link{pcts}} in most cases. 
@@ -19,9 +20,20 @@
 }
 \section{Slots}{
   \describe{
-    \item{\code{.Data}:}{Object of class \code{"matrix"} ~~ }
-    \item{\code{cycle}:}{Object of class \code{"BasicCycle"} ~~ }
-    \item{\code{pcstart}:}{Object of class \code{"ANY"} ~~ }
+    \item{\code{.Data}:}{Object of class \code{"matrix"},
+      the core data.  Several functions can be used to extract it in
+      various formats, see \code{\link{Vec}}.
+
+    }
+    \item{\code{cycle}:}{Object of class \code{"BasicCycle"},
+      representing the seasonal information, see
+      \code{\link{pcCycle}}. 
+
+    }
+    \item{\code{pcstart}:}{Object of class \code{"ANY"},
+      the time of the first observation.
+
+    }
   }
 }
 \section{Extends}{

@@ -1,6 +1,5 @@
 \name{nSeasons-methods}
 \docType{methods}
-\alias{nSeasons}
 \alias{nSeasons-methods}
 \alias{nSeasons,BareCycle-method}
 %\alias{nSeasons,CycleDescription-method}
@@ -93,7 +92,9 @@
 }}}
 \seealso{
   \code{\link{allSeasons}} for other functions related to the
-  seasonality of an object
+  seasonality of an object;
+
+  \code{\link{nCycles}} for related functions
 }
 \examples{
 ap <- pcts(AirPassengers)

@@ -18,7 +18,7 @@ Install the [latest stable version](https://cran.r-project.org/package=pcts) of
 You can install the [development version](https://github.com/GeoBosh/pcts) of
 `pcts` from Github:
 
-    library(devtools)
+    library(remotes)
     install_github("GeoBosh/pcts")
 
 

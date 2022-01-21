@@ -1,6 +1,6 @@
 \name{sim_pc}
 \alias{sim_pc}
-\title{Simulate Periodically Correlated ARMA Series }
+\title{Simulate periodically correlated ARMA series }
 \description{
   Simulate a realization of a periodically correlated arma model
   or a continuation of an existing series.

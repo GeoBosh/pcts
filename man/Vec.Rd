@@ -42,18 +42,16 @@ pctsArray(x, ndim = 3, \dots)
 
   \code{Vec()} is like \code{as.vector()} but returns the result as a
   matrix with one column (column vector), as is usual in matrix
-  calculus. The default does literally this:
+  calculus. The default does literally this.
 
   The most common representation of data in statistics is matrix-like
   with one column per variable.  The descriptions of algorithms for
   multivariate time series however usually define the vector of
   observations at a given time to be a column vector. In particular,
   implementations of the Kalman filter often require precisely this
-  arrangement.
-
-  In that case the data matrix is the transposed of the more common one
-  and the vectorising operation stacks the observations, not the
-  variables.
+  arrangement.  In that case the data matrix is the transposed of the
+  more common one and the vectorising operation stacks the observations,
+  not the variables.
 
   The functions \code{tsMatrix()}, \code{tsVector()} and \code{tsVec()}
   provide the analogues of \code{as.vector()}, \code{as.matrix()} and
