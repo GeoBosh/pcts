@@ -67,20 +67,30 @@ Class "PeriodicMTS" is the main class for multivariate periodic
 
     <div class="section level2">
     <h2 id="objects-from-the-class">Objects from the Class<a class="anchor" aria-label="anchor" href="#objects-from-the-class"></a></h2>
-    <p>Objects can be created by calls of the form
+    
+
+<p>Objects can be created by calls of the form
   <code>new("PeriodicMTS", ...)</code> but it is recommended to use 
   the function <code><a href="pcts-methods.html">pcts</a></code> in most cases.</p>
     </div>
     <div class="section level2">
     <h2 id="slots">Slots<a class="anchor" aria-label="anchor" href="#slots"></a></h2>
     <p></p><dl><dt><code>.Data</code>:</dt>
-<dd><p>Object of class <code>"matrix"</code> ~~</p></dd>
+<dd><p>Object of class <code>"matrix"</code>,
+      the core data.  Several functions can be used to extract it in
+      various formats, see <code><a href="Vec.html">Vec</a></code>.</p>
+<p></p></dd>
 
     <dt><code>cycle</code>:</dt>
-<dd><p>Object of class <code>"BasicCycle"</code> ~~</p></dd>
+<dd><p>Object of class <code>"BasicCycle"</code>,
+      representing the seasonal information, see
+      <code><a href="pcCycle-methods.html">pcCycle</a></code>.</p>
+<p></p></dd>
 
     <dt><code>pcstart</code>:</dt>
-<dd><p>Object of class <code>"ANY"</code> ~~</p></dd>
+<dd><p>Object of class <code>"ANY"</code>,
+      the time of the first observation.</p>
+<p></p></dd>
 
   
 </dl></div>

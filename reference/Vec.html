@@ -95,16 +95,15 @@
   <code>as.vector(as.matrix(x))</code>.</p>
 <p><code>Vec()</code> is like <code><a href="https://rdrr.io/r/base/vector.html" class="external-link">as.vector()</a></code> but returns the result as a
   matrix with one column (column vector), as is usual in matrix
-  calculus. The default does literally this:</p>
+  calculus. The default does literally this.</p>
 <p>The most common representation of data in statistics is matrix-like
   with one column per variable.  The descriptions of algorithms for
   multivariate time series however usually define the vector of
   observations at a given time to be a column vector. In particular,
   implementations of the Kalman filter often require precisely this
-  arrangement.</p>
-<p>In that case the data matrix is the transposed of the more common one
-  and the vectorising operation stacks the observations, not the
-  variables.</p>
+  arrangement.  In that case the data matrix is the transposed of the
+  more common one and the vectorising operation stacks the observations,
+  not the variables.</p>
 <p>The functions <code>tsMatrix()</code>, <code>tsVector()</code> and <code>tsVec()</code>
   provide the analogues of <code><a href="https://rdrr.io/r/base/vector.html" class="external-link">as.vector()</a></code>, <code><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix()</a></code> and
   <code>Vec()</code> for the ``transposed'' arrangement.</p>
@@ -176,7 +175,7 @@
 <span class="r-in"><span class="va">dfr</span> <span class="op">&lt;-</span> <span class="fu"><a href="pcts-methods.html">pcts</a></span><span class="op">(</span><span class="va">dataFranses1996</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">dfr</span><span class="op">)</span>                     <span class="co"># c(148, 19)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 148  19</span>
-<span class="r-in"><span class="fu"><a href="nSeasons-methods.html">nSeasons</a></span><span class="op">(</span><span class="va">dfr</span><span class="op">)</span>                <span class="co"># 4</span></span>
+<span class="r-in"><span class="fu"><a href="nCycles.html">nSeasons</a></span><span class="op">(</span><span class="va">dfr</span><span class="op">)</span>                <span class="co"># 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">as.vector</a></span><span class="op">(</span><span class="va">dfr</span><span class="op">)</span><span class="op">)</span></span>

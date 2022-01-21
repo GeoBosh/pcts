@@ -86,19 +86,21 @@ Basic information about periodic periodic time series objects."><!-- mathjax -->
   <!-- % conventional case by variables interpretation. --></p>
 <p><code>nTicks</code> gives the number of time points, i.e. number of rows in
   the matrix representation.</p>
-<p><code>nVariables</code> gives the nmber of variables  in the time series.</p>
+<p><code>nVariables</code> gives the number of variables in the time series.</p>
+<p><code>nSeasons</code> gives the number of seasons of time series and other
+  periodic objects.</p>
 <p><code>nCycles</code> gives the number of cycles available in the data,
   e.g. number of years for monthly data. It always gives an integer
-  number. Cuttently, if the result is not an integer an error is
+  number. Currently, if the result is not an integer an error is
   raised. <strong>TODO:</strong> There is a case to round up or give the number of full
   cycles available but this seems somewhat dangerous if done quietly. A
   good alternative is to provide argument for control of this.</p>
 <p>There are further functions to get or set the names of the units of
-  season and the seasons, see <code><a href="allSeasons.html">allSeasons</a></code> and <code><a href="nSeasons-methods.html">nSeasons</a></code>.</p>
+  season and the seasons, see <code><a href="allSeasons.html">allSeasons</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>integer number</p>
+    <p>an integer number</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -106,7 +108,7 @@ Basic information about periodic periodic time series objects."><!-- mathjax -->
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="allSeasons.html">allSeasons</a></code>, <code><a href="nSeasons-methods.html">nSeasons</a></code></p></div>
+    <div class="dont-index"><p><code><a href="allSeasons.html">allSeasons</a></code>, <code>"<a href="nSeasons-methods.html">nSeasons-methods</a>"</code></p></div>
     </div>
 
     <div class="section level2">
@@ -117,6 +119,8 @@ Basic information about periodic periodic time series objects."><!-- mathjax -->
 <span class="r-in"><span class="fu">nTicks</span><span class="op">(</span><span class="va">ap</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 144</span>
 <span class="r-in"><span class="fu">nCycles</span><span class="op">(</span><span class="va">ap</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12</span>
+<span class="r-in"><span class="fu">nSeasons</span><span class="op">(</span><span class="va">ap</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/monthplot.html" class="external-link">monthplot</a></span><span class="op">(</span><span class="va">ap</span><span class="op">)</span></span>

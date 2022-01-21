@@ -67,20 +67,31 @@ Class "PeriodicTS" is the main class for univariate periodic
 
     <div class="section level2">
     <h2 id="objects-from-the-class">Objects from the Class<a class="anchor" aria-label="anchor" href="#objects-from-the-class"></a></h2>
-    <p>Objects can be created by calls of the form
-  <code>new("PeriodicTS", ...)</code>.
-<!-- %%  ~~ describe objects here ~~ --></p>
+    
+
+<p>Objects can be created from numeric vectors and objects from other
+  time series classes by calling <code><a href="pcts-methods.html">pcts</a></code> (recommended in most
+  cases).</p>
+<p>It is possible also to use calls of the form <code>new("PeriodicTS",
+  ...)</code>. This is more useful in programming.</p>
     </div>
     <div class="section level2">
     <h2 id="slots">Slots<a class="anchor" aria-label="anchor" href="#slots"></a></h2>
     <p></p><dl><dt><code>.Data</code>:</dt>
-<dd><p>Object of class <code>"numeric"</code> ~~</p></dd>
+<dd><p>Object of class <code>"numeric"</code>,
+      the core data.  Several functions can be used to extract it in
+      various formats, see <code><a href="Vec.html">Vec</a></code>.</p>      
+<p></p></dd>
 
     <dt><code>cycle</code>:</dt>
-<dd><p>Object of class <code>"BasicCycle"</code> ~~</p></dd>
+<dd><p>Object of class <code>"BasicCycle"</code>,
+      representing the seasonal information, see
+      <code><a href="pcCycle-methods.html">pcCycle</a></code>.</p>
+<p></p></dd>
 
     <dt><code>pcstart</code>:</dt>
-<dd><p>Object of class <code>"ANY"</code> ~~</p></dd>
+<dd><p>Object of class <code>"ANY"</code>,
+      the time of the first observation.</p></dd>
 
 
 </dl></div>
@@ -127,6 +138,13 @@ Class <code>"Mnumeric"</code>, by class "numeric", distance 3.</p>
 
   
 </dl></div>
+    <div class="section level2">
+    <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <div class="dont-index"><p><code><a href="pcts-methods.html">pcts</a></code> for creating <code>"PeriodicTS" </code> objects from raw
+  vectors and objects from other time series classes.</p>  
+<p><code><a href="PeriodicMTS-class.html">PeriodicMTS</a></code> for multivariate periodic time
+  series.</p></div>
+    </div>
 
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
