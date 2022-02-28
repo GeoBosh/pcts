@@ -116,6 +116,10 @@ Class "SubsetPM" - subset PAR models with trigonometric
 
 	 
 </dl></div>
+    <div class="section level2">
+    <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <div class="dont-index"><p><code><a href="fit_trigPAR_optim.html">fit_trigPAR_optim</a></code></p></div>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
@@ -198,6 +202,35 @@ Class "SubsetPM" - subset PAR models with trigonometric
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1.734688313 -0.009230596 -0.460324686 -1.347419108  0.256406474  0.061474825 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Lag2_h1sin      Lag2_h2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.402213170  1.391626291 </span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">## convert to PAR coefficients:</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">tmpfitc</span>,  type <span class="op">=</span> <span class="st">"PAR"</span>, matrix <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Sintercept     Lag_1      Lag_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Season_1   3.512361 1.2953991 -0.3749424</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Season_2  10.439987 0.3565062  0.6037369</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Season_3  23.603494 1.2748814 -0.3144367</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Season_4 -15.518542 0.5798721  0.5051740</span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">tmpfitcn</span>, type <span class="op">=</span> <span class="st">"PAR"</span>, matrix <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Sintercept     Lag_1      Lag_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Season_1   3.512361 1.2953991 -0.3749424</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Season_2  10.439987 0.3565062  0.6037369</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Season_3  23.603494 1.2748814 -0.3144367</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Season_4 -15.518542 0.5798721  0.5051740</span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">tmpfitLc</span>, type <span class="op">=</span> <span class="st">"PAR"</span>, matrix <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Sintercept     Lag_1      Lag_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Season_1   3.512361 1.2953991 -0.3749424</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Season_2  10.439987 0.3565062  0.6037369</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Season_3  23.603494 1.2748814 -0.3144367</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Season_4 -15.518542 0.5798721  0.5051740</span>
+<span class="r-in"></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">tmpfitL</span>, type <span class="op">=</span> <span class="st">"PAR"</span>, matrix <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              Lag_1      Lag_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Season_1 1.2155550 -0.2832022</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Season_2 0.2001616  0.7805471</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Season_3 1.8665524 -0.8520176</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Season_4 0.1871076  0.8674856</span>
+<span class="r-in"></span>
+<span class="r-in"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">tmpfitc</span>, n.ahead <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 491.8044 513.6137 484.4487 493.2365</span>
