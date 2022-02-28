@@ -32,11 +32,7 @@ parcovmatlist(parmodel, n, cor = FALSE, result = "list")
   a list, matrix or block-diagonal matrix, as described in Details
 }
 \references{
-  % bibentry: McLeod
-McLeod A (1994).
-``Diagnostic checking of periodic autoregression models with application.''
-\emph{Journal of time series analysis}, \bold{15}(2), pp. 221-233.
-% end:bibentry:  McLeod
+  \insertRef{McLeod1994diagnostic}{pcts}
 }
 \author{Georgi N. Boshnakov}
 %\note{

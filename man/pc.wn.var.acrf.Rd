@@ -24,11 +24,7 @@ pcacf_pwn_var(nepoch, period, lag, season)
   autocorrelation coefficient for season \code{season[i]} and lag \code{lag[j]}.
 }
 \references{
-  % bibentry: McLeod
-McLeod A (1994).
-``Diagnostic checking of periodic autoregression models with application.''
-\emph{Journal of time series analysis}, \bold{15}(2), pp. 221-233.
-% end:bibentry:  McLeod
+  \insertRef{McLeod1994diagnostic}{pcts}
 }
 \author{Georgi N. Boshnakov}
 %\note{}

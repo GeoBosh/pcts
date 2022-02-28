@@ -1,3 +1,9 @@
+# Version 0.15.2.9000
+
+- in pwn_McLeodLjungBox_test, a denominator contained, wrongly, a square root
+  (reported by Yueyun Zhu).
+
+
 # Version 0.15.2 (CRAN)
 
 - now the `plot` methods for time series objects are exported, so they work again

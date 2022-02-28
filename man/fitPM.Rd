@@ -103,6 +103,7 @@ fitPM( model, x, ...)
 }
 }}}
 \references{ (todo: to be completed properly later)
+  
   \insertRef{HipelMcLeod}{pcts}
   
   \insertRef{boshnakov2009gen}{pcts}

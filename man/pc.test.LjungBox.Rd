@@ -46,16 +46,15 @@ pwn_McLeodLjungBox_test(acf, nepoch, use = 1:maxlag,
     specified by \code{use}.}
   \item{ df }{the corresponding degrees of freedom}
 }
-\references{
-  % bibentry: McLeod
-McLeod A (1994).
-``Diagnostic checking of periodic autoregression models with application.''
-\emph{Journal of time series analysis}, \bold{15}(2), pp. 221-233.
-% end:bibentry:  McLeod
-}
 \author{Georgi N. Boshnakov}
 \note{
   TODO: Consolidate this and similar tests!
+
+  There is a typo in \insertCite{@@McLeod1994diagnostic, eq. (4.5);textual}{pcts},
+  noted by \insertCite{McLeod1995diagnosticCorrection}{pcts}.
+}
+\references{
+  \insertAllCited{}
 }
 \seealso{
   \code{\link{Box.test}} for the non-periodic case

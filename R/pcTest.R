@@ -32,13 +32,16 @@ pcacf_pwn_var <- function(nepoch, period, lag, season = 1:period){
                             # ordinary matrix or similar, it should not have zero lag column.
 
 # updated 2014-01-07; 2013-12-31; renamed on 2016-01-27
-pwn_McLeodLjungBox_test <- function(acf, nepoch, use = 1:maxlag, # McLeod 1994, p.229,eq.(4.5)
+pwn_McLeodLjungBox_test <- function(acf, nepoch, use = 1:maxlag,
                                     maxlag = ncol(as.matrix(acf)) - 1,  # '-1' in case acf is
                                                                         # an ordinary matrix
                                     period = nrow(as.matrix(acf)),
                                     fitdf = numeric(period) ){
-
-    wrk <- acf[ , 1:maxlag]^2 / sqrt( pcacf_pwn_var(nepoch, period, 1:maxlag, 1:period) )
+    ## McLeod 1994, p.229, eq.(4.5)
+    ## 2022-02-26 Note: the formula eq. (4.5) has a typo - denominator shouldn't have sqrt()!
+    ##    This was noted in:a correction to the above paper later TODO: cite!
+    ##    (spotted by Yueyun)
+    wrk <- acf[ , 1:maxlag]^2 / pcacf_pwn_var(nepoch, period, 1:maxlag, 1:period)
     stat <- apply(wrk, 1, cumsum)             # assumes result is (period x maxlag) matrix
 
                                          # for testing purposes, i think should never trigger.

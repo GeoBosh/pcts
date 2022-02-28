@@ -66,10 +66,9 @@
 %
 %%% ~Make other sections like Warning with \section{Warning }{....} ~
 %
-%\seealso{
-%%%  ~~objects to See Also as \code{\link{~~fun~~}}, ~~~
-%%%  ~~or \code{\linkS4class{CLASSNAME}} for links to other classes ~~~
-%}
+\seealso{
+  \code{\link{fit_trigPAR_optim}}
+}
 \examples{
 pcfr4 <- pcts(dataFranses1996)[[4]]
 x4 <- as.numeric(window(pcfr4, start = availStart(pcfr4), end = availEnd(pcfr4)))
@@ -99,6 +98,15 @@ coef(tmpfitLc)
 
 coef(tmpfit)
 coef(tmpfitL)
+
+## convert to PAR coefficients:
+coef(tmpfitc,  type = "PAR", matrix = TRUE)
+coef(tmpfitcn, type = "PAR", matrix = TRUE)
+coef(tmpfitLc, type = "PAR", matrix = TRUE)
+
+coef(tmpfitL, type = "PAR", matrix = TRUE)
+
+
 
 predict(tmpfitc, n.ahead = 4)
 predict(tmpfitcn, n.ahead = 4)

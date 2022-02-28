@@ -34,7 +34,8 @@ fit_trigPAR_optim(x, order, nseasons, seasonof1st = 1, maxiter = 200,
 \details{
 
   Fits a subset PAR model using trigonometric parameterisation,
-  i.e. Fourier series written in terms of sines and cosines.
+  i.e. Fourier series for the periodic coefficients written in terms of
+  sines and cosines.
 
   If argument \code{type} is \code{bylag}, the parameters for each lag
   are parameterised independently from other lags. If \code{sintercept}
@@ -75,7 +76,7 @@ fit_trigPAR_optim(x, order, nseasons, seasonof1st = 1, maxiter = 200,
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
-% \keyword{ ~kwd1 }
+\keyword{ts}
 % \keyword{ ~kwd2 }
 % Use only one keyword per line.
 % For non-standard keywords, use \concept instead of \keyword:

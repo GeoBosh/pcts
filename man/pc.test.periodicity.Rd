@@ -27,16 +27,12 @@ periodic_acf1_test(acf, nepochs)
   \item{pvalue}{the p-value associated with the  test statistic.}
 }
 \references{
-  % bibentry: McL93
-McLeod A (1993).
-``Parsimony, model adequacy and periodic correlation in time series forecasting.''
-\emph{Internat. Statist. Rev.}, \bold{61}(3), pp. 387-393.
-% end:bibentry:  McL93
-  % bibentry: McLeod
-McLeod A (1994).
-``Diagnostic checking of periodic autoregression models with application.''
-\emph{Journal of time series analysis}, \bold{15}(2), pp. 221-233.
-% end:bibentry:  McLeod
+  \insertRef{Mcleod1993parsimony}{pcts}
+  
+  \insertRef{McLeod1994diagnostic}{pcts}
+
+  \insertRef{McLeod1995diagnosticCorrection}{pcts}
+  
 }
 \author{Georgi N. Boshnakov}
 %\note{}

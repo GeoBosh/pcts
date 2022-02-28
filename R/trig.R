@@ -408,13 +408,45 @@ setMethod("coef", "SubsetPM",
               ## if the weights need to be updated with the final estimate of sigma2.
               ##
               ## TODO: this could be sorted out by doing final lm() in the fitting functions,
-              ##       but this is like chiken and egg. It is better to assume that the
+              ##       but this is like chicken and egg. It is better to assume that the
               ##       fitting function has reached a fixed point. 
               co <- coef(object@other$fit, ...)  # object@other$fit$coef
               objtype <- object@other$type
               period <- object@period
               order <- object@order
+              sintercept <- object@other$data$sintercept
+
+              if(!is.null(type) && type == "PAR"){
+                  ## TODO:
+                  ## crude patch 2022-01-24 - I have forgotten what was going on here
+                  beta  <- as.vector(object@other$data$M %*% co)
+
+                  merge.flag <- isTRUE(attr(sintercept, "merge"))
+                  if(sintercept && !merge.flag){
+                      beta0 <- beta[1:period]
+                      beta <- beta[-(1:period)]
+		  }
+                  
+                  phi <- if(objtype == "vecbyrow")
+                             matrix(beta, nrow = object@period, byrow = TRUE)
+                         else # "bylag"
+                             matrix(beta, nrow = object@period)
+                  
+                  if(sintercept && !merge.flag){
+                      phi <- cbind(beta0, phi)
+                  }
+                  
+                  colnames(phi) <- c(if(sintercept) "Sintercept" else character(0), 
+                                     paste0("Lag_", 1:order))
+                  ## TODO: this should use names of seasons from the object)
+                  rownames(phi) <- paste0("Season_", 1:nrow(phi))
+                  
+                  return(phi)  # Attention: !!! Early return !!!
+              }
+              
               if(!is.null(type) &&  objtype != type){
+                  ## compute the PAR coef's and convert them to the desired type
+                  ##  (by row or by lag)
                   beta  <- as.vector(object@other$data$M %*% co)
                   ## phi2C expects matrix
                   phi <- if(objtype == "vecbyrow")
@@ -424,7 +456,6 @@ setMethod("coef", "SubsetPM",
                   co <- phi2C(phi, type = type)
               }
               
-              sintercept <- object@other$data$sintercept
               if(matrix){
                   ## convert to matrix
                   if(objtype == "vecbyrow"){
@@ -621,12 +652,9 @@ predict.SubsetPM <- function (object, n.ahead = 1, se.fit = FALSE, ...){
 ## object here is "SubsetPM"
 ## get the ordinary phi_tk coefficients of PAR
 fromSubsetPM <- function(object){
-    ## TODO: remove this function
-    ##
-    ## TODO: a wrote this a month after the other trig functions,
-    ##       and had forgotten that this can be done by a  one-liner.
-    ## 
-    ## actual, the coef() method for SubsetPM should have rgument to ask for these.
+    ## TODO: remove this function!!! See the comments and examples above
+
+    ## actually, the coef() method for SubsetPM should have argument to ask for these.
     type <- object@other$type
     stopifnot(!is.null(type))
 

@@ -55,9 +55,19 @@ test_that("trig.R is ok", {
     coef(tmpfitc)
     coef(tmpfitcn)
     coef(tmpfitLc)
+
+    parc  <- coef(tmpfitc,  type = "PAR", matrix = TRUE)
+    parcn <- coef(tmpfitcn, type = "PAR", matrix = TRUE)
+    parLc <- coef(tmpfitLc, type = "PAR", matrix = TRUE)
+    expect_equal(parc, parcn)
+    expect_equal(parc, parLc)
     
     coef(tmpfit)
     coef(tmpfitL)
+
+    parL <- coef(tmpfitL, type = "PAR", matrix = TRUE)
+    par  <- coef(tmpfit, type = "PAR", matrix = TRUE)
+    expect_equal(parL, par)
 
     predict(tmpfitc, n.ahead = 4)
     predict(tmpfitcn, n.ahead = 4)
