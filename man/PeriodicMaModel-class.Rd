@@ -11,13 +11,14 @@ Objects can be created by calls of the form \code{new("PeriodicMaModel", ar, ma,
 }
 \section{Slots}{
   \describe{
-    %\item{\code{const}:}{Object of class \code{"numeric"} ~~ }
     \item{\code{sigma2}:}{Object of class \code{"numeric"} ~~ }
     \item{\code{ar}:}{Object of class \code{"PeriodicArFilter"} ~~ }
     \item{\code{ma}:}{Object of class \code{"PeriodicMaFilter"} ~~ }
 
     \item{\code{center}:}{Object of class \code{"numeric"} ~~ }
     \item{\code{intercept}:}{Object of class \code{"numeric"} ~~ }
+
+    \item{\code{modelCycle}:}{Object of class \code{"BasicCycle"} ~~ }
 }
 }
 \section{Extends}{
@@ -31,7 +32,9 @@ Class \code{"\linkS4class{VirtualPeriodicAutocovarianceModel}"}, by class "Perio
 Class \code{"\linkS4class{VirtualPeriodicMeanModel}"}, by class "PeriodicArmaModel", distance 4.
 }
 \section{Methods}{
-No methods defined with class "PeriodicMaModel" in the signature.
+  \describe{
+    \item{show}{\code{signature(object = "PeriodicMaModel")}: ... }
+  }
 }
 %\references{
 %%%  ~~put references to the literature/web site here~~

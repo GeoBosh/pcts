@@ -65,12 +65,24 @@ Class \code{"Mnumeric"}, by class "numeric", distance 3.
 }
 \section{Methods}{
   \describe{
+    \item{[}{\code{signature(x = "PeriodicTS", i = "AnyDateTime", j = "missing", drop = "ANY")}: ... }
+    \item{[}{\code{signature(x = "PeriodicTS", i = "missing", j = "missing", drop = "ANY")}: ... }
+
     \item{coerce}{\code{signature(from = "mts", to = "PeriodicTS")}: ... }
     \item{coerce}{\code{signature(from = "PeriodicTS", to = "ts")}: ... }
     \item{coerce}{\code{signature(from = "ts", to = "PeriodicTS")}: ... }
+    \item{coerce}{\code{signature(from = "PeriodicTS", to = "Cyclic")}: ... }
+
+    \item{coerce<-}{\code{signature(from = "PeriodicTS", to = "Cyclic")}: ... }
+
     \item{plot}{\code{signature(x = "PeriodicTS", y = "missing")}: ... }
     \item{show}{\code{signature(object = "PeriodicTS")}: ... }
     \item{summary}{\code{signature(object = "PeriodicTS")}: ... }
+  
+    \item{autocovariances}{\code{signature(x = "PeriodicTS", maxlag = "ANY")}: ... }
+    \item{fitPM}{\code{signature(model = "PeriodicArModel", x = "PeriodicTS")}: ... }
+    \item{pcApply}{\code{signature(object = "PeriodicTS")}: ... }
+    \item{pcMean}{\code{signature(object = "PeriodicTS")}: ... }
   }
 }
 %\references{

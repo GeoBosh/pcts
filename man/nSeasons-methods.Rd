@@ -1,38 +1,36 @@
 \name{nSeasons-methods}
 \docType{methods}
 \alias{nSeasons-methods}
-\alias{nSeasons,BareCycle-method}
-%\alias{nSeasons,CycleDescription-method}
-\alias{nSeasons,Cyclic-method}
-%\alias{nSeasons,pc.Model.WeaklyStat-method}
-%\alias{nSeasons,PeriodicFilter-method}
 %\alias{nSeasons,slMatrix-method}
+\alias{nSeasons,Cyclic-method}
+
+\alias{nSeasons,BareCycle-method}
 %\alias{nSeasons,BuiltinCycle-method}
-%\alias{nSeasons,DayWeekCycle-method}
-%\alias{nSeasons,FiveDayWeekCycle-method}
-%\alias{nSeasons,MonthYearCycle-method}
+\alias{nSeasons,PartialCycle-method}
 %\alias{nSeasons,OpenCloseCycle-method}
-\alias{nSeasons,PeriodicFilterModel-method}
-\alias{nSeasons,PeriodicIntegratedArmaSpec-method}
-%\alias{nSeasons,QuarterYearCycle-method}
-\alias{nSeasons,VirtualPeriodicArmaFilter-method}
 \alias{nSeasons,DayWeekCycle-method}
-\alias{nSeasons,FiveDayWeekCycle-method}
 \alias{nSeasons,MonthYearCycle-method}
-%\alias{nSeasons,OpenCloseCycle-method}
-\alias{nSeasons,PeriodicMonicFilterSpec-method}
 \alias{nSeasons,QuarterYearCycle-method}
-\alias{nSeasons,PeriodicInterceptSpec-method}
 \alias{nSeasons,OpenCloseCycle-method}
 \alias{nSeasons,Every30MinutesCycle-method}
-\alias{nSeasons,PartialCycle-method}
+
+\alias{nSeasons,VirtualPeriodicArmaFilter-method}
+\alias{nSeasons,VirtualArmaFilter-method}
+\alias{nSeasons,PeriodicMonicFilterSpec-method}
+\alias{nSeasons,SarimaFilter-method}
+
+\alias{nSeasons,PeriodicInterceptSpec-method}
+\alias{nSeasons,PeriodicIntegratedArmaSpec-method}
+\alias{nSeasons,PeriodicFilterModel-method}
 \alias{nSeasons,VirtualPeriodicModel-method}
 
-\title{Number of seasons for a periodic object}
-\description{Number of seasons for a periodic object.}
-%\usage{
-%nSeasons(object)
-%}
+\title{Number of seasons of a periodic object}
+\description{Number of seasons of a periodic object.}
+\usage{
+\S4method{nSeasons}{Cyclic}(object)
+
+## same signature for all periodic classes in package "pcts"
+}
 \arguments{
   \item{object}{
     an object for which the notion of number of seasons makes sense.
@@ -40,8 +38,9 @@
 }
 \details{
 
-  \code{nSeasons} is a generic function. This page gives its methods
-   defined in package \code{"pcts"}.
+  \code{nSeasons} is a generic function. This page gives is for the
+  methods defined in package \code{"pcts"} - all periodic classes have
+  (or inherit) a method.
 
 }
 \value{
@@ -51,9 +50,6 @@
 \section{Methods}{
 \describe{
 \item{\code{signature(object = "DayWeekCycle")}}{{
-%%  ~~describe this method here~~
-}
-}\item{\code{signature(object = "FiveDayWeekCycle")}}{{
 %%  ~~describe this method here~~
 }
 }\item{\code{signature(object = "MonthYearCycle")}}{{
@@ -89,6 +85,12 @@
 }\item{\code{signature(object = "VirtualPeriodicModel")}}{{
 %%  ~~describe this method here~~
 }
+}\item{\code{signature(object = "SarimaFilter")}}{{
+%%  ~~describe this method here~~
+}
+}\item{\code{signature(object = "VirtualArmaFilter")}}{{
+%%  ~~describe this method here~~
+}
 }}}
 \seealso{
   \code{\link{allSeasons}} for other functions related to the
@@ -97,12 +99,18 @@
   \code{\link{nCycles}} for related functions
 }
 \examples{
+## scalar time series
 ap <- pcts(AirPassengers)
 nSeasons(ap) # 12
 
+## multivariate time series
 pcfr <- pcts(dataFranses1996)
 nSeasons(pcfr) # 4
 
+## five-day-week period
+five_day_week <- BuiltinCycle(5)
+five_day_week
+nSeasons(five_day_week)
 }
 \keyword{methods}
 \keyword{pcts}

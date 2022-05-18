@@ -1,4 +1,3 @@
-## TODO: pcMean is currently not exported, is this intentional with the view of removing it?
 setGeneric("pcTest", def = function(x, nullmodel, nseasons, ...){ standardGeneric("pcTest") } )
 
 setGeneric("pcMean", def = function(object, ...){ standardGeneric("pcMean") } )

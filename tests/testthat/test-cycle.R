@@ -40,6 +40,8 @@ test_that("the cycle classes are ok",
 
     expect_error(new("FiveDayWeekCycle"),
                  "New objects from class 'FiveDayWeekCycle' can no longer be created")
+    ## TODO: when class "FiveDayWeekCycle" is removed, modify "FiveDayWeekCycle_objects.R" to
+    ##       use Builtin(5) and regenerate "FiveDayWeekCycle_objects.rds".
     fdc_all <- readRDS("FiveDayWeekCycle_objects.rds")
     
     fdc <- fdc_all[[1]] # new("FiveDayWeekCycle")

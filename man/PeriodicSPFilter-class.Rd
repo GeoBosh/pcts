@@ -24,8 +24,14 @@ Class \code{"\linkS4class{VirtualMonicFilter}"}, by class "VirtualSPFilter", dis
 }
 \section{Methods}{
   \describe{
+    \item{coerce}{\code{signature(from = "matrix", to = "PeriodicSPFilter")}: ... }
+    \item{coerce}{\code{signature(from = "PeriodicBJFilter", to = "PeriodicSPFilter")}: ... }
+    \item{coerce}{\code{signature(from = "PeriodicSPFilter", to = "PeriodicBJFilter")}: ... }
     \item{filterCoef}{\code{signature(object = "PeriodicSPFilter", convention = "character")}: ... }
-	 }
+    \item{filterPoly}{\code{signature(object = "PeriodicSPFilter")}: ... }
+    \item{filterPolyCoef}{\code{signature(object = "PeriodicSPFilter")}: ... }
+    \item{show}{\code{signature(object = "PeriodicSPFilter")}: ... }
+  }
 }
 %\references{
 %%%  ~~put references to the literature/web site here~~

@@ -36,10 +36,12 @@ Class \code{"\linkS4class{VirtualPeriodicAutocovarianceModel}"}, by class "Perio
 Class \code{"\linkS4class{VirtualPeriodicMeanModel}"}, by class "PeriodicArModel", distance 5.
 }
 \section{Methods}{
-No methods defined with class "FittedPeriodicArModel" in the signature.
-\describe{
+  \describe{
     \item{show}{\code{signature(object = "FittedPeriodicArModel")}: ... }
-    \item{summary}{\code{signature(object = "FittedPeriodicArModel")}: ... }}}
+    \item{summary}{\code{signature(object = "FittedPeriodicArModel")}: ... }
+    \item{as_pcarma_list}{\code{signature(object = "FittedPeriodicArModel")}: ... }
+  }
+}
 %\references{
 %%%  ~~put references to the literature/web site here~~
 %}

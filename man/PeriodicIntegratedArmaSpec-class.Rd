@@ -16,11 +16,11 @@ Objects can be created by calls of the form \code{new("PeriodicIntegratedArmaSpe
   }
 }
 \section{Methods}{
-%%%   \describe{
-%%%     \item{nSeasons}{\code{signature(object = "PeriodicIntegratedArmaSpec")}: ... }
-%%% 	 }
-\describe{
-    \item{sigmaSq}{\code{signature(object = "PeriodicIntegratedArmaSpec")}: ... }}}
+  \describe{
+    \item{sigmaSq}{\code{signature(object = "PeriodicIntegratedArmaSpec")}: ... }
+    \item{nSeasons}{\code{signature(object = "PeriodicIntegratedArmaSpec")}: ...}
+  }
+}
 %\references{
 %%%  ~~put references to the literature/web site here~~
 %}

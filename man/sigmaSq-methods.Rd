@@ -6,14 +6,14 @@
 \title{Methods for \code{sigmaSq} in package pcts}
 \description{Methods for \code{sigmaSq} in package pcts.}
 \section{Methods}{
-\describe{
+  \describe{
+    \item{\code{signature(object = "PeriodicIntegratedArmaSpec")}}{
+      %%  ~~describe this method here~~
+    }
 
-\item{\code{signature(object = "PeriodicIntegratedArmaSpec")}}{
-%%  ~~describe this method here~~
+    \item{\code{signature(object = "PeriodicInterceptSpec")}}{
+      %%  ~~describe this method here~~
+    }
+  }
 }
-
-\item{\code{signature(object = "PeriodicInterceptSpec")}}{
-%%  ~~describe this method here~~
-}
-}}
 \keyword{methods}

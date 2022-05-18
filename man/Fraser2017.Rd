@@ -32,6 +32,10 @@ data("Fraser2017")
 % \references{
 % %%  ~~ possibly secondary sources and usages ~~
 % }
+\seealso{
+  \code{\link{dataFranses1996}},
+  \code{\link{four_stocks_since2016_01_01}}
+}
 \examples{
 data(Fraser2017)
 

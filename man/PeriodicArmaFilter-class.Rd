@@ -22,7 +22,13 @@ Class \code{"\linkS4class{VirtualArmaFilter}"}, directly.
 Class \code{"\linkS4class{VirtualMonicFilter}"}, by class "VirtualArmaFilter", distance 2.
 }
 \section{Methods}{
-No methods defined with class "PeriodicArmaFilter" in the signature.
+  \describe{
+    \item{coerce}{\code{signature(from = "PeriodicArmaFilter", to = "PeriodicArFilter")}: ... }
+    \item{coerce}{\code{signature(from = "PeriodicArmaFilter", to = "PeriodicMaFilter")}: ... }
+    \item{initialize}{\code{signature(.Object = "PeriodicArmaFilter")}: ... }
+    \item{maxLag}{\code{signature(object = "PeriodicArmaFilter")}: ... }
+    \item{show}{\code{signature(object = "PeriodicArmaFilter")}: ... }
+  }
 }
 %\references{
 %%%  ~~put references to the literature/web site here~~

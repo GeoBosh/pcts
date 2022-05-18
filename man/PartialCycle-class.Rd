@@ -5,8 +5,8 @@
 \alias{allSeasons,PartialCycle,logical-method}
 \alias{allSeasons,PartialCycle,missing-method}
 %\alias{nSeasons,PartialCycle-method}
-\alias{unitCycle,PartialCycle-method}
-\alias{unitSeason,PartialCycle-method}
+%\alias{unitCycle,PartialCycle-method}
+%\alias{unitSeason,PartialCycle-method}
 
 \title{Class PartialCycle}
 \description{Class PartialCycle}
@@ -39,7 +39,14 @@ Class \code{"\linkS4class{BasicCycle}"}, directly.
     \item{nSeasons}{\code{signature(object = "PartialCycle")}: ... }
     \item{unitCycle}{\code{signature(x = "PartialCycle")}: ... }
     \item{unitSeason}{\code{signature(x = "PartialCycle")}: ... }
-	 }
+    \item{show}{\code{signature(object = "PartialCycle")}: ... }}
+  
+    % \item{.cycle_and_pair2time}{\code{signature(cycle = "PartialCycle")}: ... }
+    % \item{.cycle_and_time2pair}{\code{signature(cycle = "PartialCycle")}: ... }
+    % \item{.get_offset}{\code{signature(cycle = "PartialCycle")}: ... }
+    % \item{.get_origin}{\code{signature(cycle = "PartialCycle")}: ... }
+    % \item{.get_period_length}{\code{signature(cycle = "PartialCycle")}: ... }
+    % \item{.get_period_units}{\code{signature(cycle = "PartialCycle")}: ... }
 }
 % \references{
 % %%  ~~put references to the literature/web site here~~

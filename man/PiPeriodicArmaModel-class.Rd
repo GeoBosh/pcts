@@ -21,7 +21,9 @@ Class \code{"\linkS4class{VirtualPeriodicFilterModel}"}, directly.
 Class \code{"\linkS4class{PeriodicIntegratedArmaSpec}"}, directly.
 }
 \section{Methods}{
-No methods defined with class "PiPeriodicArmaModel" in the signature.
+  \describe{
+    \item{show}{\code{signature(object = "PiPeriodicArmaModel")}: ... }
+  }
 }
 %\references{
 %%%  ~~put references to the literature/web site here~~

@@ -9,7 +9,7 @@
 \alias{[.ts}
 \alias{[<-.POSIXlt}
 \alias{as_Pctime}
-\title{Pctime objects}
+\title{Convert between Pctime and datetime objects}
 \description{
 
   Class \code{"Pctime"} is an S3 class inheriting from the base R

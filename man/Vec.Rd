@@ -7,7 +7,12 @@
 \alias{pcArray}
 \alias{pctsArray}
 \title{Core data of periodic time series}
-\description{Core data of periodic time series.}
+\description{
+
+  Extract the core data from a periodic time series as a vector, matrix
+  or array.
+
+}
 \usage{
 Vec(x, \dots)
 
@@ -34,16 +39,19 @@ pctsArray(x, ndim = 3, \dots)
 
   The data values can be extracted as a vector from a periodic time
   series object, say \code{x}, with \code{as.vector(x)} or \code{as(x,
-  "vector")}.  Similarly, \code{as.matrix()} and \code{as(x, "matrix")}
-  extract the data as a matrix containing one column per variable.  For
-  multivariate time series the vector returned by \code{as.vector(x)}
-  (or \code{as(x, "vector")}) is equivalent to
+  "vector")}.  For multivariate time series the vector returned by
+  \code{as.vector(x)} (or \code{as(x, "vector")}) is equivalent to
   \code{as.vector(as.matrix(x))}.
 
-  \code{Vec()} is like \code{as.vector()} but returns the result as a
-  matrix with one column (column vector), as is usual in matrix
-  calculus. The default does literally this.
-
+  Similarly, \code{as.matrix()} and \code{as(x, "matrix")}
+  extract the data as a matrix containing one column per variable.  
+  
+  \code{Vec()} is like \code{as.vector()} but the result is a matrix
+  with one column (column vector). The default does literally this.
+  Thus both, \code{Vec()} and \code{as.vector()}, implement the
+  \strong{Vec} operation from matrix calculus but the latter returns the
+  result as a vector, not matrix.
+  
   The most common representation of data in statistics is matrix-like
   with one column per variable.  The descriptions of algorithms for
   multivariate time series however usually define the vector of
@@ -55,7 +63,7 @@ pctsArray(x, ndim = 3, \dots)
 
   The functions \code{tsMatrix()}, \code{tsVector()} and \code{tsVec()}
   provide the analogues of \code{as.vector()}, \code{as.matrix()} and
-  \code{Vec()} for the ``transposed'' arrangement.
+  \code{Vec()} for the \dQuote{transposed} arrangement.
 
   These functions may look redundant since they are simple combinations
   of the above and traspose operations. Having functions makes for more
@@ -91,7 +99,7 @@ pctsArray(x, ndim = 3, \dots)
 }
 \value{
   vector, matrix or array, as indicated by the name of the function and
-  described in Details. 
+  described in section \sQuote{Details}. 
 }
 \author{Georgi N. Boshnakov}
 %\note{

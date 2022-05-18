@@ -51,40 +51,35 @@ pcMean(object, \dots)
 }
 \value{
   numeric or matrix for the methods described here, see section
-  Details. 
+  \sQuote{Details}.
 }
-%\references{
-%%% ~put references to the literature/web site here ~
-%}
 \author{Georgi N. Boshnakov}
-%\note{
-%%%  ~~further notes~~
-%}
 \section{Methods}{
-\describe{
+  \describe{
 
-\item{\code{signature(object = "matrix")}}{
-%%  ~~describe this method here~~
+    \item{\code{signature(object = "matrix")}}{
+      %%  ~~describe this method here~~
+    }
+    
+    \item{\code{signature(object = "numeric")}}{
+      %%  ~~describe this method here~~
+    }
+    
+    \item{\code{signature(object = "PeriodicMTS")}}{
+      %%  ~~describe this method here~~
+    }
+    
+    \item{\code{signature(object = "PeriodicTS")}}{
+      %%  ~~describe this method here~~
+    }
+    
+    \item{\code{signature(object = "VirtualPeriodicArmaModel")}}{
+      %%  ~~describe this method here~~
+    }
+  }
 }
-
-\item{\code{signature(object = "numeric")}}{
-%%  ~~describe this method here~~
-}
-
-\item{\code{signature(object = "PeriodicMTS")}}{
-%%  ~~describe this method here~~
-}
-
-\item{\code{signature(object = "PeriodicTS")}}{
-%%  ~~describe this method here~~
-}
-
-\item{\code{signature(object = "VirtualPeriodicArmaModel")}}{
-%%  ~~describe this method here~~
-}
-}}
 \seealso{
-  \code{\link{pcApply}}
+  \code{\link{pcApply}} which applies an arbitrary function by season
 }
 \examples{
 pcMean(pcts(presidents))

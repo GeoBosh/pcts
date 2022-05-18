@@ -24,10 +24,14 @@ Class \code{"\linkS4class{BasicCycle}"}, directly.
 }
 \section{Methods}{
   \describe{
-    \item{coerce}{\code{signature(from = "BuiltinCycle", to = "BareCycle")}: ... }
     \item{initialize}{\code{signature(.Object = "BareCycle")}: ... }
+    \item{coerce}{\code{signature(from = "BareCycle", to = "SimpleCycle")}: ... }
+    \item{coerce}{\code{signature(from = "BuiltinCycle", to = "BareCycle")}: ... }
     \item{nSeasons}{\code{signature(object = "BareCycle")}: ... }
     \item{show}{\code{signature(object = "BareCycle")}: ... }
+  
+    % \item{.get_origin}{\code{signature(cycle = "BareCycle")}: ... }
+    % \item{.nperiods}{\code{signature(cycle = "BareCycle")}: ... }
   }
 }
 %\references{

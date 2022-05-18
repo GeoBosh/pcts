@@ -12,17 +12,24 @@ Objects can be created by calls of the form \code{new("PeriodicArmaSpec", pcmean
 }
 \section{Slots}{
   \describe{
-    %\item{\code{const}:}{Object of class \code{"numeric"} ~~ }
     \item{\code{sigma2}:}{Object of class \code{"numeric"} ~~ }
     \item{\code{ar}:}{Object of class \code{"PeriodicArFilter"} ~~ }
     \item{\code{ma}:}{Object of class \code{"PeriodicMaFilter"} ~~ }
 
     \item{\code{center}:}{Object of class \code{"numeric"} ~~ }
     \item{\code{intercept}:}{Object of class \code{"numeric"} ~~ }
-}
+
+    \item{\code{modelCycle}:}{Object of class \code{"BasicCycle"} ~~ }
+  }
 }
 \section{Extends}{
-Class \code{"\linkS4class{PeriodicArmaFilter}"}, directly.
+  Class \code{"\linkS4class{PeriodicArmaFilter}"}, directly.
+}
+\section{Methods}{Functions with methods for this class:
+  \describe{
+    \item{initialize}{\code{signature(.Object = "PeriodicArmaSpec")}: ... }
+    \item{show}{\code{signature(object = "PeriodicArmaSpec")}: ... }
+  }
 }
 % \section{Methods}{
 % %%%   \describe{

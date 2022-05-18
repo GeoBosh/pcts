@@ -8,27 +8,11 @@
 \alias{unitCycle,BuiltinCycle-method}
 \alias{unitSeason,BuiltinCycle-method}
 
-\alias{DayWeekCycle-class}
-%\alias{nSeasons,DayWeekCycle-method}
-
-\alias{Every30MinutesCycle-class}
-%\alias{allSeasons,Every30MinutesCycle,logical-method}
-%\alias{allSeasons,Every30MinutesCycle,missing-method}
-%\alias{nSeasons,Every30MinutesCycle-method}
-%\alias{unitCycle,Every30MinutesCycle-method}
-%\alias{unitSeason,Every30MinutesCycle-method}
-
-\alias{FiveDayWeekCycle-class}
-%\alias{nSeasons,FiveDayWeekCycle-method}
-
-\alias{MonthYearCycle-class}
-
 \alias{OpenCloseCycle-class}
-%\alias{nSeasons,OpenCloseCycle-method}
-
 \alias{QuarterYearCycle-class}
-%\alias{nSeasons,QuarterYearCycle-method}
-
+\alias{DayWeekCycle-class}
+\alias{MonthYearCycle-class}
+\alias{Every30MinutesCycle-class}
 
 \title{Class \code{"BuiltinCycle"} and its subclasses in package 'pcts'}
 \description{Class \code{"BuiltinCycle"} and its subclasses in package 'pcts'.}
@@ -52,6 +36,20 @@
 
   The subclasses of \code{"BuiltinCycle"} have definitions for all
   methods promised by its superclass \code{"BasicCycle"}.
+
+  Currently, the following builtin classes are defined:
+  \tabular{llr}{
+    Name                         \tab Description                  \tab nSeasons \cr
+    \code{"DayWeekCycle"}        \tab weekdays                     \tab        7 \cr
+    \code{"QuarterYearCycle"}    \tab quarters in a year           \tab        4 \cr
+    \code{"MonthYearCycle"}      \tab months in a year             \tab       12 \cr
+    \code{"Every30MinutesCycle"} \tab half-hour intervals in a day \tab       48 \cr
+    \code{"OpenCloseCycle"}      \tab start/end of a working day   \tab        2
+  }		     
+
+  There is also a class \code{"FiveDayWeekCycle"} but it is deprecated
+  and will be removed in the near future. Use \code{\link{BuiltinCycle}(5)}
+  to create objects with equivalent functionality.
 
 }
 \section{Slots}{
@@ -83,62 +81,33 @@
     \item{coerce}{\code{signature(from = "BuiltinCycle", to = "SimpleCycle")}: ... }
     \item{initialize}{\code{signature(.Object = "BuiltinCycle")}: ... }
     \item{show}{\code{signature(object = "BuiltinCycle")}: ... }
+  }
 
-    %  Class \code{"DayWeekCycle"} 
-    \item{allSeasons}{\code{signature(x = "DayWeekCycle", abb = "logical")} }
-    \item{allSeasons}{\code{signature(x = "DayWeekCycle", abb = "missing")} }
-    \item{nSeasons}{\code{signature(object = "DayWeekCycle")} }
-    \item{unitCycle}{\code{signature(x = "DayWeekCycle")} }
-    \item{unitSeason}{\code{signature(x = "DayWeekCycle")} }
+  The functions to extract properties from objects from the builtin
+  cycle classes have identical signatures (except for the name of the
+  class). For example, for \code{"QuarterYearCycle"} the methods are as
+  follows:
 
-    % Class \code{"Every30MinutesCycle"}
-    \item{allSeasons}{\code{signature(x = "Every30MinutesCycle", abb = "logical")}: ... }
-    \item{allSeasons}{\code{signature(x = "Every30MinutesCycle", abb = "missing")}: ... }
-    \item{nSeasons}{\code{signature(object = "Every30MinutesCycle")}: ... }
-    \item{unitCycle}{\code{signature(x = "Every30MinutesCycle")}: ... }
-    \item{unitSeason}{\code{signature(x = "Every30MinutesCycle")}: ... }
-    
-    % \code{"FiveDayWeekCycle"}
-    \item{allSeasons}{\code{signature(x = "FiveDayWeekCycle", abb = "logical")}: ... }
-    \item{allSeasons}{\code{signature(x = "FiveDayWeekCycle", abb = "missing")}: ... }
-    \item{nSeasons}{\code{signature(object = "FiveDayWeekCycle")}: ... }
-    \item{unitCycle}{\code{signature(x = "FiveDayWeekCycle")}: ... }
-    \item{unitSeason}{\code{signature(x = "FiveDayWeekCycle")}: ... }
-
-    % \code{MonthYearCycle}
-    \item{allSeasons}{\code{signature(x = "MonthYearCycle", abb = "logical")}: ... }
-    \item{allSeasons}{\code{signature(x = "MonthYearCycle", abb = "missing")}: ... }
-    \item{nSeasons}{\code{signature(object = "MonthYearCycle")}: ... }
-    \item{unitCycle}{\code{signature(x = "MonthYearCycle")}: ... }
-    \item{unitSeason}{\code{signature(x = "MonthYearCycle")}: ... }
-    
-    % \code{"OpenCloseCycle"}
-    \item{allSeasons}{\code{signature(x = "OpenCloseCycle", abb = "logical")}: ... }
-    \item{allSeasons}{\code{signature(x = "OpenCloseCycle", abb = "missing")}: ... }
-    \item{nSeasons}{\code{signature(object = "OpenCloseCycle")}: ... }
-    \item{unitCycle}{\code{signature(x = "OpenCloseCycle")}: ... }
-    \item{unitSeason}{\code{signature(x = "OpenCloseCycle")}: ... }
-
-    % \code{"QuarterYearCycle"}
+  \describe{
     \item{allSeasons}{\code{signature(x = "QuarterYearCycle", abb = "logical")}: ... }
     \item{allSeasons}{\code{signature(x = "QuarterYearCycle", abb = "missing")}: ... }
     \item{nSeasons}{\code{signature(object = "QuarterYearCycle")}: ... }
     \item{unitCycle}{\code{signature(x = "QuarterYearCycle")}: ... }
     \item{unitSeason}{\code{signature(x = "QuarterYearCycle")}: ... }
   }
+
+  The methods for the remaining builtin classes are the same with
+  \code{"QuarterYearCycle"} replaced suitably.
 }
 \author{Georgi N. Boshnakov}
 \seealso{
   \code{\link{BuiltinCycle}},
   \code{\link{pcCycle}} for creation of cycle objects and extraction of
   cycle part of time series,
-  % 
-  % \code{\link{DayWeekCycle-class}},
-  % \code{\link{FiveDayWeekCycle-class}},
-  % \code{\link{MonthYearCycle-class}},
-  % \code{\link{OpenCloseCycle-class}},
-  % \code{\link{QuarterYearCycle-class}},
-  % 
+
+  class \code{\linkS4class{PartialCycle}} for creating variants of the
+  builtin classes, e.g., 5-day weeks.
+
   \code{\link{BareCycle-class}},
   \code{\link{SimpleCycle-class}},
 

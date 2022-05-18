@@ -20,6 +20,8 @@ Objects can be created by calls of the form \code{new("PeriodicArmaModel", ar, m
 
     \item{\code{center}:}{Object of class \code{"numeric"} ~~ }
     \item{\code{intercept}:}{Object of class \code{"numeric"} ~~ }
+
+    \item{\code{modelCycle}:}{Object of class \code{"BasicCycle"} ~~ }
 }
 }
 \section{Extends}{
@@ -33,9 +35,11 @@ Class \code{"\linkS4class{VirtualPeriodicMeanModel}"}, by class "VirtualPeriodic
 }
 \section{Methods}{
   \describe{
-    \item{autocovariances}{\code{signature(x = "PeriodicArmaModel")}: ... }
+    \item{autocovariances}{\code{signature(x = "PeriodicArmaModel", maxlag = "ANY")}: ... }
+    \item{coerce}{\code{signature(from = "PeriodicArmaModel", to = "list")}: ... }
+    \item{coerce}{\code{signature(from = "PeriodicArmaModel", to = "PeriodicArModel")}: ... }
+    \item{show}{\code{signature(object = "PeriodicArmaModel")}: ... }
   }
-  %%%     \item{PeriodicArModel}{\code{signature(object = "PeriodicArmaModel")}: ... }
 }
 %\references{
 %%%  ~~put references to the literature/web site here~~

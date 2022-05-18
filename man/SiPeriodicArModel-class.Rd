@@ -24,6 +24,7 @@ Class \code{"\linkS4class{PeriodicIntegratedArmaSpec}"}, by class "SiPeriodicArm
 \section{Methods}{
   \describe{
     \item{fitPM}{\code{signature(model = "SiPeriodicArModel", x = "ANY")}: ... }
+    \item{show}{\code{signature(object = "SiPeriodicArModel")}: ... }
   }
 }
 %\references{

@@ -129,7 +129,7 @@ exportClasses(
   Every30MinutesCycle,
   FittedPeriodicArModel,
   FittedPeriodicArmaModel,
-  FiveDayWeekCycle,
+  FiveDayWeekCycle, # deprecated
   LegacyPeriodicFilterModel,
   mcOptimCore,
   ModelCycleSpec,

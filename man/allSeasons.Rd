@@ -2,22 +2,22 @@
 \docType{methods}
 \alias{allSeasons}
 \alias{allSeasons-methods}
+\alias{allSeasons,Cyclic,ANY-method}
+\alias{allSeasons,VirtualPeriodicModel,ANY-method}
+
 \alias{allSeasons,BasicCycle,ANY-method}
-\alias{allSeasons,DayWeekCycle,logical-method}
-\alias{allSeasons,DayWeekCycle,missing-method}
-\alias{allSeasons,FiveDayWeekCycle,logical-method}
-\alias{allSeasons,FiveDayWeekCycle,missing-method}
-\alias{allSeasons,MonthYearCycle,logical-method}
-\alias{allSeasons,MonthYearCycle,missing-method}
+\alias{allSeasons,SimpleCycle,ANY-method}
+
 \alias{allSeasons,OpenCloseCycle,logical-method}
 \alias{allSeasons,OpenCloseCycle,missing-method}
 \alias{allSeasons,QuarterYearCycle,logical-method}
 \alias{allSeasons,QuarterYearCycle,missing-method}
-\alias{allSeasons,SimpleCycle,ANY-method}
-\alias{allSeasons,Cyclic,ANY-method}
+\alias{allSeasons,DayWeekCycle,logical-method}
+\alias{allSeasons,DayWeekCycle,missing-method}
+\alias{allSeasons,MonthYearCycle,logical-method}
+\alias{allSeasons,MonthYearCycle,missing-method}
 \alias{allSeasons,Every30MinutesCycle,logical-method}
 \alias{allSeasons,Every30MinutesCycle,missing-method}
-\alias{allSeasons,VirtualPeriodicModel,ANY-method}
 
 \alias{allSeasons<-}
 \alias{allSeasons<-,Cyclic-method}
@@ -50,7 +50,6 @@ allSeasons ( x, abb, ... ) <- value
 \S4method{allSeasons}{SimpleCycle}(x, abb, prefix, \dots) <- value
 
 \S4method{allSeasons}{Cyclic}(x, abb = FALSE, \dots) <- value
-
 }
 \arguments{
   \item{x}{
@@ -103,14 +102,6 @@ allSeasons ( x, abb, ... ) <- value
 }
 
 \item{\code{signature(x = "DayWeekCycle", abb = "missing")}}{
-%%  ~~describe this method here~~
-}
-
-\item{\code{signature(x = "FiveDayWeekCycle", abb = "logical")}}{
-%%  ~~describe this method here~~
-}
-
-\item{\code{signature(x = "FiveDayWeekCycle", abb = "missing")}}{
 %%  ~~describe this method here~~
 }
 

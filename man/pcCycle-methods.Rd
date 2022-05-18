@@ -215,14 +215,13 @@ BuiltinCycle(n, coerce = FALSE, first = 1, stop = TRUE)
 %%% ~Make other sections like Warning with \section{Warning }{....} ~
 %
 \seealso{
-  % \code{\link{BuiltinCycle}} for the recommended way to create objects
-  % from the builtin classes
-
   \code{\link{allSeasons}} for further examples,
   
   class \code{\linkS4class{BuiltinCycle}} for the available builtin
-  classes and more examples
-    
+  classes and more examples,
+
+  \code{\link{Pctime}} for representation of dates and conversion
+  from/to datetime objects
 }
 \examples{
 ## pcCycle
@@ -251,4 +250,4 @@ BuiltinCycle(19, stop = FALSE)
 BuiltinCycle(19, coerce = TRUE, stop = FALSE)
 }
 \keyword{methods}
-
+\keyword{chron}

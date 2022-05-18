@@ -55,23 +55,30 @@ Class \code{"\linkS4class{vector}"}, by class "matrix", distance 4, with explici
 \section{Methods}{
   \describe{
     \item{$}{\code{signature(x = "PeriodicMTS")}: ... }
-    \item{[}{\code{signature(x = "PeriodicMTS", i = "ANY", j = "missing", drop = "ANY")}: ... }
+
     \item{[}{\code{signature(x = "PeriodicMTS", i = "missing", j = "missing", drop = "ANY")}: ... }
-    \item{[[}{\code{signature(x = "PeriodicMTS", i = "ANY")}: ... }
+    \item{[}{\code{signature(x = "PeriodicMTS", i = "ANY", j = "missing", drop = "ANY")}: ... }
+    \item{[}{\code{signature(x = "PeriodicMTS", i = "ANY", j = "ANY", drop = "ANY")}: ... }
+    \item{[}{\code{signature(x = "PeriodicMTS", i = "AnyDateTime", j = "missing", drop = "ANY")}: ... }
+    \item{[}{\code{signature(x = "PeriodicMTS", i = "AnyDateTime", j = "ANY", drop = "ANY")}: ... }
+
+    \item{[[}{\code{signature(x = "PeriodicMTS", i = "ANY", j = "ANY")}: ... }
+
     \item{coerce}{\code{signature(from = "mts", to = "PeriodicMTS")}: ... }
     \item{coerce}{\code{signature(from = "PeriodicMTS", to = "ts")}: ... }
     \item{coerce}{\code{signature(from = "ts", to = "PeriodicMTS")}: ... }
+    \item{coerce}{\code{signature(from = "PeriodicMTS", to = "Cyclic")}: ... }
+
+    \item{coerce<-}{\code{signature(from = "PeriodicMTS", to = "Cyclic")}: ... }
+
     \item{plot}{\code{signature(x = "PeriodicMTS", y = "missing")}: ... }
     \item{show}{\code{signature(object = "PeriodicMTS")}: ... }
     \item{summary}{\code{signature(object = "PeriodicMTS")}: ... }
   
-    \item{[}{\code{signature(x = "PeriodicMTS", i = "ANY", j = "ANY", drop = "ANY")}: ... }
-    \item{[}{\code{signature(x = "PeriodicMTS", i = "AnyDateTime", j = "ANY", drop = "ANY")}: ... }
-    \item{[}{\code{signature(x = "PeriodicMTS", i = "AnyDateTime", j = "missing", drop = "ANY")}: ... }
-    \item{[[}{\code{signature(x = "PeriodicMTS", i = "ANY", j = "ANY")}: ... }
     \item{fitPM}{\code{signature(model = "PeriodicArModel", x = "PeriodicMTS")}: ... }
     \item{pcApply}{\code{signature(object = "PeriodicMTS")}: ... }
-    \item{pcMean}{\code{signature(object = "PeriodicMTS")}: ... }}
+    \item{pcMean}{\code{signature(object = "PeriodicMTS")}: ... }
+  }
 }
 %\references{
 %%%  ~~put references to the literature/web site here~~
@@ -86,10 +93,9 @@ Class \code{"\linkS4class{vector}"}, by class "matrix", distance 4, with explici
 %%% ~Make other sections like Warning with \section{Warning }{....} ~
 %
 \seealso{
-  \code{\link{pcts}} which is the recommended way to create periodic
-  time series,
+  class \code{\linkS4class{PeriodicTS}} (univariate periodic time series),
 
-  class \code{\linkS4class{PeriodicTS}} for the univariate case,
+  \code{\link{pcts}} (create periodic time series),
 
   \code{\link{dataFranses1996}} and \code{\link{pcts-package}} for examples
 }

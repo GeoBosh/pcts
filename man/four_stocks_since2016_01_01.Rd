@@ -12,10 +12,6 @@
 }
 \details{
 
-  \strong{Note:} This dataset is temporary for use in testing, although
-  it may appear in some examples. Eventually  it may be renamed and/or
-  replaced by other data.
-
   Stock market data for Dell, Microsoft, Intel and IBM, from 2016-01-01
   to 2020-04-17. The Dell data start from 2016-08-17. All data were
   downloaded from Yahoo Finance on 2020-04-18.
@@ -27,6 +23,10 @@
 %\references{
 %%%  ~~ possibly secondary sources and usages ~~
 %}
+\seealso{
+  \code{\link{Fraser2017}},
+  \code{\link{dataFranses1996}}
+}
 \examples{
 data(four_stocks_since2016_01_01)
 DELL <- four_stocks_since2016_01_01$DELL

@@ -9,7 +9,7 @@
 \alias{pcApply,PeriodicTS-method}
 
 \title{Apply a function to each season}
-\description{Apply a function periodically}
+\description{Apply a function to each season.}
 \usage{
 pcApply(object, \dots)
 
@@ -63,24 +63,25 @@ pcApply(object, \dots)
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \section{Methods}{
-\describe{
-
-\item{\code{signature(object = "matrix")}}{
-%%  ~~describe this method here~~
+  \describe{
+  
+    \item{\code{signature(object = "matrix")}}{
+      %%  ~~describe this method here~~
+    }
+    
+    \item{\code{signature(object = "numeric")}}{
+      %%  ~~describe this method here~~
+    }
+    
+    \item{\code{signature(object = "PeriodicMTS")}}{
+      %%  ~~describe this method here~~
+    }
+    
+    \item{\code{signature(object = "PeriodicTS")}}{
+      %%  ~~describe this method here~~
+    }
+  }
 }
-
-\item{\code{signature(object = "numeric")}}{
-%%  ~~describe this method here~~
-}
-
-\item{\code{signature(object = "PeriodicMTS")}}{
-%%  ~~describe this method here~~
-}
-
-\item{\code{signature(object = "PeriodicTS")}}{
-%%  ~~describe this method here~~
-}
-}}
 \seealso{
   \code{\link{pcMean}},
   \code{\link[base]{apply}}
@@ -98,6 +99,7 @@ pcApply(pcfr2to4, median, na.rm = TRUE)
 pcApply(pcfr2to4, sd, na.rm = TRUE)
 }
 \keyword{methods}
+\keyword{ts}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
 % \keyword{ ~kwd1 }

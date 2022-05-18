@@ -35,7 +35,18 @@ Class \code{"\linkS4class{BareCycle}"}, directly.
 Class \code{"\linkS4class{BasicCycle}"}, directly.
 }
 \section{Methods}{
-No methods defined with class "SimpleCycle" in the signature.
+  \describe{
+    \item{allSeasons}{\code{signature(x = "SimpleCycle", abb = "ANY")}: ... }
+    \item{allSeasons<-}{\code{signature(x = "SimpleCycle")}: ... }
+    \item{coerce}{\code{signature(from = "BareCycle", to = "SimpleCycle")}: ... }
+    \item{coerce}{\code{signature(from = "BuiltinCycle", to = "SimpleCycle")}: ... }
+    \item{initialize}{\code{signature(.Object = "SimpleCycle")}: ... }
+    \item{show}{\code{signature(object = "SimpleCycle")}: ... }
+    \item{unitCycle}{\code{signature(x = "SimpleCycle")}: ... }
+    \item{unitCycle<-}{\code{signature(x = "SimpleCycle")}: ... }
+    \item{unitSeason}{\code{signature(x = "SimpleCycle")}: ... }
+    \item{unitSeason<-}{\code{signature(x = "SimpleCycle")}: ... }
+  }
 }
 \author{Georgi N. Boshnakov}
 %\note{

@@ -2,7 +2,7 @@
 \alias{sim_pwn}
 \title{Simulate periodic white noise}
 \description{
-  Generates a sample from periodic white noise.
+  Simulate periodic white noise.
 }
 \usage{
 sim_pwn(n = 100, period = NA, seasonof1st = 1, scale = NULL, 

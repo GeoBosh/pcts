@@ -145,6 +145,10 @@
 \references{
   \insertAllCited{}
 }
+\seealso{
+  \code{\link{Fraser2017}},
+  \code{\link{four_stocks_since2016_01_01}}
+}
 \examples{
 data(dataFranses1996)
 class(dataFranses1996)

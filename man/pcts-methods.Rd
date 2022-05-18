@@ -55,8 +55,13 @@ pcts(x, nseasons, start, \dots, keep = FALSE)
   use the user does not care about the particular class. See section
   \sQuote{Methods} for further details.
 
+  Familiar functions from base-R work with the objects created by
+  \code{pcts}. The help page \code{\link{window}} describes such methods
+  and gives examples.
+
   There are also methods for \code{as} for conversion to and from the
   time series classes defined in package \pkg{pcts}.
+
 
 }
 \value{
@@ -137,9 +142,20 @@ pcts(x, nseasons, start, \dots, keep = FALSE)
 
 \seealso{
   \code{\linkS4class{PeriodicTS}},
-  \code{\linkS4class{PeriodicMTS}},
+  \code{\linkS4class{PeriodicMTS}}, the two main periodic time series
+  classes in the package;
 
-  \code{\link{dataFranses1996}} for further examples
+  \code{\link{dataFranses1996}}, \code{\link{Fraser2017}},
+  \code{\link{four_stocks_since2016_01_01}} for further examples;
+
+  \code{\link{window}} for extraction of subsets;
+
+  \code{\link{pcApply}} for applying a function to each season;
+  
+  \code{\link{Vec}},
+  \code{\link{tsVec}},
+  \code{\link{pcMatrix}} for extraction of the core data
+  
 }
 \examples{
 ## convert a ts object, no need for further info

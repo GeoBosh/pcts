@@ -311,14 +311,16 @@ Maintainer: \Sexpr[stage=build]{pd$Maintainer}
 \keyword{ package }
 \seealso{
   \code{\link{pcts}},
-  \code{\link{dataFranses1996}}
-
+  
   \code{\link{fitPM}},
   \code{\link{pclsdf}},
   \code{\link{pclspiar}}
   
   \code{\link{autocorrelations}}
   
+  \code{\link{dataFranses1996}}, \code{\link{Fraser2017}},
+  \code{\link{four_stocks_since2016_01_01}},
+
   \code{\link[mcompanion:mcompanion-package]{mcompanion}}
 }
 \examples{

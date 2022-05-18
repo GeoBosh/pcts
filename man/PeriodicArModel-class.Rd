@@ -20,6 +20,8 @@ Objects can be created by calls of the form \code{new("PeriodicArModel", ar, ma,
 
     \item{\code{center}:}{Object of class \code{"numeric"} ~~ }
     \item{\code{intercept}:}{Object of class \code{"numeric"} ~~ }
+
+    \item{\code{modelCycle}:}{Object of class \code{"BasicCycle"} ~~ }
 }
 }
 \section{Extends}{
@@ -34,9 +36,14 @@ Class \code{"\linkS4class{VirtualPeriodicMeanModel}"}, by class "PeriodicArmaMod
 }
 \section{Methods}{
   \describe{
-    \item{autocovariances}{\code{signature(x = "PeriodicArModel")}: ... }
-    \item{fitPM}{\code{signature(x = "ANY", model = "PeriodicArModel")}: ... }
-	 }
+    \item{autocovariances}{\code{signature(x = "PeriodicArModel", maxlag = "ANY")}: ... }
+    \item{coerce}{\code{signature(from = "PeriodicArmaModel", to = "PeriodicArModel")}: ... }
+    \item{fitPM}{\code{signature(model = "PeriodicArModel", x = "ANY")}: ... }
+    \item{fitPM}{\code{signature(model = "PeriodicArModel", x = "PeriodicMTS")}: ... }
+    \item{fitPM}{\code{signature(model = "PeriodicArModel", x = "PeriodicTS")}: ... }
+    \item{partialCoefficients}{\code{signature(x = "PeriodicArModel")}: ... }
+    \item{show}{\code{signature(object = "PeriodicArModel")}: ... }
+  }
 }
 %\references{
 %%%  ~~put references to the literature/web site here~~

@@ -11,14 +11,12 @@ Objects can be created by calls of the form \code{new("PeriodicInterceptSpec", .
 }
 \section{Slots}{
   \describe{
-    %\item{\code{.Data}:}{Object of class \code{"numeric"} ~~ }
-
     \item{\code{center}:}{Object of class \code{"numeric"} ~~ }
     \item{\code{intercept}:}{Object of class \code{"numeric"} ~~ }
     \item{\code{sigma2}:}{Object of class \code{"numeric"} ~~ }
 
     \item{\code{modelCycle}:}{Object of class \code{"BasicCycle"} ~~ }
-}
+  }
 }
 \section{Extends}{
 Class \code{"\linkS4class{numeric}"}, from data part.
@@ -36,13 +34,15 @@ Class \code{"\linkS4class{number}"}, by class "numeric", distance 2.
 Class \code{"\linkS4class{atomicVector}"}, by class "numeric", distance 2.
 }
 \section{Methods}{
-No methods defined with class "PeriodicInterceptSpec" in the signature.
-\describe{
+  \describe{
     \item{sigmaSq}{\code{signature(object = "PeriodicInterceptSpec")}: ... }
     \item{allSeasons}{\code{signature(x = "PeriodicInterceptSpec", abb = "ANY")}: ... }
     \item{initialize}{\code{signature(.Object = "PeriodicInterceptSpec")}: ... }
     \item{nSeasons}{\code{signature(object = "PeriodicInterceptSpec")}: ... }
-    \item{show}{\code{signature(object = "PeriodicInterceptSpec")}: ... }}}
+    \item{show}{\code{signature(object = "PeriodicInterceptSpec")}:
+      ... }
+  }
+}
 %\references{
 %%%  ~~put references to the literature/web site here~~
 %}

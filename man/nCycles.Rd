@@ -18,9 +18,11 @@ nCycles(x, \dots)
 nTicks(x)
 
 nVariables(x, \dots)
+
+nSeasons(object)
 }
 \arguments{
-  \item{x}{an object from a periodic time series class.}
+  \item{x,object}{an object from a periodic time series class.}
   \item{\dots}{further arguments for methods.}
 }
 \details{

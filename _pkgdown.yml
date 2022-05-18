@@ -75,6 +75,10 @@ reference:
       - "zoo-class"
       - "zooreg-class"
   - title: "Cycle classes"
+    desc: >
+      Classes for representation of a time interval (cycle),
+      split into smaller units of time (seasons),
+      e.g. year/months, week/weekdays.
     contents:
       - "BuiltinCycle"
       - "BareCycle-class"
@@ -82,16 +86,17 @@ reference:
       - "BuiltinCycle-class"
       - "PartialCycle-class"
       - "SimpleCycle-class"
-      - "Cyclic-class"
       - "pcCycle-methods"
       - "modelCycle"
       - "unitCycle-methods"
       - "unitCycle<--methods"
-      - "unitSeason-methods"
-      - "unitSeason<--methods"
       - "seqSeasons-methods"
   - title: "Datetimes and dates"
+    desc: >
+      A cyclic object represent a single time point with associated Cycle.
+      The functions in this section provide conversions from/to calendar datetimes.
     contents:
+      - "Cyclic-class"
       - "Cyclic"
       - "Pctime"
       - "as_date-methods"
@@ -127,8 +132,6 @@ reference:
       - "PeriodicArmaModel-class"
       - "PeriodicArmaSpec-class"
       - "PeriodicAutocorrelations-class"
-      - "PeriodicAutocovarianceModel-class"
-      - "PeriodicAutocovarianceSpec-class"
       - "PeriodicAutocovariances-class"
       - "PeriodicBJFilter-class"
       - "PeriodicFilterModel-class"
@@ -152,11 +155,11 @@ reference:
       - "mC.ss"
   - title: Other
     contents:
+      - "sigmaSq-methods"
       - "ex1f"
       - "filterCoef-methods"
       - "sl_utils"
       - "pcts-deprecated"
-      - "sigmaSq-methods"
       - "[-methods"
       - "[<--methods"
       - "[[-methods"
